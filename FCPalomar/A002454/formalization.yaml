@@ -1,0 +1,163 @@
+version: "v0.4"
+
+project:
+  name: "OEIS A002454: the odd-order permanent identity (She–Sun–Xia)"
+  description: >-
+    For every n and every primitive complex (2n+1)-th root of unity ζ, the permanent of
+    the 2n × 2n matrix with entries 1 on the diagonal and (1 + ζ^(j−k))/(1 − ζ^(j−k))
+    off it equals 4^n (n!)^2/(2n+1). Zhi-Wei Sun posed the identity in OEIS A002454
+    (2022), and She, Sun and Xia proved it (arXiv:2208.12167, Theorem 1.3(ii)). The
+    proof formalizes the determinant approach of Guo, Li, Tao and Wei.
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "A novel permanent identity with applications"
+    authors:
+      - "Yue-Feng She"
+      - "Zhi-Wei Sun"
+      - "Wei Xia"
+    id: "arXiv:2208.12167"
+    type: "paper"
+    location: "Theorem 1.3(ii)"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      The odd-order permanent identity. Take m = 2n+1; translating both indices leaves j
+      − k unchanged.
+  - title: "The eigenvectors-eigenvalues identity and Sun's conjectures on determinants and permanents"
+    authors:
+      - "Xuejun Guo"
+      - "Xin Li"
+      - "Zhengyu Tao"
+      - "Tao Wei"
+    id: "arXiv:2206.02592"
+    type: "paper"
+    location: "equation (1.3)"
+    relationship: "other"
+    author_endorsement: "not-contacted"
+    note: >-
+      The proof follows this determinant calculation. Its Fourier eigenvalue identity is
+      due to F. Calogero and A. M. Perelomov (Linear Algebra Appl. 25, 1979).
+  - title: "OEIS A002454"
+    authors:
+      - "Zhi-Wei Sun"
+    id: "https://oeis.org/A002454"
+    type: "web discussion"
+    location: "comment of June 26, 2022"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Poses the permanent identity.
+
+related_formalizations:
+  - title: "Formal Conjectures: FormalConjectures/OEIS/2454.lean"
+    authors:
+      - "The Formal Conjectures Authors"
+    id: "https://github.com/google-deepmind/formal-conjectures/blob/691719db2653905d5fa0775408370fb058e4c59f/FormalConjectures/OEIS/2454.lean"
+    relationship: "builds-on"
+    note: >-
+      The Challenge copies the statement and the definitions it uses verbatim from this
+      file at commit 691719db. The upstream declaration is `sorry` at that commit.
+  - title: "VictorLiwentao/lean-oeis-proofs: LeanOeisProofs/NewFormalization/A002454.lean"
+    authors:
+      - "Wentao Li"
+    id: "https://github.com/VictorLiwentao/lean-oeis-proofs/blob/1cc54d7f3ecfdcea49625ce31c8df3e22d4c6146/LeanOeisProofs/NewFormalization/A002454.lean"
+    relationship: "builds-on"
+    note: >-
+      The earlier Lean 4.33/4.34 version of this proof, linked from google-
+      deepmind/formal-conjectures PR #7672. This package ports it to Lean 4.35.
+  - title: "Epoch Research, LeanOpenProblems-results: oeis_2454_conjecture_0"
+    authors:
+      - "Epoch Research"
+    id: "https://github.com/epoch-research/LeanOpenProblems-results/blob/fd09021e79869476ef83cda231312f1a2a89c8d7/runs/oeis-full-50usd-ant-j0j0g4uzligm1k41/oeis_2454_conjecture_0/Submission/Spec.lean"
+    relationship: "other"
+    note: >-
+      An earlier partial development that describes the cofactor approach. Its target is
+      incomplete.
+
+classification:
+  arxiv:
+    - "math.CO"
+    - "math.NT"
+  msc2020:
+    - "15A15"
+    - "11C20"
+
+status:
+  scope: >-
+    The selected theorem is OeisA2454.conjecture, with the sequence a copied verbatim.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "OeisA2454.conjecture"
+      file: "FCPalomar/A002454/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/A002454/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "gpt-6.1-sol"
+      framework: "OpenAI Codex"
+      tool_setup: >-
+        OpenAI Codex (GPT-6.1 Sol) developed the original Lean proof under the direction
+        of Wentao Li, published in VictorLiwentao/lean-oeis-proofs at commit
+        1cc54d7f3ecf.
+    - method: "agent"
+      models:
+        - "grok-4.6"
+      framework: "Cursor"
+      tool_setup: >-
+        Cursor (Grok 4.6 Extra High) assisted the reused even-order development (OEIS
+        A001818) on 2026-09-13.
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) ported the earlier development to Lean v4.35.0 and
+        Mathlib ccbef15e, adjusted it to the current Formal Conjectures statement, and
+        wrote this package, under the direction of Wentao Li. Wentao Li is the human
+        author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material. The mathematics is credited to the original authors
+    listed under sources.
+
+fidelity:
+  divergences: >-
+    None. The Challenge copies the Formal Conjectures statement and definitions
+    verbatim; only the FormalConjecturesUtil import, attributes, test lemmas and
+    docstrings are omitted.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Agent checks only: strict build with no warnings, axiom check of the selected
+    theorems, verbatim comparison of the copied definitions and statement, and an
+    independent agent review of source fidelity. No human review beyond Wentao Li is
+    claimed.
+
+alignment:
+  namespace: "OeisA2454"
+  statements:
+    - source: >-
+        For a primitive (2n+1)-th root of unity ζ, the permanent of the 2n × 2n matrix
+        with 1 on the diagonal and (1+ζ^(j−k))/(1−ζ^(j−k)) off it is 4^n (n!)^2/(2n+1).
+      lean: "OeisA2454.conjecture"
+      module: "FCPalomar.A002454.Solution"
+      status: "proved"

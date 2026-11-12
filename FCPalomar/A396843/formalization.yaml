@@ -1,0 +1,142 @@
+version: "v0.4"
+
+project:
+  name: "OEIS A396843: integral construction and oddness (Hanna's conjecture)"
+  description: >-
+    The ordinary generating function A(x) of OEIS A396843, with A(0) = 0 and A'(0) = 1,
+    satisfies A(x A(x) − 3x A(x)^2) = x^2. The package proves that this equation has
+    exactly one integer power-series solution and that every term a(n) with n ≥ 1 is
+    odd, as conjectured by Paul D. Hanna (OEIS A396843, 2026). An earlier Lean proof of
+    the oddness is in the-omega-institute/trureturing PR #6773.
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "OEIS A396843"
+    authors:
+      - "Paul D. Hanna"
+    id: "https://oeis.org/A396843"
+    type: "web discussion"
+    location: "entry of July 1, 2026"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      States the generating-function equation and conjectures that all terms are odd.
+      The separate modulo-nine conjecture was refuted by Danial Asaria and is not part
+      of this package.
+
+related_formalizations:
+  - title: "VictorLiwentao/lean-oeis-proofs: LeanOeisProofs/IndependentFormalization/A396843.lean"
+    authors:
+      - "Wentao Li"
+    id: "https://github.com/VictorLiwentao/lean-oeis-proofs/blob/1cc54d7f3ecfdcea49625ce31c8df3e22d4c6146/LeanOeisProofs/IndependentFormalization/A396843.lean"
+    relationship: "builds-on"
+    note: >-
+      The earlier Lean 4.33/4.34 version of this proof, linked from google-
+      deepmind/formal-conjectures PR #7673. This package ports it to Lean 4.35.
+  - title: "the-omega-institute/trureturing PR #6773"
+    authors:
+      - "ElonSG"
+    id: "https://github.com/the-omega-institute/trureturing/pull/6773"
+    relationship: "other"
+    note: >-
+      An earlier Lean proof of positive-index oddness at commit 7062f8c5, using
+      characteristic-two uniqueness. This package also constructs the integral solution,
+      proves uniqueness over every commutative ring, and identifies every normalized
+      rational solution with it.
+
+classification:
+  arxiv:
+    - "math.CO"
+    - "math.NT"
+  msc2020:
+    - "05A15"
+    - "11B50"
+    - "13F25"
+
+status:
+  scope: >-
+    The selected theorems are OeisA396843.source_existence and OeisA396843.conjecture,
+    with SourceEquation, series and a copied verbatim.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "OeisA396843.source_existence"
+      file: "FCPalomar/A396843/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/A396843/comparator.json"
+    - declaration: "OeisA396843.conjecture"
+      file: "FCPalomar/A396843/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/A396843/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "gpt-6.1-sol"
+      framework: "OpenAI Codex"
+      tool_setup: >-
+        OpenAI Codex (GPT-6.1 Sol) developed the original Lean proof under the direction
+        of Wentao Li, published in VictorLiwentao/lean-oeis-proofs at commit
+        1cc54d7f3ecf.
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) ported the earlier development to Lean v4.35.0 and
+        Mathlib ccbef15e, adjusted it to the current Formal Conjectures statement, and
+        wrote this package, under the direction of Wentao Li. Wentao Li is the human
+        author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material. The mathematics is credited to the original authors
+    listed under sources.
+
+fidelity:
+  divergences: >-
+    None. The statement is new: it was written for this package from the source and is
+    proposed for Formal Conjectures as FormalConjectures/OEIS/396843.lean with the same
+    declarations; only the FormalConjecturesUtil import, attributes and docstrings
+    differ.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Agent checks only: strict build with no warnings, axiom check of the selected
+    theorems, verbatim comparison of the copied definitions and statement, and an
+    independent agent review of source fidelity. No human review beyond Wentao Li is
+    claimed.
+
+alignment:
+  namespace: "OeisA396843"
+  statements:
+    - source: >-
+        The g.f. satisfies A(x A(x) − 3x A(x)^2) = x^2 with A(0) = 0 and A'(0) = 1; this
+        has a unique integer solution, and a(n) is odd for n ≥ 1.
+      lean: "OeisA396843.source_existence"
+      module: "FCPalomar.A396843.Solution"
+      status: "proved"
+    - source: >-
+        The g.f. satisfies A(x A(x) − 3x A(x)^2) = x^2 with A(0) = 0 and A'(0) = 1; this
+        has a unique integer solution, and a(n) is odd for n ≥ 1.
+      lean: "OeisA396843.conjecture"
+      module: "FCPalomar.A396843.Solution"
+      status: "proved"

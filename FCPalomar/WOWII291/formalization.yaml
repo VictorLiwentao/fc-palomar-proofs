@@ -1,0 +1,134 @@
+version: "v0.4"
+
+project:
+  name: "WOWII Conjecture 291 is false (a 12-vertex counterexample)"
+  description: >-
+    Conjecture 291 of DeLaViña's Written on the Wall II says that every connected graph
+    on more than two vertices satisfies γ_t(G) ≤ k + f, where γ_t is the total
+    domination number, k the first Havel–Hakimi step at which a zero appears, and f the
+    number of vertices lying in the fewest triangles. The package certifies a 12-vertex
+    counterexample with γ_t = 4, k = 2 and f = 1: the m = 6 member of a family posted by
+    vulnix0x4. The source credits the disproof to Zyad Tamimi.
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "google-deepmind/formal-conjectures issue 4562"
+    authors:
+      - "vulnix0x4"
+    id: "https://github.com/google-deepmind/formal-conjectures/issues/4562"
+    type: "web discussion"
+    location: "comment of July 23, 2026"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Gives the family of counterexamples whose m = 6 member is certified here.
+  - title: "Written on the Wall II (Conjectures of Graffiti.pc)"
+    authors:
+      - "Ermelinda DeLaViña"
+    id: "http://cms.dt.uh.edu/faculty/delavinae/research/wowII/"
+    type: "web discussion"
+    location: "Conjecture 291"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      States the conjecture and lists it as refuted, crediting a 12-vertex
+      counterexample to Zyad Tamimi (July 23, 2026).
+
+related_formalizations:
+  - title: "Formal Conjectures: FormalConjectures/WrittenOnTheWallII/GraphConjecture291.lean"
+    authors:
+      - "The Formal Conjectures Authors"
+    id: "https://github.com/google-deepmind/formal-conjectures/blob/691719db2653905d5fa0775408370fb058e4c59f/FormalConjectures/WrittenOnTheWallII/GraphConjecture291.lean"
+    relationship: "builds-on"
+    note: >-
+      The Challenge copies the statement and the definitions it uses verbatim from this
+      file at commit 691719db. The upstream declaration is `sorry` at that commit.
+  - title: "VictorLiwentao/lean-graph-proofs: LeanGraphProofs/WOWII291.lean"
+    authors:
+      - "Wentao Li"
+    id: "https://github.com/VictorLiwentao/lean-graph-proofs/blob/b60c2e548910b32eb3b602f6a8e67af806e4b9f6/LeanGraphProofs/WOWII291.lean"
+    relationship: "builds-on"
+    note: >-
+      The earlier Lean 4.33/4.34 version of this proof, linked from google-
+      deepmind/formal-conjectures PR #7248. This package ports it to Lean 4.35.
+
+classification:
+  arxiv:
+    - "math.CO"
+  msc2020:
+    - "05C69"
+    - "05C07"
+
+status:
+  scope: >-
+    The selected theorem is WrittenOnTheWallII.GraphConjecture291.conjecture291, with
+    the file's definitions and five FormalConjecturesForMathlib definitions copied
+    verbatim.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "WrittenOnTheWallII.GraphConjecture291.conjecture291"
+      file: "FCPalomar/WOWII291/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/WOWII291/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "gpt-6.1-sol"
+      framework: "OpenAI Codex"
+      tool_setup: >-
+        OpenAI Codex (GPT-6.1 Sol) developed the original Lean proof under the direction
+        of Wentao Li, published in VictorLiwentao/lean-graph-proofs at commit
+        b60c2e548910.
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) ported the earlier development to Lean v4.35.0 and
+        Mathlib ccbef15e, adjusted it to the current Formal Conjectures statement, and
+        wrote this package, under the direction of Wentao Li. Wentao Li is the human
+        author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material. The mathematics is credited to the original authors
+    listed under sources.
+
+fidelity:
+  divergences: >-
+    None. The Challenge copies the Formal Conjectures statement and definitions
+    verbatim; only the FormalConjecturesUtil import, attributes, test lemmas and
+    docstrings are omitted.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Agent checks only: strict build with no warnings, axiom check of the selected
+    theorems, verbatim comparison of the copied definitions and statement, and an
+    independent agent review of source fidelity. No human review beyond Wentao Li is
+    claimed.
+
+alignment:
+  namespace: "WrittenOnTheWallII.GraphConjecture291"
+  statements:
+    - source: >-
+        It is not true that γ_t(G) ≤ k + frequency(t_min) for every connected graph G
+        with more than two vertices.
+      lean: "WrittenOnTheWallII.GraphConjecture291.conjecture291"
+      module: "FCPalomar.WOWII291.Solution"
+      status: "proved"

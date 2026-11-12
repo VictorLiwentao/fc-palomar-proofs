@@ -1,6 +1,6 @@
 # Lean proofs of Formal Conjectures statements, packaged for Palomar
 
-This repository holds 39 independent [Palomar](https://palomar-registry.org/) packages.
+This repository holds 44 independent [Palomar](https://palomar-registry.org/) packages.
 Each package proves statements from
 [google-deepmind/formal-conjectures](https://github.com/google-deepmind/formal-conjectures),
 or statements proposed for it, in Lean 4 with Mathlib. The mathematics in every package is due to
@@ -27,6 +27,7 @@ The selected project is the repository root.
 | [`A000262`](FCPalomar/A000262/README.md) | OEIS A000262 and A082579: Bala's Theorem 1 (periodicity modulo every k) | 3 |
 | [`A000350`](FCPalomar/A000350/README.md) | OEIS A000350: Fibonacci numbers whose binary expansion ends with their index (Stephan's conjecture, Alekseyev 2009) | 1 |
 | [`A001006`](FCPalomar/A001006/README.md) | OEIS A001006: Motzkin numbers at p − 2 modulo p (Batalov's conjecture; Burns, Kohen) | 1 |
+| [`A002454`](FCPalomar/A002454/README.md) | OEIS A002454: the odd-order permanent identity (She–Sun–Xia) | 1 |
 | [`A014442`](FCPalomar/A014442/README.md) | OEIS A014442: each Pythagorean prime p is the largest prime factor of n^2+1 for exactly two n <= p (Kaltman's conjecture) | 1 |
 | [`A053175`](FCPalomar/A053175/README.md) | OEIS A053175: Hankel determinants of the Catalan–Larcombe–French numbers | 1 |
 | [`A088041`](FCPalomar/A088041/README.md) | OEIS A088041: the least k > 1 with k^4 − 1 divisible by an n-th power (Israel 2019) | 2 |
@@ -38,9 +39,11 @@ The selected project is the repository root.
 | [`A265100`](FCPalomar/A265100/README.md) | OEIS A265100: Catalan numbers divisible by 3 and block numbers (Jeffery's Conjectures 5, 1, 2, 3) | 4 |
 | [`A289682`](FCPalomar/A289682/README.md) | OEIS A289682: Catalan numbers at 2^n − 1 and 2^n modulo 16 (Israel's conjecture) | 1 |
 | [`A299754`](FCPalomar/A299754/README.md) | OEIS A299754: sums of p complex p-th roots of unity (Israel's formula, Alekseyev 2018) | 1 |
+| [`A368630`](FCPalomar/A368630/README.md) | OEIS A368630: three congruences (Hanna's conjectures) | 4 |
 | [`A389535`](FCPalomar/A389535/README.md) | OEIS A389535: Hanna's formula (7), A(x)^5 ≡ A(x^5) (mod 5) | 2 |
 | [`A395839`](FCPalomar/A395839/README.md) | OEIS A395839: parity and residues mod 3 of 10C(x)^2 − C(x) (Hanna's conjectures) | 2 |
 | [`A396804`](FCPalomar/A396804/README.md) | OEIS A396804: a(n) mod 5 is never 3 (Hanna's conjecture) | 2 |
+| [`A396843`](FCPalomar/A396843/README.md) | OEIS A396843: integral construction and oddness (Hanna's conjecture) | 2 |
 | [`BellPeriod`](FCPalomar/BellPeriod/README.md) | Bell numbers modulo a prime are periodic with period (p^p−1)/(p−1) (Touchard, Hall) | 6 |
 | [`BurningPath`](FCPalomar/BurningPath/README.md) | The burning number of a path | 1 |
 | [`DiracJoin`](FCPalomar/DiracJoin/README.md) | Dirac's joins of odd cycles: Erdős Problems 917 (Dirac, Erdős 3 \| k) and 1032 (Dirac 6-critical) | 3 |
@@ -63,6 +66,8 @@ The selected project is the repository root.
 | [`Reconstruction`](FCPalomar/Reconstruction/README.md) | Graph reconstruction: disconnected graphs (Kelly) and the Lovász and Müller edge bounds | 3 |
 | [`SauerSpencer`](FCPalomar/SauerSpencer/README.md) | The Sauer–Spencer packing theorem | 1 |
 | [`SunDet`](FCPalomar/SunDet/README.md) | Sun's determinants det[(i−j)^m + δ_ij] for m = 1, 2, 3 | 3 |
+| [`TxGraffiti2`](FCPalomar/TxGraffiti2/README.md) | TxGraffiti Conjecture 2 is false (Fischer's counterexample) | 1 |
+| [`WOWII291`](FCPalomar/WOWII291/README.md) | WOWII Conjecture 291 is false (a 12-vertex counterexample) | 1 |
 
 ## Build
 

@@ -1,0 +1,161 @@
+version: "v0.4"
+
+project:
+  name: "OEIS A368630: three congruences (Hanna's conjectures)"
+  description: >-
+    The exponential generating function A(x) of OEIS A368630 satisfies A(0) = 1 and
+    A(x/A(x)^2) = exp(x A(x)). The package proves that this equation determines a unique
+    integer coefficient sequence, and that a(n) ≡ 1 (mod 3) for every n, a(2n) is odd
+    for every n, and a(2n+1) is even for n ≥ 1, as conjectured by Paul D. Hanna (OEIS
+    A368630, 2024).
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "OEIS A368630"
+    authors:
+      - "Paul D. Hanna"
+    id: "https://oeis.org/A368630"
+    type: "web discussion"
+    location: "entry of January 2, 2024"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      States the equation and the three congruences as conjectures. Searches on
+      2026-10-28 found no earlier written proof. The proof here, by Wentao Li, works in
+      an integral Hurwitz-series algebra.
+
+related_formalizations:
+  - title: "VictorLiwentao/lean-oeis-proofs: LeanOeisProofs/NewProofs/A368630.lean"
+    authors:
+      - "Wentao Li"
+    id: "https://github.com/VictorLiwentao/lean-oeis-proofs/blob/e0e499973c3398f08ed91b39618f1948fe1804a5/LeanOeisProofs/NewProofs/A368630.lean"
+    relationship: "builds-on"
+    note: >-
+      The earlier Lean 4.33/4.34 version of this proof, linked from google-
+      deepmind/formal-conjectures PR #7674. This package ports it to Lean 4.35.
+
+classification:
+  arxiv:
+    - "math.CO"
+    - "math.NT"
+  msc2020:
+    - "05A15"
+    - "11B50"
+    - "13F25"
+
+status:
+  scope: >-
+    The selected theorems are OeisA368630.exists_unique_sequence, conjecture_mod_three,
+    conjecture_even and conjecture_odd, with egf, IsGeneratingSequence and a copied
+    verbatim.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "OeisA368630.exists_unique_sequence"
+      file: "FCPalomar/A368630/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/A368630/comparator.json"
+    - declaration: "OeisA368630.conjecture_mod_three"
+      file: "FCPalomar/A368630/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/A368630/comparator.json"
+    - declaration: "OeisA368630.conjecture_even"
+      file: "FCPalomar/A368630/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/A368630/comparator.json"
+    - declaration: "OeisA368630.conjecture_odd"
+      file: "FCPalomar/A368630/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/A368630/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "gpt-6.1-sol"
+      framework: "OpenAI Codex"
+      tool_setup: >-
+        OpenAI Codex (GPT-6.1 Sol) developed the original Lean proof under the direction
+        of Wentao Li, published in VictorLiwentao/lean-oeis-proofs at commit
+        e0e499973c33.
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) ported the earlier development to Lean v4.35.0 and
+        Mathlib ccbef15e, adjusted it to the current Formal Conjectures statement, and
+        wrote this package, under the direction of Wentao Li. Wentao Li is the human
+        author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material. The mathematics is credited to the original authors
+    listed under sources.
+
+fidelity:
+  divergences: >-
+    None. The statement is new: it was written for this package from the source and is
+    proposed for Formal Conjectures as FormalConjectures/OEIS/368630.lean with the same
+    declarations; only the FormalConjecturesUtil import, attributes and docstrings
+    differ.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Agent checks only: strict build with no warnings, axiom check of the selected
+    theorems, verbatim comparison of the copied definitions and statement, and an
+    independent agent review of source fidelity. No human review beyond Wentao Li is
+    claimed.
+
+alignment:
+  namespace: "OeisA368630"
+  statements:
+    - source: >-
+        With A(0) = 1 and A(x/A(x)^2) = exp(x A(x)): a(n) ≡ 1 (mod 3); a(2n) ≡ 1 (mod
+        2); a(2n+1) ≡ 0 (mod 2) for n ≥ 1.
+      lean: "OeisA368630.exists_unique_sequence"
+      module: "FCPalomar.A368630.Solution"
+      status: "proved"
+    - source: >-
+        With A(0) = 1 and A(x/A(x)^2) = exp(x A(x)): a(n) ≡ 1 (mod 3); a(2n) ≡ 1 (mod
+        2); a(2n+1) ≡ 0 (mod 2) for n ≥ 1.
+      lean: "OeisA368630.conjecture_mod_three"
+      module: "FCPalomar.A368630.Solution"
+      status: "proved"
+    - source: >-
+        With A(0) = 1 and A(x/A(x)^2) = exp(x A(x)): a(n) ≡ 1 (mod 3); a(2n) ≡ 1 (mod
+        2); a(2n+1) ≡ 0 (mod 2) for n ≥ 1.
+      lean: "OeisA368630.conjecture_even"
+      module: "FCPalomar.A368630.Solution"
+      status: "proved"
+    - source: >-
+        With A(0) = 1 and A(x/A(x)^2) = exp(x A(x)): a(n) ≡ 1 (mod 3); a(2n) ≡ 1 (mod
+        2); a(2n+1) ≡ 0 (mod 2) for n ≥ 1.
+      lean: "OeisA368630.conjecture_odd"
+      module: "FCPalomar.A368630.Solution"
+      status: "proved"

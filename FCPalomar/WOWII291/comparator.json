@@ -1,0 +1,13 @@
+{
+  "challenge_module": "FCPalomar.WOWII291.Challenge",
+  "solution_module": "FCPalomar.WOWII291.Solution",
+  "theorem_names": [
+    "WrittenOnTheWallII.GraphConjecture291.conjecture291"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

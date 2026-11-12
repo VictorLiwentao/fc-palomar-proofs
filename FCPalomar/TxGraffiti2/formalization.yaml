@@ -1,0 +1,134 @@
+version: "v0.4"
+
+project:
+  name: "TxGraffiti Conjecture 2 is false (Fischer's counterexample)"
+  description: >-
+    TxGraffiti Conjecture 2 asserts Z(G) ≤ α(G) + 1 for every connected graph G of
+    maximum degree at most 3 other than K4, where Z is the zero forcing number and α the
+    independence number (recorded by Davila, Brimkov and Pepper, arXiv:2507.17780).
+    Mikko Fischer found a connected 24-vertex counterexample (arXiv:2607.23664). The
+    package certifies that Fischer's graph is connected, has maximum degree 3, zero
+    forcing number at least 11 and independence number at most 9.
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "A counterexample to the zero forcing versus independence conjecture for cubic and subcubic graphs"
+    authors:
+      - "Mikko Fischer"
+    id: "arXiv:2607.23664"
+    type: "paper"
+    location: "Sections 2 and 3"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      The 24-vertex counterexample.
+  - title: "In Reverie Together: Ten Years of Mathematical Discovery with a Machine Collaborator"
+    authors:
+      - "Randy Davila"
+      - "Boris Brimkov"
+      - "Ryan Pepper"
+    id: "arXiv:2507.17780"
+    type: "paper"
+    location: "Conjecture 2"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Records the conjecture, open since 2017.
+
+related_formalizations:
+  - title: "Formal Conjectures: FormalConjectures/Arxiv/2507.17780/2.lean"
+    authors:
+      - "The Formal Conjectures Authors"
+    id: "https://github.com/google-deepmind/formal-conjectures/blob/691719db2653905d5fa0775408370fb058e4c59f/FormalConjectures/Arxiv/2507.17780/2.lean"
+    relationship: "builds-on"
+    note: >-
+      The Challenge copies the statement and the definitions it uses verbatim from this
+      file at commit 691719db. The upstream declaration is `sorry` at that commit.
+  - title: "VictorLiwentao/lean-arxiv-proofs: LeanArxivProofs/TxGraffiti2.lean"
+    authors:
+      - "Wentao Li"
+    id: "https://github.com/VictorLiwentao/lean-arxiv-proofs/blob/43bfcf887db58b6e65b05dbcdb8177eff9edbeb5/LeanArxivProofs/TxGraffiti2.lean"
+    relationship: "builds-on"
+    note: >-
+      The earlier Lean 4.33/4.34 version of this proof, linked from google-
+      deepmind/formal-conjectures PR #7252. This package ports it to Lean 4.35.
+
+classification:
+  arxiv:
+    - "math.CO"
+  msc2020:
+    - "05C69"
+    - "05C50"
+
+status:
+  scope: >-
+    The selected theorem is Arxiv.«2507.17780».tx_graffiti_conjecture_2, with the zero
+    forcing definitions copied verbatim.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "Arxiv.«2507.17780».tx_graffiti_conjecture_2"
+      file: "FCPalomar/TxGraffiti2/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/TxGraffiti2/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "gpt-6.1-sol"
+      framework: "OpenAI Codex"
+      tool_setup: >-
+        OpenAI Codex (GPT-6.1 Sol) developed the original Lean proof under the direction
+        of Wentao Li, published in VictorLiwentao/lean-arxiv-proofs at commit
+        43bfcf887db5.
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) ported the earlier development to Lean v4.35.0 and
+        Mathlib ccbef15e, adjusted it to the current Formal Conjectures statement, and
+        wrote this package, under the direction of Wentao Li. Wentao Li is the human
+        author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material. The mathematics is credited to the original authors
+    listed under sources.
+
+fidelity:
+  divergences: >-
+    None. The Challenge copies the Formal Conjectures statement and definitions
+    verbatim; only the FormalConjecturesUtil import, attributes, test lemmas and
+    docstrings are omitted.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Agent checks only: strict build with no warnings, axiom check of the selected
+    theorems, verbatim comparison of the copied definitions and statement, and an
+    independent agent review of source fidelity. No human review beyond Wentao Li is
+    claimed.
+
+alignment:
+  namespace: "Arxiv.«2507.17780»"
+  statements:
+    - source: >-
+        It is not true that Z(G) ≤ α(G) + 1 for every connected graph G with maximum
+        degree at most 3 and G ≠ K4.
+      lean: "Arxiv.«2507.17780».tx_graffiti_conjecture_2"
+      module: "FCPalomar.TxGraffiti2.Solution"
+      status: "proved"

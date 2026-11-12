@@ -1,0 +1,16 @@
+{
+  "challenge_module": "FCPalomar.A368630.Challenge",
+  "solution_module": "FCPalomar.A368630.Solution",
+  "theorem_names": [
+    "OeisA368630.exists_unique_sequence",
+    "OeisA368630.conjecture_mod_three",
+    "OeisA368630.conjecture_even",
+    "OeisA368630.conjecture_odd"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}
