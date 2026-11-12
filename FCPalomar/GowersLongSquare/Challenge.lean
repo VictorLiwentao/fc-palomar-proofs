@@ -21,13 +21,13 @@ public import Mathlib
 /-!
 # Challenge: Gowers–Long, the square-size lower bound F(n) ≥ n^{3/2}
 
-Copied verbatim from `FormalConjectures/Arxiv/1609.08688/sIncreasingrTuples.lean` in google-deepmind/formal-conjectures at commit `691719db2653905d5fa0775408370fb058e4c59f` (The Formal Conjectures Authors, Apache-2.0). Only imports, attributes, test lemmas and unrelated declarations are left out.
+Copied verbatim from `FormalConjectures/Arxiv/1609.08688/sIncreasingrTuples.lean` in google-deepmind/formal-conjectures at commit `691719db2653905d5fa0775408370fb058e4c59f` (The Formal Conjectures Authors, Apache-2.0). Only imports, attributes, test lemmas and unrelated declarations are left out. The namespace `Arxiv.«1609.08688»` is renamed `Arxiv1609_08688`, because Palomar requires plain identifier components in declaration names.
 The `sorry` marks the statement to be proved; it is not a proof.
 -/
 
 @[expose] public section
 
-namespace Arxiv.«1609.08688»
+namespace Arxiv1609_08688
 
 /--
 Let $a = (a_1, a_2, a_3)$ and $b = (b_1, b_2, b_3)$ be two triples of integers.
@@ -57,6 +57,6 @@ theorem maximalLength_ge_of_isSquare {n : ℕ} (h : IsSquare n) :
     n.sqrt ^ 3 ≤ F n := by
   sorry
 
-end Arxiv.«1609.08688»
+end Arxiv1609_08688
 
 end

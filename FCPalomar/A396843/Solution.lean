@@ -33,6 +33,23 @@ Development assistance: Codex (OpenAI).
 
 @[expose] public section
 
+open PowerSeries
+
+namespace OeisA396843
+
+/-- The normalized ordinary generating-function equation defining OEIS A396843. -/
+def SourceEquation (A : PowerSeries ℤ) : Prop :=
+  constantCoeff A = 0 ∧ coeff 1 A = 1 ∧
+    A.subst (X * A - 3 * X * A ^ 2) = X ^ 2
+
+/-- The normalized generating series of OEIS A396843. -/
+noncomputable def series : PowerSeries ℤ := Classical.epsilon SourceEquation
+
+/-- OEIS A396843, extended by $a(0)=0$ outside its offset-one domain. -/
+noncomputable def a (n : ℕ) : ℤ := coeff n series
+
+end OeisA396843
+
 namespace A396843Proof
 open PowerSeries
 noncomputable section
@@ -502,17 +519,6 @@ end A396843Proof
 
 namespace OeisA396843
 open PowerSeries
-
-/-- The normalized ordinary generating-function equation defining OEIS A396843. -/
-def SourceEquation (A : PowerSeries ℤ) : Prop :=
-  constantCoeff A = 0 ∧ coeff 1 A = 1 ∧
-    A.subst (X * A - 3 * X * A ^ 2) = X ^ 2
-
-/-- The normalized generating series of OEIS A396843. -/
-noncomputable def series : PowerSeries ℤ := Classical.epsilon SourceEquation
-
-/-- OEIS A396843, extended by $a(0)=0$. -/
-noncomputable def a (n : ℕ) : ℤ := coeff n series
 
 /-- The normalized defining equation has a unique integral solution. -/
 theorem source_existence : ∃! A : PowerSeries ℤ, SourceEquation A :=

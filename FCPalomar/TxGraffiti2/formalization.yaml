@@ -66,7 +66,7 @@ classification:
 
 status:
   scope: >-
-    The selected theorem is Arxiv.«2507.17780».tx_graffiti_conjecture_2, with the zero
+    The selected theorem is Arxiv2507_17780.tx_graffiti_conjecture_2, with the zero
     forcing definitions copied verbatim.
   sorry_count: 0
   sorry_in_definitions: 0
@@ -75,7 +75,7 @@ status:
     - "Classical.choice"
     - "Quot.sound"
   main_results:
-    - declaration: "Arxiv.«2507.17780».tx_graffiti_conjecture_2"
+    - declaration: "Arxiv2507_17780.tx_graffiti_conjecture_2"
       file: "FCPalomar/TxGraffiti2/Solution.lean"
       sorry_count: 0
       axioms:
@@ -110,9 +110,10 @@ automation:
 
 fidelity:
   divergences: >-
-    None. The Challenge copies the Formal Conjectures statement and definitions
-    verbatim; only the FormalConjecturesUtil import, attributes, test lemmas and
-    docstrings are omitted.
+    The namespace Arxiv.«2507.17780» is renamed Arxiv2507_17780, because Palomar
+    requires plain identifier components in declaration names. Otherwise none: the
+    Challenge copies the Formal Conjectures statement and definitions verbatim; only the
+    FormalConjecturesUtil import, attributes, test lemmas and docstrings are omitted.
 
 review:
   status: "self-assessed"
@@ -124,11 +125,11 @@ review:
     claimed.
 
 alignment:
-  namespace: "Arxiv.«2507.17780»"
+  namespace: "Arxiv2507_17780"
   statements:
     - source: >-
         It is not true that Z(G) ≤ α(G) + 1 for every connected graph G with maximum
         degree at most 3 and G ≠ K4.
-      lean: "Arxiv.«2507.17780».tx_graffiti_conjecture_2"
+      lean: "Arxiv2507_17780.tx_graffiti_conjecture_2"
       module: "FCPalomar.TxGraffiti2.Solution"
       status: "proved"

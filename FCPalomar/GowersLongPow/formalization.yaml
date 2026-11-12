@@ -62,7 +62,7 @@ status:
     - "Classical.choice"
     - "Quot.sound"
   main_results:
-    - declaration: "Arxiv.«1609.08688».maximalLength_pow_eventually"
+    - declaration: "Arxiv1609_08688.maximalLength_pow_eventually"
       file: "FCPalomar/GowersLongPow/Solution.lean"
       sorry_count: 0
       axioms:
@@ -88,9 +88,10 @@ automation:
 
 fidelity:
   divergences: >-
-    None. The Challenge copies the Formal Conjectures statement and definitions
-    verbatim; only the FormalConjecturesUtil import, attributes, test lemmas and
-    docstrings are omitted.
+    The namespace Arxiv.«1609.08688» is renamed Arxiv1609_08688, because Palomar
+    requires plain identifier components in declaration names. Otherwise none: the
+    Challenge copies the Formal Conjectures statement and definitions verbatim; only the
+    FormalConjecturesUtil import, attributes, test lemmas and docstrings are omitted.
 
 review:
   status: "self-assessed"
@@ -102,11 +103,11 @@ review:
     claimed.
 
 alignment:
-  namespace: "Arxiv.«1609.08688»"
+  namespace: "Arxiv1609_08688"
   statements:
     - source: >-
         If F(n) = n^e for some n > 1, then for every b < e, eventually (in m) m^b <=
         F(m).
-      lean: "Arxiv.«1609.08688».maximalLength_pow_eventually"
+      lean: "Arxiv1609_08688.maximalLength_pow_eventually"
       module: "FCPalomar.GowersLongPow.Solution"
       status: "proved"

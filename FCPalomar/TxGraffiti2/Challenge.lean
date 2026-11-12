@@ -21,7 +21,7 @@ public import Mathlib
 /-!
 # Challenge: TxGraffiti Conjecture 2 is false (Fischer's counterexample)
 
-Copied verbatim from `FormalConjectures/Arxiv/2507.17780/2.lean` in google-deepmind/formal-conjectures at commit `691719db2653905d5fa0775408370fb058e4c59f` (The Formal Conjectures Authors, Apache-2.0). Only imports, attributes, test lemmas and unrelated declarations are left out.
+Copied verbatim from `FormalConjectures/Arxiv/2507.17780/2.lean` in google-deepmind/formal-conjectures at commit `691719db2653905d5fa0775408370fb058e4c59f` (The Formal Conjectures Authors, Apache-2.0). Only imports, attributes, test lemmas and unrelated declarations are left out. The namespace `Arxiv.«2507.17780»` is renamed `Arxiv2507_17780`, because Palomar requires plain identifier components in declaration names.
 The `sorry` marks the statement to be proved; it is not a proof.
 -/
 
@@ -29,7 +29,7 @@ The `sorry` marks the statement to be proved; it is not a proof.
 
 open SimpleGraph
 
-namespace Arxiv.«2507.17780»
+namespace Arxiv2507_17780
 
 /-- One step of the zero forcing colour-change rule: add to $S$ every vertex $w$
 that is the unique neighbour of some $v \in S$ outside $S$. -/
@@ -72,6 +72,6 @@ theorem tx_graffiti_conjecture_2 :
       zeroForcingNumber G ≤ G.indepNum + 1 := by
   sorry
 
-end Arxiv.«2507.17780»
+end Arxiv2507_17780
 
 end

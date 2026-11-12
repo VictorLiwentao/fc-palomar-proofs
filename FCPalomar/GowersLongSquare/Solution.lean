@@ -39,7 +39,7 @@ that code with new proofs of the construction.
 
 @[expose] public section
 
-namespace Arxiv.«1609.08688»
+namespace Arxiv1609_08688
 
 /--
 Let $a = (a_1, a_2, a_3)$ and $b = (b_1, b_2, b_3)$ be two triples of integers.
@@ -62,9 +62,9 @@ belong to $[n]$ ($= \{1, 2, ..., n\}$).
 noncomputable def maximalLength (n : ℕ) : ℕ :=
   sSup { List.length s | (s) (_ : ∀ a ∈ s, Set.range a ⊆ Set.Icc 1 n) (_ : IsIncreasing₂ s) }
 
-end Arxiv.«1609.08688»
+end Arxiv1609_08688
 
-namespace Arxiv.«1609.08688»
+namespace Arxiv1609_08688
 
 local infix:50 " <₂ " => lt₂
 
@@ -117,11 +117,11 @@ lemma exists_pair_of_mem_Icc {s : List (Fin 3 → ℕ)} {n : ℕ} (_hn : 2 ≤ n
     Finset.exists_ne_map_eq_of_card_lt_of_maps_to ht_card hf
   exact ⟨i, j, hij, congrArg Prod.fst hfij, congrArg Prod.snd hfij⟩
 
-end Arxiv.«1609.08688»
+end Arxiv1609_08688
 
 namespace GowersLongLowerBound
 
-open Arxiv.«1609.08688»
+open Arxiv1609_08688
 
 /-! ### Two-digit numbers in base `m` -/
 
@@ -260,7 +260,7 @@ theorem maximalLength_ge_of_isSquare {n : ℕ} (h : IsSquare n) :
 
 end GowersLongLowerBound
 
-namespace Arxiv.«1609.08688»
+namespace Arxiv1609_08688
 
 local notation "F" => maximalLength
 
@@ -268,6 +268,6 @@ theorem maximalLength_ge_of_isSquare {n : ℕ} (h : IsSquare n) :
     n.sqrt ^ 3 ≤ F n :=
   GowersLongLowerBound.maximalLength_ge_of_isSquare h
 
-end Arxiv.«1609.08688»
+end Arxiv1609_08688
 
 end

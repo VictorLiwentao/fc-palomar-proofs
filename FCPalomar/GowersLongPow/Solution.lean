@@ -77,7 +77,7 @@ $m^{\beta} \le 1 \le F(m)$.
 
 @[expose] public section
 
-namespace Arxiv.«1609.08688»
+namespace Arxiv1609_08688
 
 /--
 Let $a = (a_1, a_2, a_3)$ and $b = (b_1, b_2, b_3)$ be two triples of integers.
@@ -340,7 +340,7 @@ theorem maximalLength_pow_eventually {n : ℕ} {e : ℝ} (hn : 1 < n) (h : F n =
       _ = (maximalLength n : ℝ) ^ j := by rw [h]
       _ ≤ (maximalLength m : ℝ) := hF
 
-end Arxiv.«1609.08688»
+end Arxiv1609_08688
 
 
 

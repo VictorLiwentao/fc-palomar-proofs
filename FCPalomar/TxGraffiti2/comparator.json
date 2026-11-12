@@ -2,7 +2,7 @@
   "challenge_module": "FCPalomar.TxGraffiti2.Challenge",
   "solution_module": "FCPalomar.TxGraffiti2.Solution",
   "theorem_names": [
-    "Arxiv.\u00ab2507.17780\u00bb.tx_graffiti_conjecture_2"
+    "Arxiv2507_17780.tx_graffiti_conjecture_2"
   ],
   "permitted_axioms": [
     "propext",

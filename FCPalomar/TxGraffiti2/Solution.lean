@@ -35,7 +35,7 @@ New Lean formalization: Wentao Li. AI assistance: GPT-6.1 Sol in Codex.
 
 open SimpleGraph
 
-namespace Arxiv.«2507.17780»
+namespace Arxiv2507_17780
 
 /-- One step of the zero forcing colour-change rule: add to $S$ every vertex $w$
 that is the unique neighbour of some $v \in S$ outside $S$. -/
@@ -61,14 +61,14 @@ noncomputable def zeroForcingNumber {V : Type*} [Fintype V] [DecidableEq V]
     (G : SimpleGraph V) [DecidableRel G.Adj] : ℕ :=
   sInf {k | ∃ S : Finset V, S.card = k ∧ IsZeroForcingSet G S}
 
-end Arxiv.«2507.17780»
+end Arxiv2507_17780
 
 noncomputable section
 
 namespace TxGraffitiC2
 
 open SimpleGraph
-open Arxiv.«2507.17780»
+open Arxiv2507_17780
 
 section Forts
 
@@ -402,7 +402,7 @@ end
 
 open SimpleGraph
 
-namespace Arxiv.«2507.17780»
+namespace Arxiv2507_17780
 
 theorem tx_graffiti_conjecture_2 :
     ¬ ∀ (V : Type) [Fintype V] [DecidableEq V] (G : SimpleGraph V)
@@ -413,6 +413,6 @@ theorem tx_graffiti_conjecture_2 :
   TxGraffitiC2.counterexample (h TxGraffitiC2.Vertex TxGraffitiC2.graph
     TxGraffitiC2.graph_connected TxGraffitiC2.graph_maxDegree TxGraffitiC2.graph_notK4)
 
-end Arxiv.«2507.17780»
+end Arxiv2507_17780
 
 end

@@ -71,7 +71,7 @@ classification:
 
 status:
   scope: >-
-    The selected theorem is Arxiv.«1609.08688».maximalLength_ge_of_isSquare, with lt₂,
+    The selected theorem is Arxiv1609_08688.maximalLength_ge_of_isSquare, with lt₂,
     IsIncreasing₂ and maximalLength copied verbatim.
   sorry_count: 0
   sorry_in_definitions: 0
@@ -80,7 +80,7 @@ status:
     - "Classical.choice"
     - "Quot.sound"
   main_results:
-    - declaration: "Arxiv.«1609.08688».maximalLength_ge_of_isSquare"
+    - declaration: "Arxiv1609_08688.maximalLength_ge_of_isSquare"
       file: "FCPalomar/GowersLongSquare/Solution.lean"
       sorry_count: 0
       axioms:
@@ -115,9 +115,10 @@ automation:
 
 fidelity:
   divergences: >-
-    None. The Challenge copies the Formal Conjectures statement and definitions
-    verbatim; only the FormalConjecturesUtil import, attributes, test lemmas and
-    docstrings are omitted.
+    The namespace Arxiv.«1609.08688» is renamed Arxiv1609_08688, because Palomar
+    requires plain identifier components in declaration names. Otherwise none: the
+    Challenge copies the Formal Conjectures statement and definitions verbatim; only the
+    FormalConjecturesUtil import, attributes, test lemmas and docstrings are omitted.
 
 review:
   status: "self-assessed"
@@ -129,10 +130,10 @@ review:
     claimed.
 
 alignment:
-  namespace: "Arxiv.«1609.08688»"
+  namespace: "Arxiv1609_08688"
   statements:
     - source: >-
         If n is a perfect square then F(n) ≥ n^{3/2}.
-      lean: "Arxiv.«1609.08688».maximalLength_ge_of_isSquare"
+      lean: "Arxiv1609_08688.maximalLength_ge_of_isSquare"
       module: "FCPalomar.GowersLongSquare.Solution"
       status: "proved"
