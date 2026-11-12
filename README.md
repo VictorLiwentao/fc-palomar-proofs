@@ -1,6 +1,6 @@
 # Lean proofs of Formal Conjectures statements, packaged for Palomar
 
-This repository holds 44 independent [Palomar](https://palomar-registry.org/) packages.
+This repository holds 45 independent [Palomar](https://palomar-registry.org/) packages.
 Each package proves statements from
 [google-deepmind/formal-conjectures](https://github.com/google-deepmind/formal-conjectures),
 or statements proposed for it, in Lean 4 with Mathlib. The mathematics in every package is due to
@@ -59,6 +59,7 @@ The selected project is the repository root.
 | [`Erdos934h1`](FCPalomar/Erdos934h1/README.md) | Erdős Problem 934: h_1(d) = d + 1 for d ≠ 2 | 1 |
 | [`Erdos983`](FCPalomar/Erdos983/README.md) | Erdős Problem 983: the Erdős–Straus upper bound f(π(n)+1, n) <= 2π(√n)+1 | 1 |
 | [`GowersLongPow`](FCPalomar/GowersLongPow/README.md) | Gowers–Long: F(n) = n^α implies F(m) >= m^β eventually for β < α | 1 |
+| [`GowersLongSquare`](FCPalomar/GowersLongSquare/README.md) | Gowers–Long: F(n) ≥ n^{3/2} when n is a perfect square | 1 |
 | [`Kolberg`](FCPalomar/Kolberg/README.md) | Kolberg's theorem: the partition function takes each parity infinitely often | 1 |
 | [`MeynielTree`](FCPalomar/MeynielTree/README.md) | Meyniel's conjecture for trees: trees are cop-win | 1 |
 | [`OhbaERT`](FCPalomar/OhbaERT/README.md) | Erdős–Rubin–Taylor: complete multipartite graphs with parts of size 2 are k-choosable | 1 |

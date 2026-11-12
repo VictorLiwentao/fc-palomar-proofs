@@ -1,0 +1,13 @@
+{
+  "challenge_module": "FCPalomar.GowersLongSquare.Challenge",
+  "solution_module": "FCPalomar.GowersLongSquare.Solution",
+  "theorem_names": [
+    "Arxiv.\u00ab1609.08688\u00bb.maximalLength_ge_of_isSquare"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

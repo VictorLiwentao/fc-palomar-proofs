@@ -1,0 +1,138 @@
+version: "v0.4"
+
+project:
+  name: "Gowers–Long: F(n) ≥ n^{3/2} when n is a perfect square"
+  description: >-
+    Let F(n) be the maximal length of a 2-increasing sequence of triples in {1..n}^3,
+    where a triple is 2-less than another if it is smaller in at least two coordinates.
+    Gowers and Long show that F(n) ≥ n^{3/2} when n is a perfect square
+    (arXiv:1609.08688, Proposition 1.4). The package proves (√n)^3 ≤ F(n) for every
+    perfect square n.
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "The length of an s-increasing sequence of r-tuples"
+    authors:
+      - "W. T. Gowers"
+      - "Jason Long"
+    id: "arXiv:1609.08688"
+    type: "paper"
+    location: "Combin. Probab. Comput. 30 (2021) 686-721, Proposition 1.4"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      The block construction of a 2-increasing sequence of length m^3 in {1..m^2}^3.
+
+related_formalizations:
+  - title: "Formal Conjectures: FormalConjectures/Arxiv/1609.08688/sIncreasingrTuples.lean"
+    authors:
+      - "The Formal Conjectures Authors"
+    id: "https://github.com/google-deepmind/formal-conjectures/blob/691719db2653905d5fa0775408370fb058e4c59f/FormalConjectures/Arxiv/1609.08688/sIncreasingrTuples.lean"
+    relationship: "builds-on"
+    note: >-
+      The Challenge copies the statement and the definitions it uses verbatim from this
+      file at commit 691719db. The upstream declaration is `sorry` at that commit.
+  - title: "VictorLiwentao/lean-arxiv-proofs: LeanArxivProofs/GowersLong.lean"
+    authors:
+      - "Wentao Li"
+    id: "https://github.com/VictorLiwentao/lean-arxiv-proofs/blob/43bfcf887db58b6e65b05dbcdb8177eff9edbeb5/LeanArxivProofs/GowersLong.lean"
+    relationship: "builds-on"
+    note: >-
+      The earlier Lean 4.33/4.34 version of this proof, linked from google-
+      deepmind/formal-conjectures PR #7251. This package ports it to Lean 4.35.
+  - title: "weiyangzen/awesome_theorems: S5_CLM_00003491/Proof.lean"
+    authors:
+      - "weiyangzen"
+    id: "https://github.com/weiyangzen/awesome_theorems/blob/32e5f75412a804463a0b0c6fff1362d4ab5275b3/Formalizations/Lean/AwesomeTheorems/Stage5/Theorems/S5_CLM_00003491/Proof.lean"
+    relationship: "other"
+    note: >-
+      An earlier Lean proof of the same bound. An October 2026 version of this proof
+      adapted its block lemmas; this package replaces that code with new proofs and
+      shares only the Gowers–Long construction with it.
+  - title: "google-deepmind/formal-conjectures PR #4207"
+    authors:
+      - "ChakshuGupta13"
+    id: "https://github.com/google-deepmind/formal-conjectures/pull/4207"
+    relationship: "builds-on"
+    note: >-
+      The pigeonhole lemma exists_pair_of_mem_Icc, copied from the Formal Conjectures
+      file, bounds F(n) by n^2.
+
+classification:
+  arxiv:
+    - "math.CO"
+  msc2020:
+    - "05D05"
+    - "06A07"
+
+status:
+  scope: >-
+    The selected theorem is Arxiv.«1609.08688».maximalLength_ge_of_isSquare, with lt₂,
+    IsIncreasing₂ and maximalLength copied verbatim.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "Arxiv.«1609.08688».maximalLength_ge_of_isSquare"
+      file: "FCPalomar/GowersLongSquare/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/GowersLongSquare/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "gpt-6.1-sol"
+      framework: "OpenAI Codex"
+      tool_setup: >-
+        OpenAI Codex (GPT-6.1 Sol) developed the original Lean proof under the direction
+        of Wentao Li, published in VictorLiwentao/lean-arxiv-proofs at commit
+        43bfcf887db5.
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) ported the earlier development to Lean v4.35.0 and
+        Mathlib ccbef15e, adjusted it to the current Formal Conjectures statement, and
+        wrote this package, under the direction of Wentao Li. Wentao Li is the human
+        author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material. The mathematics is credited to the original authors
+    listed under sources.
+
+fidelity:
+  divergences: >-
+    None. The Challenge copies the Formal Conjectures statement and definitions
+    verbatim; only the FormalConjecturesUtil import, attributes, test lemmas and
+    docstrings are omitted.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Agent checks only: strict build with no warnings, axiom check of the selected
+    theorems, verbatim comparison of the copied definitions and statement, and an
+    independent agent review of source fidelity. No human review beyond Wentao Li is
+    claimed.
+
+alignment:
+  namespace: "Arxiv.«1609.08688»"
+  statements:
+    - source: >-
+        If n is a perfect square then F(n) ≥ n^{3/2}.
+      lean: "Arxiv.«1609.08688».maximalLength_ge_of_isSquare"
+      module: "FCPalomar.GowersLongSquare.Solution"
+      status: "proved"
