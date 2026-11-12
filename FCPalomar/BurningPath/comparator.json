@@ -1,0 +1,13 @@
+{
+  "challenge_module": "FCPalomar.BurningPath.Challenge",
+  "solution_module": "FCPalomar.BurningPath.Solution",
+  "theorem_names": [
+    "BurningNumberConjecture.burning_number_conjecture.variants.path"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

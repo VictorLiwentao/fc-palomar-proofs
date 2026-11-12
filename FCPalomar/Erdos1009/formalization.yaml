@@ -1,0 +1,113 @@
+version: "v0.4"
+
+project:
+  name: "Erdős Problem 1009: Sauer's example"
+  description: >-
+    For every r >= 1 there is a graph on n = 2r+4 vertices with floor(n^2/4)+2n−6 edges
+    in which every family of edge-disjoint triangles has at most 2n−7 members (Sauer's
+    example, reported in Erdős 1971).
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "Erdős Problem 1009"
+    authors:
+      - "Thomas Bloom"
+    id: "https://www.erdosproblems.com/1009"
+    type: "web discussion"
+    location: "Problem 1009"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Describes Sauer's graph: complete tripartite on [r] x [r] x [4] with a K4 on the
+      last part.
+  - title: "Some unsolved problems in graph theory and combinatorial analysis"
+    authors:
+      - "Paul Erdős"
+    id: "Combinatorial Mathematics and its Applications (Oxford 1969), Academic Press 1971, 97-109"
+    type: "paper"
+    location: "p. 98"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Sauer's example showing f(2) >= 1.
+
+related_formalizations:
+  - title: "Formal Conjectures: FormalConjectures/ErdosProblems/1009.lean"
+    authors:
+      - "The Formal Conjectures Authors"
+    id: "https://github.com/google-deepmind/formal-conjectures/blob/691719db2653905d5fa0775408370fb058e4c59f/FormalConjectures/ErdosProblems/1009.lean"
+    relationship: "builds-on"
+    note: >-
+      The Challenge copies the statement and the definitions it uses verbatim from this
+      file at commit 691719db. The upstream declaration is `sorry` at that commit.
+
+classification:
+  arxiv:
+    - "math.CO"
+  msc2020:
+    - "05C35"
+    - "05C70"
+
+status:
+  scope: >-
+    The selected theorem is erdos_1009.variants.sauer; the statement uses only Mathlib
+    definitions.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "Erdos1009.erdos_1009.variants.sauer"
+      file: "FCPalomar/Erdos1009/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/Erdos1009/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) wrote the Lean proof and this package under the
+        direction of Wentao Li, with independent agent review of the statement against
+        its source. Wentao Li is the human author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material. The mathematics is credited to the original authors
+    listed under sources.
+
+fidelity:
+  divergences: >-
+    None. The Challenge copies the Formal Conjectures statement and definitions
+    verbatim; only the FormalConjecturesUtil import, attributes, test lemmas and
+    docstrings are omitted.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Agent checks only: strict build with no warnings, axiom check of the selected
+    theorems, verbatim comparison of the copied definitions and statement, and an
+    independent agent review of source fidelity. No human review beyond Wentao Li is
+    claimed.
+
+alignment:
+  namespace: "Erdos1009"
+  statements:
+    - source: >-
+        For r >= 1 there is G on 2r+4 vertices with floor(n^2/4)+2n−6 edges whose edge-
+        disjoint triangle families have at most 2n−7 members.
+      lean: "Erdos1009.erdos_1009.variants.sauer"
+      module: "FCPalomar.Erdos1009.Solution"
+      status: "proved"

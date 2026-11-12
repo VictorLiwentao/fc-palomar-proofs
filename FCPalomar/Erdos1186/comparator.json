@@ -1,0 +1,14 @@
+{
+  "challenge_module": "FCPalomar.Erdos1186.Challenge",
+  "solution_module": "FCPalomar.Erdos1186.Solution",
+  "theorem_names": [
+    "Erdos1186.erdos_1186.variants.van_der_waerden",
+    "Erdos1186.erdos_1186.variants.probabilistic"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,13 @@
+{
+  "challenge_module": "FCPalomar.SauerSpencer.Challenge",
+  "solution_module": "FCPalomar.SauerSpencer.Solution",
+  "theorem_names": [
+    "BollobasEldridgeCatlinConjecture.bollobas_eldridge_catlin_conjecture.variants.sauer_spencer"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

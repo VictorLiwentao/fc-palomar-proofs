@@ -1,0 +1,112 @@
+version: "v0.4"
+
+project:
+  name: "Meyniel's conjecture for trees: trees are cop-win"
+  description: >-
+    Every finite, nonempty, connected, acyclic graph has cop number 1 (Quilliot 1978;
+    Nowakowski–Winkler 1983).
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "Vertex-to-vertex pursuit in a graph"
+    authors:
+      - "Richard Nowakowski"
+      - "Peter Winkler"
+    id: "doi:10.1016/0012-365X(83)90160-7"
+    type: "paper"
+    location: "Discrete Math. 43 (1983) 235-239"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Trees are cop-win. The Lean proof uses the root-to-robber shortest-path invariant.
+  - title: "Jeux et pointes fixes sur les graphes"
+    authors:
+      - "Alain Quilliot"
+    id: "Thèse de 3ème cycle, Université de Paris VI, 1978"
+    type: "other"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Independent characterization of cop-win graphs.
+
+related_formalizations:
+  - title: "Formal Conjectures: FormalConjectures/Wikipedia/MeynielConjecture.lean"
+    authors:
+      - "The Formal Conjectures Authors"
+    id: "https://github.com/google-deepmind/formal-conjectures/blob/691719db2653905d5fa0775408370fb058e4c59f/FormalConjectures/Wikipedia/MeynielConjecture.lean"
+    relationship: "builds-on"
+    note: >-
+      The Challenge copies the statement and the definitions it uses verbatim from this
+      file at commit 691719db. The upstream declaration is `sorry` at that commit.
+
+classification:
+  arxiv:
+    - "math.CO"
+  msc2020:
+    - "05C57"
+    - "91A43"
+
+status:
+  scope: >-
+    The selected theorem is meyniel_conjecture.variants.tree with Step, CopsCatchWithin,
+    CopsWin and copNumber copied verbatim. Solution also copies the upstream lemmas
+    not_copsCatchWithin_zero, not_copsWin_zero, copsWin_card and one_le_copNumber with
+    their upstream proofs.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "MeynielConjecture.meyniel_conjecture.variants.tree"
+      file: "FCPalomar/MeynielTree/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/MeynielTree/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) wrote the Lean proof and this package under the
+        direction of Wentao Li, with independent agent review of the statement against
+        its source. Wentao Li is the human author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material. The mathematics is credited to the original authors
+    listed under sources.
+
+fidelity:
+  divergences: >-
+    None. The Challenge copies the Formal Conjectures statement and definitions
+    verbatim; only the FormalConjecturesUtil import, attributes, test lemmas and
+    docstrings are omitted.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Agent checks only: strict build with no warnings, axiom check of the selected
+    theorems, verbatim comparison of the copied definitions and statement, and an
+    independent agent review of source fidelity. No human review beyond Wentao Li is
+    claimed.
+
+alignment:
+  namespace: "MeynielConjecture"
+  statements:
+    - source: >-
+        Every finite nonempty connected acyclic graph has cop number 1.
+      lean: "MeynielConjecture.meyniel_conjecture.variants.tree"
+      module: "FCPalomar.MeynielTree.Solution"
+      status: "proved"

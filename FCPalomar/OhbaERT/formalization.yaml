@@ -1,0 +1,101 @@
+version: "v0.4"
+
+project:
+  name: "Erdős–Rubin–Taylor: complete multipartite graphs with parts of size 2 are k-choosable"
+  description: >-
+    The complete k-partite graph K_{2,...,2} is k-choosable (Erdős, Rubin and Taylor
+    1979), a case of Ohba's conjecture.
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "Choosability in graphs"
+    authors:
+      - "Paul Erdős"
+      - "Arthur L. Rubin"
+      - "Herbert Taylor"
+    id: "Congr. Numer. 26 (1980) 125-157"
+    type: "paper"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Induction on parts of size at most two with Hall's theorem; the Lean proof proves
+      a slightly more general lemma for lists at least as long as the number of parts.
+
+related_formalizations:
+  - title: "Formal Conjectures: FormalConjectures/Wikipedia/OhbaConjecture.lean"
+    authors:
+      - "The Formal Conjectures Authors"
+    id: "https://github.com/google-deepmind/formal-conjectures/blob/691719db2653905d5fa0775408370fb058e4c59f/FormalConjectures/Wikipedia/OhbaConjecture.lean"
+    relationship: "builds-on"
+    note: >-
+      The Challenge copies the statement and the definitions it uses verbatim from this
+      file at commit 691719db. The upstream declaration is `sorry` at that commit.
+
+classification:
+  arxiv:
+    - "math.CO"
+  msc2020:
+    - "05C15"
+
+status:
+  scope: >-
+    The selected theorem is ohba_conjecture.variants.erdos_rubin_taylor with Choosable
+    copied verbatim.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "OhbaConjecture.ohba_conjecture.variants.erdos_rubin_taylor"
+      file: "FCPalomar/OhbaERT/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OhbaERT/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) wrote the Lean proof and this package under the
+        direction of Wentao Li, with independent agent review of the statement against
+        its source. Wentao Li is the human author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material. The mathematics is credited to the original authors
+    listed under sources.
+
+fidelity:
+  divergences: >-
+    None. The Challenge copies the Formal Conjectures statement and definitions
+    verbatim; only the FormalConjecturesUtil import, attributes, test lemmas and
+    docstrings are omitted.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Agent checks only: strict build with no warnings, axiom check of the selected
+    theorems, verbatim comparison of the copied definitions and statement, and an
+    independent agent review of source fidelity. No human review beyond Wentao Li is
+    claimed.
+
+alignment:
+  namespace: "OhbaConjecture"
+  statements:
+    - source: >-
+        The complete k-partite graph with all parts of size 2 is k-choosable.
+      lean: "OhbaConjecture.ohba_conjecture.variants.erdos_rubin_taylor"
+      module: "FCPalomar.OhbaERT.Solution"
+      status: "proved"

@@ -1,0 +1,109 @@
+version: "v0.4"
+
+project:
+  name: "OEIS A158110: exp(Σ q^(n^m) x^n/n) has integer coefficients (Hanna's conjecture, Fried 2025)"
+  description: >-
+    For all natural numbers q and m, exp(Σ_{n>=1} q^(n^m) x^n/n) is a power series with
+    integer coefficients. Conjectured by Paul D. Hanna (2009) and proved by Sela Fried
+    (2025).
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "OEIS A158110"
+    authors:
+      - "Paul D. Hanna"
+    id: "https://oeis.org/A158110"
+    type: "web discussion"
+    location: "Conjecture comment, 2009"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      States the integrality conjecture for all nonnegative q and m.
+  - title: "Proof of a conjecture stated in A158110"
+    authors:
+      - "Sela Fried"
+    id: "https://oeis.org/A158110/a158110.pdf"
+    type: "paper"
+    location: "2025; also arXiv:2607.24832"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      The Lean proof keeps Fried's structure (Möbius/Euler-transform integrality
+      criterion and prime-power congruences) but proves the prime-power congruence by
+      one uniform argument instead of his case split.
+
+related_formalizations: []
+
+classification:
+  arxiv:
+    - "math.NT"
+    - "math.CO"
+  msc2020:
+    - "11B83"
+    - "05A15"
+    - "13F25"
+
+status:
+  scope: >-
+    The selected theorem is OeisA158110.conjecture from the new Formal Conjectures file
+    added by the accompanying PR, with logSeries copied verbatim.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "OeisA158110.conjecture"
+      file: "FCPalomar/A158110/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/A158110/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) wrote the Lean proof and this package under the
+        direction of Wentao Li, with independent agent review of the statement against
+        its source. Wentao Li is the human author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material. The mathematics is credited to the original authors
+    listed under sources.
+
+fidelity:
+  divergences: >-
+    None. The statement is new: it was written for this package from the source and is
+    proposed for Formal Conjectures as FormalConjectures/OEIS/158110.lean with the same
+    declarations; only the FormalConjecturesUtil import, attributes and docstrings
+    differ.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Agent checks only: strict build with no warnings, axiom check of the selected
+    theorems, verbatim comparison of the copied definitions and statement, and an
+    independent agent review of source fidelity. No human review beyond Wentao Li is
+    claimed.
+
+alignment:
+  namespace: "OeisA158110"
+  statements:
+    - source: >-
+        For all natural q, m and n, the n-th coefficient of exp(Σ_{n>=1} q^(n^m) x^n/n)
+        is an integer.
+      lean: "OeisA158110.conjecture"
+      module: "FCPalomar.A158110.Solution"
+      status: "proved"

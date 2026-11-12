@@ -1,0 +1,120 @@
+version: "v0.4"
+
+project:
+  name: "OEIS A113052 and A113047: Fuss–Catalan numbers modulo p (Barry's conjecture, Israel 2018)"
+  description: >-
+    For every prime p, C(pn, n)/((p−1)n+1) modulo p is 1 when n = (p^k−1)/(p−1) and 0
+    otherwise. Conjectured by Paul Barry (2005); proved by Robert Israel (2018), with
+    Kevin Ryde's proof of the p = 3 case (A113047).
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "Proof of conjecture (A113052)"
+    authors:
+      - "Robert Israel"
+    id: "https://oeis.org/A113052/a113052.pdf"
+    type: "other"
+    location: "June 11 2018"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Lucas-type argument for the Fuss–Catalan numbers modulo p.
+  - title: "Proof of characteristic function of the ternary repunits (A113047)"
+    authors:
+      - "Kevin Ryde"
+    id: "https://oeis.org/A113047/a113047.txt"
+    type: "other"
+    location: "June 23 2021"
+    relationship: "independently-proves"
+    author_endorsement: "not-contacted"
+    note: >-
+      The p = 3 case.
+
+related_formalizations: []
+
+classification:
+  arxiv:
+    - "math.NT"
+    - "math.CO"
+  msc2020:
+    - "11B65"
+    - "05A10"
+
+status:
+  scope: >-
+    The selected theorems are OeisA113052.conjecture and OeisA113052.a113047 from the
+    new Formal Conjectures file.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "OeisA113052.conjecture"
+      file: "FCPalomar/A113052/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/A113052/comparator.json"
+    - declaration: "OeisA113052.a113047"
+      file: "FCPalomar/A113052/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/A113052/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) wrote the Lean proof and this package under the
+        direction of Wentao Li, with independent agent review of the statement against
+        its source. Wentao Li is the human author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material. The mathematics is credited to the original authors
+    listed under sources.
+
+fidelity:
+  divergences: >-
+    None. The statement is new: it was written for this package from the source and is
+    proposed for Formal Conjectures as FormalConjectures/OEIS/113052.lean with the same
+    declarations; only the FormalConjecturesUtil import, attributes and docstrings
+    differ.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Agent checks only: strict build with no warnings, axiom check of the selected
+    theorems, verbatim comparison of the copied definitions and statement, and an
+    independent agent review of source fidelity. No human review beyond Wentao Li is
+    claimed.
+
+alignment:
+  namespace: "OeisA113052"
+  statements:
+    - source: >-
+        For prime p, C(pn,n)/((p−1)n+1) mod p is the indicator of the base-p repunits
+        (p^k−1)/(p−1).
+      lean: "OeisA113052.conjecture"
+      module: "FCPalomar.A113052.Solution"
+      status: "proved"
+    - source: >-
+        For prime p, C(pn,n)/((p−1)n+1) mod p is the indicator of the base-p repunits
+        (p^k−1)/(p−1).
+      lean: "OeisA113052.a113047"
+      module: "FCPalomar.A113052.Solution"
+      status: "proved"

@@ -1,0 +1,18 @@
+{
+  "challenge_module": "FCPalomar.BellPeriod.Challenge",
+  "solution_module": "FCPalomar.BellPeriod.Solution",
+  "theorem_names": [
+    "OeisA54767.bell_period",
+    "OeisA54767.a146107",
+    "OeisA54767.a146109",
+    "OeisA54767.a146113",
+    "OeisA54767.a146119",
+    "OeisA54767.a146121"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

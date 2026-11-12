@@ -1,0 +1,14 @@
+{
+  "challenge_module": "FCPalomar.A396804.Challenge",
+  "solution_module": "FCPalomar.A396804.Solution",
+  "theorem_names": [
+    "OeisA396804.exists_unique_solution",
+    "OeisA396804.conjecture_mod_five"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

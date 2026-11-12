@@ -1,0 +1,127 @@
+version: "v0.4"
+
+project:
+  name: "Erdős Problem 712, graph case: Turán's density limit"
+  description: >-
+    For k >= 2, ex_2(n, K_k)/C(n,2) -> 1 − 1/(k−1) and ex_2(n, K_k)/n^2 -> (1 −
+    1/(k−1))/2, for the Formal Conjectures hypergraph extremal number (Turán 1941).
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "On an extremal problem in graph theory"
+    authors:
+      - "Paul Turán"
+    id: "Mat. Fiz. Lapok 48 (1941) 436-452"
+    type: "paper"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      The proof bridges the 2-uniform hypergraph extremal number to Mathlib's
+      SimpleGraph.extremalNumber and uses Mathlib's Turán theorem and Turán graph edge
+      count.
+
+related_formalizations:
+  - title: "Formal Conjectures: FormalConjectures/ErdosProblems/712.lean"
+    authors:
+      - "The Formal Conjectures Authors"
+    id: "https://github.com/google-deepmind/formal-conjectures/blob/691719db2653905d5fa0775408370fb058e4c59f/FormalConjectures/ErdosProblems/712.lean"
+    relationship: "builds-on"
+    note: >-
+      The Challenge copies the statement and the definitions it uses verbatim from this
+      file at commit 691719db. The upstream declaration is `sorry` at that commit.
+  - title: "AItoBit/erdos712-turan-density"
+    authors:
+      - "AItoBit"
+    id: "https://github.com/AItoBit/erdos712-turan-density/tree/d81d8632"
+    relationship: "independent"
+    note: >-
+      Proves the same two limits for an equivalent but not definitionally equal extremal
+      number, without a bridge to the Formal Conjectures definitions. Not used or copied
+      here.
+
+classification:
+  arxiv:
+    - "math.CO"
+  msc2020:
+    - "05C35"
+    - "05D05"
+
+status:
+  scope: >-
+    The selected theorems are erdos_712.variants.graph_case and
+    erdos_712.variants.graph_case_div_sq, with ContainsCompleteHypergraph,
+    extremalNumber and cliqueExtremalNumber copied verbatim from
+    FormalConjecturesForMathlib.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "Erdos712.erdos_712.variants.graph_case"
+      file: "FCPalomar/Erdos712/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/Erdos712/comparator.json"
+    - declaration: "Erdos712.erdos_712.variants.graph_case_div_sq"
+      file: "FCPalomar/Erdos712/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/Erdos712/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) wrote the Lean proof and this package under the
+        direction of Wentao Li, with independent agent review of the statement against
+        its source. Wentao Li is the human author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material. The mathematics is credited to the original authors
+    listed under sources.
+
+fidelity:
+  divergences: >-
+    None. The Challenge copies the Formal Conjectures statement and definitions
+    verbatim; only the FormalConjecturesUtil import, attributes, test lemmas and
+    docstrings are omitted.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Agent checks only: strict build with no warnings, axiom check of the selected
+    theorems, verbatim comparison of the copied definitions and statement, and an
+    independent agent review of source fidelity. No human review beyond Wentao Li is
+    claimed.
+
+alignment:
+  namespace: "Erdos712"
+  statements:
+    - source: >-
+        For k >= 2: ex_2(n,K_k)/C(n,2) -> 1 − 1/(k−1) and ex_2(n,K_k)/n^2 -> (1 −
+        1/(k−1))/2.
+      lean: "Erdos712.erdos_712.variants.graph_case"
+      module: "FCPalomar.Erdos712.Solution"
+      status: "proved"
+    - source: >-
+        For k >= 2: ex_2(n,K_k)/C(n,2) -> 1 − 1/(k−1) and ex_2(n,K_k)/n^2 -> (1 −
+        1/(k−1))/2.
+      lean: "Erdos712.erdos_712.variants.graph_case_div_sq"
+      module: "FCPalomar.Erdos712.Solution"
+      status: "proved"

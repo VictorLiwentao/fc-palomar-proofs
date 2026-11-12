@@ -1,0 +1,106 @@
+version: "v0.4"
+
+project:
+  name: "OEIS A001006: Motzkin numbers at p − 2 modulo p (Batalov's conjecture; Burns, Kohen)"
+  description: >-
+    For every prime p, p | M(p−2) iff p ≡ 1 (mod 3), and M(p−2) ≡ −1 (mod p) when p ≡ 5
+    (mod 6). Conjectured by Serge Batalov (2022) for p ≡ 1 (mod 6); proved by Rob Burns
+    (2017) and Nadav Kohen (2024).
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "Structure and asymptotics for Motzkin numbers modulo primes using automata"
+    authors:
+      - "Rob Burns"
+    id: "arXiv:1703.00826"
+    type: "paper"
+    location: "Tables 4 and 5"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      M(p−2) ≡ 0 for p ≡ 1 (mod 6), ≡ −1 for p ≡ 5 (mod 6).
+  - title: "Density and Symmetry in the Generalized Motzkin Numbers mod p"
+    authors:
+      - "Nadav Kohen"
+    id: "arXiv:2411.03681"
+    type: "paper"
+    location: "Proposition 6"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      p | M(p−2) iff p ≡ 1 (mod 3).
+
+related_formalizations: []
+
+classification:
+  arxiv:
+    - "math.NT"
+    - "math.CO"
+  msc2020:
+    - "11B50"
+    - "05A15"
+
+status:
+  scope: >-
+    The selected theorem is OeisA1006.prime_dvd_iff from the new Formal Conjectures
+    file, with IsMotzkin copied verbatim.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "OeisA1006.prime_dvd_iff"
+      file: "FCPalomar/A001006/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/A001006/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) wrote the Lean proof and this package under the
+        direction of Wentao Li, with independent agent review of the statement against
+        its source. Wentao Li is the human author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material. The mathematics is credited to the original authors
+    listed under sources.
+
+fidelity:
+  divergences: >-
+    None. The statement is new: it was written for this package from the source and is
+    proposed for Formal Conjectures as FormalConjectures/OEIS/1006.lean with the same
+    declarations; only the FormalConjecturesUtil import, attributes and docstrings
+    differ.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Agent checks only: strict build with no warnings, axiom check of the selected
+    theorems, verbatim comparison of the copied definitions and statement, and an
+    independent agent review of source fidelity. No human review beyond Wentao Li is
+    claimed.
+
+alignment:
+  namespace: "OeisA1006"
+  statements:
+    - source: >-
+        For every Motzkin-recurrence sequence and every prime p: p | M(p−2) iff p ≡ 1
+        (mod 3), and M(p−2) ≡ −1 (mod p) if p ≡ 5 (mod 6); such a sequence exists.
+      lean: "OeisA1006.prime_dvd_iff"
+      module: "FCPalomar.A001006.Solution"
+      status: "proved"

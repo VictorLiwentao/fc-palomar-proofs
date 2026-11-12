@@ -1,0 +1,16 @@
+{
+  "challenge_module": "FCPalomar.Kolberg.Challenge",
+  "solution_module": "FCPalomar.Kolberg.Solution",
+  "theorem_names": [
+    "PartitionParity.kolberg"
+  ],
+  "definition_names": [
+    "Nat.partitionNumber"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

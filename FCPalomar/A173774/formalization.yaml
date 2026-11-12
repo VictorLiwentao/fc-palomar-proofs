@@ -1,0 +1,96 @@
+version: "v0.4"
+
+project:
+  name: "OEIS A173774: Sun's integrality conjecture (Andersen 2010)"
+  description: >-
+    a(n) = (1/n) Σ_{k<n} (21k+8) C(2k,k)^3 is an integer divisible by 4 C(2n,n).
+    Conjectured by Zhi-Wei Sun and confirmed by Kasper Andersen (2010), who identified
+    a(n)/(4 C(2n,n)) with A112029(n−1).
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "OEIS A173774"
+    authors:
+      - "Zhi-Wei Sun"
+      - "Kasper Andersen"
+    id: "https://oeis.org/A173774"
+    type: "web discussion"
+    location: "Sun's conjecture and Andersen's confirmation"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      The Lean proof proves Andersen's identity by a creative-telescoping certificate.
+
+related_formalizations: []
+
+classification:
+  arxiv:
+    - "math.NT"
+    - "math.CO"
+  msc2020:
+    - "11B65"
+    - "05A10"
+
+status:
+  scope: >-
+    The selected theorem is OeisA173774.conjecture from the new Formal Conjectures file,
+    with a copied verbatim.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "OeisA173774.conjecture"
+      file: "FCPalomar/A173774/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/A173774/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) wrote the Lean proof and this package under the
+        direction of Wentao Li, with independent agent review of the statement against
+        its source. Wentao Li is the human author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material. The mathematics is credited to the original authors
+    listed under sources.
+
+fidelity:
+  divergences: >-
+    None. The statement is new: it was written for this package from the source and is
+    proposed for Formal Conjectures as FormalConjectures/OEIS/173774.lean with the same
+    declarations; only the FormalConjecturesUtil import, attributes and docstrings
+    differ.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Agent checks only: strict build with no warnings, axiom check of the selected
+    theorems, verbatim comparison of the copied definitions and statement, and an
+    independent agent review of source fidelity. No human review beyond Wentao Li is
+    claimed.
+
+alignment:
+  namespace: "OeisA173774"
+  statements:
+    - source: >-
+        For n >= 1, a(n) is an integer divisible by 4 C(2n,n).
+      lean: "OeisA173774.conjecture"
+      module: "FCPalomar.A173774.Solution"
+      status: "proved"

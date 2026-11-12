@@ -1,0 +1,113 @@
+version: "v0.4"
+
+project:
+  name: "Erdős Problem 626: Erdős's upper bound g_k(n) <= 2 log n / log(k−2) + 1"
+  description: >-
+    For k >= 4, g_k(n) <= 2 log n / log(k−2) + 1 for every n, where g_k(n) is the
+    largest m such that some k-chromatic graph on n vertices has no cycle of length <=
+    m. This is Theorem 1 of Erdős (1962).
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "On circuits and subgraphs of chromatic graphs"
+    authors:
+      - "Paul Erdős"
+    id: "doi:10.1112/S0025579300003326"
+    type: "paper"
+    location: "Mathematika 9 (1962) 170-175, Theorem 1 (proof p. 172)"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Erdős's g_k(n) is the girth itself; the Formal Conjectures g is the girth minus 1
+      with Erdős's +1 kept, so the formal statement is 1 weaker than Theorem 1 as
+      printed and equals what the printed proof gives.
+  - title: "Erdős Problem 626"
+    authors:
+      - "Thomas Bloom"
+    id: "https://www.erdosproblems.com/626"
+    type: "web discussion"
+    location: "Problem 626"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      States the bound (attributed there to [Er59b]).
+
+related_formalizations:
+  - title: "Formal Conjectures: FormalConjectures/ErdosProblems/626.lean"
+    authors:
+      - "The Formal Conjectures Authors"
+    id: "https://github.com/google-deepmind/formal-conjectures/blob/691719db2653905d5fa0775408370fb058e4c59f/FormalConjectures/ErdosProblems/626.lean"
+    relationship: "builds-on"
+    note: >-
+      The Challenge copies the statement and the definitions it uses verbatim from this
+      file at commit 691719db. The upstream declaration is `sorry` at that commit.
+
+classification:
+  arxiv:
+    - "math.CO"
+  msc2020:
+    - "05C15"
+    - "05C38"
+
+status:
+  scope: >-
+    The selected theorem is erdos_626.variants.erdos_upper with g copied verbatim. The
+    proof gives the bound for every n, not only eventually.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "Erdos626.erdos_626.variants.erdos_upper"
+      file: "FCPalomar/Erdos626/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/Erdos626/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) wrote the Lean proof and this package under the
+        direction of Wentao Li, with independent agent review of the statement against
+        its source. Wentao Li is the human author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material. The mathematics is credited to the original authors
+    listed under sources.
+
+fidelity:
+  divergences: >-
+    None. The Challenge copies the Formal Conjectures statement and definitions
+    verbatim; only the FormalConjecturesUtil import, attributes, test lemmas and
+    docstrings are omitted.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Agent checks only: strict build with no warnings, axiom check of the selected
+    theorems, verbatim comparison of the copied definitions and statement, and an
+    independent agent review of source fidelity. No human review beyond Wentao Li is
+    claimed.
+
+alignment:
+  namespace: "Erdos626"
+  statements:
+    - source: >-
+        For k >= 4, eventually in n, g_k(n) <= 2 log n / log(k−2) + 1.
+      lean: "Erdos626.erdos_626.variants.erdos_upper"
+      module: "FCPalomar.Erdos626.Solution"
+      status: "proved"

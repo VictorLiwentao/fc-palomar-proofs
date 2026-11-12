@@ -1,0 +1,13 @@
+{
+  "challenge_module": "FCPalomar.A001006.Challenge",
+  "solution_module": "FCPalomar.A001006.Solution",
+  "theorem_names": [
+    "OeisA1006.prime_dvd_iff"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

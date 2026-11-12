@@ -1,0 +1,13 @@
+{
+  "challenge_module": "FCPalomar.A190940.Challenge",
+  "solution_module": "FCPalomar.A190940.Solution",
+  "theorem_names": [
+    "OeisA190940.card_lcmPartialSums"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

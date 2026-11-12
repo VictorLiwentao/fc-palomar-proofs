@@ -1,0 +1,15 @@
+{
+  "challenge_module": "FCPalomar.A000262.Challenge",
+  "solution_module": "FCPalomar.A000262.Solution",
+  "theorem_names": [
+    "OeisA262.bala_theorem1",
+    "OeisA262.a000262",
+    "OeisA262.a082579"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

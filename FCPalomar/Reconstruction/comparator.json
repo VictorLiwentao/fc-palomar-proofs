@@ -1,0 +1,15 @@
+{
+  "challenge_module": "FCPalomar.Reconstruction.Challenge",
+  "solution_module": "FCPalomar.Reconstruction.Solution",
+  "theorem_names": [
+    "ReconstructionConjecture.reconstruction_conjecture.variants.disconnected",
+    "ReconstructionConjecture.edge_reconstruction_conjecture.variants.lovasz",
+    "ReconstructionConjecture.edge_reconstruction_conjecture.variants.mueller"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

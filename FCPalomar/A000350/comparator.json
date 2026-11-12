@@ -1,0 +1,13 @@
+{
+  "challenge_module": "FCPalomar.A000350.Challenge",
+  "solution_module": "FCPalomar.A000350.Solution",
+  "theorem_names": [
+    "OeisA350.digits_prefix_fib_iff"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

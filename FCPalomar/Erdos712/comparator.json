@@ -1,0 +1,19 @@
+{
+  "challenge_module": "FCPalomar.Erdos712.Challenge",
+  "solution_module": "FCPalomar.Erdos712.Solution",
+  "theorem_names": [
+    "Erdos712.erdos_712.variants.graph_case",
+    "Erdos712.erdos_712.variants.graph_case_div_sq"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true,
+  "definition_names": [
+    "Finset.ContainsCompleteHypergraph",
+    "Hypergraph.extremalNumber",
+    "Hypergraph.cliqueExtremalNumber"
+  ]
+}

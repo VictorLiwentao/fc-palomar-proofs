@@ -1,0 +1,165 @@
+version: "v0.4"
+
+project:
+  name: "Graph reconstruction: disconnected graphs (Kelly) and the Lovász and Müller edge bounds"
+  description: >-
+    Three classical reconstruction theorems: a disconnected graph on at least three
+    vertices is determined by its vertex deck (Kelly 1957); a graph with m > C(n,2)/2
+    edges (Lovász 1972) or with n! < 2^(m−1) (Müller 1977) is determined by its edge
+    deck.
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "A congruence theorem for trees"
+    authors:
+      - "Paul J. Kelly"
+    id: "doi:10.2140/pjm.1957.7.961"
+    type: "paper"
+    location: "Pacific J. Math. 7 (1957) 961-968"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Kelly's lemma and reconstruction of disconnected graphs, in the form presented by
+      Bondy (1991).
+  - title: "A graph reconstructor's manual"
+    authors:
+      - "J. A. Bondy"
+    id: "Surveys in Combinatorics 1991, LMS Lecture Note Ser. 166, 221-252"
+    type: "paper"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Survey presentation of Kelly's lemma and the disconnected case.
+  - title: "A note on the line reconstruction problem"
+    authors:
+      - "László Lovász"
+    id: "doi:10.1016/0095-8956(72)90064-3"
+    type: "paper"
+    location: "J. Combin. Theory Ser. B 13 (1972) 309-310"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Inclusion-exclusion over edge subsets with Kelly's lemma for edge decks.
+  - title: "The edge reconstruction hypothesis is true for graphs with more than n log2 n edges"
+    authors:
+      - "Vladimír Müller"
+    id: "doi:10.1016/0095-8956(77)90039-1"
+    type: "paper"
+    location: "J. Combin. Theory Ser. B 22 (1977) 281-283"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Counting permutations over even-size complements, with Nash-Williams' signed
+      lemma.
+
+related_formalizations:
+  - title: "Formal Conjectures: FormalConjectures/Wikipedia/ReconstructionConjecture.lean"
+    authors:
+      - "The Formal Conjectures Authors"
+    id: "https://github.com/google-deepmind/formal-conjectures/blob/691719db2653905d5fa0775408370fb058e4c59f/FormalConjectures/Wikipedia/ReconstructionConjecture.lean"
+    relationship: "builds-on"
+    note: >-
+      The Challenge copies the statement and the definitions it uses verbatim from this
+      file at commit 691719db. The upstream declaration is `sorry` at that commit.
+
+classification:
+  arxiv:
+    - "math.CO"
+  msc2020:
+    - "05C60"
+
+status:
+  scope: >-
+    The selected theorems are reconstruction_conjecture.variants.disconnected,
+    edge_reconstruction_conjecture.variants.lovasz and
+    edge_reconstruction_conjecture.variants.mueller, with Hypomorphic and
+    EdgeHypomorphic copied verbatim (Solution also copies the upstream lemmas
+    Hypomorphic.of_iso, Hypomorphic.card_eq and nonempty_iso_of_subsingleton with their
+    proofs).
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "ReconstructionConjecture.reconstruction_conjecture.variants.disconnected"
+      file: "FCPalomar/Reconstruction/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/Reconstruction/comparator.json"
+    - declaration: "ReconstructionConjecture.edge_reconstruction_conjecture.variants.lovasz"
+      file: "FCPalomar/Reconstruction/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/Reconstruction/comparator.json"
+    - declaration: "ReconstructionConjecture.edge_reconstruction_conjecture.variants.mueller"
+      file: "FCPalomar/Reconstruction/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/Reconstruction/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) wrote the Lean proof and this package under the
+        direction of Wentao Li, with independent agent review of the statement against
+        its source. Wentao Li is the human author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material. The mathematics is credited to the original authors
+    listed under sources.
+
+fidelity:
+  divergences: >-
+    None. The Challenge copies the Formal Conjectures statement and definitions
+    verbatim; only the FormalConjecturesUtil import, attributes, test lemmas and
+    docstrings are omitted.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Agent checks only: strict build with no warnings, axiom check of the selected
+    theorems, verbatim comparison of the copied definitions and statement, and an
+    independent agent review of source fidelity. No human review beyond Wentao Li is
+    claimed.
+
+alignment:
+  namespace: "ReconstructionConjecture"
+  statements:
+    - source: >-
+        Disconnected graphs on >= 3 vertices are reconstructible (Kelly); graphs with m
+        > C(n,2)/2 (Lovász) or n! < 2^(m-1) (Müller) are edge-reconstructible.
+      lean: "ReconstructionConjecture.reconstruction_conjecture.variants.disconnected"
+      module: "FCPalomar.Reconstruction.Solution"
+      status: "proved"
+    - source: >-
+        Disconnected graphs on >= 3 vertices are reconstructible (Kelly); graphs with m
+        > C(n,2)/2 (Lovász) or n! < 2^(m-1) (Müller) are edge-reconstructible.
+      lean: "ReconstructionConjecture.edge_reconstruction_conjecture.variants.lovasz"
+      module: "FCPalomar.Reconstruction.Solution"
+      status: "proved"
+    - source: >-
+        Disconnected graphs on >= 3 vertices are reconstructible (Kelly); graphs with m
+        > C(n,2)/2 (Lovász) or n! < 2^(m-1) (Müller) are edge-reconstructible.
+      lean: "ReconstructionConjecture.edge_reconstruction_conjecture.variants.mueller"
+      module: "FCPalomar.Reconstruction.Solution"
+      status: "proved"

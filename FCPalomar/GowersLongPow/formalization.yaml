@@ -1,0 +1,112 @@
+version: "v0.4"
+
+project:
+  name: "Gowers–Long: F(n) = n^α implies F(m) >= m^β eventually for β < α"
+  description: >-
+    Let F(n) be the maximal length of a 2-increasing sequence of triples in {1..n}^3. If
+    F(n) = n^α for some n > 1, then F(m) >= m^β for every β < α and all large m
+    (Gowers–Long, remark after Lemma 1.7).
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "The length of an s-increasing sequence of r-tuples"
+    authors:
+      - "W. T. Gowers"
+      - "Jason Long"
+    id: "arXiv:1609.08688"
+    type: "paper"
+    location: "Combin. Probab. Comput. 30 (2021) 686-721, remark after Lemma 1.7"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Supermultiplicativity F(ab) >= F(a)F(b) plus monotonicity give F(n^j) >= F(n)^j
+      and the eventual bound.
+
+related_formalizations:
+  - title: "Formal Conjectures: FormalConjectures/Arxiv/1609.08688/sIncreasingrTuples.lean"
+    authors:
+      - "The Formal Conjectures Authors"
+    id: "https://github.com/google-deepmind/formal-conjectures/blob/691719db2653905d5fa0775408370fb058e4c59f/FormalConjectures/Arxiv/1609.08688/sIncreasingrTuples.lean"
+    relationship: "builds-on"
+    note: >-
+      The Challenge copies the statement and the definitions it uses verbatim from this
+      file at commit 691719db. The upstream declaration is `sorry` at that commit.
+  - title: "erdos-lean-formalization: proofs/triplespow/Solution.lean"
+    authors:
+      - "Daniel Puri"
+    id: "https://github.com/danielpuri1901/erdos-lean-formalization/blob/c838d73/proofs/triplespow/Solution.lean"
+    relationship: "adapts"
+    note: >-
+      The section 'Products of sequences' (supermultiplicativity) is adapted from this
+      MIT-licensed proof; the MIT notice is kept in Solution.lean.
+
+classification:
+  arxiv:
+    - "math.CO"
+  msc2020:
+    - "05D05"
+    - "06A07"
+
+status:
+  scope: >-
+    The selected theorem is maximalLength_pow_eventually with lt₂, IsIncreasing₂,
+    maximalLength and the local notation F copied verbatim.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "Arxiv.«1609.08688».maximalLength_pow_eventually"
+      file: "FCPalomar/GowersLongPow/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/GowersLongPow/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) wrote the Lean proof and this package under the
+        direction of Wentao Li, with independent agent review of the statement against
+        its source. Wentao Li is the human author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material. The mathematics is credited to the original authors
+    listed under sources.
+
+fidelity:
+  divergences: >-
+    None. The Challenge copies the Formal Conjectures statement and definitions
+    verbatim; only the FormalConjecturesUtil import, attributes, test lemmas and
+    docstrings are omitted.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Agent checks only: strict build with no warnings, axiom check of the selected
+    theorems, verbatim comparison of the copied definitions and statement, and an
+    independent agent review of source fidelity. No human review beyond Wentao Li is
+    claimed.
+
+alignment:
+  namespace: "Arxiv.«1609.08688»"
+  statements:
+    - source: >-
+        If F(n) = n^e for some n > 1, then for every b < e, eventually (in m) m^b <=
+        F(m).
+      lean: "Arxiv.«1609.08688».maximalLength_pow_eventually"
+      module: "FCPalomar.GowersLongPow.Solution"
+      status: "proved"

@@ -1,0 +1,129 @@
+version: "v0.4"
+
+project:
+  name: "Erdős Problem 151: the triangle-free case and the square-root bound"
+  description: >-
+    For a graph G on n vertices, τ(G) <= n − H(n) when G is triangle-free, and τ(G) <= n
+    − floor(sqrt n) in general, where τ is the clique transversal number (remarks on
+    erdosproblems.com/151, from Erdős–Gallai–Tuza 1992).
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "Covering the cliques of a graph with vertices"
+    authors:
+      - "Paul Erdős"
+      - "Tibor Gallai"
+      - "Zsolt Tuza"
+    id: "doi:10.1016/0012-365X(92)90681-5"
+    type: "paper"
+    location: "Discrete Math. 108 (1992) 279-289"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      The two easy bounds: complements of an independent set or of a neighbourhood are
+      clique transversals.
+  - title: "Erdős Problem 151"
+    authors:
+      - "Thomas Bloom"
+    id: "https://www.erdosproblems.com/151"
+    type: "web discussion"
+    location: "Problem 151"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      States both remarks.
+
+related_formalizations:
+  - title: "Formal Conjectures: FormalConjectures/ErdosProblems/151.lean"
+    authors:
+      - "The Formal Conjectures Authors"
+    id: "https://github.com/google-deepmind/formal-conjectures/blob/691719db2653905d5fa0775408370fb058e4c59f/FormalConjectures/ErdosProblems/151.lean"
+    relationship: "builds-on"
+    note: >-
+      The Challenge copies the statement and the definitions it uses verbatim from this
+      file at commit 691719db. The upstream declaration is `sorry` at that commit.
+
+classification:
+  arxiv:
+    - "math.CO"
+  msc2020:
+    - "05C69"
+    - "05C70"
+
+status:
+  scope: >-
+    The selected theorems are erdos_151.variants.cliqueFree_three and
+    erdos_151.variants.sqrt_bound, with H copied from the problem file and
+    IsBigMaximalClique, IsCliqueTransversal and cliqueTransversalNumber copied from
+    FormalConjecturesForMathlib.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "Erdos151.erdos_151.variants.cliqueFree_three"
+      file: "FCPalomar/Erdos151/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/Erdos151/comparator.json"
+    - declaration: "Erdos151.erdos_151.variants.sqrt_bound"
+      file: "FCPalomar/Erdos151/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/Erdos151/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) wrote the Lean proof and this package under the
+        direction of Wentao Li, with independent agent review of the statement against
+        its source. Wentao Li is the human author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material. The mathematics is credited to the original authors
+    listed under sources.
+
+fidelity:
+  divergences: >-
+    None. The Challenge copies the Formal Conjectures statement and definitions
+    verbatim; only the FormalConjecturesUtil import, attributes, test lemmas and
+    docstrings are omitted.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Agent checks only: strict build with no warnings, axiom check of the selected
+    theorems, verbatim comparison of the copied definitions and statement, and an
+    independent agent review of source fidelity. No human review beyond Wentao Li is
+    claimed.
+
+alignment:
+  namespace: "Erdos151"
+  statements:
+    - source: >-
+        τ(G) <= n − H(n) for triangle-free G; τ(G) <= n − floor(sqrt n) for every G.
+      lean: "Erdos151.erdos_151.variants.cliqueFree_three"
+      module: "FCPalomar.Erdos151.Solution"
+      status: "proved"
+    - source: >-
+        τ(G) <= n − H(n) for triangle-free G; τ(G) <= n − floor(sqrt n) for every G.
+      lean: "Erdos151.erdos_151.variants.sqrt_bound"
+      module: "FCPalomar.Erdos151.Solution"
+      status: "proved"

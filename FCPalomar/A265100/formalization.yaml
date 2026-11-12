@@ -1,0 +1,146 @@
+version: "v0.4"
+
+project:
+  name: "OEIS A265100: Catalan numbers divisible by 3 and block numbers (Jeffery's Conjectures 5, 1, 2, 3)"
+  description: >-
+    3 | C(n) iff the base-3 expansions of n and n+1 both contain a 2 (Conjecture 5;
+    Deutsch–Sagan 2006, Thm 5.2; Israel 2015); every block number is a term
+    9·A005836(i)+5 (Conjecture 1), and Conjectures 2 and 3 follow.
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "Congruences for Catalan and Motzkin numbers and related sequences"
+    authors:
+      - "Emeric Deutsch"
+      - "Bruce E. Sagan"
+    id: "doi:10.1016/j.jnt.2005.06.005"
+    type: "paper"
+    location: "J. Number Theory 117 (2006), Theorem 5.2"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      The characterization of C_n mod 3 that gives Conjecture 5.
+  - title: "OEIS A265100"
+    authors:
+      - "L. Edson Jeffery"
+    id: "https://oeis.org/A265100"
+    type: "web discussion"
+    location: "Conjectures 1, 2, 3, 5"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      States the conjectures.
+
+related_formalizations: []
+
+classification:
+  arxiv:
+    - "math.CO"
+    - "math.NT"
+  msc2020:
+    - "05A10"
+    - "11B50"
+
+status:
+  scope: >-
+    The selected theorems are OeisA265100.conjecture5, conjecture1, conjecture2 and
+    conjecture3 from the new Formal Conjectures file, with A005836, a and IsBlockNumber
+    copied verbatim.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "OeisA265100.conjecture5"
+      file: "FCPalomar/A265100/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/A265100/comparator.json"
+    - declaration: "OeisA265100.conjecture1"
+      file: "FCPalomar/A265100/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/A265100/comparator.json"
+    - declaration: "OeisA265100.conjecture2"
+      file: "FCPalomar/A265100/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/A265100/comparator.json"
+    - declaration: "OeisA265100.conjecture3"
+      file: "FCPalomar/A265100/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/A265100/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) wrote the Lean proof and this package under the
+        direction of Wentao Li, with independent agent review of the statement against
+        its source. Wentao Li is the human author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material. The mathematics is credited to the original authors
+    listed under sources.
+
+fidelity:
+  divergences: >-
+    None. The statement is new: it was written for this package from the source and is
+    proposed for Formal Conjectures as FormalConjectures/OEIS/265100.lean with the same
+    declarations; only the FormalConjecturesUtil import, attributes and docstrings
+    differ.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Agent checks only: strict build with no warnings, axiom check of the selected
+    theorems, verbatim comparison of the copied definitions and statement, and an
+    independent agent review of source fidelity. No human review beyond Wentao Li is
+    claimed.
+
+alignment:
+  namespace: "OeisA265100"
+  statements:
+    - source: >-
+        Jeffery's Conjectures 5, 1, 2 and 3 in A265100.
+      lean: "OeisA265100.conjecture5"
+      module: "FCPalomar.A265100.Solution"
+      status: "proved"
+    - source: >-
+        Jeffery's Conjectures 5, 1, 2 and 3 in A265100.
+      lean: "OeisA265100.conjecture1"
+      module: "FCPalomar.A265100.Solution"
+      status: "proved"
+    - source: >-
+        Jeffery's Conjectures 5, 1, 2 and 3 in A265100.
+      lean: "OeisA265100.conjecture2"
+      module: "FCPalomar.A265100.Solution"
+      status: "proved"
+    - source: >-
+        Jeffery's Conjectures 5, 1, 2 and 3 in A265100.
+      lean: "OeisA265100.conjecture3"
+      module: "FCPalomar.A265100.Solution"
+      status: "proved"

@@ -1,0 +1,13 @@
+{
+  "challenge_module": "FCPalomar.Erdos1111.Challenge",
+  "solution_module": "FCPalomar.Erdos1111.Solution",
+  "theorem_names": [
+    "Erdos1111.erdos_1111.variants.wagon"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

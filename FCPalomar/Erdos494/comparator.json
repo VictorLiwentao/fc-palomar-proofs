@@ -1,0 +1,14 @@
+{
+  "challenge_module": "FCPalomar.Erdos494.Challenge",
+  "solution_module": "FCPalomar.Erdos494.Solution",
+  "theorem_names": [
+    "Erdos494.erdos_494.variants.card_divisible_by_prime_gt_k",
+    "Erdos494.erdos_494.variants.k_eq_4_card_gt_12"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

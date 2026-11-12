@@ -1,0 +1,16 @@
+{
+  "challenge_module": "FCPalomar.A265100.Challenge",
+  "solution_module": "FCPalomar.A265100.Solution",
+  "theorem_names": [
+    "OeisA265100.conjecture5",
+    "OeisA265100.conjecture1",
+    "OeisA265100.conjecture2",
+    "OeisA265100.conjecture3"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

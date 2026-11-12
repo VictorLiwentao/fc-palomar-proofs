@@ -1,0 +1,96 @@
+version: "v0.4"
+
+project:
+  name: "OEIS A299754: sums of p complex p-th roots of unity (Israel's formula, Alekseyev 2018)"
+  description: >-
+    For a prime p, the number of distinct sums z_1 + ... + z_p with every z_i^p = 1 is
+    C(2p−1, p). Conjectured by Robert Israel and proved by Max Alekseyev (2018).
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "OEIS A299754"
+    authors:
+      - "Robert Israel"
+      - "Max Alekseyev"
+    id: "https://oeis.org/A299754"
+    type: "web discussion"
+    location: "formula comment (2018)"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      The Lean proof is Alekseyev's argument via the minimal polynomial of a primitive
+      p-th root of unity.
+
+related_formalizations: []
+
+classification:
+  arxiv:
+    - "math.NT"
+    - "math.CO"
+  msc2020:
+    - "11R18"
+    - "05A15"
+
+status:
+  scope: >-
+    The selected theorem is OeisA299754.a_prime from the new Formal Conjectures file,
+    with rootSums and a copied verbatim.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "OeisA299754.a_prime"
+      file: "FCPalomar/A299754/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/A299754/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) wrote the Lean proof and this package under the
+        direction of Wentao Li, with independent agent review of the statement against
+        its source. Wentao Li is the human author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material. The mathematics is credited to the original authors
+    listed under sources.
+
+fidelity:
+  divergences: >-
+    None. The statement is new: it was written for this package from the source and is
+    proposed for Formal Conjectures as FormalConjectures/OEIS/299754.lean with the same
+    declarations; only the FormalConjecturesUtil import, attributes and docstrings
+    differ.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Agent checks only: strict build with no warnings, axiom check of the selected
+    theorems, verbatim comparison of the copied definitions and statement, and an
+    independent agent review of source fidelity. No human review beyond Wentao Li is
+    claimed.
+
+alignment:
+  namespace: "OeisA299754"
+  statements:
+    - source: >-
+        For prime p, a(p) = C(2p−1, p).
+      lean: "OeisA299754.a_prime"
+      module: "FCPalomar.A299754.Solution"
+      status: "proved"

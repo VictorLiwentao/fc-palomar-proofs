@@ -1,0 +1,20 @@
+{
+  "challenge_module": "FCPalomar.Erdos151.Challenge",
+  "solution_module": "FCPalomar.Erdos151.Solution",
+  "theorem_names": [
+    "Erdos151.erdos_151.variants.cliqueFree_three",
+    "Erdos151.erdos_151.variants.sqrt_bound"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true,
+  "definition_names": [
+    "SimpleGraph.IsBigMaximalClique",
+    "SimpleGraph.IsCliqueTransversal",
+    "SimpleGraph.cliqueTransversalNumber",
+    "Erdos151.H"
+  ]
+}

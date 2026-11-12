@@ -1,0 +1,96 @@
+version: "v0.4"
+
+project:
+  name: "OEIS A190940: lcm of partial sums of compositions (Oudra's conjecture, Alekseyev 2024)"
+  description: >-
+    For n >= 1, the number of distinct values of lcm(a, a+b, a+b+c, ..., n) over the
+    compositions of n equals the number of divisors of lcm(1..n)/n. Conjectured by
+    Ridouane Oudra (2019), proved by Max Alekseyev (2024).
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "OEIS A190940"
+    authors:
+      - "Ridouane Oudra"
+      - "Max Alekseyev"
+    id: "https://oeis.org/A190940"
+    type: "web discussion"
+    location: "comment: conjecture (2019) and proof (2024)"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      The Lean proof is Alekseyev's argument.
+
+related_formalizations: []
+
+classification:
+  arxiv:
+    - "math.NT"
+    - "math.CO"
+  msc2020:
+    - "11A05"
+    - "05A17"
+
+status:
+  scope: >-
+    The selected theorem is OeisA190940.card_lcmPartialSums from the new Formal
+    Conjectures file, with partialSums, lcmPartialSums and a copied verbatim.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "OeisA190940.card_lcmPartialSums"
+      file: "FCPalomar/A190940/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/A190940/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) wrote the Lean proof and this package under the
+        direction of Wentao Li, with independent agent review of the statement against
+        its source. Wentao Li is the human author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material. The mathematics is credited to the original authors
+    listed under sources.
+
+fidelity:
+  divergences: >-
+    None. The statement is new: it was written for this package from the source and is
+    proposed for Formal Conjectures as FormalConjectures/OEIS/190940.lean with the same
+    declarations; only the FormalConjecturesUtil import, attributes and docstrings
+    differ.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Agent checks only: strict build with no warnings, axiom check of the selected
+    theorems, verbatim comparison of the copied definitions and statement, and an
+    independent agent review of source fidelity. No human review beyond Wentao Li is
+    claimed.
+
+alignment:
+  namespace: "OeisA190940"
+  statements:
+    - source: >-
+        For n >= 1, #{lcm of partial sums of c : c a composition of n} = d(lcm(1..n)/n).
+      lean: "OeisA190940.card_lcmPartialSums"
+      module: "FCPalomar.A190940.Solution"
+      status: "proved"

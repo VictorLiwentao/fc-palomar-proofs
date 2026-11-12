@@ -1,0 +1,14 @@
+{
+  "challenge_module": "FCPalomar.OneTwoThree.Challenge",
+  "solution_module": "FCPalomar.OneTwoThree.Solution",
+  "theorem_names": [
+    "OneTwoThreeConjecture.one_two_three_conjecture.variants.one_to_five",
+    "OneTwoThreeConjecture.one_two_three_conjecture.variants.one_to_thirty"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

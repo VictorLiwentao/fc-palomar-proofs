@@ -1,0 +1,106 @@
+version: "v0.4"
+
+project:
+  name: "Kolberg's theorem: the partition function takes each parity infinitely often"
+  description: >-
+    The partition number p(n) is even for infinitely many n and odd for infinitely many
+    n (Kolberg 1959). The proof uses Euler's pentagonal number theorem over F_2.
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "Note on the parity of the partition function"
+    authors:
+      - "O. Kolberg"
+    id: "https://doi.org/10.7146/math.scand.a-10584"
+    type: "paper"
+    location: "Math. Scand. 7 (1959) 377-378"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Kolberg's argument via the pentagonal number theorem modulo 2, in the form: if
+      p(n) had eventually constant parity, the coefficients of Euler's product would
+      satisfy a linear recurrence, contradicting the unbounded gaps between generalized
+      pentagonal numbers.
+
+related_formalizations:
+  - title: "Formal Conjectures: FormalConjectures/Paper/PartitionParity.lean"
+    authors:
+      - "The Formal Conjectures Authors"
+    id: "https://github.com/google-deepmind/formal-conjectures/blob/691719db2653905d5fa0775408370fb058e4c59f/FormalConjectures/Paper/PartitionParity.lean"
+    relationship: "builds-on"
+    note: >-
+      The Challenge copies the statement and the definitions it uses verbatim from this
+      file at commit 691719db. The upstream declaration is `sorry` at that commit.
+
+classification:
+  arxiv:
+    - "math.NT"
+    - "math.CO"
+  msc2020:
+    - "11P83"
+    - "05A17"
+
+status:
+  scope: >-
+    The selected theorem is the Formal Conjectures statement PartitionParity.kolberg,
+    with Nat.partitionNumber copied from FormalConjecturesForMathlib. Mathlib's
+    pentagonal number theorem (PowerSeries.pentagonalSeries) is used.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "PartitionParity.kolberg"
+      file: "FCPalomar/Kolberg/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/Kolberg/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) wrote the Lean proof and this package under the
+        direction of Wentao Li, with independent agent review of the statement against
+        its source. Wentao Li is the human author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material. The mathematics is credited to the original authors
+    listed under sources.
+
+fidelity:
+  divergences: >-
+    None. The Challenge copies the Formal Conjectures statement and definitions
+    verbatim; only the FormalConjecturesUtil import, attributes, test lemmas and
+    docstrings are omitted.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Agent checks only: strict build with no warnings, axiom check of the selected
+    theorems, verbatim comparison of the copied definitions and statement, and an
+    independent agent review of source fidelity. No human review beyond Wentao Li is
+    claimed.
+
+alignment:
+  namespace: "PartitionParity"
+  statements:
+    - source: >-
+        The partition function p(n) is even for infinitely many n and odd for infinitely
+        many n (Kolberg 1959).
+      lean: "PartitionParity.kolberg"
+      module: "FCPalomar.Kolberg.Solution"
+      status: "proved"

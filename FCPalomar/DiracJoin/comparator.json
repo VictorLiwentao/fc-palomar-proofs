@@ -1,0 +1,23 @@
+{
+  "challenge_module": "FCPalomar.DiracJoin.Challenge",
+  "solution_module": "FCPalomar.DiracJoin.Solution",
+  "theorem_names": [
+    "Erdos917.erdos_917.variants.dirac",
+    "Erdos917.erdos_917.variants.erdos_three_dvd",
+    "Erdos1032.erdos_1032.variants.dirac_six"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true,
+  "definition_names": [
+    "SimpleGraph.IsCritical",
+    "SimpleGraph.IsCriticalEdge",
+    "Erdos917.IsKCritical",
+    "Erdos917.f",
+    "Erdos917.conjecturedValue",
+    "Erdos1032.IsKCritical"
+  ]
+}

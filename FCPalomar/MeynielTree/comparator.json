@@ -1,0 +1,13 @@
+{
+  "challenge_module": "FCPalomar.MeynielTree.Challenge",
+  "solution_module": "FCPalomar.MeynielTree.Solution",
+  "theorem_names": [
+    "MeynielConjecture.meyniel_conjecture.variants.tree"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

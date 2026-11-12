@@ -1,0 +1,123 @@
+version: "v0.4"
+
+project:
+  name: "OEIS A396804: a(n) mod 5 is never 3 (Hanna's conjecture)"
+  description: >-
+    For A(x) = Σ a(n) x^n/n! with A(x) = x exp(A∘A∘A∘A(x)), every a(n) (n >= 1) is an
+    integer not congruent to 3 mod 5. Conjectured by Paul D. Hanna; an informal proof is
+    in Vladimir Reshetnikov's ProveIt report (2026). The Lean proof is different.
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "OEIS A396804"
+    authors:
+      - "Paul D. Hanna"
+    id: "https://oeis.org/A396804"
+    type: "web discussion"
+    location: "conjecture: a(n) mod 5 is never 3"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      States the functional equation and the conjecture.
+  - title: "Prime-power congruences for compositional tree series"
+    authors:
+      - "Vladimir Reshetnikov"
+    id: "https://github.com/VladimirReshetnikov/ProveIt/tree/f2dc7045dc12b23c2e1c9c9c90d8e083d7449871/SetTheory/Cardinals/docs/reports/congruences-and-valuations/iterated-series/compositional-tree-series-congruences"
+    type: "other"
+    location: "September 2026"
+    relationship: "independently-proves"
+    author_endorsement: "not-contacted"
+    note: >-
+      An earlier informal proof of this clause by a typed-rooted-tree reduction. The
+      Lean proof uses a different argument (Hurwitz series and derivations in
+      characteristic 5).
+
+related_formalizations: []
+
+classification:
+  arxiv:
+    - "math.CO"
+    - "math.NT"
+  msc2020:
+    - "05A15"
+    - "11B50"
+    - "13F25"
+
+status:
+  scope: >-
+    The selected theorems are exists_unique_solution and conjecture_mod_five from the
+    new Formal Conjectures file, with iterate and IsSolution copied verbatim.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "OeisA396804.exists_unique_solution"
+      file: "FCPalomar/A396804/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/A396804/comparator.json"
+    - declaration: "OeisA396804.conjecture_mod_five"
+      file: "FCPalomar/A396804/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/A396804/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) wrote the Lean proof and this package under the
+        direction of Wentao Li, with independent agent review of the statement against
+        its source. Wentao Li is the human author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material. The mathematics is credited to the original authors
+    listed under sources.
+
+fidelity:
+  divergences: >-
+    None. The statement is new: it was written for this package from the source and is
+    proposed for Formal Conjectures as FormalConjectures/OEIS/396804.lean with the same
+    declarations; only the FormalConjecturesUtil import, attributes and docstrings
+    differ.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Agent checks only: strict build with no warnings, axiom check of the selected
+    theorems, verbatim comparison of the copied definitions and statement, and an
+    independent agent review of source fidelity. No human review beyond Wentao Li is
+    claimed.
+
+alignment:
+  namespace: "OeisA396804"
+  statements:
+    - source: >-
+        The equation A = x exp(A∘A∘A∘A), A(0) = 0, has a unique solution, and n! [x^n] A
+        is an integer not ≡ 3 (mod 5) for n >= 1.
+      lean: "OeisA396804.exists_unique_solution"
+      module: "FCPalomar.A396804.Solution"
+      status: "proved"
+    - source: >-
+        The equation A = x exp(A∘A∘A∘A), A(0) = 0, has a unique solution, and n! [x^n] A
+        is an integer not ≡ 3 (mod 5) for n >= 1.
+      lean: "OeisA396804.conjecture_mod_five"
+      module: "FCPalomar.A396804.Solution"
+      status: "proved"

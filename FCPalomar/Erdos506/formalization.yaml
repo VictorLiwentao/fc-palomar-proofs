@@ -1,0 +1,112 @@
+version: "v0.4"
+
+project:
+  name: "Erdős Problem 506: Segre's eight points determining fewer than C(7,2) circles"
+  description: >-
+    There are 8 points in the plane, not all on a line or a circle, that determine fewer
+    than C(7,2) = 21 circles. The witness is two concentric aligned squares, which
+    determine 18 circles (Segre's remark, after Elliott 1967).
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "Erdős Problem 506"
+    authors:
+      - "Thomas Bloom"
+    id: "https://www.erdosproblems.com/506"
+    type: "web discussion"
+    location: "Problem 506"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Reports Segre's observation that the bound fails for n = 8.
+  - title: "On the number of circles determined by n points"
+    authors:
+      - "P. D. T. A. Elliott"
+    id: "Acta Math. Acad. Sci. Hungar. 18 (1967) 181-188"
+    type: "paper"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      The lower bound C(n-1,2) that Segre's example contradicts at n = 8.
+
+related_formalizations:
+  - title: "Formal Conjectures: FormalConjectures/ErdosProblems/506.lean"
+    authors:
+      - "The Formal Conjectures Authors"
+    id: "https://github.com/google-deepmind/formal-conjectures/blob/691719db2653905d5fa0775408370fb058e4c59f/FormalConjectures/ErdosProblems/506.lean"
+    relationship: "builds-on"
+    note: >-
+      The Challenge copies the statement and the definitions it uses verbatim from this
+      file at commit 691719db. The upstream declaration is `sorry` at that commit.
+
+classification:
+  arxiv:
+    - "math.CO"
+    - "math.MG"
+  msc2020:
+    - "52C10"
+    - "51M04"
+
+status:
+  scope: >-
+    The selected theorem is erdos_506.variants.segre_n_eq_eight with numCircles and the
+    notation ℝ² copied verbatim.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "Erdos506.erdos_506.variants.segre_n_eq_eight"
+      file: "FCPalomar/Erdos506/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/Erdos506/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) wrote the Lean proof and this package under the
+        direction of Wentao Li, with independent agent review of the statement against
+        its source. Wentao Li is the human author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material. The mathematics is credited to the original authors
+    listed under sources.
+
+fidelity:
+  divergences: >-
+    None. The Challenge copies the Formal Conjectures statement and definitions
+    verbatim; only the FormalConjecturesUtil import, attributes, test lemmas and
+    docstrings are omitted.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Agent checks only: strict build with no warnings, axiom check of the selected
+    theorems, verbatim comparison of the copied definitions and statement, and an
+    independent agent review of source fidelity. No human review beyond Wentao Li is
+    claimed.
+
+alignment:
+  namespace: "Erdos506"
+  statements:
+    - source: >-
+        Some 8-point set in the plane, neither collinear nor cospherical, determines
+        fewer than C(7,2) circles.
+      lean: "Erdos506.erdos_506.variants.segre_n_eq_eight"
+      module: "FCPalomar.Erdos506.Solution"
+      status: "proved"

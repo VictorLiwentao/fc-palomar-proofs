@@ -1,0 +1,118 @@
+version: "v0.4"
+
+project:
+  name: "OEIS A395839: parity and residues mod 3 of 10C(x)^2 − C(x) (Hanna's conjectures)"
+  description: >-
+    For the g.f. 10C(x)^2 − C(x) with C the Catalan g.f., a(n) is odd iff n = 2^k − 1,
+    and a(3n+1) ≡ C_n, a(3n) ≡ a(3n+2) ≡ 0 (mod 3). Conjectured by Paul D. Hanna (2026).
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "OEIS A395839"
+    authors:
+      - "Paul D. Hanna"
+    id: "https://oeis.org/A395839"
+    type: "web discussion"
+    location: "two conjectures (2026)"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      States the parity and mod-3 conjectures.
+  - title: "Congruences for Catalan and Motzkin numbers and related sequences"
+    authors:
+      - "Emeric Deutsch"
+      - "Bruce E. Sagan"
+    id: "arXiv:math/0407326"
+    type: "paper"
+    location: "J. Number Theory 117 (2006), Theorem 2.1"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      The 2-adic valuation of Catalan numbers gives the parity clause directly.
+
+related_formalizations: []
+
+classification:
+  arxiv:
+    - "math.CO"
+    - "math.NT"
+  msc2020:
+    - "05A15"
+    - "11B50"
+
+status:
+  scope: >-
+    The selected theorems are OeisA395839.odd_iff and OeisA395839.mod_three from the new
+    Formal Conjectures file, with IsCatalanEquation and coeffs copied verbatim.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "OeisA395839.odd_iff"
+      file: "FCPalomar/A395839/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/A395839/comparator.json"
+    - declaration: "OeisA395839.mod_three"
+      file: "FCPalomar/A395839/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/A395839/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) wrote the Lean proof and this package under the
+        direction of Wentao Li, with independent agent review of the statement against
+        its source. Wentao Li is the human author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material. The mathematics is credited to the original authors
+    listed under sources.
+
+fidelity:
+  divergences: >-
+    None. The statement is new: it was written for this package from the source and is
+    proposed for Formal Conjectures as FormalConjectures/OEIS/395839.lean with the same
+    declarations; only the FormalConjecturesUtil import, attributes and docstrings
+    differ.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Agent checks only: strict build with no warnings, axiom check of the selected
+    theorems, verbatim comparison of the copied definitions and statement, and an
+    independent agent review of source fidelity. No human review beyond Wentao Li is
+    claimed.
+
+alignment:
+  namespace: "OeisA395839"
+  statements:
+    - source: >-
+        a(n) odd iff n = 2^k − 1; a(3n+1) ≡ C_n, a(3n) ≡ a(3n+2) ≡ 0 (mod 3).
+      lean: "OeisA395839.odd_iff"
+      module: "FCPalomar.A395839.Solution"
+      status: "proved"
+    - source: >-
+        a(n) odd iff n = 2^k − 1; a(3n+1) ≡ C_n, a(3n) ≡ a(3n+2) ≡ 0 (mod 3).
+      lean: "OeisA395839.mod_three"
+      module: "FCPalomar.A395839.Solution"
+      status: "proved"

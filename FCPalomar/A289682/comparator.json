@@ -1,0 +1,13 @@
+{
+  "challenge_module": "FCPalomar.A289682.Challenge",
+  "solution_module": "FCPalomar.A289682.Solution",
+  "theorem_names": [
+    "OeisA289682.catalan_two_pow_mod_sixteen"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

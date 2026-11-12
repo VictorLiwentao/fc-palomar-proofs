@@ -1,0 +1,106 @@
+version: "v0.4"
+
+project:
+  name: "OEIS A289682: Catalan numbers at 2^n − 1 and 2^n modulo 16 (Israel's conjecture)"
+  description: >-
+    For n >= 3, C(2^n − 1) ≡ 13 and C(2^n) ≡ 6 (mod 16). Conjectured by Robert Israel
+    (2017); consistent with Liu–Yeh's classification of Catalan numbers modulo 2^k.
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "OEIS A289682"
+    authors:
+      - "R. J. Mathar"
+      - "Robert Israel"
+    id: "https://oeis.org/A289682"
+    type: "web discussion"
+    location: "conjecture by R. Israel, Jul 09 2017"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      States the two congruences.
+  - title: "Catalan numbers modulo 2^k"
+    authors:
+      - "Shu-Chung Liu"
+      - "Jean C.-C. Yeh"
+    id: "J. Integer Seq. 13 (2010), Article 10.5.4"
+    type: "paper"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      General classification; the Lean proof is a direct argument via central binomial
+      coefficients.
+
+related_formalizations: []
+
+classification:
+  arxiv:
+    - "math.NT"
+    - "math.CO"
+  msc2020:
+    - "11B50"
+    - "05A10"
+
+status:
+  scope: >-
+    The selected theorem is OeisA289682.catalan_two_pow_mod_sixteen from the new Formal
+    Conjectures file.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "OeisA289682.catalan_two_pow_mod_sixteen"
+      file: "FCPalomar/A289682/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/A289682/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) wrote the Lean proof and this package under the
+        direction of Wentao Li, with independent agent review of the statement against
+        its source. Wentao Li is the human author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material. The mathematics is credited to the original authors
+    listed under sources.
+
+fidelity:
+  divergences: >-
+    None. The statement is new: it was written for this package from the source and is
+    proposed for Formal Conjectures as FormalConjectures/OEIS/289682.lean with the same
+    declarations; only the FormalConjecturesUtil import, attributes and docstrings
+    differ.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Agent checks only: strict build with no warnings, axiom check of the selected
+    theorems, verbatim comparison of the copied definitions and statement, and an
+    independent agent review of source fidelity. No human review beyond Wentao Li is
+    claimed.
+
+alignment:
+  namespace: "OeisA289682"
+  statements:
+    - source: >-
+        For n >= 3, C(2^n−1) ≡ 13 and C(2^n) ≡ 6 (mod 16).
+      lean: "OeisA289682.catalan_two_pow_mod_sixteen"
+      module: "FCPalomar.A289682.Solution"
+      status: "proved"

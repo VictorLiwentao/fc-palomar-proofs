@@ -1,0 +1,160 @@
+version: "v0.4"
+
+project:
+  name: "The 1-2-3 conjecture with weights 1..5 (Kalkowski–Karoński–Pfender)"
+  description: >-
+    Every finite simple graph without an isolated edge has edge weights in {1,...,5}
+    such that adjacent vertices have different weighted degrees (Kalkowski, Karoński and
+    Pfender 2010). The {1,...,30} bound of Addario-Berry et al. (2007) follows as a
+    corollary. The 1-2-3 conjecture itself (Karoński, Łuczak and Thomason 2004), with
+    weights {1, 2, 3}, was later proved by Keusch (2024); this entry formalizes the
+    earlier {1,...,5} theorem, not Keusch's proof.
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "Vertex-coloring edge-weightings: towards the 1-2-3-conjecture"
+    authors:
+      - "Maciej Kalkowski"
+      - "Michał Karoński"
+      - "Florian Pfender"
+    id: "doi:10.1016/j.jctb.2009.06.002"
+    type: "paper"
+    location: "J. Combin. Theory Ser. B 100 (2010) 347-349"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      The vertex-by-vertex adjustment with bases 0, 1 mod 4. The argument is also
+      written out in arXiv:1308.0611, Section 3.
+  - title: "Vertex-colouring edge-weightings"
+    authors:
+      - "Louigi Addario-Berry"
+      - "Ketan Dalal"
+      - "Colin McDiarmid"
+      - "Bruce Reed"
+      - "Andrew Thomason"
+    id: "doi:10.1007/s00493-007-0041-6"
+    type: "paper"
+    location: "Combinatorica 27 (2007) 1-12"
+    relationship: "independently-proves"
+    author_endorsement: "not-contacted"
+    note: >-
+      The earlier {1,...,30} bound, obtained here as a corollary of the {1,...,5}
+      theorem.
+  - title: "Edge weights and vertex colours"
+    authors:
+      - "Michał Karoński"
+      - "Tomasz Łuczak"
+      - "Andrew Thomason"
+    type: "paper"
+    location: "J. Combin. Theory Ser. B 91 (2004) 151-157"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Poses the 1-2-3 conjecture.
+  - title: "A solution to the 1-2-3 conjecture"
+    authors:
+      - "Ralph Keusch"
+    id: "arXiv:2303.02611"
+    type: "paper"
+    location: "J. Combin. Theory Ser. B 166 (2024) 183-202"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Proves the 1-2-3 conjecture, which implies the {1,...,5} theorem formalized here.
+      This entry does not formalize Keusch's proof.
+
+related_formalizations:
+  - title: "Formal Conjectures: FormalConjectures/Paper/OneTwoThreeConjecture.lean"
+    authors:
+      - "The Formal Conjectures Authors"
+    id: "https://github.com/google-deepmind/formal-conjectures/blob/691719db2653905d5fa0775408370fb058e4c59f/FormalConjectures/Paper/OneTwoThreeConjecture.lean"
+    relationship: "builds-on"
+    note: >-
+      The Challenge copies the statement and the definitions it uses verbatim from this
+      file at commit 691719db. The upstream declaration is `sorry` at that commit.
+
+classification:
+  arxiv:
+    - "math.CO"
+  msc2020:
+    - "05C15"
+    - "05C78"
+
+status:
+  scope: >-
+    The selected theorems are one_two_three_conjecture.variants.one_to_five and
+    one_to_thirty, with weightedDegree, IsVertexColouringWeighting and NoIsolatedEdge
+    copied verbatim.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "OneTwoThreeConjecture.one_two_three_conjecture.variants.one_to_five"
+      file: "FCPalomar/OneTwoThree/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OneTwoThree/comparator.json"
+    - declaration: "OneTwoThreeConjecture.one_two_three_conjecture.variants.one_to_thirty"
+      file: "FCPalomar/OneTwoThree/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OneTwoThree/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) wrote the Lean proof and this package under the
+        direction of Wentao Li, with independent agent review of the statement against
+        its source. Wentao Li is the human author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material. The mathematics is credited to the original authors
+    listed under sources.
+
+fidelity:
+  divergences: >-
+    None. The Challenge copies the Formal Conjectures statement and definitions
+    verbatim; only the FormalConjecturesUtil import, attributes, test lemmas and
+    docstrings are omitted.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Agent checks only: strict build with no warnings, axiom check of the selected
+    theorems, verbatim comparison of the copied definitions and statement, and an
+    independent agent review of source fidelity. No human review beyond Wentao Li is
+    claimed.
+
+alignment:
+  namespace: "OneTwoThreeConjecture"
+  statements:
+    - source: >-
+        Every finite graph without an isolated edge has a vertex-colouring edge-
+        weighting with weights 1..5 (and hence 1..30).
+      lean: "OneTwoThreeConjecture.one_two_three_conjecture.variants.one_to_five"
+      module: "FCPalomar.OneTwoThree.Solution"
+      status: "proved"
+    - source: >-
+        Every finite graph without an isolated edge has a vertex-colouring edge-
+        weighting with weights 1..5 (and hence 1..30).
+      lean: "OneTwoThreeConjecture.one_two_three_conjecture.variants.one_to_thirty"
+      module: "FCPalomar.OneTwoThree.Solution"
+      status: "proved"

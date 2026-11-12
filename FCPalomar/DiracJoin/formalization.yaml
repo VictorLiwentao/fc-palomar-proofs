@@ -1,0 +1,141 @@
+version: "v0.4"
+
+project:
+  name: "Dirac's joins of odd cycles: Erdős Problems 917 (Dirac, Erdős 3 | k) and 1032 (Dirac 6-critical)"
+  description: >-
+    The join of q disjoint odd cycles C_m is 3q-critical. This gives Dirac's lower bound
+    f_6(4n+2) >= 4n^2+8n+3 (Erdős 917), Erdős's observation f_k(n) >= ½(1 − 1/(k/3))n^2
+    + n for 3 | k (Erdős 917), and Dirac's 6-critical graphs with minimum degree > n/2
+    (Erdős 1032).
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "A property of 4-chromatic graphs and some remarks on critical graphs"
+    authors:
+      - "G. A. Dirac"
+    id: "doi:10.1112/jlms/s1-27.1.85"
+    type: "paper"
+    location: "J. London Math. Soc. 27 (1952) 85-92"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Joins of two odd cycles are 6-critical.
+  - title: "Problems and results in chromatic graph theory"
+    authors:
+      - "Paul Erdős"
+    id: "Proof Techniques in Graph Theory (1969) 27-35"
+    type: "paper"
+    location: "p. 28"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      The general join of k/3 odd cycles.
+
+related_formalizations:
+  - title: "Formal Conjectures: FormalConjectures/ErdosProblems/917.lean"
+    authors:
+      - "The Formal Conjectures Authors"
+    id: "https://github.com/google-deepmind/formal-conjectures/blob/691719db2653905d5fa0775408370fb058e4c59f/FormalConjectures/ErdosProblems/917.lean"
+    relationship: "builds-on"
+    note: >-
+      The Challenge copies the statement and the definitions it uses verbatim from this
+      file at commit 691719db. The upstream declaration is `sorry` at that commit.
+
+classification:
+  arxiv:
+    - "math.CO"
+  msc2020:
+    - "05C15"
+    - "05C35"
+
+status:
+  scope: >-
+    The selected theorems are erdos_917.variants.dirac,
+    erdos_917.variants.erdos_three_dvd and erdos_1032.variants.dirac_six, with
+    IsKCritical, f and conjecturedValue copied from the problem files and
+    IsCriticalEdges, IsCriticalEdge, Subgraph.IsCriticalVerts, Subgraph.IsCriticalVertex
+    and IsCritical copied from FormalConjecturesForMathlib.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "Erdos917.erdos_917.variants.dirac"
+      file: "FCPalomar/DiracJoin/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/DiracJoin/comparator.json"
+    - declaration: "Erdos917.erdos_917.variants.erdos_three_dvd"
+      file: "FCPalomar/DiracJoin/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/DiracJoin/comparator.json"
+    - declaration: "Erdos1032.erdos_1032.variants.dirac_six"
+      file: "FCPalomar/DiracJoin/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/DiracJoin/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) wrote the Lean proof and this package under the
+        direction of Wentao Li, with independent agent review of the statement against
+        its source. Wentao Li is the human author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material. The mathematics is credited to the original authors
+    listed under sources.
+
+fidelity:
+  divergences: >-
+    None. The Challenge copies the Formal Conjectures statement and definitions
+    verbatim; only the FormalConjecturesUtil import, attributes, test lemmas and
+    docstrings are omitted.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Agent checks only: strict build with no warnings, axiom check of the selected
+    theorems, verbatim comparison of the copied definitions and statement, and an
+    independent agent review of source fidelity. No human review beyond Wentao Li is
+    claimed.
+
+alignment:
+  namespace: "Erdos917"
+  statements:
+    - source: >-
+        Dirac's and Erdős's lower-bound constructions for critical graphs.
+      lean: "Erdos917.erdos_917.variants.dirac"
+      module: "FCPalomar.DiracJoin.Solution"
+      status: "proved"
+    - source: >-
+        Dirac's and Erdős's lower-bound constructions for critical graphs.
+      lean: "Erdos917.erdos_917.variants.erdos_three_dvd"
+      module: "FCPalomar.DiracJoin.Solution"
+      status: "proved"
+    - source: >-
+        Dirac's and Erdős's lower-bound constructions for critical graphs.
+      lean: "Erdos1032.erdos_1032.variants.dirac_six"
+      module: "FCPalomar.DiracJoin.Solution"
+      status: "proved"

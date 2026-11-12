@@ -1,0 +1,101 @@
+version: "v0.4"
+
+project:
+  name: "The Sauer–Spencer packing theorem"
+  description: >-
+    Two graphs on the same n vertices pack if 2 Δ(G1) Δ(G2) < n (Sauer and Spencer
+    1978).
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "Edge disjoint placement of graphs"
+    authors:
+      - "Norbert Sauer"
+      - "Joel Spencer"
+    id: "doi:10.1016/0095-8956(78)90005-1"
+    type: "paper"
+    location: "J. Combin. Theory Ser. B 25 (1978) 295-302"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      The swapping argument on a permutation with the fewest conflicting edges.
+
+related_formalizations:
+  - title: "Formal Conjectures: FormalConjectures/Paper/BollobasEldridgeCatlinConjecture.lean"
+    authors:
+      - "The Formal Conjectures Authors"
+    id: "https://github.com/google-deepmind/formal-conjectures/blob/691719db2653905d5fa0775408370fb058e4c59f/FormalConjectures/Paper/BollobasEldridgeCatlinConjecture.lean"
+    relationship: "builds-on"
+    note: >-
+      The Challenge copies the statement and the definitions it uses verbatim from this
+      file at commit 691719db. The upstream declaration is `sorry` at that commit.
+
+classification:
+  arxiv:
+    - "math.CO"
+  msc2020:
+    - "05C70"
+    - "05C35"
+
+status:
+  scope: >-
+    The selected theorem is bollobas_eldridge_catlin_conjecture.variants.sauer_spencer
+    with Packs copied verbatim.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "BollobasEldridgeCatlinConjecture.bollobas_eldridge_catlin_conjecture.variants.sauer_spencer"
+      file: "FCPalomar/SauerSpencer/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/SauerSpencer/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) wrote the Lean proof and this package under the
+        direction of Wentao Li, with independent agent review of the statement against
+        its source. Wentao Li is the human author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material. The mathematics is credited to the original authors
+    listed under sources.
+
+fidelity:
+  divergences: >-
+    None. The Challenge copies the Formal Conjectures statement and definitions
+    verbatim; only the FormalConjecturesUtil import, attributes, test lemmas and
+    docstrings are omitted.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Agent checks only: strict build with no warnings, axiom check of the selected
+    theorems, verbatim comparison of the copied definitions and statement, and an
+    independent agent review of source fidelity. No human review beyond Wentao Li is
+    claimed.
+
+alignment:
+  namespace: "BollobasEldridgeCatlinConjecture"
+  statements:
+    - source: >-
+        If 2 Δ(G1) Δ(G2) < n then G1 and G2 pack.
+      lean: "BollobasEldridgeCatlinConjecture.bollobas_eldridge_catlin_conjecture.variants.sauer_spencer"
+      module: "FCPalomar.SauerSpencer.Solution"
+      status: "proved"

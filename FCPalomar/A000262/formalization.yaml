@@ -1,0 +1,121 @@
+version: "v0.4"
+
+project:
+  name: "OEIS A000262 and A082579: Bala's Theorem 1 (periodicity modulo every k)"
+  description: >-
+    If Σ a(n) x^n/n! = F(x) exp(x G(x)) with F, G integer power series and G(0) = 1,
+    then a(n+k) ≡ a(n) (mod k) for all n, k (Bala 2017, Theorem 1). Hence A000262
+    (exp(x/(1−x))) and A082579 (exp(x/(1−x)^2)) satisfy k | a(n+k) − a(n) for k >= 2.
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "Integer sequences that become periodic on reduction modulo k for all k"
+    authors:
+      - "Peter Bala"
+    id: "https://oeis.org/A047974/a047974_1.pdf"
+    type: "other"
+    location: "Theorem 1 and Lemma 1 (Dec 03 2017)"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      The Lean proof follows Bala's recurrence argument.
+
+related_formalizations: []
+
+classification:
+  arxiv:
+    - "math.NT"
+    - "math.CO"
+  msc2020:
+    - "11B50"
+    - "05A15"
+
+status:
+  scope: >-
+    The selected theorems are OeisA262.bala_theorem1, a000262 and a082579 from the new
+    Formal Conjectures file, with egf and PeriodicModAll copied verbatim.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "OeisA262.bala_theorem1"
+      file: "FCPalomar/A000262/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/A000262/comparator.json"
+    - declaration: "OeisA262.a000262"
+      file: "FCPalomar/A000262/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/A000262/comparator.json"
+    - declaration: "OeisA262.a082579"
+      file: "FCPalomar/A000262/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/A000262/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) wrote the Lean proof and this package under the
+        direction of Wentao Li, with independent agent review of the statement against
+        its source. Wentao Li is the human author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material. The mathematics is credited to the original authors
+    listed under sources.
+
+fidelity:
+  divergences: >-
+    None. The statement is new: it was written for this package from the source and is
+    proposed for Formal Conjectures as FormalConjectures/OEIS/262.lean with the same
+    declarations; only the FormalConjecturesUtil import, attributes and docstrings
+    differ.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Agent checks only: strict build with no warnings, axiom check of the selected
+    theorems, verbatim comparison of the copied definitions and statement, and an
+    independent agent review of source fidelity. No human review beyond Wentao Li is
+    claimed.
+
+alignment:
+  namespace: "OeisA262"
+  statements:
+    - source: >-
+        Bala's Theorem 1, and its two consequences for A000262 and A082579.
+      lean: "OeisA262.bala_theorem1"
+      module: "FCPalomar.A000262.Solution"
+      status: "proved"
+    - source: >-
+        Bala's Theorem 1, and its two consequences for A000262 and A082579.
+      lean: "OeisA262.a000262"
+      module: "FCPalomar.A000262.Solution"
+      status: "proved"
+    - source: >-
+        Bala's Theorem 1, and its two consequences for A000262 and A082579.
+      lean: "OeisA262.a082579"
+      module: "FCPalomar.A000262.Solution"
+      status: "proved"

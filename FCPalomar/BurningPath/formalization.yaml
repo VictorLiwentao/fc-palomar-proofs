@@ -1,0 +1,106 @@
+version: "v0.4"
+
+project:
+  name: "The burning number of a path"
+  description: >-
+    For n >= 1 the burning number of the path on n vertices is exactly ceil(sqrt n), so
+    the bound in the burning number conjecture cannot be improved
+    (Bonato–Janssen–Roshanbin 2016, Theorem 10).
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "How to burn a graph"
+    authors:
+      - "Anthony Bonato"
+      - "Jeannette Janssen"
+      - "Elham Roshanbin"
+    id: "arXiv:1507.06524"
+    type: "paper"
+    location: "Internet Math. 12 (2016) 85-100, Theorem 10"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      The standard ball-counting lower bound and the explicit covering by balls of radii
+      0..k-1 for the upper bound.
+
+related_formalizations:
+  - title: "Formal Conjectures: FormalConjectures/Paper/BurningNumberConjecture.lean"
+    authors:
+      - "The Formal Conjectures Authors"
+    id: "https://github.com/google-deepmind/formal-conjectures/blob/691719db2653905d5fa0775408370fb058e4c59f/FormalConjectures/Paper/BurningNumberConjecture.lean"
+    relationship: "builds-on"
+    note: >-
+      The Challenge copies the statement and the definitions it uses verbatim from this
+      file at commit 691719db. The upstream declaration is `sorry` at that commit.
+
+classification:
+  arxiv:
+    - "math.CO"
+  msc2020:
+    - "05C57"
+    - "05C12"
+
+status:
+  scope: >-
+    The selected theorem is the Formal Conjectures statement
+    burning_number_conjecture.variants.path with the ball-cover definitions
+    IsBurningSequence and burningNumber copied verbatim.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "BurningNumberConjecture.burning_number_conjecture.variants.path"
+      file: "FCPalomar/BurningPath/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/BurningPath/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) wrote the Lean proof and this package under the
+        direction of Wentao Li, with independent agent review of the statement against
+        its source. Wentao Li is the human author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material. The mathematics is credited to the original authors
+    listed under sources.
+
+fidelity:
+  divergences: >-
+    None. The Challenge copies the Formal Conjectures statement and definitions
+    verbatim; only the FormalConjecturesUtil import, attributes, test lemmas and
+    docstrings are omitted.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Agent checks only: strict build with no warnings, axiom check of the selected
+    theorems, verbatim comparison of the copied definitions and statement, and an
+    independent agent review of source fidelity. No human review beyond Wentao Li is
+    claimed.
+
+alignment:
+  namespace: "BurningNumberConjecture"
+  statements:
+    - source: >-
+        The burning number of the path on n >= 1 vertices is ceil(sqrt n) (BJR16,
+        Theorem 10).
+      lean: "BurningNumberConjecture.burning_number_conjecture.variants.path"
+      module: "FCPalomar.BurningPath.Solution"
+      status: "proved"

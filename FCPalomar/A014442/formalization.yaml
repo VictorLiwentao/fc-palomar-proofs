@@ -1,0 +1,96 @@
+version: "v0.4"
+
+project:
+  name: "OEIS A014442: each Pythagorean prime p is the largest prime factor of n^2+1 for exactly two n <= p (Kaltman's conjecture)"
+  description: >-
+    Every prime p ≡ 1 (mod 4) equals a(n), the largest prime factor of n^2+1, for
+    exactly two n in [1, p], and two such distinct n below p add to p and multiply to 1
+    mod p. Conjectured by Michael Kaltman, proved by Robert Israel (2015).
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "OEIS A014442"
+    authors:
+      - "Michael Kaltman"
+      - "Robert Israel"
+    id: "https://oeis.org/A014442"
+    type: "web discussion"
+    location: "comments (2015)"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Israel's proof: −1 has exactly two square roots modulo p.
+
+related_formalizations: []
+
+classification:
+  arxiv:
+    - "math.NT"
+  msc2020:
+    - "11A15"
+    - "11A41"
+
+status:
+  scope: >-
+    The selected theorem is OeisA14442.kaltman from the new Formal Conjectures file,
+    with a copied verbatim.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "OeisA14442.kaltman"
+      file: "FCPalomar/A014442/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/A014442/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) wrote the Lean proof and this package under the
+        direction of Wentao Li, with independent agent review of the statement against
+        its source. Wentao Li is the human author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material. The mathematics is credited to the original authors
+    listed under sources.
+
+fidelity:
+  divergences: >-
+    None. The statement is new: it was written for this package from the source and is
+    proposed for Formal Conjectures as FormalConjectures/OEIS/14442.lean with the same
+    declarations; only the FormalConjecturesUtil import, attributes and docstrings
+    differ.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Agent checks only: strict build with no warnings, axiom check of the selected
+    theorems, verbatim comparison of the copied definitions and statement, and an
+    independent agent review of source fidelity. No human review beyond Wentao Li is
+    claimed.
+
+alignment:
+  namespace: "OeisA14442"
+  statements:
+    - source: >-
+        For p ≡ 1 mod 4 prime: #{n ∈ [1,p] : a(n) = p} = 2, and distinct such i, j < p
+        satisfy i + j = p, ij ≡ 1 (mod p).
+      lean: "OeisA14442.kaltman"
+      module: "FCPalomar.A014442.Solution"
+      status: "proved"

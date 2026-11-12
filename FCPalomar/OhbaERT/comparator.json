@@ -1,0 +1,13 @@
+{
+  "challenge_module": "FCPalomar.OhbaERT.Challenge",
+  "solution_module": "FCPalomar.OhbaERT.Solution",
+  "theorem_names": [
+    "OhbaConjecture.ohba_conjecture.variants.erdos_rubin_taylor"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

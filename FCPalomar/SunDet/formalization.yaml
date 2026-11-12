@@ -1,0 +1,132 @@
+version: "v0.4"
+
+project:
+  name: "Sun's determinants det[(i−j)^m + δ_ij] for m = 1, 2, 3"
+  description: >-
+    Closed forms for det[(i−j)^m + δ_ij]_{1<=i,j<=n}: m = 1 (A079034; Wang–Sun 2022),
+    and Zhi-Wei Sun's conjectured formulas for m = 2 (A355175) and m = 3 (A355326,
+    Conjecture 1), proved by Fried (2026).
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "Evaluations of three determinants"
+    authors:
+      - "Han Wang"
+      - "Zhi-Wei Sun"
+    id: "arXiv:2206.12317"
+    type: "paper"
+    relationship: "independently-proves"
+    author_endorsement: "not-contacted"
+    note: >-
+      The m = 1 evaluation.
+  - title: "Proofs of several OEIS conjectures on determinants and permanents"
+    authors:
+      - "Sela Fried"
+    id: "arXiv:2606.09913"
+    type: "paper"
+    location: "Theorem 9 and Corollary 4"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      The Lean proof uses the Weinstein–Aronszajn identity to reduce to an (m+1)×(m+1)
+      determinant of power sums.
+
+related_formalizations: []
+
+classification:
+  arxiv:
+    - "math.CO"
+    - "math.NT"
+  msc2020:
+    - "15A15"
+    - "11C20"
+
+status:
+  scope: >-
+    The selected theorems are OeisA79034.det_one, det_two and det_three from the new
+    Formal Conjectures file, with M and P copied verbatim.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "OeisA79034.det_one"
+      file: "FCPalomar/SunDet/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/SunDet/comparator.json"
+    - declaration: "OeisA79034.det_two"
+      file: "FCPalomar/SunDet/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/SunDet/comparator.json"
+    - declaration: "OeisA79034.det_three"
+      file: "FCPalomar/SunDet/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/SunDet/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) wrote the Lean proof and this package under the
+        direction of Wentao Li, with independent agent review of the statement against
+        its source. Wentao Li is the human author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material. The mathematics is credited to the original authors
+    listed under sources.
+
+fidelity:
+  divergences: >-
+    None. The statement is new: it was written for this package from the source and is
+    proposed for Formal Conjectures as FormalConjectures/OEIS/79034.lean with the same
+    declarations; only the FormalConjecturesUtil import, attributes and docstrings
+    differ.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Agent checks only: strict build with no warnings, axiom check of the selected
+    theorems, verbatim comparison of the copied definitions and statement, and an
+    independent agent review of source fidelity. No human review beyond Wentao Li is
+    claimed.
+
+alignment:
+  namespace: "OeisA79034"
+  statements:
+    - source: >-
+        Closed forms of det M_m(n) for m = 1, 2, 3.
+      lean: "OeisA79034.det_one"
+      module: "FCPalomar.SunDet.Solution"
+      status: "proved"
+    - source: >-
+        Closed forms of det M_m(n) for m = 1, 2, 3.
+      lean: "OeisA79034.det_two"
+      module: "FCPalomar.SunDet.Solution"
+      status: "proved"
+    - source: >-
+        Closed forms of det M_m(n) for m = 1, 2, 3.
+      lean: "OeisA79034.det_three"
+      module: "FCPalomar.SunDet.Solution"
+      status: "proved"

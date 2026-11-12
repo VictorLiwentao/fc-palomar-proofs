@@ -1,0 +1,113 @@
+version: "v0.4"
+
+project:
+  name: "Erdős Problem 1111: Wagon's bound"
+  description: >-
+    Every finite graph with no clique of size t and chromatic number at least C(t,2)+1
+    has two anticomplete vertex sets that each induce a graph of chromatic number at
+    least 2 (Wagon 1980, as noted by El-Zahar and Erdős).
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "A bound on the chromatic number of graphs without certain induced subgraphs"
+    authors:
+      - "Stan Wagon"
+    id: "doi:10.1016/0095-8956(80)90093-6"
+    type: "paper"
+    location: "J. Combin. Theory Ser. B 29 (1980) 345-346"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Wagon's colouring by pairs of missed vertices of a maximum clique, for 2K2-free
+      graphs.
+  - title: "Erdős Problem 1111"
+    authors:
+      - "Thomas Bloom"
+    id: "https://www.erdosproblems.com/1111"
+    type: "web discussion"
+    location: "Problem 1111"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Records the consequence d(t,2) <= C(t,2)+1.
+
+related_formalizations:
+  - title: "Formal Conjectures: FormalConjectures/ErdosProblems/1111.lean"
+    authors:
+      - "The Formal Conjectures Authors"
+    id: "https://github.com/google-deepmind/formal-conjectures/blob/691719db2653905d5fa0775408370fb058e4c59f/FormalConjectures/ErdosProblems/1111.lean"
+    relationship: "builds-on"
+    note: >-
+      The Challenge copies the statement and the definitions it uses verbatim from this
+      file at commit 691719db. The upstream declaration is `sorry` at that commit.
+
+classification:
+  arxiv:
+    - "math.CO"
+  msc2020:
+    - "05C15"
+    - "05C69"
+
+status:
+  scope: >-
+    The selected theorem is the Formal Conjectures statement erdos_1111.variants.wagon
+    with Anticomplete copied verbatim.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "Erdos1111.erdos_1111.variants.wagon"
+      file: "FCPalomar/Erdos1111/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/Erdos1111/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) wrote the Lean proof and this package under the
+        direction of Wentao Li, with independent agent review of the statement against
+        its source. Wentao Li is the human author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material. The mathematics is credited to the original authors
+    listed under sources.
+
+fidelity:
+  divergences: >-
+    None. The Challenge copies the Formal Conjectures statement and definitions
+    verbatim; only the FormalConjecturesUtil import, attributes, test lemmas and
+    docstrings are omitted.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Agent checks only: strict build with no warnings, axiom check of the selected
+    theorems, verbatim comparison of the copied definitions and statement, and an
+    independent agent review of source fidelity. No human review beyond Wentao Li is
+    claimed.
+
+alignment:
+  namespace: "Erdos1111"
+  statements:
+    - source: >-
+        A finite K_t-free graph with chromatic number at least C(t,2)+1 has two
+        anticomplete sets each containing an edge.
+      lean: "Erdos1111.erdos_1111.variants.wagon"
+      module: "FCPalomar.Erdos1111.Solution"
+      status: "proved"

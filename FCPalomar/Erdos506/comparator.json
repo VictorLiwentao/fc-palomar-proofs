@@ -1,0 +1,13 @@
+{
+  "challenge_module": "FCPalomar.Erdos506.Challenge",
+  "solution_module": "FCPalomar.Erdos506.Solution",
+  "theorem_names": [
+    "Erdos506.erdos_506.variants.segre_n_eq_eight"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

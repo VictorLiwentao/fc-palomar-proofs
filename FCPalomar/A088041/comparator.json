@@ -1,0 +1,14 @@
+{
+  "challenge_module": "FCPalomar.A088041.Challenge",
+  "solution_module": "FCPalomar.A088041.Solution",
+  "theorem_names": [
+    "OeisA88041.isLeast_S",
+    "OeisA88041.a_recurrence"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

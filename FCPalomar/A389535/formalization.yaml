@@ -1,0 +1,114 @@
+version: "v0.4"
+
+project:
+  name: "OEIS A389535: Hanna's formula (7), A(x)^5 ≡ A(x^5) (mod 5)"
+  description: >-
+    For the unique power series A with A(0) = 0, a(1) = 1 and A(x A(x)^4 + x A(x)^5) =
+    A(x)^5, the coefficients are integers and A(x)^5 ≡ A(x^5) (mod 5). Formula (7) in
+    OEIS A389535 is stated there as a conjecture by Paul D. Hanna.
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "OEIS A389535"
+    authors:
+      - "Paul D. Hanna"
+    id: "https://oeis.org/A389535"
+    type: "web discussion"
+    location: "formula (7), labelled conjecture"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      States the functional equation and formula (7) as a conjecture of Paul D. Hanna
+      (2025). The congruence step of the proof is the standard Frobenius identity B(x)^5
+      ≡ B(x^5) (mod 5) for integer power series; the main work is integrality, existence
+      and uniqueness.
+
+related_formalizations: []
+
+classification:
+  arxiv:
+    - "math.CO"
+    - "math.NT"
+  msc2020:
+    - "05A15"
+    - "11B50"
+    - "13F25"
+
+status:
+  scope: >-
+    The selected theorems are exists_unique_solution and conjecture_seven from the new
+    Formal Conjectures file, with IsSolution copied verbatim.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "OeisA389535.exists_unique_solution"
+      file: "FCPalomar/A389535/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/A389535/comparator.json"
+    - declaration: "OeisA389535.conjecture_seven"
+      file: "FCPalomar/A389535/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/A389535/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) wrote the Lean proof and this package under the
+        direction of Wentao Li, with independent agent review of the statement against
+        its source. Wentao Li is the human author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material. The mathematics is credited to the original authors
+    listed under sources.
+
+fidelity:
+  divergences: >-
+    None. The statement is new: it was written for this package from the source and is
+    proposed for Formal Conjectures as FormalConjectures/OEIS/389535.lean with the same
+    declarations; only the FormalConjecturesUtil import, attributes and docstrings
+    differ.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Agent checks only: strict build with no warnings, axiom check of the selected
+    theorems, verbatim comparison of the copied definitions and statement, and an
+    independent agent review of source fidelity. No human review beyond Wentao Li is
+    claimed.
+
+alignment:
+  namespace: "OeisA389535"
+  statements:
+    - source: >-
+        The defining equation has a unique solution; its coefficients are integers a(n)
+        and [x^n]A^5 ≡ a(n/5)·[5|n] (mod 5).
+      lean: "OeisA389535.exists_unique_solution"
+      module: "FCPalomar.A389535.Solution"
+      status: "proved"
+    - source: >-
+        The defining equation has a unique solution; its coefficients are integers a(n)
+        and [x^n]A^5 ≡ a(n/5)·[5|n] (mod 5).
+      lean: "OeisA389535.conjecture_seven"
+      module: "FCPalomar.A389535.Solution"
+      status: "proved"

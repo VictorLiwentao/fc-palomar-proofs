@@ -1,0 +1,125 @@
+version: "v0.4"
+
+project:
+  name: "OEIS A053175: Hankel determinants of the Catalan–Larcombe–French numbers"
+  description: >-
+    For every n, 2^(n(n+3)) divides the (n+1)×(n+1) Hankel determinant det[a(i+j)] of
+    the Catalan–Larcombe–French numbers a, and the quotient is a positive odd integer.
+    This is Zhi-Wei Sun's conjecture (2013), proved by Zhu and Sun (2018).
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "OEIS A053175: Catalan-Larcombe-French sequence"
+    authors:
+      - "The OEIS Foundation Inc. and contributors"
+    id: "https://oeis.org/A053175"
+    type: "web discussion"
+    location: "Zhi-Wei Sun's conjecture, Aug 14 2013"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      States the conjecture that the Hankel determinant divided by 2^(n(n+3)) is a
+      positive odd integer.
+  - title: "Hankel-type determinants for some combinatorial sequences"
+    authors:
+      - "Bao-Xuan Zhu"
+      - "Zhi-Wei Sun"
+    id: "arXiv:1609.06810"
+    type: "paper"
+    location: "Int. J. Number Theory 14 (2018) 1265-1277, Theorem 1.2"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      The Lean proof follows Zhu and Sun in outline. Two steps use different arguments:
+      oddness via the unique permutation pairing i with a partner making i + sigma(i) a
+      power of two, and positivity via a Gram-matrix representation over roots of unity.
+
+related_formalizations:
+  - title: "Formal Conjectures: FormalConjectures/OEIS/53175.lean"
+    authors:
+      - "The Formal Conjectures Authors"
+    id: "https://github.com/google-deepmind/formal-conjectures/blob/691719db2653905d5fa0775408370fb058e4c59f/FormalConjectures/OEIS/53175.lean"
+    relationship: "builds-on"
+    note: >-
+      The Challenge copies the statement and the definitions it uses verbatim from this
+      file at commit 691719db. The upstream declaration is `sorry` at that commit.
+
+classification:
+  arxiv:
+    - "math.NT"
+    - "math.CO"
+  msc2020:
+    - "11B83"
+    - "15A15"
+    - "05A10"
+
+status:
+  scope: >-
+    The selected theorem is the Formal Conjectures statement OeisA53175.conjecture for
+    the recurrence-defined sequence a. The proof shows that the natural-number
+    recurrence never truncates and that a(n) = 2^n D(n) with an explicit binomial sum D.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "OeisA53175.conjecture"
+      file: "FCPalomar/A053175/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/A053175/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) wrote the Lean proof and this package under the
+        direction of Wentao Li, with independent agent review of the statement against
+        its source. Wentao Li is the human author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material. The mathematics is credited to the original authors
+    listed under sources.
+
+fidelity:
+  divergences: >-
+    None. The Challenge copies the Formal Conjectures statement and definitions
+    verbatim; only the FormalConjecturesUtil import, attributes, test lemmas and
+    docstrings are omitted.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Agent checks only: strict build with no warnings, axiom check of the selected
+    theorems, verbatim comparison of the copied definitions and statement, and an
+    independent agent review of source fidelity. No human review beyond Wentao Li is
+    claimed.
+
+alignment:
+  namespace: "OeisA53175"
+  statements:
+    - source: >-
+        For every n, 2^(n(n+3)) divides det[a(i+j)]_{0<=i,j<=n} and the quotient is a
+        positive odd integer (Sun's conjecture; Zhu–Sun 2018, Theorem 1.2).
+      lean: "OeisA53175.conjecture"
+      module: "FCPalomar.A053175.Solution"
+      status: "proved"
+
+known_gaps:
+  - >-
+    Equality of the recurrence a with Zhu–Sun's Catalan-sum definition of the
+    Catalan–Larcombe–French numbers is not formalized; it is not needed for the selected
+    statement, which is about the recurrence.

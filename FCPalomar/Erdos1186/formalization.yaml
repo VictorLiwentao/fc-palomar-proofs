@@ -1,0 +1,130 @@
+version: "v0.4"
+
+project:
+  name: "Erdős Problem 1186: bounds on the density of monochromatic progressions"
+  description: >-
+    For every k >= 2 the constant δ_k of Erdős Problem 1186 is positive (via van der
+    Waerden's theorem) and at most 1/((k−1)2^k) (by the probabilistic method), as stated
+    by Erdős (1980, p. 93).
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "A survey of problems in combinatorial number theory"
+    authors:
+      - "Paul Erdős"
+    id: "Ann. Discrete Math. 6 (1980) 89-115"
+    type: "paper"
+    location: "p. 93"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Erdős states both bounds without detailed proof. The lower bound uses van der
+      Waerden's theorem (here via Mathlib's Hales–Jewett theorem) and an averaging
+      argument; the upper bound is a first-moment count over random colourings.
+  - title: "Erdős Problem 1186"
+    authors:
+      - "Thomas Bloom"
+    id: "https://www.erdosproblems.com/1186"
+    type: "web discussion"
+    location: "Problem 1186"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Records the two bounds.
+
+related_formalizations:
+  - title: "Formal Conjectures: FormalConjectures/ErdosProblems/1186.lean"
+    authors:
+      - "The Formal Conjectures Authors"
+    id: "https://github.com/google-deepmind/formal-conjectures/blob/691719db2653905d5fa0775408370fb058e4c59f/FormalConjectures/ErdosProblems/1186.lean"
+    relationship: "builds-on"
+    note: >-
+      The Challenge copies the statement and the definitions it uses verbatim from this
+      file at commit 691719db. The upstream declaration is `sorry` at that commit.
+
+classification:
+  arxiv:
+    - "math.CO"
+    - "math.NT"
+  msc2020:
+    - "05D10"
+    - "11B25"
+
+status:
+  scope: >-
+    The selected theorems are the Formal Conjectures statements
+    erdos_1186.variants.van_der_waerden and erdos_1186.variants.probabilistic, with
+    monoCount, minMonoCount and δ copied verbatim.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "Erdos1186.erdos_1186.variants.van_der_waerden"
+      file: "FCPalomar/Erdos1186/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/Erdos1186/comparator.json"
+    - declaration: "Erdos1186.erdos_1186.variants.probabilistic"
+      file: "FCPalomar/Erdos1186/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/Erdos1186/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) wrote the Lean proof and this package under the
+        direction of Wentao Li, with independent agent review of the statement against
+        its source. Wentao Li is the human author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material. The mathematics is credited to the original authors
+    listed under sources.
+
+fidelity:
+  divergences: >-
+    None. The Challenge copies the Formal Conjectures statement and definitions
+    verbatim; only the FormalConjecturesUtil import, attributes, test lemmas and
+    docstrings are omitted.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Agent checks only: strict build with no warnings, axiom check of the selected
+    theorems, verbatim comparison of the copied definitions and statement, and an
+    independent agent review of source fidelity. No human review beyond Wentao Li is
+    claimed.
+
+alignment:
+  namespace: "Erdos1186"
+  statements:
+    - source: >-
+        For every k >= 2: 0 < δ_k (van der Waerden) and δ_k <= 1/((k−1)2^k)
+        (probabilistic method), Erdős 1980, p. 93.
+      lean: "Erdos1186.erdos_1186.variants.van_der_waerden"
+      module: "FCPalomar.Erdos1186.Solution"
+      status: "proved"
+    - source: >-
+        For every k >= 2: 0 < δ_k (van der Waerden) and δ_k <= 1/((k−1)2^k)
+        (probabilistic method), Erdős 1980, p. 93.
+      lean: "Erdos1186.erdos_1186.variants.probabilistic"
+      module: "FCPalomar.Erdos1186.Solution"
+      status: "proved"

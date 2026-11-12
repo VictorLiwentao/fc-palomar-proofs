@@ -1,0 +1,109 @@
+version: "v0.4"
+
+project:
+  name: "OEIS A088041: the least k > 1 with k^4 − 1 divisible by an n-th power (Israel 2019)"
+  description: >-
+    For n >= 4 the least k > 1 such that m^n | k^4 − 1 for some m > 1 is 2^(n−2) − 1,
+    and Barker's recurrence a(n) = 3a(n−1) − 2a(n−2) holds for n > 5. Proved by Robert
+    Israel (2019).
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "Proof of conjectured formula (A088041)"
+    authors:
+      - "Robert Israel"
+    id: "https://oeis.org/A088041/a088041.pdf"
+    type: "other"
+    location: "2019"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Israel's case analysis on the factorization k^4 − 1 = j(j+2)(j^2+2j+2).
+
+related_formalizations: []
+
+classification:
+  arxiv:
+    - "math.NT"
+  msc2020:
+    - "11A51"
+    - "11D41"
+
+status:
+  scope: >-
+    The selected theorems are OeisA88041.isLeast_S and OeisA88041.a_recurrence from the
+    new Formal Conjectures file, with S and a copied verbatim.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "OeisA88041.isLeast_S"
+      file: "FCPalomar/A088041/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/A088041/comparator.json"
+    - declaration: "OeisA88041.a_recurrence"
+      file: "FCPalomar/A088041/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/A088041/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) wrote the Lean proof and this package under the
+        direction of Wentao Li, with independent agent review of the statement against
+        its source. Wentao Li is the human author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material. The mathematics is credited to the original authors
+    listed under sources.
+
+fidelity:
+  divergences: >-
+    None. The statement is new: it was written for this package from the source and is
+    proposed for Formal Conjectures as FormalConjectures/OEIS/88041.lean with the same
+    declarations; only the FormalConjecturesUtil import, attributes and docstrings
+    differ.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Agent checks only: strict build with no warnings, axiom check of the selected
+    theorems, verbatim comparison of the copied definitions and statement, and an
+    independent agent review of source fidelity. No human review beyond Wentao Li is
+    claimed.
+
+alignment:
+  namespace: "OeisA88041"
+  statements:
+    - source: >-
+        For n >= 4, 2^(n−2) − 1 is the least element of S n; a(n) = 3a(n−1) − 2a(n−2)
+        for n >= 6.
+      lean: "OeisA88041.isLeast_S"
+      module: "FCPalomar.A088041.Solution"
+      status: "proved"
+    - source: >-
+        For n >= 4, 2^(n−2) − 1 is the least element of S n; a(n) = 3a(n−1) − 2a(n−2)
+        for n >= 6.
+      lean: "OeisA88041.a_recurrence"
+      module: "FCPalomar.A088041.Solution"
+      status: "proved"

@@ -1,0 +1,13 @@
+{
+  "challenge_module": "FCPalomar.A014442.Challenge",
+  "solution_module": "FCPalomar.A014442.Solution",
+  "theorem_names": [
+    "OeisA14442.kaltman"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

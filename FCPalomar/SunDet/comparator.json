@@ -1,0 +1,15 @@
+{
+  "challenge_module": "FCPalomar.SunDet.Challenge",
+  "solution_module": "FCPalomar.SunDet.Solution",
+  "theorem_names": [
+    "OeisA79034.det_one",
+    "OeisA79034.det_two",
+    "OeisA79034.det_three"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

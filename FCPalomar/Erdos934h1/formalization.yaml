@@ -1,0 +1,116 @@
+version: "v0.4"
+
+project:
+  name: "Erdős Problem 934: h_1(d) = d + 1 for d ≠ 2"
+  description: >-
+    For every d ≠ 2, the least m such that every graph with at least m edges and maximum
+    degree at most d has two vertex-disjoint edges is d + 1. The value is folklore;
+    Cambie et al. (2022) call it easy.
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "Erdős Problem 934"
+    authors:
+      - "Thomas Bloom"
+    id: "https://www.erdosproblems.com/934"
+    type: "web discussion"
+    location: "Problem 934 and its remarks"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      States h_1(d) = d + 1 as easy.
+  - title: "Maximising line subgraphs of diameter at most t"
+    authors:
+      - "Stijn Cambie"
+      - "Wouter Cames van Batenburg"
+      - "Rémi de Joannis de Verclos"
+      - "Ross J. Kang"
+    id: "arXiv:2103.11898"
+    type: "paper"
+    location: "SIAM J. Discrete Math. 36 (2022) 939-950"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Calls the t = 1 case easy. The Lean proof is the standard argument: pairwise
+      intersecting edges form a star or a triangle.
+
+related_formalizations:
+  - title: "Formal Conjectures: FormalConjectures/ErdosProblems/934.lean"
+    authors:
+      - "The Formal Conjectures Authors"
+    id: "https://github.com/google-deepmind/formal-conjectures/blob/691719db2653905d5fa0775408370fb058e4c59f/FormalConjectures/ErdosProblems/934.lean"
+    relationship: "builds-on"
+    note: >-
+      The Challenge copies the statement and the definitions it uses verbatim from this
+      file at commit 691719db. The upstream declaration is `sorry` at that commit.
+
+classification:
+  arxiv:
+    - "math.CO"
+  msc2020:
+    - "05C35"
+    - "05C70"
+
+status:
+  scope: >-
+    The selected theorem is the Formal Conjectures statement erdos_934.variants.h_one
+    with HasFarEdges and h copied verbatim. The statement excludes d = 2, where the
+    triangle gives h_1(2) = 4.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "Erdos934.erdos_934.variants.h_one"
+      file: "FCPalomar/Erdos934h1/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/Erdos934h1/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) wrote the Lean proof and this package under the
+        direction of Wentao Li, with independent agent review of the statement against
+        its source. Wentao Li is the human author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material. The mathematics is credited to the original authors
+    listed under sources.
+
+fidelity:
+  divergences: >-
+    None. The Challenge copies the Formal Conjectures statement and definitions
+    verbatim; only the FormalConjecturesUtil import, attributes, test lemmas and
+    docstrings are omitted.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Agent checks only: strict build with no warnings, axiom check of the selected
+    theorems, verbatim comparison of the copied definitions and statement, and an
+    independent agent review of source fidelity. No human review beyond Wentao Li is
+    claimed.
+
+alignment:
+  namespace: "Erdos934"
+  statements:
+    - source: >-
+        For every d ≠ 2, h_1(d) = d + 1.
+      lean: "Erdos934.erdos_934.variants.h_one"
+      module: "FCPalomar.Erdos934h1.Solution"
+      status: "proved"
