@@ -65,6 +65,16 @@ related_formalizations:
     note: >-
       The Challenge copies the statement and the definitions it uses verbatim from this
       file at commit 691719db. The upstream declaration is `sorry` at that commit.
+  - title: "SamuelSchlesinger/reconstruction-conjecture: SimpleGraph.SameDeck.iso_of_not_connected"
+    authors:
+      - "Samuel Schlesinger"
+    id: "https://github.com/SamuelSchlesinger/reconstruction-conjecture/tree/545d4d0898c5aeae2d799963a8432cf174d5474c"
+    relationship: "independent"
+    note: >-
+      An earlier Lean 4 proof of Kelly's theorem for disconnected graphs, for graphs on
+      a single vertex type, without sorry since 2026-05-03. This package proves the
+      Formal Conjectures statement, which compares graphs on two vertex types, and the
+      Lovász and Müller edge bounds; it was developed independently.
 
 classification:
   arxiv:

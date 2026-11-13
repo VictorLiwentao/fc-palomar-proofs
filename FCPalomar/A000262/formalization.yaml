@@ -24,7 +24,18 @@ sources:
     note: >-
       The Lean proof follows Bala's recurrence argument.
 
-related_formalizations: []
+related_formalizations:
+  - title: "ahaankallat/congruence-phenomena-higher-order-lean: LagrangeFamily.lagrange_type_shift"
+    authors:
+      - "Ahaan Kallat"
+    id: "https://github.com/ahaankallat/congruence-phenomena-higher-order-lean/tree/8ca3c4250c58f47eadabd82bcd5650f3d0632d7b"
+    relationship: "independent"
+    note: >-
+      Lean proofs (Apache-2.0, October 2026; arXiv:2610.15849) of the A000262 and
+      A082579 congruences by a different route, via lagrange_type_shift with F = 1 and
+      CongruenceTheory.Aw_shift_mod in ahaankallat/congruence-phenomena-lean. This
+      package proves Bala's Theorem 1 for every integer power series F, which those
+      repositories do not cover.
 
 classification:
   arxiv:

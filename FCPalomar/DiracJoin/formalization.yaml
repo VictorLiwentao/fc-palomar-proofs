@@ -44,6 +44,17 @@ related_formalizations:
     note: >-
       The Challenge copies the statement and the definitions it uses verbatim from this
       file at commit 691719db. The upstream declaration is `sorry` at that commit.
+  - title: "TheJustinSunPrize/awards PR #358 (baobingzhang, JSP-000761)"
+    authors:
+      - "baobingzhang"
+    id: "https://github.com/TheJustinSunPrize/awards/pull/358"
+    relationship: "independent"
+    note: >-
+      An earlier Lean 4.34 proof of Dirac's join and the f(3r)(r(2n+1)) bound, with
+      criticality defined by edges only; the Formal Conjectures IsKCritical also
+      requires vertex-criticality, and erdos_1032.variants.dirac_six is not stated
+      there. Its source repository is no longer public. This package was developed
+      independently.
 
 classification:
   arxiv:

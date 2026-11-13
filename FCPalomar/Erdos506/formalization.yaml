@@ -42,6 +42,16 @@ related_formalizations:
     note: >-
       The Challenge copies the statement and the definitions it uses verbatim from this
       file at commit 691719db. The upstream declaration is `sorry` at that commit.
+  - title: "rafalwronapl/erdos506-review-package-2026-08-16"
+    authors:
+      - "rafalwronapl"
+    id: "https://github.com/rafalwronapl/erdos506-review-package-2026-08-16/tree/f647646e77e48c10cf7928d5203214b520537506"
+    relationship: "independent"
+    note: >-
+      An earlier Lean package (Apache-2.0, 2026-08-20), linked from the
+      erdosproblems.com/506 proof-claims thread, that proves Erdos506.erdos_506 for
+      every n >= 4, including Segre's n = 8 example. This package proves the Formal
+      Conjectures variant segre_n_eq_eight and was developed independently.
 
 classification:
   arxiv:

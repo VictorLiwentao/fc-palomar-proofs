@@ -44,6 +44,16 @@ related_formalizations:
     note: >-
       The lemmas e494_newton, e494_esymm_eq and e494_eq_of_esymm are adapted from this
       Apache-2.0 package; the copyright line is kept in Solution.lean.
+  - title: "CollinYuanjieRen/awards: submissions/jsp-000399-cyr (Justin Sun Prize PR #127)"
+    authors:
+      - "CollinYuanjieRen"
+    id: "https://github.com/CollinYuanjieRen/awards/tree/963a52aba021a920b368c6a66d25c3c1c3051c65/submissions/jsp-000399-cyr"
+    relationship: "independent"
+    note: >-
+      An earlier Lean 4.34 proof of card_divisible_by_prime_gt_k with the same statement
+      and definitions (TheJustinSunPrize/awards PR #127), found after this proof was
+      written. This package was developed independently and also proves
+      k_eq_4_card_gt_12, which that submission does not cover.
 
 classification:
   arxiv:

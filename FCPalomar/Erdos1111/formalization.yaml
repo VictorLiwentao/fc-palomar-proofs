@@ -44,6 +44,16 @@ related_formalizations:
     note: >-
       The Challenge copies the statement and the definitions it uses verbatim from this
       file at commit 691719db. The upstream declaration is `sorry` at that commit.
+  - title: "TheJustinSunPrize/awards PR #526 (baobingzhang, JSP-000922)"
+    authors:
+      - "baobingzhang"
+    id: "https://github.com/TheJustinSunPrize/awards/pull/526"
+    relationship: "independent"
+    note: >-
+      An earlier Lean 4.34 proof of Wagon's bound with the same theorem name, stated for
+      V : Type with Fintype V and 1 <= t. Its source repository
+      baobingzhang/jsp-000922-erdos1111-lean is no longer public. This package proves
+      the exact Formal Conjectures statement and was developed independently.
 
 classification:
   arxiv:
