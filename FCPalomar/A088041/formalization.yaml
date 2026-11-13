@@ -35,8 +35,9 @@ classification:
 
 status:
   scope: >-
-    The selected theorems are OeisA88041.isLeast_S and OeisA88041.a_recurrence from the
-    new Formal Conjectures file, with S and a copied verbatim.
+    The selected theorems are OeisA88041.isLeast_S and OeisA88041.a_recurrence. The
+    statements and their definitions were written for this package; they are not copied
+    from an existing formalization.
   sorry_count: 0
   sorry_in_definitions: 0
   axioms:

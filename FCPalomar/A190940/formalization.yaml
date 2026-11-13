@@ -37,8 +37,9 @@ classification:
 
 status:
   scope: >-
-    The selected theorem is OeisA190940.card_lcmPartialSums from the new Formal
-    Conjectures file, with partialSums, lcmPartialSums and a copied verbatim.
+    The selected theorem is OeisA190940.card_lcmPartialSums. The statement and its
+    definitions were written for this package; they are not copied from an existing
+    formalization.
   sorry_count: 0
   sorry_in_definitions: 0
   axioms:

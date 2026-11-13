@@ -40,8 +40,9 @@ classification:
 
 status:
   scope: >-
-    The selected theorems are exists_unique_solution and conjecture_seven from the new
-    Formal Conjectures file, with IsSolution copied verbatim.
+    The selected theorems are exists_unique_solution and conjecture_seven. The
+    statements and their definitions were written for this package; they are not copied
+    from an existing formalization.
   sorry_count: 0
   sorry_in_definitions: 0
   axioms:

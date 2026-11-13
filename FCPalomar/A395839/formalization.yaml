@@ -46,8 +46,9 @@ classification:
 
 status:
   scope: >-
-    The selected theorems are OeisA395839.odd_iff and OeisA395839.mod_three from the new
-    Formal Conjectures file, with IsCatalanEquation and coeffs copied verbatim.
+    The selected theorems are OeisA395839.odd_iff and OeisA395839.mod_three. The
+    statements and their definitions were written for this package; they are not copied
+    from an existing formalization.
   sorry_count: 0
   sorry_in_definitions: 0
   axioms:

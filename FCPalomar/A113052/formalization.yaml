@@ -46,8 +46,9 @@ classification:
 
 status:
   scope: >-
-    The selected theorems are OeisA113052.conjecture and OeisA113052.a113047 from the
-    new Formal Conjectures file.
+    The selected theorems are OeisA113052.conjecture and OeisA113052.a113047. The
+    statements were written for this package; they are not copied from an existing
+    formalization.
   sorry_count: 0
   sorry_in_definitions: 0
   axioms:

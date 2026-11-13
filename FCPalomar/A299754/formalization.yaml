@@ -37,8 +37,8 @@ classification:
 
 status:
   scope: >-
-    The selected theorem is OeisA299754.a_prime from the new Formal Conjectures file,
-    with rootSums and a copied verbatim.
+    The selected theorem is OeisA299754.a_prime. The statement and its definitions were
+    written for this package; they are not copied from an existing formalization.
   sorry_count: 0
   sorry_in_definitions: 0
   axioms:

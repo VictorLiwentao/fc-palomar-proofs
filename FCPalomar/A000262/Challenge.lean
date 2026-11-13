@@ -21,7 +21,7 @@ public import Mathlib
 /-!
 # Challenge: OEIS A000262 and A082579, Bala's Theorem 1
 
-Copied verbatim from `FormalConjectures/OEIS/262.lean` as added by the accompanying formal-conjectures PR (on top of commit `691719db2653905d5fa0775408370fb058e4c59f`) (The Formal Conjectures Authors, Apache-2.0). Only imports, attributes, test lemmas and unrelated declarations are left out.
+Written for this package; not copied from an existing formalization. The same declarations are proposed for Formal Conjectures as `FormalConjectures/OEIS/262.lean` (on top of commit `691719db2653905d5fa0775408370fb058e4c59f`), in a pull request that will link this entry. Only that file's imports, attributes, test lemmas and unrelated declarations are left out here.
 The `sorry` marks the statement to be proved; it is not a proof.
 -/
 

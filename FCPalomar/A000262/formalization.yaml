@@ -47,8 +47,9 @@ classification:
 
 status:
   scope: >-
-    The selected theorems are OeisA262.bala_theorem1, a000262 and a082579 from the new
-    Formal Conjectures file, with egf and PeriodicModAll copied verbatim.
+    The selected theorems are OeisA262.bala_theorem1, a000262 and a082579. The
+    statements and their definitions were written for this package; they are not copied
+    from an existing formalization.
   sorry_count: 0
   sorry_in_definitions: 0
   axioms:
