@@ -29,11 +29,22 @@ The file proves existence and uniqueness of $A$ over $\mathbb{Q}$, integrality o
 that $a(n) \not\equiv 3 \pmod 5$ for every $n \ge 1$.
 
 The proof works with Hurwitz series: sequences $f_n = n!\,[x^n] f$ with the binomial product.
-Over $\mathbb{F}_5$, the derivative $D$ satisfies that $D^5$ and $D^{25}$ are derivations and
-that every fifth power is a constant. A char-5 chain rule shows that the set
-$S = \{f : D^{25} f = D^5 f\}$ is stable under the operator $B \mapsto x \exp(B^{\circ 4})$
-on series with $B_0 = B_5 = 0$. Hence $a(n) \bmod 5$ has period $20$ for $n \ge 5$, and a
-finite computation of $25$ coefficients finishes the proof.
+Write $T(B) = x \exp(B^{\circ 4})$ for the operator of the equation on Hurwitz series.
+
+*Existence, uniqueness and integrality.* Over any commutative ring, $T$ is causal: coefficient
+$n$ of $T(B)$ depends only on the coefficients of $B$ below $n$. So $T$ has at most one fixed
+point, and the fixed point can be built one coefficient at a time. Over $\mathbb{Z}$ this gives
+integers $a(n)$. The map $F \mapsto (n!\,[x^n] F)$ turns the equation over $\mathbb{Q}$ into the
+fixed-point equation for $T$ over $\mathbb{Q}$. The image of the integer fixed point solves it,
+and uniqueness shows that every rational solution is $\sum_n a(n) x^n / n!$.
+
+*Residues modulo 5.* Over $\mathbb{F}_5$, the derivative $D$ satisfies that $D^5$ and $D^{25}$
+are derivations and that every fifth power is a constant. A char-5 chain rule shows that $T$
+preserves the set of series $f$ with $D^{25} f = D^5 f$ and $f_0 = f_5 = 0$. A series with
+$D^{25} f = D^5 f$ is determined by its first $25$ coefficients. The residue pattern $P$ (five
+initial values, then period $20$) lies in this set, and a finite computation shows that $T(P)$
+and $P$ agree below index $25$. Hence $T(P) = P$. By uniqueness of the fixed point over
+$\mathbb{F}_5$, $P$ is the reduction of $(a(n))$ modulo $5$, and no value of $P$ is $3$.
 
 *References:*
 - Paul D. Hanna, [A396804](https://oeis.org/A396804), June 9, 2026.
