@@ -26,7 +26,25 @@ sources:
     note: >-
       States the equation and the three congruences as conjectures. Searches on
       2026-10-28 found no earlier written proof. The proof here, by Wentao Li, works in
-      an integral Hurwitz-series algebra.
+      an integral Hurwitz-series algebra; it was first made public on October 29, 2026
+      at 02:56 UTC. L.-H. Su posted an independent proof of all three congruences later
+      the same day (see below).
+  - title: "Parity and Asymptotic Laws for Implicit and Reflected Integer Sequences"
+    authors:
+      - "Lien-Hung Su"
+    id: "https://doi.org/10.5281/zenodo.23760779"
+    type: "paper"
+    location: "Zenodo record 23760779, version v1 (created October 29, 2026, 09:55 UTC), Theorem 6.2 and Corollary 6.3"
+    relationship: "independently-proves"
+    author_endorsement: "not-contacted"
+    note: >-
+      An unrefereed preprint. Theorem 6.2 proves, for integer d ≥ 2 and 0 ≤ r ≤ d, that
+      the e.g.f.s with A(x/A(x)^r) = exp(x A(x)^(d−r)) have integer coefficients a(n) ≡
+      1 (mod d), and for odd d ≥ 3 the parity pattern a(n) odd iff n = 0, 1 or n even.
+      Corollary 6.3 applies it to A368630 (d, r, s) = (3, 2, 1) and A368631, which gives
+      all three of Hanna's congruences. It uses a labelled-partition argument and
+      contains no Lean. It appeared about seven hours after this package's proof was
+      made public, and the two proofs are independent.
 
 related_formalizations:
   - title: "VictorLiwentao/lean-oeis-proofs: LeanOeisProofs/NewProofs/A368630.lean"
@@ -118,19 +136,20 @@ automation:
 
 fidelity:
   divergences: >-
-    None. The statement is new: it was written for this package from the source and is
-    proposed for Formal Conjectures as FormalConjectures/OEIS/368630.lean with the same
-    declarations; only the FormalConjecturesUtil import, attributes and docstrings
-    differ.
+    None. The statement was written for this package from the OEIS entry, not copied
+    from an existing formalization. The same declarations are proposed for Formal
+    Conjectures as FormalConjectures/OEIS/368630.lean (google-deepmind/formal-
+    conjectures PR #7674). The Challenge leaves out only the FormalConjecturesUtil
+    import, attributes, test lemmas and unrelated declarations of that file.
 
 review:
   status: "self-assessed"
   reviewers: []
   notes: >-
-    Agent checks only: strict build with no warnings, axiom check of the selected
-    theorems, verbatim comparison of the copied definitions and statement, and an
-    independent agent review of source fidelity. No human review beyond Wentao Li is
-    claimed.
+    Checks by AI agents only: a strict build with no warnings, an axiom check of the
+    selected theorems, a check that the Challenge declarations appear verbatim in
+    Solution, and a review of the statement against its source by a separate agent. No
+    independent human review is claimed.
 
 alignment:
   namespace: "OeisA368630"
