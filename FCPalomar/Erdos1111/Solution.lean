@@ -26,8 +26,8 @@ then it has two anticomplete vertex sets that each contain an edge.
 
 The definition `Anticomplete` is copied verbatim from `FormalConjectures/ErdosProblems/1111.lean`
 (Copyright 2026 The Formal Conjectures Authors, Apache 2.0) at upstream commit
-`7bdc4a42f24c0316f81c73b26121794b2bed96a3`, in the namespace `Erdos1111Wagon` instead of
-`Erdos1111`. The theorem `wagon` is the statement of `erdos_1111.variants.wagon` there.
+`691719db2653905d5fa0775408370fb058e4c59f`. The theorem `wagon` is the statement of
+`erdos_1111.variants.wagon` there.
 
 *Reference:* S. Wagon, "A bound on the chromatic number of graphs without certain induced
 subgraphs", *J. Combin. Theory Ser. B* 29 (1980), 345--346.

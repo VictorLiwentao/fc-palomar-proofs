@@ -5,7 +5,12 @@ project:
   description: >-
     Every finite graph with no clique of size t and chromatic number at least C(t,2)+1
     has two anticomplete vertex sets that each induce a graph of chromatic number at
-    least 2 (Wagon 1980, as noted by El-Zahar and Erdős).
+    least 2 (Wagon 1980, as noted by El-Zahar and Erdős). In Erdős Problem 1111, d(t,c)
+    is the least d such that every finite graph with clique number less than t and
+    chromatic number at least d has two anticomplete vertex sets A, B with χ(G[A]) ≥ c
+    and χ(G[B]) ≥ c (El-Zahar and Erdős 1985). So the result says d(t,2) ≤ C(t,2)+1. Two
+    anticomplete sets that each induce a graph of chromatic number at least 2 are the
+    same as an induced 2K₂.
   authors:
     - "Wentao Li"
   responsible_maintainers:
@@ -16,7 +21,7 @@ sources:
   - title: "A bound on the chromatic number of graphs without certain induced subgraphs"
     authors:
       - "Stan Wagon"
-    id: "doi:10.1016/0095-8956(80)90093-6"
+    id: "doi:10.1016/0095-8956(80)90093-3"
     type: "paper"
     location: "J. Combin. Theory Ser. B 29 (1980) 345-346"
     relationship: "formalizes"
@@ -24,6 +29,19 @@ sources:
     note: >-
       Wagon's colouring by pairs of missed vertices of a maximum clique, for 2K2-free
       graphs.
+  - title: "On the existence of two non-neighboring subgraphs in a graph"
+    authors:
+      - "M. El-Zahar"
+      - "P. Erdős"
+    id: "doi:10.1007/BF02579243"
+    type: "paper"
+    location: "Combinatorica 5 (1985) 295-300"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Poses the question of Erdős Problem 1111 (the function d(t,c)).
+      erdosproblems.com/1111 reports that they note Wagon's theorem gives d(t,2) <=
+      C(t,2)+1.
   - title: "Erdős Problem 1111"
     authors:
       - "Thomas Bloom"
@@ -101,16 +119,16 @@ fidelity:
   divergences: >-
     None. The Challenge copies the Formal Conjectures statement and definitions
     verbatim; only the FormalConjecturesUtil import, attributes, test lemmas and
-    docstrings are omitted.
+    unrelated declarations are left out.
 
 review:
   status: "self-assessed"
   reviewers: []
   notes: >-
-    Agent checks only: strict build with no warnings, axiom check of the selected
-    theorems, verbatim comparison of the copied definitions and statement, and an
-    independent agent review of source fidelity. No human review beyond Wentao Li is
-    claimed.
+    Checks by AI agents only: a strict build with no warnings, an axiom check of the
+    selected theorems, a check that the Challenge declarations appear verbatim in
+    Solution, and a review of the statement against its source by a separate agent. No
+    independent human review is claimed.
 
 alignment:
   namespace: "Erdos1111"
