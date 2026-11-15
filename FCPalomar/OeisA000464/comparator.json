@@ -1,0 +1,29 @@
+{
+  "challenge_module": "FCPalomar.OeisA000464.Challenge",
+  "solution_module": "FCPalomar.OeisA000464.Solution",
+  "theorem_names": [
+    "OeisA000464.not_conjecture1",
+    "OeisA000464.not_periodic_of_eighty_one_dvd",
+    "OeisA000464.a_fifty_five",
+    "OeisA000464.period_two_pow",
+    "OeisA000464.period_two_pow_of_three_le",
+    "OeisA000464.antiperiod_odd_prime_pow",
+    "OeisA000464.period_odd_prime_pow",
+    "OeisA000464.period_totient",
+    "OeisA000464.conjecture1_eventual",
+    "OeisA000464.conjecture1_of_exponent_le_three",
+    "OeisA000464.period_carmichael",
+    "OeisA000464.conjecture1_carmichael_eventual",
+    "OeisA000464.carmichael_eight_sharp",
+    "OeisA000464.conjecture2",
+    "OeisA000464.conjecture2_exp_integral",
+    "OeisA000464.conjecture3",
+    "OeisA000464.conjecture4"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

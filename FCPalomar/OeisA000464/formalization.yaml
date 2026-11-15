@@ -1,0 +1,478 @@
+version: "v0.4"
+
+project:
+  name: "OEIS A000464: Bala's conjectures for sin x / cos 2x"
+  description: >-
+    Let a(n) = (2n+1)! [x^(2n+1)] sin x / cos 2x (OEIS A000464: 1, 11, 361, 24611, …;
+    Glaisher, 1914). Peter Bala made four conjectures on it in 2021. The package refutes
+    the first as stated: modulo every multiple of 81, (a(n))_{n≥1} is not purely
+    periodic with any period, because a(55) ≡ 65 ≢ 11 = a(1) (mod 81). It proves the
+    corrected form, a(n + φ(k)) ≡ a(n) (mod k) whenever 2n + 1 is at least the exponent
+    of every odd prime in k, so the conjecture holds eventually for every k and from n =
+    1 when no odd prime exponent of k exceeds 3. It proves the other three conjectures:
+    the Gauss congruences a(np^k + i) ≡ a(np^(k−1) + i) (mod p^k) for every shift i,
+    with the integrality of exp(Σ a(n+i) x^n/n); a(mn) ≡ a(m)^n (mod 2^(2v₂(m)+4)); and
+    a(2mn) ≡ a(n)^(2m), a((2m+1)n) ≡ a(n)^(2m+1) (mod 2^(v₂(m)+4)). Behind them are a(n
+    + 2^(e−1)) ≡ a(n) (mod 2^e) for every n, and a(n + (p−1)p^(e−1)/2) ≡ (−1)^((p−1)/2)
+    a(n) (mod p^e) for odd primes p and 2n + 1 ≥ e. The period can be sharpened from
+    φ(k) to the Carmichael function λ(k): a(n + 2^(e−2)) ≡ a(n) (mod 2^e) for e ≥ 3, so
+    a(n + λ(k)) ≡ a(n) (mod k) under the same condition on n, and λ(8) = 2 cannot be
+    lowered, since a(1) ≢ a(0) (mod 8). Bala's congruence conjectures for exponential
+    generating functions are recent targets in the study of congruences for Euler-type
+    numbers: Kallat proved Bala's conjectures for A158690 (arXiv:2609.07238), and Blanco
+    Gómez refuted the same pure-periodicity wording for the Euler numbers A000364 and
+    proved its eventual form (Zenodo 23150466, Theorem 2.2). The odd-prime congruence is
+    known (Blanco Gómez, Zenodo 23407292, Theorem 1), and the 2-adic period follows
+    quickly from Nishibuchi's criterion (arXiv:2610.11648, Prop. 3.4). No earlier
+    treatment of the failure modulo 81 or of the power congruences 3) and 4) was found.
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "OEIS A000464"
+    authors:
+      - "N. J. A. Sloane"
+      - "Peter Bala"
+    id: "https://oeis.org/A000464"
+    type: "web discussion"
+    location: "entry by N. J. A. Sloane; conjectures 1)–4) in Peter Bala's comment of December 22, 2021"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Bala's conjectures: 1) (a(n))_{n≥1} modulo every k is purely periodic with period
+      dividing φ(k); 2) Gauss congruences for every shift, with the exp-integrality
+      consequence; 3) and 4) power congruences modulo powers of 2. Searches in November
+      2026 (the OEIS entry, arXiv, Zenodo, OpenWitness, GitHub issues, pull requests and
+      code, and public Lean and OEIS-proof result repositories) found no earlier proof
+      or refutation for this entry. The odd-prime congruence is known (see Blanco
+      Gómez), and the 2-adic period follows quickly from Nishibuchi's criterion. The
+      refutation and the proofs in this package are credited to Wentao Li; the tools for
+      the prime-power congruences are known (see the other sources). Bala's FORMULA
+      congruences (for example a(n) ≡ 11^n mod 240) are not part of this package.
+  - title: "Kummer congruences for the values b^r E_r(a/b) of the Euler polynomials at rational points, and the towers a(np^k) ≡ ±a(np^(k-1)) (mod p^k) for the tangent, Euler, zigzag and Springer numbers"
+    authors:
+      - "Roberto Blanco Gómez"
+    id: "https://zenodo.org/records/23407292"
+    type: "paper"
+    location: "Theorem 1 at a/b = 1/4 (§3(e), Springer numbers); first posted as Zenodo 23404924 (October 15, 2026)"
+    relationship: "independently-proves"
+    author_endorsement: "not-contacted"
+    note: >-
+      Its Theorem 1: for an odd prime p ∤ b, the numbers s_r = b^r E_r(a/b) satisfy s_r
+      ≡ s_r' (mod p^k) whenever r ≡ r' (mod (p − 1)p^(k−1)) and r, r' ≥ k. With the
+      entry's formula a(n) = (−1)^(n+1) 4^(2n+1) E_(2n+1)(1/4), r = 2n + 1 and k = e,
+      this is exactly antiperiod_odd_prime_pow, including the bound 2n + 1 ≥ e. So it
+      also gives period_odd_prime_pow and the odd-prime parts of period_totient,
+      conjecture1_eventual and conjecture2. Its Remark 5 notes that Theorem 1 is a
+      special case of the theory of p-adic measures attached to Dirichlet characters;
+      the entry also writes a(n) = (−1)^n B_(2n+2)(χ)/(2n+2) for the character χ modulo
+      8. Its Theorem 2(e) gives the towers S(np^k) ≡ ±S(np^(k−1)) (mod p^k) for the
+      Springer numbers A001586, of which a(n) = S(2n + 1) is a bisection; they do not
+      give conjecture2 directly. It does not mention A000464 and does not treat p = 2,
+      the refutation, or conjectures 3) and 4).
+  - title: "Open statements in core entries of the OEIS, II: further proofs and three refutations"
+    authors:
+      - "Roberto Blanco Gómez"
+    id: "https://zenodo.org/records/23150466"
+    type: "paper"
+    location: "Theorem 2.2"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Its Theorem 2.2(i) proves the eventual form of the same pure-periodicity wording
+      of Bala for the Euler numbers A000364, and Theorem 2.2(ii) shows that pure
+      periodicity holds exactly when no cube of an odd prime divides k, so the wording
+      fails at k = 27. The mechanism is the one used here: the odd-prime congruence
+      holds only from an index that depends on the exponent. It does not treat A000464.
+  - title: "A Unified Framework for $p$-adic Congruences and $p$-adic Interpolations of Sequences"
+    authors:
+      - "Yuta Nishibuchi"
+    id: "https://arxiv.org/abs/2610.11648"
+    type: "paper"
+    location: "Prop. 3.4(1) (arXiv v2, October 21, 2026)"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Prop. 3.4(1) shows that c(n + p^k) ≡ α^(p^k) c(n) (mod p^(k+r)) for all n and k
+      exactly when the l-th Hurwitz coefficient of e^(−αx)F has p-adic valuation at
+      least ⌊log_p l⌋ + r for every l. With p = 2, α = 1 and r = 0 it gives
+      period_two_pow at once for the hyperbolic form G = sinh x · sech 2x, since a(n) =
+      (−1)^n G_(2n+1) and e^(−x)G = ((e^(2x) − 1)/2) · (2/(1 + e^(4x))) has its l-th
+      coefficient divisible by 2^(l−1). The paper does not mention A000464. The Lean
+      proof proves directly the sufficient form of the criterion that it needs (the
+      lemma mahler).
+  - title: "A Proof of Bala's Congruence Conjectures for A158690"
+    authors:
+      - "Ahaan Kallat"
+    id: "https://arxiv.org/abs/2609.07238"
+    type: "paper"
+    location: "Theorem 2.6 (arXiv v1, September 7, 2026)"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Its Theorem 2.6 shows that the coefficients of G(e^x − 1) with G ∈ ℤ[[y]] have
+      eventual period λ(k) modulo every k ≥ 2, and it proves Bala's conjectures for
+      A158690 with it. It does not apply to A000464 as stated: writing Σ a(n) x^n/n! =
+      G(e^x − 1), the coefficient of y^8 in G has 2 in its denominator. The odd-prime
+      step of this package uses the p-local form of its method: over ℤ/p^e, where 2 is a
+      unit, a series that agrees up to each index with a polynomial in e^x − 1 has
+      coefficients with period φ(p^e) from index e.
+  - title: "Fixed point indices of iterated maps"
+    authors:
+      - "Albrecht Dold"
+    id: "https://doi.org/10.1007/BF01394243"
+    type: "paper"
+    location: "Invent. Math. 74 (1983), no. 3, 419–435"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Dold's integrality criterion, in the direction from the Gauss congruences to
+      integer coefficients of exp(Σ b(n) x^n/n), used for conjecture2_exp_integral.
+
+related_formalizations:
+  - title: "VictorLiwentao/fc-palomar-proofs: FCPalomar/OeisA012780"
+    authors:
+      - "Wentao Li"
+    id: "https://github.com/VictorLiwentao/fc-palomar-proofs/tree/c705473596aa8b91c10d7407e24a967d75e5ef0f/FCPalomar/OeisA012780"
+    relationship: "adapts"
+    note: >-
+      The Hurwitz-series library, the twist x ↦ ix, the 2-adic binomial-shift lemma
+      (mahler) and the odd-prime class K in the Solution are adapted from this package
+      by the same author. The Challenge does not use them.
+  - title: "VictorLiwentao/fc-palomar-proofs: FCPalomar/OeisA181316"
+    authors:
+      - "Wentao Li"
+    id: "https://github.com/VictorLiwentao/fc-palomar-proofs/tree/2329f9d4bebb30be1bb59e40476a89b44d6e034c/FCPalomar/OeisA181316"
+    relationship: "adapts"
+    note: >-
+      The Dold-criterion section of the Solution is copied from this package by the same
+      author, which took it from the A158110 package. The Challenge does not use it.
+
+classification:
+  arxiv:
+    - "math.NT"
+    - "math.CO"
+  msc2020:
+    - "05A15"
+    - "11A07"
+    - "11B68"
+
+status:
+  scope: >-
+    The selected theorems are OeisA000464.not_conjecture1,
+    not_periodic_of_eighty_one_dvd and a_fifty_five (the refutation of conjecture 1)),
+    period_two_pow, antiperiod_odd_prime_pow and period_odd_prime_pow (the prime-power
+    congruences), period_totient, conjecture1_eventual and
+    conjecture1_of_exponent_le_three (conjecture 1) corrected), conjecture2 and
+    conjecture2_exp_integral (conjecture 2)), conjecture3 and conjecture4, and the
+    sharpening to λ(k): period_two_pow_of_three_le, period_carmichael,
+    conjecture1_carmichael_eventual and carmichael_eight_sharp, with the definition a.
+    Each congruence theorem also provides an integer sequence equal to a. The statements
+    were written for this package; they are not copied from an existing formalization.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "OeisA000464.not_conjecture1"
+      file: "FCPalomar/OeisA000464/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA000464/comparator.json"
+    - declaration: "OeisA000464.not_periodic_of_eighty_one_dvd"
+      file: "FCPalomar/OeisA000464/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA000464/comparator.json"
+    - declaration: "OeisA000464.a_fifty_five"
+      file: "FCPalomar/OeisA000464/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA000464/comparator.json"
+    - declaration: "OeisA000464.period_two_pow"
+      file: "FCPalomar/OeisA000464/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA000464/comparator.json"
+    - declaration: "OeisA000464.period_two_pow_of_three_le"
+      file: "FCPalomar/OeisA000464/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA000464/comparator.json"
+    - declaration: "OeisA000464.antiperiod_odd_prime_pow"
+      file: "FCPalomar/OeisA000464/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA000464/comparator.json"
+    - declaration: "OeisA000464.period_odd_prime_pow"
+      file: "FCPalomar/OeisA000464/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA000464/comparator.json"
+    - declaration: "OeisA000464.period_totient"
+      file: "FCPalomar/OeisA000464/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA000464/comparator.json"
+    - declaration: "OeisA000464.conjecture1_eventual"
+      file: "FCPalomar/OeisA000464/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA000464/comparator.json"
+    - declaration: "OeisA000464.conjecture1_of_exponent_le_three"
+      file: "FCPalomar/OeisA000464/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA000464/comparator.json"
+    - declaration: "OeisA000464.period_carmichael"
+      file: "FCPalomar/OeisA000464/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA000464/comparator.json"
+    - declaration: "OeisA000464.conjecture1_carmichael_eventual"
+      file: "FCPalomar/OeisA000464/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA000464/comparator.json"
+    - declaration: "OeisA000464.carmichael_eight_sharp"
+      file: "FCPalomar/OeisA000464/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA000464/comparator.json"
+    - declaration: "OeisA000464.conjecture2"
+      file: "FCPalomar/OeisA000464/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA000464/comparator.json"
+    - declaration: "OeisA000464.conjecture2_exp_integral"
+      file: "FCPalomar/OeisA000464/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA000464/comparator.json"
+    - declaration: "OeisA000464.conjecture3"
+      file: "FCPalomar/OeisA000464/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA000464/comparator.json"
+    - declaration: "OeisA000464.conjecture4"
+      file: "FCPalomar/OeisA000464/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA000464/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) developed the proof, wrote the Lean formalization and
+        prepared this package under the direction of Wentao Li, with independent agent
+        review of the proof and of the statement against its source. Wentao Li is the
+        human author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material, including in developing the proof. The conjectures are
+    due to Peter Bala (OEIS A000464). Over ℂ, x ↦ ix turns the e.g.f. into G = sinh x ·
+    sech 2x up to signs. At p = 2, G = c·e^x with 2^⌊l/2⌋ dividing c_l, and a
+    binomial-shift lemma (the sufficient direction of Nishibuchi's criterion) gives the
+    period 2^(e−1) modulo 2^e; treating the terms l = 1, 2 separately (c_1 = 1, c_2 =
+    −2) sharpens it to 2^(e−2) for e ≥ 3, which gives the Carmichael period λ(k). At odd
+    p, G agrees modulo p^e with a polynomial in e^x up to each index (the p-local form
+    of Kallat's method), which gives the odd-prime congruence, known from Blanco Gómez.
+    The Chinese remainder theorem assembles the corrected conjecture 1); an exact
+    integer recurrence checked by the kernel gives a(55) mod 81 for the refutation.
+    Conjecture 2) follows from the periods and Dold's criterion. For conjectures 3) and
+    4), b(n) = a(n)/11^n in ℤ₂ satisfies 2^(k+2) | Δ^k b(0) for k ≥ 1; with the power
+    map z ↦ z^(2^K) and the divisibility of l!(C(xy, l) − y·C(x, l)) by x²y(y−1) this
+    gives a(xy) ≡ a(x)^y (mod 2^(K+3)) when 2^K divides x²y(y−1). The Solution's module
+    docstring gives the full account. Wentao Li is the human author of this package's
+    proof.
+
+fidelity:
+  divergences: >-
+    Conjecture 1) is read literally: a pure period T ≥ 1 with T dividing φ(k), from n =
+    1; not_conjecture1 negates exactly that. Conjectures 3) and 4) do not state the
+    range of m and n; the package takes m, n ≥ 1: v₂(0) is undefined, and n = 0 is
+    trivial since a(0) = 1. v₂(m) is written m.factorization 2. a(n) is defined through
+    power series over ℚ with cos 2x as rescale 2 (cos ℚ); the Solution checks a(0..3) =
+    1, 11, 361, 24611 against the OEIS data. The exponential of a series L with zero
+    constant term is subst L (exp ℚ). Integrality, the prime-power congruences, the
+    corrected and eventual forms of 1), their sharpening to the Carmichael function λ(k)
+    (ArithmeticFunction.carmichael) and the strengthenings of the refutation are added.
+    The statements were written for this package from the OEIS entry and are proposed
+    for Formal Conjectures as FormalConjectures/OEIS/464.lean, which does not exist
+    upstream yet. The package does not determine exactly which k make the pure form of
+    1) hold: it proves it when every odd prime exponent of k is at most 3 and refutes it
+    for every multiple of 81.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Checks by AI agents only: a strict build with no warnings, an axiom check of the
+    selected theorems, a check that the Challenge declarations appear verbatim in
+    Solution, and a review of the statement against its source by a separate agent. No
+    independent human review is claimed.
+
+alignment:
+  namespace: "OeisA000464"
+  statements:
+    - source: >-
+        1) Taking the sequence (a(n))n>=1 modulo an integer k gives a purely periodic
+        sequence with period dividing phi(k). The Lean statement is its negation.
+      lean: "OeisA000464.not_conjecture1"
+      module: "FCPalomar.OeisA000464.Solution"
+      status: "proved"
+    - source: >-
+        Not in the source. For every multiple k of 81, (a(n))_{n≥1} modulo k is not
+        purely periodic with any period.
+      lean: "OeisA000464.not_periodic_of_eighty_one_dvd"
+      module: "FCPalomar.OeisA000464.Solution"
+      status: "proved"
+    - source: >-
+        Not in the source. The witness: a(1) = 11 and a(55) ≡ 65 (mod 81).
+      lean: "OeisA000464.a_fifty_five"
+      module: "FCPalomar.OeisA000464.Solution"
+      status: "proved"
+    - source: >-
+        Not in the source. a(n + 2^(e−1)) ≡ a(n) (mod 2^e) for every e ≥ 1 and every n.
+      lean: "OeisA000464.period_two_pow"
+      module: "FCPalomar.OeisA000464.Solution"
+      status: "proved"
+    - source: >-
+        Not in the source. a(n + 2^(e−2)) ≡ a(n) (mod 2^e) for every e ≥ 3 and every n.
+      lean: "OeisA000464.period_two_pow_of_three_le"
+      module: "FCPalomar.OeisA000464.Solution"
+      status: "proved"
+    - source: >-
+        Not in the source. a(n + (p−1)p^(e−1)/2) ≡ (−1)^((p−1)/2) a(n) (mod p^e) for odd
+        primes p, e ≥ 1 and 2n + 1 ≥ e; known from Blanco Gómez (Zenodo 23407292,
+        Theorem 1).
+      lean: "OeisA000464.antiperiod_odd_prime_pow"
+      module: "FCPalomar.OeisA000464.Solution"
+      status: "proved"
+    - source: >-
+        Not in the source. a(n + φ(p^e)) ≡ a(n) (mod p^e) for odd primes p, e ≥ 1 and 2n
+        + 1 ≥ e.
+      lean: "OeisA000464.period_odd_prime_pow"
+      module: "FCPalomar.OeisA000464.Solution"
+      status: "proved"
+    - source: >-
+        Not in the source. Conjecture 1) corrected: a(n + φ(k)) ≡ a(n) (mod k) for k ≥ 1
+        whenever 2n + 1 is at least the exponent of every odd prime in k.
+      lean: "OeisA000464.period_totient"
+      module: "FCPalomar.OeisA000464.Solution"
+      status: "proved"
+    - source: >-
+        Not in the source as stated. The eventual form of 1): for every k ≥ 1, a(n)
+        modulo k is eventually periodic with period dividing φ(k).
+      lean: "OeisA000464.conjecture1_eventual"
+      module: "FCPalomar.OeisA000464.Solution"
+      status: "proved"
+    - source: >-
+        Not in the source as stated. The pure form of 1) for every k whose odd prime
+        exponents are at most 3.
+      lean: "OeisA000464.conjecture1_of_exponent_le_three"
+      module: "FCPalomar.OeisA000464.Solution"
+      status: "proved"
+    - source: >-
+        Not in the source. Conjecture 1) with the Carmichael function: a(n + λ(k)) ≡
+        a(n) (mod k) for k ≥ 1 whenever 2n + 1 is at least the exponent of every odd
+        prime in k.
+      lean: "OeisA000464.period_carmichael"
+      module: "FCPalomar.OeisA000464.Solution"
+      status: "proved"
+    - source: >-
+        Not in the source. For every k ≥ 1, a(n) modulo k is eventually periodic with
+        period dividing λ(k).
+      lean: "OeisA000464.conjecture1_carmichael_eventual"
+      module: "FCPalomar.OeisA000464.Solution"
+      status: "proved"
+    - source: >-
+        Not in the source. λ(8) = 2 and a(1) ≢ a(0) (mod 8), so the period λ(k) cannot
+        be lowered in general.
+      lean: "OeisA000464.carmichael_eight_sharp"
+      module: "FCPalomar.OeisA000464.Solution"
+      status: "proved"
+    - source: >-
+        2) For i >= 0, define a_i(n) = a(n+i). Then for each i the Gauss congruences
+        a_i(n*p^k) == a_i(n*p^(k-1)) ( mod p^k ) hold for all prime p and positive
+        integers n and k.
+      lean: "OeisA000464.conjecture2"
+      module: "FCPalomar.OeisA000464.Solution"
+      status: "proved"
+    - source: >-
+        If true, then for each i the expansion of exp(Sum_{n >= 1} a_i(n)*x^n/n) has
+        integer coefficients.
+      lean: "OeisA000464.conjecture2_exp_integral"
+      module: "FCPalomar.OeisA000464.Solution"
+      status: "proved"
+    - source: >-
+        3) a(m*n) == a(m)^n (mod 2^k) for k = 2*v_2(m) + 4.
+      lean: "OeisA000464.conjecture3"
+      module: "FCPalomar.OeisA000464.Solution"
+      status: "proved"
+    - source: >-
+        4)(i) a(2*m*n) == a(n)^(2*m) (mod 2^k) for k = v_2(m) + 4; (ii) a((2*m+1)*n) ==
+        a(n)^(2*m+1) (mod 2^k) for k = v_2(m) + 4.
+      lean: "OeisA000464.conjecture4"
+      module: "FCPalomar.OeisA000464.Solution"
+      status: "proved"
