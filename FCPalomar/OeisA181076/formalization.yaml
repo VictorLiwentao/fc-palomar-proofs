@@ -1,0 +1,506 @@
+version: "v0.4"
+
+project:
+  name: "OEIS A183128, A183129 and four siblings: Hanna's binomial-power exponential conjectures, with his non-integrality notes"
+  description: >-
+    For U ∈ 1 + zℤ[[z]] put B(n,k) = [z^k] U(z)^n. Paul D. Hanna conjectured in 2010
+    that exp(Σ_{n≥1} [Σ_k B(n,k)^(e(n,k)) x^k] xⁿ/n) has integer coefficients for six
+    choices of U and e: B = C(n+k−1,k) with e = k²+1 (A183128), k²+k (A183129), n
+    (A181076) and n+k−1 (A181078), and B = C(n,k) with e = n+k (A181082) and n+k+1
+    (A181084). The package proves all six, and Hanna's notes that the exponents k² and
+    k²+k−1 (in A183128, A183129) and k (in A181070, with B = C(n,k)) do not give integer
+    series. The six conjectures follow from a general criterion on e, in the style of
+    Dold's congruences along the rays (n,k) → (pn,pk), proved here for the diagonal
+    series and any U; its corollaries cover constant exponents and polynomial exponents
+    under a divisibility condition. A converse shows the non-integrality for a class of
+    exponents. Integrality of exp(Σ c(n)xⁿ/n) is governed by Dold's congruences, which
+    arise in topology and dynamics (see the survey of Byszewski, Graff and Ward, Bull.
+    London Math. Soc. 53 (2021)). The congruence B(pn,pk) ≡ B(n,k) used here is a Gauss
+    congruence for the coefficients of the rational function 1/(1 − yU(z)) when U is
+    rational, in the sense studied by Beukers, Houben and Straub (Acta Arith. 184
+    (2018)).
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "OEIS A183128"
+    authors:
+      - "Paul D. Hanna"
+    id: "https://oeis.org/A183128"
+    type: "web discussion"
+    location: "entry of December 25, 2010, name line and comments"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      States the conjecture that the series with B = C(n+k−1,k) and e = k²+1 has integer
+      coefficients, and notes that e = k² does not give an integer series. The entry
+      gives no proof. Searches in November 2026 (the OEIS entries and their revision
+      histories, arXiv, Zenodo, OpenWitness, GitHub issues, pull requests and code, and
+      public Lean and OEIS-proof result repositories) found no proof of A183128 or
+      A183129. The three non-integrality notes follow from one computed coefficient
+      each; trureturing issue #22220 reports the A181070 coefficient a(6) = 45/2. The
+      proof in this package is credited to Wentao Li.
+  - title: "OEIS A183129"
+    authors:
+      - "Paul D. Hanna"
+    id: "https://oeis.org/A183129"
+    type: "web discussion"
+    location: "entry of December 25, 2010, name line and comments"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      The same with e = k²+k, and the note that e = k²+k−1 does not give an integer
+      series.
+  - title: "OEIS A181076"
+    authors:
+      - "Paul D. Hanna"
+    id: "https://oeis.org/A181076"
+    type: "web discussion"
+    location: "entry of October 2, 2010, name line and comments"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      The conjecture for B = C(n+k−1,k), e = n. Proved in Lean in trureturing on
+      November 13, 2026 (see related_formalizations).
+  - title: "OEIS A181078"
+    authors:
+      - "Paul D. Hanna"
+    id: "https://oeis.org/A181078"
+    type: "web discussion"
+    location: "entry of October 3, 2010, name line and comments"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      The conjecture for B = C(n+k−1,k), e = n+k−1. Proved in Lean in trureturing on
+      November 13, 2026 (see related_formalizations).
+  - title: "OEIS A181082"
+    authors:
+      - "Paul D. Hanna"
+    id: "https://oeis.org/A181082"
+    type: "web discussion"
+    location: "entry of October 2, 2010, name line and comments"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      The conjecture for B = C(n,k), k ≤ n, e = n+k. Proved in Lean in trureturing on
+      November 13, 2026 (see related_formalizations).
+  - title: "OEIS A181084"
+    authors:
+      - "Paul D. Hanna"
+    id: "https://oeis.org/A181084"
+    type: "web discussion"
+    location: "entry of October 28, 2010, name line and comments"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      The conjecture for B = C(n,k), k ≤ n, e = n+k+1. Proved in Lean in trureturing on
+      November 13, 2026 (see related_formalizations).
+  - title: "OEIS A181070"
+    authors:
+      - "Paul D. Hanna"
+    id: "https://oeis.org/A181070"
+    type: "web discussion"
+    location: "entry of October 2, 2010, name line and comments"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Conjectures integrality for B = C(n,k), e = k+1 (proved in Lean in trureturing
+      pull request #26761) and notes that e = k does not give an integer series; the
+      package proves that note (a(6) = 45/2).
+  - title: "Hanna binomial-power exponential integrality (issues #22220, #22221, #22222)"
+    authors:
+      - "The Omega Institute trureturing contributors"
+    id: "https://github.com/the-omega-institute/trureturing/issues/22220"
+    type: "web discussion"
+    location: "issues filed in October 2026 and closed on November 5, 2026"
+    relationship: "adapts"
+    author_endorsement: "not-contacted"
+    note: >-
+      Proof outlines for the exponent k + 1 (A181070, A181074, A181080): the congruence
+      [z^(pk)]U^(pn) ≡ [z^k]U^n and n | k[z^k]U^n for any U ∈ 1 + zℤ[[z]], the pairing
+      of the terms (pn, pk) and (n, k), and Dold's criterion. The package's criterion
+      extends this argument to general exponents. The issues also report a(6) = 45/2 for
+      Hanna's A181070 note, name A181076, A181082 and A183128 as neighbours that keep
+      their own conjectures, and mention A183129 as a neighbouring exponent.
+  - title: "Fixed point indices of iterated maps"
+    authors:
+      - "Albrecht Dold"
+    id: "https://doi.org/10.1007/BF01394243"
+    type: "paper"
+    location: "Invent. Math. 74 (1983), no. 3, 419–435"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      The integrality criterion for exp(Σ b(n)xⁿ/n) in terms of the congruences b(pM) ≡
+      b(M) (mod p^(v_p(pM))).
+  - title: "Enumerative Combinatorics, Volume 2"
+    authors:
+      - "Richard P. Stanley"
+    type: "book"
+    location: "Cambridge University Press, 1999, Exercise 5.2(a)"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      States the integrality criterion for exp(Σ b(n)xⁿ/n) used in the proof.
+  - title: "Dold sequences, periodic points, and dynamics"
+    authors:
+      - "Jakub Byszewski"
+      - "Grzegorz Graff"
+      - "Thomas Ward"
+    id: "https://doi.org/10.1112/blms.12531"
+    type: "paper"
+    location: "Bull. London Math. Soc. 53 (2021), 1263–1298; arXiv:2007.04031"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      A survey of the Dold congruences and their role in topology and in counting
+      periodic points. It does not treat Hanna's series.
+  - title: "Gauss congruences for rational functions in several variables"
+    authors:
+      - "Frits Beukers"
+      - "Marc Houben"
+      - "Armin Straub"
+    id: "https://doi.org/10.4064/aa170614-13-7"
+    type: "paper"
+    location: "Acta Arith. 184 (2018), 341–362; arXiv:1710.00423"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Gives necessary and sufficient conditions for the Laurent coefficients of a
+      multivariate rational function to satisfy the Gauss congruences. It does not treat
+      Hanna's series.
+
+related_formalizations:
+  - title: "the-omega-institute/trureturing: D5/S1/Recurrence/Algebraic/HannaA181076Integrality.lean"
+    authors:
+      - "The Omega Institute trureturing contributors"
+    id: "https://github.com/the-omega-institute/trureturing/blob/c1844f0c1727c369b715eabd9dd475974e8dcb5c/D5/S1/Recurrence/Algebraic/HannaA181076Integrality.lean"
+    relationship: "independent"
+    note: >-
+      A Lean proof of the A181076 conjecture, merged in pull request #30042 on November
+      13, 2026, from the repository's general tools integralGeneric and variableExponent
+      (pull request #26761). This package was developed without reading it.
+  - title: "the-omega-institute/trureturing: D5/S1/Recurrence/Algebraic/HannaA181078Integrality.lean"
+    authors:
+      - "The Omega Institute trureturing contributors"
+    id: "https://github.com/the-omega-institute/trureturing/blob/ea2976219e3a793b0f41944d2c4a9fd11f15ec47/D5/S1/Recurrence/Algebraic/HannaA181078Integrality.lean"
+    relationship: "independent"
+    note: >-
+      A Lean proof of the A181078 conjecture, merged in pull request #30086 on November
+      13, 2026.
+  - title: "the-omega-institute/trureturing: D5/S1/Recurrence/Algebraic/HannaA181082Integrality.lean"
+    authors:
+      - "The Omega Institute trureturing contributors"
+    id: "https://github.com/the-omega-institute/trureturing/blob/2e8b76c4b53d11278d187422006387f7e948ba89/D5/S1/Recurrence/Algebraic/HannaA181082Integrality.lean"
+    relationship: "independent"
+    note: >-
+      A Lean proof of the A181082 conjecture, merged in pull request #30089 on November
+      13, 2026.
+  - title: "the-omega-institute/trureturing: D5/S1/Recurrence/Algebraic/HannaA181084Integrality.lean"
+    authors:
+      - "The Omega Institute trureturing contributors"
+    id: "https://github.com/the-omega-institute/trureturing/blob/710a79fb947375958b6ba56de080a0a961bf9786/D5/S1/Recurrence/Algebraic/HannaA181084Integrality.lean"
+    relationship: "independent"
+    note: >-
+      A Lean proof of the A181084 conjecture, merged in pull request #30142 on November
+      13, 2026.
+  - title: "the-omega-institute/trureturing: D5/S1/Recurrence/Algebraic/HannaA181070Integrality.lean"
+    authors:
+      - "ElonSG"
+    id: "https://github.com/the-omega-institute/trureturing/blob/0d486b330972c1e9bd2afd2ef7658b531dfd7b53/D5/S1/Recurrence/Algebraic/HannaA181070Integrality.lean"
+    relationship: "independent"
+    note: >-
+      Lean proofs of the exponent k + 1 cases A181070, A181074 and A181080, merged in
+      pull request #26761 on November 5, 2026 (author ElonSG), with the general tools
+      integralGeneric and variableExponent. It does not treat A183128, A183129 or the
+      non-integrality notes. Its integralGeneric proves integrality of exp(Σ_n [Σ_k
+      F(n,k)x^k] xⁿ/n) for any F with n | k·F(n,k) and p^(v_p(n)+1) | F(pn,pk) − F(n,k);
+      variableExponent gives that congruence for the exponent k + 1. It has no condition
+      on general exponents.
+  - title: "VictorLiwentao/fc-palomar-proofs: FCPalomar/OeisA181316"
+    authors:
+      - "Wentao Li"
+    id: "https://github.com/VictorLiwentao/fc-palomar-proofs/tree/3a8fe0d8a06c4f0e3f352f78d86ac3a5d2cc16c7/FCPalomar/OeisA181316"
+    relationship: "adapts"
+    note: >-
+      Dold's criterion and the Euler-product converse in the Solution are copied from
+      this package by the same author. The Challenge does not use them.
+
+classification:
+  arxiv:
+    - "math.NT"
+    - "math.CO"
+  msc2020:
+    - "05A15"
+    - "11B65"
+    - "13F25"
+
+status:
+  scope: >-
+    The selected theorems are OeisA181076.a183128_integral, a183129_integral,
+    a181076_integral, a181078_integral, a181082_integral, a181084_integral (Hanna's six
+    conjectures), a183128_note, a183129_note, a181070_note (his non-integrality notes),
+    and the general results integral_of_criterion, integral_of_const_exponent,
+    integral_of_polynomial_exponent and not_integral_of_exponent, for the diagonal
+    series. The statements were written for this package; they are not copied from an
+    existing formalization.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "OeisA181076.a183128_integral"
+      file: "FCPalomar/OeisA181076/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA181076/comparator.json"
+    - declaration: "OeisA181076.a183129_integral"
+      file: "FCPalomar/OeisA181076/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA181076/comparator.json"
+    - declaration: "OeisA181076.a183128_note"
+      file: "FCPalomar/OeisA181076/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA181076/comparator.json"
+    - declaration: "OeisA181076.a183129_note"
+      file: "FCPalomar/OeisA181076/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA181076/comparator.json"
+    - declaration: "OeisA181076.a181070_note"
+      file: "FCPalomar/OeisA181076/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA181076/comparator.json"
+    - declaration: "OeisA181076.a181076_integral"
+      file: "FCPalomar/OeisA181076/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA181076/comparator.json"
+    - declaration: "OeisA181076.a181078_integral"
+      file: "FCPalomar/OeisA181076/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA181076/comparator.json"
+    - declaration: "OeisA181076.a181082_integral"
+      file: "FCPalomar/OeisA181076/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA181076/comparator.json"
+    - declaration: "OeisA181076.a181084_integral"
+      file: "FCPalomar/OeisA181076/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA181076/comparator.json"
+    - declaration: "OeisA181076.integral_of_criterion"
+      file: "FCPalomar/OeisA181076/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA181076/comparator.json"
+    - declaration: "OeisA181076.integral_of_const_exponent"
+      file: "FCPalomar/OeisA181076/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA181076/comparator.json"
+    - declaration: "OeisA181076.integral_of_polynomial_exponent"
+      file: "FCPalomar/OeisA181076/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA181076/comparator.json"
+    - declaration: "OeisA181076.not_integral_of_exponent"
+      file: "FCPalomar/OeisA181076/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA181076/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) developed the proof, wrote the Lean formalization and
+        prepared this package under the direction of Wentao Li, with independent agent
+        review of the statement against its source. Wentao Li is the human author and
+        maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material, including in developing the proof. The conjectures and
+    the non-integrality notes are due to Paul D. Hanna. The integrality criterion is
+    Dold's. The congruence [z^(pk)]U^(pn) ≡ [z^k]U^n, the pairing of the terms (pn, pk)
+    and (n, k), and their use with Dold's criterion for the exponent k + 1 are from
+    trureturing issues #22220–#22222 (filed in October 2026, closed on November 5,
+    2026). trureturing's pull request #26761 (November 5, 2026) states the resulting
+    criterion in Lean as integralGeneric: exp(Σ_n [Σ_k F(n,k)x^k] xⁿ/n) is integral when
+    n | k·F(n,k) and p^(v_p(n)+1) | F(pn,pk) − F(n,k); trureturing later proved A181076,
+    A181078, A181082 and A181084 from it in Lean (November 13, 2026), checking those
+    congruences case by case. This package was developed without reading that code. Its
+    criterion integral_of_criterion states conditions (E1) and (E2) on the exponent e
+    that give those congruences for F = B(n,k)^e(n,k) and every U ∈ 1 + zℤ[[z]]. Each
+    non-integrality note is settled by one exact coefficient, a(6) = 153254825495/2,
+    19140157244799/2 and 45/2, computed in Lean; issue #22220 already reports a(6) =
+    45/2 for A181070. As far as we found, A183128, A183129, the exponent conditions (E1)
+    and (E2), and the obstruction at k = 1 (not_integral_of_exponent) are new. Wentao Li
+    is the human author of this package's proof.
+
+fidelity:
+  divergences: >-
+    Each OEIS sequence is the coefficient sequence of its g.f., stated as rational
+    coefficients of subst L (exp ℚ) with an integrality claim. Inner sums over k = 0..n
+    are written with an indicator k ≤ n. In the A183129 note the exponent k²+k−1 is
+    computed in ℕ, so it is 0 at k = 0 where the source has −1; both give the term 1.
+    The theorem numbers in the Challenge (Theorem 1, Corollary 2, Theorem 4) and its
+    phrase 'the source states Theorem 1 for the bivariate series' refer to the authors'
+    unpublished informal write-up (November 2026). It proves the criterion for A_e(x, y)
+    = exp(Σ_{n≥1, k≥0} B(n,k)^(e(n,k)) xⁿ y^k/n), whose diagonal y = x is the series
+    stated here; the bivariate series, its coefficient triangle and A_e(x, 1) are not
+    formalized. The three notes are proved by computing a(6) exactly;
+    not_integral_of_exponent is not used for them. It covers the exponents k and k², but
+    its hypothesis that e agrees with a polynomial also at k = 0 excludes the ℕ-valued
+    exponent k²+k−1. The statements were written for this package. They are proposed for
+    Formal Conjectures as FormalConjectures/OEIS/183128.lean, which does not exist
+    upstream yet.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Checks by AI agents only: a strict build with no warnings, an axiom check of the
+    selected theorems, a check that the Challenge declarations appear verbatim in
+    Solution, and a review of the statement against its source by a separate agent. No
+    independent human review is claimed.
+
+alignment:
+  namespace: "OeisA181076"
+  statements:
+    - source: >-
+        A183128: G.f.: A(x) = exp( Sum_{n>=1} [Sum_{k>=0} C(n+k-1,k)^(k^2+1)*x^k]*x^n/n
+        ). Conjecture: this sequence consists entirely of integers.
+      lean: "OeisA181076.a183128_integral"
+      module: "FCPalomar.OeisA181076.Solution"
+      status: "proved"
+    - source: >-
+        A183129: G.f.: A(x) = exp( Sum_{n>=1} [Sum_{k>=0} C(n+k-1,k)^(k^2+k)*x^k]*x^n/n
+        ). Conjecture: this sequence consists entirely of integers.
+      lean: "OeisA181076.a183129_integral"
+      module: "FCPalomar.OeisA181076.Solution"
+      status: "proved"
+    - source: >-
+        A183128: Note that the following g.f. does NOT yield an integer series: exp(
+        Sum_{n>=1} [Sum_{k>=0} C(n+k-1,k)^(k^2)*x^k]*x^n/n ).
+      lean: "OeisA181076.a183128_note"
+      module: "FCPalomar.OeisA181076.Solution"
+      status: "proved"
+    - source: >-
+        A183129: Note that the following g.f. does NOT yield an integer series: exp(
+        Sum_{n>=1} [Sum_{k>=0} C(n+k-1,k)^(k^2+k-1)*x^k]*x^n/n ). At k = 0 the exponent
+        is read as 0 (the source's −1 gives the same term 1).
+      lean: "OeisA181076.a183129_note"
+      module: "FCPalomar.OeisA181076.Solution"
+      status: "proved"
+    - source: >-
+        A181070: Note that the following g.f. does NOT yield an integer series: exp(
+        Sum_{n>=1} (Sum_{k=0..n} C(n,k)^k*x^k)*x^n/n ).
+      lean: "OeisA181076.a181070_note"
+      module: "FCPalomar.OeisA181076.Solution"
+      status: "proved"
+    - source: >-
+        A181076: G.f.: exp( Sum_{n>=1} [ Sum_{k>=0} C(n+k-1,k)^n *x^k ] *x^n/n ).
+        Conjecture: this sequence consists entirely of integers.
+      lean: "OeisA181076.a181076_integral"
+      module: "FCPalomar.OeisA181076.Solution"
+      status: "proved"
+    - source: >-
+        A181078: Expansion of g.f.: exp( Sum_{n>=1} [ Sum_{k>=0} C(n+k-1,k)^(n+k-1) *x^k
+        ] *x^n/n ). Conjecture: this sequence consists entirely of integers.
+      lean: "OeisA181076.a181078_integral"
+      module: "FCPalomar.OeisA181076.Solution"
+      status: "proved"
+    - source: >-
+        A181082: Expansion of g.f.: exp( Sum_{n>=1} [Sum_{k=0..n} C(n,k)^(n+k) * x^k] *
+        x^n/n ). Conjecture: this sequence consists entirely of integers.
+      lean: "OeisA181076.a181082_integral"
+      module: "FCPalomar.OeisA181076.Solution"
+      status: "proved"
+    - source: >-
+        A181084: Expansion of g.f.: exp( Sum_{n>=1} [Sum_{k=0..n} binomial(n,k)^(n+k+1)
+        * x^k] * x^n/n ). Conjecture: this sequence consists entirely of integers.
+      lean: "OeisA181076.a181084_integral"
+      module: "FCPalomar.OeisA181076.Solution"
+      status: "proved"
+    - source: >-
+        Not in the OEIS sources (Theorem 1 of the authors' unpublished write-up,
+        diagonal form). For U ∈ 1 + zℤ[[z]] and B(n,k) = [z^k]U^n, the diagonal series
+        exp(Σ_n [Σ_k B(n,k)^e(n,k) x^k] xⁿ/n) has integer coefficients when the
+        exponents satisfy the congruence conditions (E1) and (E2) along the rays (n,k) →
+        (pn,pk).
+      lean: "OeisA181076.integral_of_criterion"
+      module: "FCPalomar.OeisA181076.Solution"
+      status: "proved"
+    - source: >-
+        Not in the OEIS sources (Corollary 2(a) of the authors' unpublished write-up,
+        diagonal form). The criterion for a constant exponent.
+      lean: "OeisA181076.integral_of_const_exponent"
+      module: "FCPalomar.OeisA181076.Solution"
+      status: "proved"
+    - source: >-
+        Not in the OEIS sources (Corollary 2(b) of the authors' unpublished write-up,
+        diagonal form). The criterion for an exponent given by an integer polynomial in
+        n and k, under the divisibility condition (M).
+      lean: "OeisA181076.integral_of_polynomial_exponent"
+      module: "FCPalomar.OeisA181076.Solution"
+      status: "proved"
+    - source: >-
+        Not in the OEIS sources (Theorem 4 of the authors' unpublished write-up,
+        diagonal form). A converse at k = 1 that gives non-integrality for a class of
+        exponents.
+      lean: "OeisA181076.not_integral_of_exponent"
+      module: "FCPalomar.OeisA181076.Solution"
+      status: "proved"

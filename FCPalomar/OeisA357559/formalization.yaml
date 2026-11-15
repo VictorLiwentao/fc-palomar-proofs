@@ -1,0 +1,252 @@
+version: "v0.4"
+
+project:
+  name: "OEIS A357559: Bala's divisibility conjectures for k^m-weighted Apéry sums (m = 2, 3)"
+  description: >-
+    Let S_m(n) = Σ_{k=0}^n (−1)^(n+k) k^m C(n,k) C(n+k,k)²; S_3 is OEIS A357559 and S_0
+    is the Apéry sequence A005258. The package proves Peter Bala's 2022 Conjecture 1,
+    n²(2n+1)² ∣ S_2(2n), and the conjecture in the entry's formula section, n²(2n+1)³ ∣
+    3·S_3(2n), for every n ≥ 0. Both follow from stronger statements for every n:
+    n²(n+1)² ∣ 2S_2(n), with n²(n+1)² ∣ S_2(n) for odd n, and n²(n+1)³ ∣ 6S_3(n). These
+    give an extra factor 2 in both conjectures. The constants 2 and 6 cannot be lowered:
+    36 ∤ S_2(2) = 126, 8 ∤ 3S_3(1) = 12 and 576 ∤ 2S_3(3) = 16896. Bala's Conjectures 2
+    and 3, for m ≥ 4, are not treated. Divisibility theorems for binomial sums of this
+    kind, including weighted sums of Apéry numbers, are a research topic: see Guo and
+    Zeng (Int. J. Number Theory 2011 and 2012) and Guo's proof of a divisibility
+    conjecture of Z.-W. Sun (Electron. J. Combin. 2013).
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "OEIS A357559"
+    authors:
+      - "Peter Bala"
+    id: "https://oeis.org/A357559"
+    type: "web discussion"
+    location: "entry of October 2022 (conjectures added October 4–6, 2022), comments and formula section"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Defines S_m(n) and conjectures n²(2n+1)² ∣ S_2(2n) (Conjecture 1), with
+      Conjectures 2 and 3 for m ≥ 4; the formula section adds 3a(2n) ≡ 0 (mod n²(2n+1)³)
+      for a = S_3. The entry gives no proof (revision #14, June 2, 2023). Searches in
+      November 2026 (the OEIS entries and their revision histories, arXiv, Zenodo,
+      OpenWitness, GitHub issues, pull requests and code, and public Lean and OEIS-proof
+      result repositories) found no proof of either conjecture. A zbMATH Open search on
+      November 15, 2026 (A357558–A357561 and title keywords) found only Straub (2014),
+      which the entry cites for S_0. MathSciNet was not searched. The proof in this
+      package is credited to Wentao Li.
+  - title: "OEIS A005258"
+    authors:
+      - "N. J. A. Sloane"
+    id: "https://oeis.org/A005258"
+    type: "web discussion"
+    location: "Apéry numbers"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      S_0 is the Apéry sequence Σ C(n,k)² C(n+k,k); the Solution's sanity checks compare
+      the first values.
+  - title: "Factors of sums and alternating sums involving binomial coefficients and powers of integers"
+    authors:
+      - "Victor J. W. Guo"
+      - "Jiang Zeng"
+    id: "https://doi.org/10.1142/S1793042111004812"
+    type: "paper"
+    location: "Int. J. Number Theory 7 (2011), no. 7, 1959–1976; arXiv:1008.3316"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Proves divisibility properties of sums and alternating sums of products of
+      binomial coefficients weighted by powers of integers. Its main theorems concern
+      cyclic products of binomial coefficients, not S_m(n).
+  - title: "New congruences for sums involving Apéry numbers or central Delannoy numbers"
+    authors:
+      - "Victor J. W. Guo"
+      - "Jiang Zeng"
+    id: "https://doi.org/10.1142/S1793042112501138"
+    type: "paper"
+    location: "Int. J. Number Theory 8 (2012), no. 8, 2003–2016; arXiv:1008.2894"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Proves that weighted sums of the Apéry numbers A005259 are divisible by n, and by
+      n^3 for the weight (2k+1)^3, motivated by conjectures of Z.-W. Sun. It does not
+      treat S_m(n).
+  - title: "Proof of Sun's conjecture on the divisibility of certain binomial sums"
+    authors:
+      - "Victor J. W. Guo"
+    id: "https://doi.org/10.37236/3100"
+    type: "paper"
+    location: "Electron. J. Combin. 20(4) (2013), #P20; arXiv:1301.4877"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Proves a divisibility conjecture of Z.-W. Sun for a convolution of binomial
+      products by showing that the divisor divides each summand. The termwise step of
+      this package is of the same kind.
+
+related_formalizations: []
+
+classification:
+  arxiv:
+    - "math.NT"
+    - "math.CO"
+  msc2020:
+    - "05A10"
+    - "11A07"
+    - "11B65"
+
+status:
+  scope: >-
+    The selected theorems are OeisA357559.S_two_dvd, S_two_dvd_of_odd, S_three_dvd,
+    conjecture_one (Bala's Conjecture 1), conjecture_one_two, formula_conjecture (the
+    formula-section conjecture) and formula_conjecture_two, with the definition S. The
+    statements were written for this package; they are not copied from an existing
+    formalization.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "OeisA357559.S_two_dvd"
+      file: "FCPalomar/OeisA357559/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA357559/comparator.json"
+    - declaration: "OeisA357559.S_two_dvd_of_odd"
+      file: "FCPalomar/OeisA357559/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA357559/comparator.json"
+    - declaration: "OeisA357559.S_three_dvd"
+      file: "FCPalomar/OeisA357559/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA357559/comparator.json"
+    - declaration: "OeisA357559.conjecture_one"
+      file: "FCPalomar/OeisA357559/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA357559/comparator.json"
+    - declaration: "OeisA357559.conjecture_one_two"
+      file: "FCPalomar/OeisA357559/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA357559/comparator.json"
+    - declaration: "OeisA357559.formula_conjecture"
+      file: "FCPalomar/OeisA357559/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA357559/comparator.json"
+    - declaration: "OeisA357559.formula_conjecture_two"
+      file: "FCPalomar/OeisA357559/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA357559/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) developed the proof, wrote the Lean formalization and
+        prepared this package under the direction of Wentao Li, with independent agent
+        review of the statement against its source. Wentao Li is the human author and
+        maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material, including in developing the proof. The conjectures are
+    due to Peter Bala. An unpublished informal proof (November 2026) bounded the p-adic
+    valuations of the terms, with Kummer's theorem for S_3. The Lean proof keeps its
+    finite-difference and Vandermonde steps and replaces the valuation case analysis by
+    polynomial identities over ℤ. Wentao Li is the human author of this package's proof.
+
+fidelity:
+  divergences: >-
+    The theorems are stated for every n ≥ 0; at n = 0 both sides are 0. S_two_dvd,
+    S_two_dvd_of_odd and S_three_dvd, and the extra-factor-2 forms, go beyond the
+    source. The statements were written for this package. They are proposed for Formal
+    Conjectures as FormalConjectures/OEIS/357559.lean, which does not exist upstream
+    yet.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Checks by AI agents only: a strict build with no warnings, an axiom check of the
+    selected theorems, a check that the Challenge declarations appear verbatim in
+    Solution, and a review of the statement against its source by a separate agent. No
+    independent human review is claimed.
+
+alignment:
+  namespace: "OeisA357559"
+  statements:
+    - source: >-
+        Not in the source. n^2*(n+1)^2 divides 2*S_2(n) for every n; Conjecture 1 is the
+        case 2n.
+      lean: "OeisA357559.S_two_dvd"
+      module: "FCPalomar.OeisA357559.Solution"
+      status: "proved"
+    - source: >-
+        Not in the source. n^2*(n+1)^2 divides S_2(n) for every odd n.
+      lean: "OeisA357559.S_two_dvd_of_odd"
+      module: "FCPalomar.OeisA357559.Solution"
+      status: "proved"
+    - source: >-
+        Not in the source. n^2*(n+1)^3 divides 6*S_3(n) for every n; the formula-section
+        conjecture is the case 2n.
+      lean: "OeisA357559.S_three_dvd"
+      module: "FCPalomar.OeisA357559.Solution"
+      status: "proved"
+    - source: >-
+        Conjecture 1: S_2(2n) is divisible by n^2*(2n+1)^2 (A357559, comments).
+      lean: "OeisA357559.conjecture_one"
+      module: "FCPalomar.OeisA357559.Solution"
+      status: "proved"
+    - source: >-
+        Not in the source. Conjecture 1 with an extra factor 2: 2*n^2*(2n+1)^2 divides
+        S_2(2n).
+      lean: "OeisA357559.conjecture_one_two"
+      module: "FCPalomar.OeisA357559.Solution"
+      status: "proved"
+    - source: >-
+        Conjecture: 3*a(2*n) == 0 (mod n^2*(2*n+1)^3) (A357559, formula section; a =
+        S_3).
+      lean: "OeisA357559.formula_conjecture"
+      module: "FCPalomar.OeisA357559.Solution"
+      status: "proved"
+    - source: >-
+        Not in the source. The formula-section conjecture with an extra factor 2:
+        2*n^2*(2n+1)^3 divides 3*S_3(2n).
+      lean: "OeisA357559.formula_conjecture_two"
+      module: "FCPalomar.OeisA357559.Solution"
+      status: "proved"

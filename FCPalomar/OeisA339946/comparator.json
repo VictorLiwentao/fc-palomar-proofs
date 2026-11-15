@@ -1,0 +1,17 @@
+{
+  "challenge_module": "FCPalomar.OeisA339946.Challenge",
+  "solution_module": "FCPalomar.OeisA339946.Solution",
+  "theorem_names": [
+    "OeisA339946.am_congr",
+    "OeisA339946.a339946_congr",
+    "OeisA339946.a361717_conj2",
+    "OeisA339946.am_five",
+    "OeisA339946.am_five_congr_iff"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

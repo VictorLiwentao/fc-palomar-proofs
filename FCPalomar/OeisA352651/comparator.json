@@ -1,0 +1,14 @@
+{
+  "challenge_module": "FCPalomar.OeisA352651.Challenge",
+  "solution_module": "FCPalomar.OeisA352651.Solution",
+  "theorem_names": [
+    "OeisA352651.denominator_ne_zero",
+    "OeisA352651.u_integral"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

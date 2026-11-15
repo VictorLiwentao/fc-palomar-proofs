@@ -1,0 +1,264 @@
+version: "v0.4"
+
+project:
+  name: "OEIS A339946 and A361717: Bala's prime-level supercongruences"
+  description: >-
+    Let a_m(n) = [x^(mn)] 1/P_n((1−x)/(1+x)), where P_n is the Legendre polynomial; OEIS
+    A339946 is the case m = 1. The package proves Peter Bala's 2022 conjecture that
+    a_m(p) ≡ a_m(1) = 2 (mod p^5) for every m ≥ 1 and every prime p ≥ 7, and with it his
+    2020 conjecture a(p) ≡ a(1) (mod p^5) for A339946. It shows that the range p ≥ 7 is
+    optimal: a_m(5) ≡ 2 + 625m² (mod 5^5), so the congruence at p = 5 holds exactly when
+    5 divides m. It also proves Bala's Conjecture 2 for OEIS A361717: Σ_{k=0}^{p−2}
+    C(p−2, k)² C(p−1+k, k) ≡ 1 − 2p − p² (mod p³) for every prime p ≠ 3. Bala's entry
+    lists A103882 and the Apéry numbers A005258 and A005259 as coefficients of similar
+    Legendre-polynomial expressions that satisfy supercongruences u(np^k) ≡ u(np^(k−1))
+    (mod p^(3k)), and it presents a(p) ≡ a(1) (mod p^5) as a stronger congruence.
+    A361717 is of the same type: A005258(n) = [x^n] (1−x)^(−1) P_n((1+x)/(1−x)) and
+    A361717(n+1) = [x^n] (1−x)^(−2) P_n((1+x)/(1−x)) (Bala, December 2020 and August
+    2026). Supercongruences of Apéry-like sequences are a research topic; see Straub
+    (Algebra & Number Theory, 2014) and the references there.
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "OEIS A339946"
+    authors:
+      - "Peter Bala"
+    id: "https://oeis.org/A339946"
+    type: "web discussion"
+    location: "entry of December 23, 2020 (a(p) ≡ a(1) mod p^5 for p ≥ 7), and comment of March 10, 2022 (a_m for every m ≥ 1)"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Bala conjectures a_m(p) ≡ a_m(1) (mod p^5) for all primes p ≥ 7. The entry records
+      Robert Israel's check of a(p) ≡ 2 (mod p^5) for 7 ≤ p ≤ 401 and no proof. Its
+      other conjecture, a(np^k) ≡ a(np^(k−1)) (mod p^(3k)) for p ≥ 5, is not part of
+      this package. Searches in November 2026 (the OEIS entries, arXiv, Zenodo,
+      OpenWitness, GitHub issues, pull requests and code, and public Lean and OEIS-proof
+      result repositories) found no earlier proof. A zbMATH Open search on November 15,
+      2026 found no record of either entry; MathSciNet was not searched. The proof in
+      this package is credited to Wentao Li.
+  - title: "OEIS A361717"
+    authors:
+      - "Peter Bala"
+    id: "https://oeis.org/A361717"
+    type: "web discussion"
+    location: "entry of March 26, 2023, Conjecture 2"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Conjecture 2: a(p−1) ≡ 1 − 2p − p² (mod p³) for all primes p ≠ 3, checked to p =
+      199. No earlier proof was found. Conjecture 1 of the entry, a(p) ≡ 0 (mod p^4) for
+      p ≥ 5, is not part of this package. The proof in this package is credited to
+      Wentao Li.
+  - title: "Multivariate Apéry numbers and supercongruences of rational functions"
+    authors:
+      - "Armin Straub"
+    id: "https://doi.org/10.2140/ant.2014.8.1985"
+    type: "paper"
+    location: "Algebra & Number Theory 8 (2014), no. 8, 1985–2008; arXiv:1401.0854; Introduction"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      States the supercongruences A(p^r m) ≡ A(p^(r−1) m) (mod p^(3r)) of the Apéry
+      numbers for p ≥ 5 and says that similar congruences are conjectured for all Apéry-
+      like sequences. It does not treat A339946 or A361717.
+  - title: "Prime-power congruences for odd-exponent binomial sums (TheSil/A357513_conjecture)"
+    authors:
+      - "Ondrej Kutal"
+    id: "https://github.com/TheSil/A357513_conjecture"
+    type: "other"
+    location: "README.md and proof.tex, July 2026; linked from OEIS A357513"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      A proof, with a Lean formalization, of the generalized A357513 conjecture: p^4
+      divides the numerator of Σ_{k=1}^{p−1} k^(−2m−1) C(p−1, k)² C(p−1+k, k)² except at
+      an explicit set of primes. It reduces the binomial products to harmonic sums
+      modulo p^4; the Solution's A357511 lemma does the same, and its A361717 proof does
+      so modulo p^3. Its case m = 0 is the A357511 congruence, which the Solution re-
+      proves as an unselected lemma. It does not treat A339946 or A361717.
+  - title: "An Explicit Eventual p4-Divisibility Theorem for an Apéry-Type Numerator Family"
+    authors:
+      - "Zhipeng Chen"
+      - "Qisheng Wang"
+      - "Yan Feng"
+    id: "https://doi.org/10.3390/math14152832"
+    type: "paper"
+    location: "Mathematics 14 (2026), article 2832"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Proves the A357513 family for p > 2m + 6, with a supplementary Lean package; for m
+      = 0 this is the A357511 congruence that the Solution re-proves as an unselected
+      lemma. It does not treat A339946 or A361717.
+
+related_formalizations:
+  - title: "VictorLiwentao/fc-palomar-proofs: FCPalomar/MosN8"
+    authors:
+      - "Wentao Li"
+    id: "https://github.com/VictorLiwentao/fc-palomar-proofs/tree/2329f9d4bebb30be1bb59e40476a89b44d6e034c/FCPalomar/MosN8"
+    relationship: "adapts"
+    note: >-
+      A few arithmetic helpers in ZMod (p^K) in the Solution (natCast_mul_inv,
+      castHom_natCast_inv, sum_range_natCast and the argument of
+      exists_mul_of_castHom_eq_zero) are adapted from this package by the same author.
+      The Challenge does not use them.
+  - title: "TheSil/A357513_conjecture: Proof.lean"
+    authors:
+      - "Ondrej Kutal"
+    id: "https://github.com/TheSil/A357513_conjecture/blob/59c677df3563c4c506dfafcdf45237475140bb86/Proof.lean"
+    relationship: "other"
+    note: >-
+      A Lean proof of the generalized A357513 congruence, which covers the A357511 lemma
+      in this Solution (not a selected statement). No code was taken from it. It does
+      not treat the selected statements.
+
+classification:
+  arxiv:
+    - "math.NT"
+    - "math.CO"
+  msc2020:
+    - "05A10"
+    - "11A07"
+    - "11B65"
+
+status:
+  scope: >-
+    The selected theorems are OeisA339946.am_congr (Bala's 2022 conjecture, every m ≥
+    1), a339946_congr (his 2020 conjecture, m = 1), am_five and am_five_congr_iff (the
+    range p ≥ 7 is optimal) and a361717_conj2 (A361717 Conjecture 2), with the
+    definitions legendreP, mobius, am, a339946 and a361717. The Solution also proves the
+    known A357511 congruence (a357511_congr); it is not a selected statement. The
+    statements were written for this package; they are not copied from an existing
+    formalization.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "OeisA339946.am_congr"
+      file: "FCPalomar/OeisA339946/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA339946/comparator.json"
+    - declaration: "OeisA339946.a339946_congr"
+      file: "FCPalomar/OeisA339946/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA339946/comparator.json"
+    - declaration: "OeisA339946.a361717_conj2"
+      file: "FCPalomar/OeisA339946/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA339946/comparator.json"
+    - declaration: "OeisA339946.am_five"
+      file: "FCPalomar/OeisA339946/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA339946/comparator.json"
+    - declaration: "OeisA339946.am_five_congr_iff"
+      file: "FCPalomar/OeisA339946/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA339946/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) developed the proof, wrote the Lean formalization and
+        prepared this package under the direction of Wentao Li, with independent agent
+        review of the proof and of the statement against its source. Wentao Li is the
+        human author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material, including in developing the proof. The conjectures are
+    due to Peter Bala (OEIS A339946 and A361717). For A339946, Rodrigues' formula gives
+    1/P_n((1−x)/(1+x)) = (1+x)^n/Q_n(−x) with Q_n(x) = Σ_k C(n,k)² x^k. For odd p,
+    1/Q_p(−x) is expanded modulo p^5; at multiples of p the first-order term vanishes by
+    the symmetry Σ_k (−1)^k C(p,k)³ = 0, and the second-order term by Σ_{0<k<p} k^(−4) ≡
+    0 (mod p) for p ≥ 7. At p = 5 that sum is −1, which gives a_m(5) ≡ 2 + 625m² (mod
+    5^5). For A361717 the tools are Wolstenholme-type congruences for harmonic sums
+    modulo p^3. The Solution proves these steps, and its module docstring gives the full
+    account. Wentao Li is the human author of this package's proof.
+
+fidelity:
+  divergences: >-
+    The Legendre polynomial is P_n(t) = P̃_n((1−t)/2), where P̃_n is Mathlib's
+    shiftedLegendre n; the Solution checks P_1 = t and P_2 = (3t² − 1)/2. P_n is
+    evaluated at the power series (1−x)/(1+x) and inverted in ℚ[[x]]; the constant term
+    is P_n(1) = 1. The values a_m(n) are therefore rationals by definition, and a
+    congruence u ≡ v (mod p^5) is stated as u − v = p^5 z for an integer z; the Solution
+    also proves that every a_m(n) is an integer. a339946 is defined for every n, while
+    the entry has offset 1. The statements at p = 5 are added. The statements were
+    written for this package from the OEIS entries and are proposed for Formal
+    Conjectures as FormalConjectures/OEIS/339946.lean (and
+    FormalConjectures/OEIS/361717.lean for A361717), which do not exist upstream yet.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Checks by AI agents only: a strict build with no warnings, an axiom check of the
+    selected theorems, a check that the Challenge declarations appear verbatim in
+    Solution, and a review of the statement against its source by a separate agent. No
+    independent human review is claimed.
+
+alignment:
+  namespace: "OeisA339946"
+  statements:
+    - source: >-
+        For m a positive integer, define a_m(n) = [x^(m*n)] 1/Legendre_P(n,(1 - x)/(1 +
+        x)). We conjecture that the supercongruence a_m(p) == a_m(1) ( mod p^5 ) holds
+        for all primes p >= 7 (Peter Bala, Mar 10 2022).
+      lean: "OeisA339946.am_congr"
+      module: "FCPalomar.OeisA339946.Solution"
+      status: "proved"
+    - source: >-
+        Calculation suggests that, for the present sequence, we have stronger
+        congruences for prime p >= 7, namely a(p) == a(1) ( mod p^5 ) (A339946, Dec 23
+        2020).
+      lean: "OeisA339946.a339946_congr"
+      module: "FCPalomar.OeisA339946.Solution"
+      status: "proved"
+    - source: >-
+        Conjecture 2: the supercongruence a(p-1) == 1 - 2*p - p^2 (mod p^3) holds for
+        all primes except p = 3 (A361717, Mar 26 2023).
+      lean: "OeisA339946.a361717_conj2"
+      module: "FCPalomar.OeisA339946.Solution"
+      status: "proved"
+    - source: >-
+        Not in the source. a_m(5) ≡ 2 + 625m² (mod 5^5) for every m ≥ 1.
+      lean: "OeisA339946.am_five"
+      module: "FCPalomar.OeisA339946.Solution"
+      status: "proved"
+    - source: >-
+        Not in the source. a_m(5) ≡ a_m(1) (mod 5^5) exactly when 5 divides m, so p ≥ 7
+        is the optimal uniform range.
+      lean: "OeisA339946.am_five_congr_iff"
+      module: "FCPalomar.OeisA339946.Solution"
+      status: "proved"

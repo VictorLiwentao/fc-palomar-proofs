@@ -1,0 +1,345 @@
+version: "v0.4"
+
+project:
+  name: "OEIS A340882 and A340883: Bala's pre-period conjectures, refuted, with the exact pre-period"
+  description: >-
+    Peter Bala (OEIS, February 2021) defined the polynomials R(n, q) = Σ_{k<n} x^(k²)
+    Π_{j=k+1}^{n−1} (x^(2j) − 1), x = 1 + q, as the rows of a q-series (OEIS A340882);
+    their values a(n) = R(n, 1) are A340883 (1, 5, 91, 6245, …). He noted that,
+    q-adically, R(2n + 1, q − 1) and −R(2n, q − 1) tend to Euler's product Π(1 − q^n).
+    He conjectured that for all integers q and N the sequence R(n, q) mod N is purely
+    periodic or periodic after one term (A340882), and that A340883 modulo m has
+    pre-period 0 or 1 and least period dividing φ(m) (A340883, conjecture 1). The
+    package refutes both conjectures and gives the exact answer. For every q and N ≥ 1
+    it determines the pre-period of R(n, q) mod N: the maximum, over the primes p
+    dividing both N and 1 + q, of an explicit function of v_p(N) and v_p(1 + q). So
+    A340882 holds for (q, N) exactly when 1 + q = 0 or v_p(N) ≤ 5 v_p(1 + q) for every
+    such prime, and it holds for every N exactly when q ∈ {−2, −1, 0}. For A340883 the
+    pre-period is at most 1 exactly when 64 ∤ m (modulo 64 the sequence is 1, 5, 27, 37,
+    27, 37, …), while the period part, a(n + φ(m)) ≡ a(n) (mod m) after the pre-period,
+    holds for every m. The proof starts from the recurrence R(n + 1) = (x^(2n) − 1) R(n)
+    + x^(n²). For a prime p ∤ x and x^o ≡ 1 (mod p^e), the first o terms of the sum for
+    R(n + o) vanish modulo p^e and the others match those of R(n). For p ∣ x, the exact
+    valuations v_p(R(n + 2) − R(n)) = c(n) v_p(x), with c(1) = 1, c(2) = 5 and c(n) = 2n
+    for n ≥ 3, give the pre-period modulo p^e, and the Chinese remainder theorem gives
+    it modulo N. For completeness the package also proves Bala's conjecture 2) for
+    A340883: for coprime m₁ and m₂ the period modulo m₁m₂ is the lcm of the two periods.
+    This is the Chinese remainder theorem for sequences that are eventually periodic
+    modulo every m, and it is not claimed as new. The audience is number theorists who
+    study congruences and periodicity modulo m of sequences defined by q-series. Bala's
+    periodicity conjecture for A158690, whose e.g.f. 1 + Σ_{m≥1} Π_{j=1}^{m} (1 −
+    e^(−(2j−1)t)) uses the same products Π(1 − x^(2j−1)), was proved in a recent note
+    (Kallat, arXiv:2609.07238): the sequence is eventually periodic modulo every k with
+    period dividing φ(k). That note gives a pre-period bound that it does not claim to
+    be sharp; for A340882 this package determines the pre-period exactly. Bala's
+    companion conjectures for A340881 were proved in 2026
+    (umaia1234/agentic-conjectures), and those for A340880 are not part of this package.
+    No earlier treatment of A340882 or of A340883's conjecture 1) was found.
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "OEIS A340882"
+    authors:
+      - "Peter Bala"
+    id: "https://oeis.org/A340882"
+    type: "web discussion"
+    location: "entry by Peter Bala, February 16, 2021; the conjecture was added by Bala on February 21, 2021 (revision #5); COMMENTS and FORMULA"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Bala's conjecture: for fixed integers q and N, R(n, q) mod N (n ≥ 1) is purely
+      periodic or periodic with pre-period 1. R is defined by the FORMULA line. The
+      entry's name and first comment write the series with the exponent nk + n²; the
+      data and the FORMULA line need 2nk + n². Searches in November 2026 (the OEIS
+      entry, arXiv, Zenodo, GitHub issues, pull requests and code, and public Lean and
+      OEIS-proof result repositories) found no earlier proof or refutation. The
+      refutation and the exact pre-period are credited to Wentao Li.
+  - title: "OEIS A340883"
+    authors:
+      - "Peter Bala"
+    id: "https://oeis.org/A340883"
+    type: "web discussion"
+    location: "entry and conjectures 1) and 2) by Peter Bala, February 16, 2021 (COMMENTS and FORMULA)"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Bala's conjectures: 1) the sequence modulo n has pre-period 0 or 1 and least
+      period dividing φ(n); 2) for coprime n and m the period modulo nm is the lcm of
+      the periods modulo n and modulo m. Conjecture 1) is refuted at modulus 64 and
+      corrected here. Conjecture 2) is proved; it is the Chinese remainder theorem for
+      sequences that are eventually periodic modulo every modulus. The refutation and
+      the corrected form are credited to Wentao Li.
+  - title: "A Proof of Bala's Congruence Conjectures for A158690"
+    authors:
+      - "Ahaan Kallat"
+    id: "https://arxiv.org/abs/2609.07238"
+    type: "paper"
+    location: "Theorem 1.1 and Remark 2.2 (v1, September 7, 2026)"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Proves Bala's conjecture that A158690, with e.g.f. 1 + Σ_{m≥1} Π_{j=1}^{m} (1 −
+      e^(−(2j−1)t)), is eventually periodic modulo every k with period dividing φ(k), in
+      the stronger form that the Carmichael function λ(k) is an eventual period,
+      together with his shifted Gauss congruences. Remark 2.2 gives an explicit
+      pre-period bound that it does not claim to be sharp. It does not treat A340882 or
+      A340883 and is cited for context only.
+  - title: "umaia1234/agentic-conjectures: problems/oeis-a340881/PROOF.md"
+    authors:
+      - "umaia1234"
+    id: "https://github.com/umaia1234/agentic-conjectures/blob/724761392945889c114aef4e802a5669379a4deb/problems/oeis-a340881/PROOF.md"
+    type: "other"
+    location: "Theorems 1.3 and 1.6 (August 11, 2026)"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Proves Bala's two conjectures for the companion entry A340881, the row sums of the
+      related rows R′(n) = Σ_k x^(k(k+1)/2) Π (x^j − 1) at x = 2: pure periodicity
+      modulo primes with period dividing 2(p − 1), and eventual periodicity modulo
+      composite n. It does not treat A340882 or A340883, and no code from it is used.
+
+related_formalizations: []
+
+classification:
+  arxiv:
+    - "math.NT"
+    - "math.CO"
+  msc2020:
+    - "05A30"
+    - "11A07"
+    - "11B50"
+
+status:
+  scope: >-
+    The selected theorems are OeisA340882.not_conjecture_A340882, conjecture_A340882_iff
+    and conjecture_A340882_fails (the refutation of A340882), prePeriod_spec and
+    conjecture_A340882_iff_local (the exact pre-period), not_conjecture1_A340883 and
+    a_mod_64 (the refutation of A340883 conjecture 1)),
+    conjecture1_A340883_prePeriod_iff, a_period_totient and conjecture1_A340883_iff (its
+    corrected form), and conjecture2_A340883 (A340883 conjecture 2)), with the
+    definitions R, a, localPrePeriod, prePeriod and period. The statements were written
+    for this package; they are not copied from an existing formalization.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "OeisA340882.not_conjecture_A340882"
+      file: "FCPalomar/OeisA340882/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA340882/comparator.json"
+    - declaration: "OeisA340882.conjecture_A340882_iff"
+      file: "FCPalomar/OeisA340882/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA340882/comparator.json"
+    - declaration: "OeisA340882.conjecture_A340882_fails"
+      file: "FCPalomar/OeisA340882/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA340882/comparator.json"
+    - declaration: "OeisA340882.prePeriod_spec"
+      file: "FCPalomar/OeisA340882/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA340882/comparator.json"
+    - declaration: "OeisA340882.conjecture_A340882_iff_local"
+      file: "FCPalomar/OeisA340882/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA340882/comparator.json"
+    - declaration: "OeisA340882.not_conjecture1_A340883"
+      file: "FCPalomar/OeisA340882/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA340882/comparator.json"
+    - declaration: "OeisA340882.a_mod_64"
+      file: "FCPalomar/OeisA340882/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA340882/comparator.json"
+    - declaration: "OeisA340882.conjecture1_A340883_prePeriod_iff"
+      file: "FCPalomar/OeisA340882/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA340882/comparator.json"
+    - declaration: "OeisA340882.a_period_totient"
+      file: "FCPalomar/OeisA340882/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA340882/comparator.json"
+    - declaration: "OeisA340882.conjecture1_A340883_iff"
+      file: "FCPalomar/OeisA340882/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA340882/comparator.json"
+    - declaration: "OeisA340882.conjecture2_A340883"
+      file: "FCPalomar/OeisA340882/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA340882/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) developed the proof, wrote the Lean formalization and
+        prepared this package under the direction of Wentao Li, with independent agent
+        review of the proof and of the statement against its source. Wentao Li is the
+        human author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material, including in developing the proof. The conjectures are
+    due to Peter Bala (OEIS A340882, A340883). The proof uses the recurrence R(n + 1) =
+    (x^(2n) − 1) R(n) + x^(n²). For a prime p ∤ x and o with x^o ≡ 1 (mod p^e), the sum
+    for R(n + o) agrees term by term with the sum for R(n) modulo p^e, and its extra
+    terms contain the factor x^(2o) − 1; so R is purely periodic modulo p^e. For p ∣ x
+    with x ≠ 0 and v = v_p(x), R(n) ≡ (−1)^(n−1) (mod p), and an explicit identity gives
+    v_p(R(n + 2) − R(n)) = v, 5v and 2nv for n = 1, n = 2 and n ≥ 3; with period 2 this
+    gives the local pre-period. A lemma that the start of periodicity does not depend on
+    the period, together with the Chinese remainder theorem over the prime-power factors
+    of N, gives the global pre-period. The A340883 statements are the case q = 1; modulo
+    64, 4^n ≡ 2^(n²) ≡ 0 for n ≥ 3, so a(n + 1) ≡ −a(n). The Solution's module docstring
+    gives the full account. Wentao Li is the human author of this package's proof.
+
+fidelity:
+  divergences: >-
+    Both sequences are indexed from n = 1, as in the OEIS; the value at 0 is not used.
+    Bala's N and his modulus n for A340883 (here m) are taken to be at least 1: a
+    negative modulus gives the same congruences as its absolute value, and modulo 0 the
+    statements are about equality. "Pre-period at most n₀" means that some L ≥ 1 has s(n
+    + L) ≡ s(n) for every n > n₀; Bala's "purely periodic or pre-period 1" is then
+    exactly periodicity from n = 2, and his A340883 clause 1) is exactly periodicity
+    from n = 2 with some period L dividing φ(m), since the start of periodicity does not
+    depend on the period and every eventual period is a multiple of the least one. "The
+    period" in A340883 2) is the least eventual period (period). R is defined by the
+    FORMULA line; the series in the entry's name, which has a typo in its exponent, is
+    not formalized. The Solution checks R(1, q), R(2, q) and R(3, q) against the entry's
+    comment for every q, and a(1..6) against the A340883 data. The statements at p ∣ 1 +
+    q, the exact pre-period and the corrected forms are added. The statements were
+    written for this package from the OEIS entries and are proposed for Formal
+    Conjectures as FormalConjectures/OEIS/340882.lean (and
+    FormalConjectures/OEIS/340883.lean for A340883), which do not exist upstream yet.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Checks by AI agents only: a strict build with no warnings, an axiom check of the
+    selected theorems, a check that the Challenge declarations appear verbatim in
+    Solution, and a review of the statement against its source by a separate agent. No
+    independent human review is claimed.
+
+alignment:
+  namespace: "OeisA340882"
+  statements:
+    - source: >-
+        A340882: For fixed integers q and N, the sequence mod(R(n,q),N)n>=1 is either
+        purely periodic or periodic with a pre-period 1. The Lean statement is its
+        negation.
+      lean: "OeisA340882.not_conjecture_A340882"
+      module: "FCPalomar.OeisA340882.Solution"
+      status: "proved"
+    - source: >-
+        Not in the source. The A340882 conjecture holds for a given q and every N ≥ 1 if
+        and only if q ∈ {−2, −1, 0}.
+      lean: "OeisA340882.conjecture_A340882_iff"
+      module: "FCPalomar.OeisA340882.Solution"
+      status: "proved"
+    - source: >-
+        Not in the source. For q ≠ −1 and every prime p dividing 1 + q, the A340882
+        conjecture fails at N = p^(5 v_p(1+q) + 1).
+      lean: "OeisA340882.conjecture_A340882_fails"
+      module: "FCPalomar.OeisA340882.Solution"
+      status: "proved"
+    - source: >-
+        Not in the source. The exact pre-period of R(n, q) mod N for every q and N ≥ 1.
+      lean: "OeisA340882.prePeriod_spec"
+      module: "FCPalomar.OeisA340882.Solution"
+      status: "proved"
+    - source: >-
+        Not in the source. The A340882 conjecture holds for (q, N) if and only if 1 + q
+        = 0 or v_p(N) ≤ 5 v_p(1 + q) for every prime p dividing N and 1 + q.
+      lean: "OeisA340882.conjecture_A340882_iff_local"
+      module: "FCPalomar.OeisA340882.Solution"
+      status: "proved"
+    - source: >-
+        A340883 1): The sequence taken modulo n becomes periodic with a pre-period of
+        length either 0 or 1, and with the minimum period dividing phi(n). The Lean
+        statement is its negation.
+      lean: "OeisA340882.not_conjecture1_A340883"
+      module: "FCPalomar.OeisA340882.Solution"
+      status: "proved"
+    - source: >-
+        Not in the source. The witness: modulo 64, a(2) = 5, and a(n) ≡ 27 for odd n ≥ 3
+        and a(n) ≡ 37 for even n ≥ 4.
+      lean: "OeisA340882.a_mod_64"
+      module: "FCPalomar.OeisA340882.Solution"
+      status: "proved"
+    - source: >-
+        Not in the source. The pre-period part of A340883 1): the pre-period modulo m is
+        at most 1 if and only if 64 ∤ m.
+      lean: "OeisA340882.conjecture1_A340883_prePeriod_iff"
+      module: "FCPalomar.OeisA340882.Solution"
+      status: "proved"
+    - source: >-
+        Not in the source as stated. The period part of A340883 1): a(n + φ(m)) ≡ a(n)
+        (mod m) after the pre-period, for every m ≥ 1.
+      lean: "OeisA340882.a_period_totient"
+      module: "FCPalomar.OeisA340882.Solution"
+      status: "proved"
+    - source: >-
+        Not in the source. A340883 1) holds for the modulus m if and only if 64 ∤ m.
+      lean: "OeisA340882.conjecture1_A340883_iff"
+      module: "FCPalomar.OeisA340882.Solution"
+      status: "proved"
+    - source: >-
+        A340883 2): If n and m are coprime then the period of the sequence taken modulo
+        n*m equals the l.c.m. of the periods of the sequence taken modulo n and taken
+        modulo m.
+      lean: "OeisA340882.conjecture2_A340883"
+      module: "FCPalomar.OeisA340882.Solution"
+      status: "proved"

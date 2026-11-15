@@ -1,0 +1,24 @@
+{
+  "challenge_module": "FCPalomar.OeisA372211.Challenge",
+  "solution_module": "FCPalomar.OeisA372211.Solution",
+  "theorem_names": [
+    "OeisA372211.u_tower",
+    "OeisA372211.general_tower",
+    "OeisA372211.a372211_tower",
+    "OeisA372211.u372211_tower",
+    "OeisA372211.a372212_tower",
+    "OeisA372211.u372212_tower",
+    "OeisA372211.a372213_tower",
+    "OeisA372211.u372213_tower",
+    "OeisA372211.a351859_tower",
+    "OeisA372211.a351859_rs_tower",
+    "OeisA372211.um_tower",
+    "OeisA372211.general_variant_tower"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

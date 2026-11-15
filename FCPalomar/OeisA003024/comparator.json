@@ -1,0 +1,16 @@
+{
+  "challenge_module": "FCPalomar.OeisA003024.Challenge",
+  "solution_module": "FCPalomar.OeisA003024.Solution",
+  "theorem_names": [
+    "OeisA003024.gauss_congruence",
+    "OeisA003024.exp_integral",
+    "OeisA003024.a003024_exp_integral",
+    "OeisA003024.a188457_exp_integral"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

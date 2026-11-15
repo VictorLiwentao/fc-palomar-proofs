@@ -1,0 +1,25 @@
+{
+  "challenge_module": "FCPalomar.OeisA181076.Challenge",
+  "solution_module": "FCPalomar.OeisA181076.Solution",
+  "theorem_names": [
+    "OeisA181076.a183128_integral",
+    "OeisA181076.a183129_integral",
+    "OeisA181076.a183128_note",
+    "OeisA181076.a183129_note",
+    "OeisA181076.a181070_note",
+    "OeisA181076.a181076_integral",
+    "OeisA181076.a181078_integral",
+    "OeisA181076.a181082_integral",
+    "OeisA181076.a181084_integral",
+    "OeisA181076.integral_of_criterion",
+    "OeisA181076.integral_of_const_exponent",
+    "OeisA181076.integral_of_polynomial_exponent",
+    "OeisA181076.not_integral_of_exponent"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

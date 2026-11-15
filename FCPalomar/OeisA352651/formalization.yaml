@@ -1,0 +1,166 @@
+version: "v0.4"
+
+project:
+  name: "OEIS A352651, N ≤ −1: integrality of Bala's u_N"
+  description: >-
+    For an integer N ≠ 0, 1, Peter Bala (OEIS A352651, 2022) defines u_N(n) = C(Nn,2n)
+    C(Nn/2,2n) C(2n,n)² / C(Nn/2,n)² and conjectures that u_N is integral. The package
+    proves the cases N ≤ −1, which R. Blanco Gómez lists as open: for every N ≤ −1 and n
+    ≥ 0, u_N(n) is an integer, and the denominator C(Nn/2,n) is never zero. The
+    binomials, whose top argument is a negative integer or half-integer here, are read
+    as falling factorials over k!, as Bala's formulas A275652 = (5/3)u₋₁ and A275654 =
+    (7/5)u₋₃ require. With N = −M and a = Mn the quantity is
+    ∏_{j<n}(a+1+2j)·∏_{j<n}(a+2n+2j)/n!², that is 4ⁿ·C((a+1)/2+n−1, n)·C(a/2+2n−1, n),
+    and integrality follows from an elementary divisibility. Bala's supercongruences for
+    these N are not treated here.
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "OEIS A352651"
+    authors:
+      - "Peter Bala"
+    id: "https://oeis.org/A352651"
+    type: "web discussion"
+    location: "entry of March 2022, comments (revision #37, November 5, 2025)"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Defines u_N(n) for integers N ≠ 0, 1, with binomials written through Γ, and
+      conjectures that u_N is integral and satisfies p^(3k) supercongruences. The
+      package proves the integrality for N ≤ −1. Searches in November 2026 (the OEIS
+      entries and their revision histories, arXiv, Zenodo, OpenWitness, GitHub issues,
+      pull requests and code, and public Lean and OEIS-proof result repositories) found
+      no proof of these cases. The proof in this package is credited to Wentao Li.
+  - title: "OEIS A275652"
+    authors:
+      - "Peter Bala"
+    id: "https://oeis.org/A275652"
+    type: "web discussion"
+    location: "formula section (March 2022)"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Gives A275652(n) = (5/3)u_N(n) at N = −1, which fixes the reading of the binomials
+      as falling factorials over k!; the Solution checks it for n ≤ 3.
+  - title: "OEIS A275654"
+    authors:
+      - "Peter Bala"
+    id: "https://oeis.org/A275654"
+    type: "web discussion"
+    location: "formula section (March 2022)"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Gives A275654(n) = (7/5)u_N(n) at N = −3; the Solution checks it for n ≤ 3.
+  - title: "Supercongruences modulo p^(3k) and integrality for factorial ratios with fractional arguments, with proofs of conjectures of P. Bala"
+    authors:
+      - "Roberto Blanco Gómez"
+    id: "https://doi.org/10.5281/zenodo.23426707"
+    type: "paper"
+    location: "Zenodo, October 17, 2026, Remark 5.1"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Settles N = 2 and N ≥ 4 and states in Remark 5.1 that the cases N ≤ −1 remain
+      open. Its Corollary 1.4(b) and Theorem 1.1 give the supercongruences for the rows
+      of A364303, which with the integrality proved here give Bala's towers for N ≤ −1;
+      those are not formalized here.
+
+related_formalizations: []
+
+classification:
+  arxiv:
+    - "math.NT"
+    - "math.CO"
+  msc2020:
+    - "11B65"
+    - "05A10"
+
+status:
+  scope: >-
+    The selected theorems are OeisA352651.u_integral (integrality for every N ≤ −1 and n
+    ≥ 0) and denominator_ne_zero, with the definitions gbinom and u. The statements were
+    written for this package; they are not copied from an existing formalization.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "OeisA352651.denominator_ne_zero"
+      file: "FCPalomar/OeisA352651/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA352651/comparator.json"
+    - declaration: "OeisA352651.u_integral"
+      file: "FCPalomar/OeisA352651/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA352651/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) developed the proof, wrote the Lean formalization and
+        prepared this package under the direction of Wentao Li, with independent agent
+        review of the statement against its source. Wentao Li is the human author and
+        maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material, including in developing the proof. The conjecture is due
+    to Peter Bala, and the open status of N ≤ −1 is recorded by R. Blanco Gómez. An
+    unpublished informal proof (November 2026) used Legendre's formula and a step-
+    function inequality; the Lean proof is a shorter elementary route through two
+    ascending factorials. Wentao Li is the human author of this package's proof.
+
+fidelity:
+  divergences: >-
+    The binomials are read as C(x,k) = x(x−1)⋯(x−k+1)/k! for rational x, the limit in
+    the top argument with the lower index fixed, as Bala's formulas for A275652 and
+    A275654 require; the Gamma quotient continued in n gives other values (u₋₃(1) =
+    100/3). The statement takes N ≤ −1, equivalent to M ≥ 1 with N = −M. Bala's
+    supercongruences are not stated. The statements were written for this package. They
+    are proposed for Formal Conjectures as FormalConjectures/OEIS/352651.lean, which
+    does not exist upstream yet.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Checks by AI agents only: a strict build with no warnings, an axiom check of the
+    selected theorems, a check that the Challenge declarations appear verbatim in
+    Solution, and a review of the statement against its source by a separate agent. No
+    independent human review is claimed.
+
+alignment:
+  namespace: "OeisA352651"
+  statements:
+    - source: >-
+        Not in the source. The denominator binomial(N*n/2,n) is nonzero for N ≤ −1, so
+        u_N(n) is a genuine quotient.
+      lean: "OeisA352651.denominator_ne_zero"
+      module: "FCPalomar.OeisA352651.Solution"
+      status: "proved"
+    - source: >-
+        u_N(n) =
+        binomial(N*n,2*n)*binomial(N*n/2,2*n)*binomial(2*n,n)^2/binomial(N*n/2,n)^2 is
+        conjectured to be integral, for integers N other than 0 or 1 (A352651,
+        comments); here N ≤ −1.
+      lean: "OeisA352651.u_integral"
+      module: "FCPalomar.OeisA352651.Solution"
+      status: "proved"

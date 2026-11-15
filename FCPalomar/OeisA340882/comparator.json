@@ -1,0 +1,23 @@
+{
+  "challenge_module": "FCPalomar.OeisA340882.Challenge",
+  "solution_module": "FCPalomar.OeisA340882.Solution",
+  "theorem_names": [
+    "OeisA340882.not_conjecture_A340882",
+    "OeisA340882.conjecture_A340882_iff",
+    "OeisA340882.conjecture_A340882_fails",
+    "OeisA340882.prePeriod_spec",
+    "OeisA340882.conjecture_A340882_iff_local",
+    "OeisA340882.not_conjecture1_A340883",
+    "OeisA340882.a_mod_64",
+    "OeisA340882.conjecture1_A340883_prePeriod_iff",
+    "OeisA340882.a_period_totient",
+    "OeisA340882.conjecture1_A340883_iff",
+    "OeisA340882.conjecture2_A340883"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

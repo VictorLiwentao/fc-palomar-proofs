@@ -1,0 +1,428 @@
+version: "v0.4"
+
+project:
+  name: "OEIS A372211–A372213 and A351859: Bala's p^(3k) towers for [x^(rN)] f^(sN), f = (1 − x^m)^m/((1 − x^a)^a (1 − x^b)^b)"
+  description: >-
+    For a, b ≥ 1 and m = a + b let f(x) = (1 − x^m)^m/((1 − x^a)^a (1 − x^b)^b) and
+    u_{r,s}(N) = [x^(rN)] f(x)^(sN). The package proves the supercongruences
+    u_{r,s}(np^k) ≡ u_{r,s}(np^(k−1)) (mod p^(3k)) for every prime p ≥ 5 with p ∤ abm,
+    all r ≥ 1, s ∈ ℤ and n, k ≥ 1, and the same for Bala's variant f⁻(x) = (1 −
+    x^m)^m/((1 + x^a)^a (1 + x^b)^b). As corollaries it proves Peter Bala's 2024
+    conjectures for A372212 ((a, b) = (2, 5), p ≥ 11), A372213 ((3, 4), p ≥ 11, and also
+    p = 5), A372211 ((2, 3), p ≥ 7, both forms), his 2022 conjectures for A351859 (G₃ =
+    (1 + x + x² + x³)⁴/(1 + x + x²)³, p ≥ 5, both forms), and his general clauses for
+    all (a, b) and sufficiently large p, for f and for f⁻ (both read with the power n,
+    as [x^n] f(x)^n and [x^n] f⁻(x)^n). A372211 at p = 5 is not claimed; it is open. For
+    a = b = 1, u_{1,1}(n) = C(2n, n), and the towers are the classical
+    Jacobsthal–Kazandzidis congruences (see Meštrović's survey, cited in A351859).
+    Supercongruences of this strength for diagonals of rational functions are studied
+    for Apéry-like numbers (Straub, Algebra Number Theory 8 (2014)) and for framings of
+    rational functions (Müller, arXiv:2104.10754).
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "OEIS A372211"
+    authors:
+      - "Peter Bala"
+    id: "https://oeis.org/A372211"
+    type: "web discussion"
+    location: "entry of April 22, 2024, comments"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Conjectures the towers for (a, b) = (2, 3): for u_{1,1} and all primes p ≥ 5, for
+      u_{r,s} and p ≥ 7, and the general clauses for every (a, b) (sufficiently large p
+      depending on m) and for the variant with (1 + x^a)^a(1 + x^b)^b. The general
+      clauses write [x^n] of the series without the power n; the package reads them as
+      [x^n] f(x)^n, as the main entries do; read literally both clauses are false: for a
+      = b = 1 the series are the polynomials (1 + x)² and (1 − x)², so a(p) − a(1) = ∓2
+      for every prime p ≥ 3. The entry gives no proof. Searches in November 2026 (the
+      OEIS entries and histories, arXiv, Zenodo, OpenWitness, GitHub issues, pull
+      requests and code, and public Lean and OEIS-proof result repositories) found no
+      proof of the cubic towers for any of these entries. The proof in this package is
+      credited to Wentao Li.
+  - title: "OEIS A372212"
+    authors:
+      - "Peter Bala"
+    id: "https://oeis.org/A372212"
+    type: "web discussion"
+    location: "entry of April 22, 2024, comments"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      The towers for (a, b) = (2, 5), for u_{1,1} and u_{r,s}, primes p ≥ 11.
+  - title: "OEIS A372213"
+    authors:
+      - "Peter Bala"
+    id: "https://oeis.org/A372213"
+    type: "web discussion"
+    location: "entry of April 22, 2024, comments"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      The towers for (a, b) = (3, 4), for u_{1,1} and u_{r,s}, primes p ≥ 11. The
+      package also proves p = 5.
+  - title: "OEIS A351859"
+    authors:
+      - "Peter Bala"
+    id: "https://oeis.org/A351859"
+    type: "web discussion"
+    location: "entry of March 2022, comments"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      The towers for G₃ = (1 + x + x² + x³)⁴/(1 + x + x²)³ = (1 − x⁴)⁴/((1 − x)(1 −
+      x³)³), primes p ≥ 5, and the remark that the u(r,s) forms may satisfy the same
+      supercongruences.
+  - title: "rbajaj5/a183068-supercongruence: related-results/CyclotomicRationalFramingTower.md"
+    authors:
+      - "rbajaj5"
+    id: "https://github.com/rbajaj5/a183068-supercongruence/blob/e6955c6a329a713e7ed7b3f1dca165f587131c90/related-results/CyclotomicRationalFramingTower.md"
+    type: "web discussion"
+    location: "repository commit e6955c6, October 15, 2026"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Proves the mod p^(2r) towers for [x^(kn)] f^(mn) for any cyclotomic ratio f and
+      odd p not dividing its conductor, which covers the p^(2k) part of these towers. It
+      does not treat the cubic towers. The Cartier and integration-by-parts reduction
+      used here follows the same strategy.
+  - title: "rbajaj5/a183068-supercongruence: related-results/A351858CyclotomicFamilyBoundary.md"
+    authors:
+      - "rbajaj5"
+    id: "https://github.com/rbajaj5/a183068-supercongruence/blob/e6955c6a329a713e7ed7b3f1dca165f587131c90/related-results/A351858CyclotomicFamilyBoundary.md"
+    type: "web discussion"
+    location: "repository commit e6955c6, October 15, 2026 (status: proof candidate, independent review pending)"
+    relationship: "adapts"
+    author_endorsement: "not-contacted"
+    note: >-
+      Proves the cubic tower for A351858, the case (a, b) = (1, 2) with r = s = 1, by a
+      six-residue lemma v_p([x^T]L_p²) ≥ v_p(T) and integration by parts. It also
+      refutes Bala's claim on A351858 that every G_k (k ≥ 2) has the cubic tower, with
+      counterexamples at k = p − 1 and k = p. It does not cover A351859, A372211–A372213
+      or general (a, b). The package's reduction follows this proof; its quadratic
+      estimate for all (a, b) is the new step.
+  - title: "Wolstenholme type congruences and framing of rational 2-functions"
+    authors:
+      - "L. Felipe Müller"
+    id: "https://arxiv.org/abs/2104.10754"
+    type: "paper"
+    location: "arXiv:2104.10754v1, April 2021"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Its Theorems 1.1 and 1.4(2) state p^(3r) towers for the framings of every rational
+      2-function of period N (p ≥ 5, p ∤ N). If the framing of xG₃′/G₃ is read as [xⁿ]
+      G₃(x)ⁿ, this includes A351859 (N = 12). Under the same reading the general
+      statement fails: for c(k) = 1 + 16[4 | k], A(n) = [xⁿ] (1 − x)^(−n) (1 − x⁴)^(−4n)
+      has v_p(A(p) − A(1)) = 2 for 5 ≤ p ≤ 113. Only version 1 exists. The package does
+      not rely on it.
+  - title: "Exponential transforms and supercongruences: an order-two transfer theorem, modular forms behind Bala's prime bounds, and the first higher levels"
+    authors:
+      - "Roberto Blanco Gómez"
+    id: "https://doi.org/10.5281/zenodo.23430779"
+    type: "paper"
+    location: "Zenodo, October 17, 2026"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Proves mod p^(2r) towers for exponential transforms (Theorem A); its certificate
+      lemma applies to every ratio of cyclotomic products, so this covers the p^(2k)
+      towers for f and f⁻. With S_p(N) = Σ_{p∤i} c(i)c(N−i)/(i(N−i)), the quadratic sum
+      of this package, it reduces the first level to S_p(ps) ≡ 0 (mod p) (Theorem B)
+      and, for Eisenstein-type bases, every level to v_p(S_p(N)) ≥ v_p(N) (Theorem R).
+      It verifies the condition for factorial-ratio and Eisenstein-type bases and, at
+      the first level only, for Φ(x)/Φ(−x); it does not treat f or f⁻ at the cubic level
+      and does not mention A372211–A372213 or A351859.
+  - title: "Wolstenholme's theorem: its generalizations and extensions in the last hundred and fifty years (1862–2012)"
+    authors:
+      - "Romeo Meštrović"
+    id: "https://arxiv.org/abs/1111.3057"
+    type: "paper"
+    location: "arXiv:1111.3057, 2011"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      A survey of Wolstenholme-type congruences, cited in A351859; it records the
+      Jacobsthal–Kazandzidis congruence, which gives the p^(3k) tower for C(2n, n), the
+      case a = b = 1 of u_tower.
+  - title: "Multivariate Apéry numbers and supercongruences of rational functions"
+    authors:
+      - "Armin Straub"
+    id: "https://doi.org/10.2140/ant.2014.8.1985"
+    type: "paper"
+    location: "Algebra Number Theory 8 (2014), 1985–2008; arXiv:1401.0854"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Proves Apéry-type supercongruences for all Taylor coefficients of a rational
+      function whose diagonal gives the Apéry numbers. The sequences here are also
+      diagonals of rational functions, 1/(1 − t f(x)); the paper does not treat them.
+
+related_formalizations:
+  - title: "VictorLiwentao/fc-palomar-proofs: FCPalomar/OeisA333472"
+    authors:
+      - "Wentao Li"
+    id: "https://github.com/VictorLiwentao/fc-palomar-proofs/tree/3a8fe0d8a06c4f0e3f352f78d86ac3a5d2cc16c7/FCPalomar/OeisA333472"
+    relationship: "adapts"
+    note: >-
+      The theta operator, the log-derivative and exp/log Frobenius expansion (theta,
+      HasLD, Vof, expTrunc, PI) in the Solution are adapted from this package by the
+      same author. The Challenge does not use them.
+  - title: "VictorLiwentao/fc-palomar-proofs: FCPalomar/MosN8"
+    authors:
+      - "Wentao Li"
+    id: "https://github.com/VictorLiwentao/fc-palomar-proofs/tree/3a8fe0d8a06c4f0e3f352f78d86ac3a5d2cc16c7/FCPalomar/MosN8"
+    relationship: "adapts"
+    note: >-
+      The inverse-square sum lemma sum_inverse_sq (sum_unitInvSq there) is adapted from
+      this package by the same author. The Challenge does not use it.
+
+classification:
+  arxiv:
+    - "math.NT"
+    - "math.CO"
+  msc2020:
+    - "11A07"
+    - "11B65"
+    - "05A15"
+
+status:
+  scope: >-
+    The selected theorems are OeisA372211.u_tower and um_tower (every (a, b), p ≥ 5, p ∤
+    abm), general_tower and general_variant_tower (Bala's general clauses),
+    a372211_tower, u372211_tower (p ≥ 7), a372212_tower, u372212_tower (p ≥ 11),
+    a372213_tower, u372213_tower (p ≥ 5, p ≠ 7) and a351859_tower, a351859_rs_tower (p ≥
+    5), with the definitions zpowSeries, f, fm, u, um and the named series. The
+    statements were written for this package; they are not copied from an existing
+    formalization.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "OeisA372211.u_tower"
+      file: "FCPalomar/OeisA372211/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA372211/comparator.json"
+    - declaration: "OeisA372211.general_tower"
+      file: "FCPalomar/OeisA372211/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA372211/comparator.json"
+    - declaration: "OeisA372211.a372211_tower"
+      file: "FCPalomar/OeisA372211/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA372211/comparator.json"
+    - declaration: "OeisA372211.u372211_tower"
+      file: "FCPalomar/OeisA372211/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA372211/comparator.json"
+    - declaration: "OeisA372211.a372212_tower"
+      file: "FCPalomar/OeisA372211/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA372211/comparator.json"
+    - declaration: "OeisA372211.u372212_tower"
+      file: "FCPalomar/OeisA372211/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA372211/comparator.json"
+    - declaration: "OeisA372211.a372213_tower"
+      file: "FCPalomar/OeisA372211/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA372211/comparator.json"
+    - declaration: "OeisA372211.u372213_tower"
+      file: "FCPalomar/OeisA372211/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA372211/comparator.json"
+    - declaration: "OeisA372211.a351859_tower"
+      file: "FCPalomar/OeisA372211/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA372211/comparator.json"
+    - declaration: "OeisA372211.a351859_rs_tower"
+      file: "FCPalomar/OeisA372211/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA372211/comparator.json"
+    - declaration: "OeisA372211.um_tower"
+      file: "FCPalomar/OeisA372211/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA372211/comparator.json"
+    - declaration: "OeisA372211.general_variant_tower"
+      file: "FCPalomar/OeisA372211/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA372211/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) developed the proof, wrote the Lean formalization and
+        prepared this package under the direction of Wentao Li, with independent agent
+        review of the statement against its source. Wentao Li is the human author and
+        maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material, including in developing the proof. The conjectures are
+    due to Peter Bala. The p^(2k) towers are known for every cyclotomic ratio (rbajaj5,
+    October 15, 2026; R. Blanco Gómez, October 17, 2026). The reduction of the p^(3k)
+    towers to a quadratic estimate, by the Dwork–Cartier expansion and integration by
+    parts, follows rbajaj5's proof for (a, b) = (1, 2) (A351858). New as far as we
+    found: the quadratic estimate v_p([x^T] M_p²) ≥ v_p(T) for p | T and every (a, b)
+    with p ∤ abm, where M_p = Σ_{p∤n} c(n)xⁿ/n is the p-free part of log f, proved with
+    sums of inverse squares modulo p^e and the oddness of their partial sums; and its
+    extension to the variant f⁻, which also uses a distribution relation. Wentao Li is
+    the human author of this package's proof.
+
+fidelity:
+  divergences: >-
+    Bala's general clauses write [x^n] of the series without the power n; the package
+    reads them as [x^n] f(x)^n, as the main entries and the A000984 remark require, and
+    the literal reading fails for every prime when a = b = 1, and states 'sufficiently
+    large primes depending on m' as the existence of a bound P₀ depending only on m.
+    A372211 is stated for p ≥ 7 (Bala's u_{1,1} range p ≥ 5 is not claimed at p = 5);
+    A372213 is stated for p ≥ 5, p ≠ 7, which contains Bala's range p ≥ 11. Negative
+    powers of f are written with invOfUnit. The hypotheses r ≥ 1 and n ≥ 1 are kept from
+    the source although the proof does not need them. The statements were written for
+    this package. They are proposed for Formal Conjectures as
+    FormalConjectures/OEIS/372211.lean, which does not exist upstream yet.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Checks by AI agents only: a strict build with no warnings, an axiom check of the
+    selected theorems, a check that the Challenge declarations appear verbatim in
+    Solution, and a review of the statement against its source by a separate agent. No
+    independent human review is claimed.
+
+alignment:
+  namespace: "OeisA372211"
+  statements:
+    - source: >-
+        Not in the sources in this generality. For a, b ≥ 1, m = a + b and p ≥ 5 prime
+        with p ∤ abm, u_{r,s}(np^k) ≡ u_{r,s}(np^(k−1)) (mod p^(3k)) for u_{r,s}(N) =
+        [x^(rN)] f(x)^(sN), all r ≥ 1, s ∈ ℤ, n, k ≥ 1.
+      lean: "OeisA372211.u_tower"
+      module: "FCPalomar.OeisA372211.Solution"
+      status: "proved"
+    - source: >-
+        More generally, for positive integers a and b, the sequence [x^n] ((1 -
+        x^m)^m/((1 - x^a)^a*(1 - x^b)^b))^n, where m = a + b, may satisfy the same
+        supercongruences for all sufficiently large primes p depending on m (A372211,
+        comments; the power n is supplied, see the divergences).
+      lean: "OeisA372211.general_tower"
+      module: "FCPalomar.OeisA372211.Solution"
+      status: "proved"
+    - source: >-
+        a(n*p^k) == a(n*p^(k-1)) (mod p^(3*k)) for all primes p >= 5 (A372211,
+        comments), proved here for p >= 7.
+      lean: "OeisA372211.a372211_tower"
+      module: "FCPalomar.OeisA372211.Solution"
+      status: "proved"
+    - source: >-
+        u(r,s;n) = [x^(r*n)] f(x)^(s*n) satisfies the same supercongruences for primes p
+        >= 7 (A372211, comments).
+      lean: "OeisA372211.u372211_tower"
+      module: "FCPalomar.OeisA372211.Solution"
+      status: "proved"
+    - source: >-
+        a(n*p^k) == a(n*p^(k-1)) (mod p^(3*k)) for primes p >= 11 (A372212, comments).
+      lean: "OeisA372211.a372212_tower"
+      module: "FCPalomar.OeisA372211.Solution"
+      status: "proved"
+    - source: >-
+        The u(r,s) form for primes p >= 11 (A372212, comments).
+      lean: "OeisA372211.u372212_tower"
+      module: "FCPalomar.OeisA372211.Solution"
+      status: "proved"
+    - source: >-
+        a(n*p^k) == a(n*p^(k-1)) (mod p^(3*k)) for primes p >= 11 (A372213, comments),
+        proved here for p >= 5, p != 7.
+      lean: "OeisA372211.a372213_tower"
+      module: "FCPalomar.OeisA372211.Solution"
+      status: "proved"
+    - source: >-
+        The u(r,s) form for primes p >= 11 (A372213, comments), proved here for p >= 5,
+        p != 7.
+      lean: "OeisA372211.u372213_tower"
+      module: "FCPalomar.OeisA372211.Solution"
+      status: "proved"
+    - source: >-
+        a(n*p^k) == a(n*p^(k-1)) (mod p^(3*k)) for all primes p >= 5 (A351859,
+        comments).
+      lean: "OeisA372211.a351859_tower"
+      module: "FCPalomar.OeisA372211.Solution"
+      status: "proved"
+    - source: >-
+        The sequence [x^(r*n)] G_3(x)^(s*n) may satisfy the same supercongruences
+        (A351859, comments).
+      lean: "OeisA372211.a351859_rs_tower"
+      module: "FCPalomar.OeisA372211.Solution"
+      status: "proved"
+    - source: >-
+        Not in the sources in this generality. The same for f⁻(x) = (1 − x^m)^m/((1 +
+        x^a)^a (1 + x^b)^b).
+      lean: "OeisA372211.um_tower"
+      module: "FCPalomar.OeisA372211.Solution"
+      status: "proved"
+    - source: >-
+        The same for [x^n] ((1 - x^m)^m/((1 + x^a)^a*(1 + x^b)^b))^n (A372211, comments;
+        read with the power n).
+      lean: "OeisA372211.general_variant_tower"
+      module: "FCPalomar.OeisA372211.Solution"
+      status: "proved"

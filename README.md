@@ -1,6 +1,6 @@
 # Lean proofs of Formal Conjectures statements, packaged for Palomar
 
-This repository holds 61 independent [Palomar](https://palomar-registry.org/) packages.
+This repository holds 69 independent [Palomar](https://palomar-registry.org/) packages.
 Each package proves statements from
 [google-deepmind/formal-conjectures](https://github.com/google-deepmind/formal-conjectures),
 or statements proposed for it, in Lean 4 with Mathlib. The mathematics in every package is due to
@@ -64,6 +64,9 @@ The selected project is the repository root.
 | [`Kolberg`](FCPalomar/Kolberg/README.md) | Kolberg's theorem: the partition function takes each parity infinitely often | 1 |
 | [`MeynielTree`](FCPalomar/MeynielTree/README.md) | Meyniel's conjecture for trees: trees are cop-win | 1 |
 | [`MosN8`](FCPalomar/MosN8/README.md) | McCarthy–Osburn–Straub Conjecture 1.3 for σ₈, with a shifted companion | 2 |
+| [`OeisA003024`](FCPalomar/OeisA003024/README.md) | OEIS A003024 and A188457: Bala's exp-integrality conjectures, with Gauss congruences for every q | 4 |
+| [`OeisA012780`](FCPalomar/OeisA012780/README.md) | OEIS A012780: Bala's periodicity conjecture for arcsin(tan x) | 5 |
+| [`OeisA181076`](FCPalomar/OeisA181076/README.md) | OEIS A183128, A183129 and four siblings: Hanna's binomial-power exponential conjectures | 13 |
 | [`OeisA181316`](FCPalomar/OeisA181316/README.md) | OEIS A181316 and A180606: Hanna's q-integer power conjecture, with the sharp form | 7 |
 | [`OeisA258377`](FCPalomar/OeisA258377/README.md) | OEIS A258377–A258381: Bala's 2-adic periodicity for the type-B series | 18 |
 | [`OeisA291897`](FCPalomar/OeisA291897/README.md) | OEIS A291897 and A292911: Shevelev's divisibility conjectures for Euler polynomials | 7 |
@@ -72,9 +75,14 @@ The selected project is the repository root.
 | [`OeisA318008`](FCPalomar/OeisA318008/README.md) | OEIS A318008: the parity of the compositional square root (Hanna's conjecture) | 6 |
 | [`OeisA326097`](FCPalomar/OeisA326097/README.md) | OEIS A326097: the parity of a(k) (Hanna's conjecture) | 4 |
 | [`OeisA333472`](FCPalomar/OeisA333472/README.md) | OEIS A333472: Bala's p^(2k) supercongruences for a(r,s;n), every r ≥ 1 and s ∈ ℤ | 2 |
+| [`OeisA339946`](FCPalomar/OeisA339946/README.md) | OEIS A339946 and A361717: Bala's prime-level supercongruences | 5 |
+| [`OeisA340882`](FCPalomar/OeisA340882/README.md) | OEIS A340882 and A340883: Bala's pre-period conjectures are false; the exact pre-period | 11 |
+| [`OeisA352651`](FCPalomar/OeisA352651/README.md) | OEIS A352651, N ≤ −1: integrality of Bala's u_N | 2 |
+| [`OeisA357559`](FCPalomar/OeisA357559/README.md) | OEIS A357559: Bala's divisibility conjectures for k^m-weighted Apéry sums (m = 2, 3) | 7 |
 | [`OeisA363985`](FCPalomar/OeisA363985/README.md) | OEIS A363985 and siblings: Bala's p^(3r) supercongruences for u_m, every integer m | 5 |
 | [`OeisA364111`](FCPalomar/OeisA364111/README.md) | OEIS A364111: Bala's p^(3r) supercongruences | 2 |
 | [`OeisA371710`](FCPalomar/OeisA371710/README.md) | OEIS A371710: Hanna's mod-3 pattern | 5 |
+| [`OeisA372211`](FCPalomar/OeisA372211/README.md) | OEIS A372211–A372213 and A351859: Bala's p^(3k) towers for [x^(rN)] f^(sN) | 12 |
 | [`OeisA376465`](FCPalomar/OeisA376465/README.md) | OEIS A376465: Bala's p^(3r) tower holds and the shifted tower fails | 2 |
 | [`OeisDisproofs`](FCPalomar/OeisDisproofs/README.md) | Counterexamples to five OEIS conjectures (A333564, A034171, A298799, A382407, A399793) | 8 |
 | [`OhbaERT`](FCPalomar/OhbaERT/README.md) | Erdős–Rubin–Taylor: complete multipartite graphs with parts of size 2 are k-choosable | 1 |

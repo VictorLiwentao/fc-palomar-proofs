@@ -1,0 +1,19 @@
+{
+  "challenge_module": "FCPalomar.OeisA357559.Challenge",
+  "solution_module": "FCPalomar.OeisA357559.Solution",
+  "theorem_names": [
+    "OeisA357559.S_two_dvd",
+    "OeisA357559.S_two_dvd_of_odd",
+    "OeisA357559.S_three_dvd",
+    "OeisA357559.conjecture_one",
+    "OeisA357559.conjecture_one_two",
+    "OeisA357559.formula_conjecture",
+    "OeisA357559.formula_conjecture_two"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

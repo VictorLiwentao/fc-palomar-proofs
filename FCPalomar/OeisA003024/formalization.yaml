@@ -1,0 +1,280 @@
+version: "v0.4"
+
+project:
+  name: "OEIS A003024 and A188457: Bala's exp-integrality conjectures, with Gauss congruences for every q"
+  description: >-
+    For an integer q let a_q(0) = 1 and a_q(n) = Σ_{k=1}^n (−1)^(k+1) C(n,k) q^(k(n−k))
+    a_q(n−k). Then a_2 is OEIS A003024 (labeled acyclic digraphs) and a_3 is OEIS
+    A188457 (acyclic 2-multidigraphs). The package proves the Gauss congruences
+    a_q(np^r) ≡ a_q(np^(r−1)) (mod p^r) for every integer q, every prime p and all n, r
+    ≥ 1. Hence exp(Σ_{n≥1} a_q(n) xⁿ/n) has integer coefficients for every q. The cases
+    q = 2 and q = 3 are Peter Bala's 2016 conjectures in A003024 and A188457; the first
+    also shows that every term of A188490 is an integer.
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "OEIS A003024"
+    authors:
+      - "Peter Bala"
+    id: "https://oeis.org/A003024"
+    type: "web discussion"
+    location: "formula section, comment of January 14, 2016"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      States that exp(Σ_{n≥1} a(n)xⁿ/n) = 1 + x + 2x² + 10x³ + 146x⁴ + ⋯ appears to have
+      integer coefficients (cf. A188490). The entry also gives the recurrence (R) with q
+      = 2 (R. W. Robinson, R. P. Stanley) and V. Jovovic's formula through ordered set
+      partitions (A046860). The entry gives no proof. Searches in November 2026 (the
+      OEIS entries and their revision histories, arXiv, Zenodo, OpenWitness, GitHub
+      issues, pull requests and code, and public Lean and OEIS-proof result
+      repositories) found no earlier proof of either conjecture or of the Gauss
+      congruences. I. M. Gessel's 'Combinatorial proofs of congruences' (1984; see
+      sources), read in full, proves only shift congruences and does not treat acyclic
+      digraphs. The proof in this package is credited to Wentao Li.
+  - title: "OEIS A188457"
+    authors:
+      - "Paul D. Hanna"
+      - "Peter Bala"
+    id: "https://oeis.org/A188457"
+    type: "web discussion"
+    location: "name line (Hanna, 2011) and formula section, comment of January 14, 2016 (Bala)"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Defines the sequence by 1 = Σ_{n≥0} a(n)xⁿ/(1 + 3ⁿx)^(n+1); taking the coefficient
+      of x^N gives (R) with q = 3. Bala states that exp(Σ a(n)xⁿ/n) = 1 + x + 3x² + 39x³
+      + ⋯ appears to have integer coefficients.
+  - title: "OEIS A188490"
+    authors:
+      - "Paul D. Hanna"
+    id: "https://oeis.org/A188490"
+    type: "web discussion"
+    location: "entry of 2011, formula section"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Its name line calls the sequence the 'Exponential transform of A003024', but its
+      formula line, example and data (b-file to n = 77) are those of the g.f. exp(Σ
+      A003024(n)xⁿ/n), the series in a003024_exp_integral. The entry gives no proof that
+      the terms are integers; the package's q = 2 theorem proves it.
+  - title: "Counting labeled acyclic digraphs"
+    authors:
+      - "Robert W. Robinson"
+    type: "paper"
+    location: "in New Directions in the Theory of Graphs, Academic Press, 1973, 239–273"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      The recurrence (R) for q = 2, by inclusion–exclusion on sources. The package
+      defines a_q by (R) and does not formalize the digraph count.
+  - title: "Acyclic orientations of graphs"
+    authors:
+      - "Richard P. Stanley"
+    id: "https://doi.org/10.1016/0012-365X(73)90108-8"
+    type: "paper"
+    location: "Discrete Math. 5 (1973), 171–178"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Gives the generating function Σ f(n)xⁿ/(n!2^C(n,2)) = (Σ (−1)ⁿxⁿ/(n!2^C(n,2)))⁻¹
+      for the number f(n) of labeled acyclic digraphs (Proposition 2.1). This is
+      equivalent to (R) with q = 2.
+  - title: "Enumerative Combinatorics, Volume 2"
+    authors:
+      - "Richard P. Stanley"
+    type: "book"
+    location: "Cambridge University Press, 1999, Exercise 5.2(a)"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      The classical equivalence between Gauss congruences at every prime and integrality
+      of exp(Σ b(n)xⁿ/n), used for the corollaries.
+  - title: "Fixed point indices of iterated maps"
+    authors:
+      - "Albrecht Dold"
+    id: "https://doi.org/10.1007/BF01394243"
+    type: "paper"
+    location: "Invent. Math. 74 (1983), no. 3, 419–435"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Dold's integrality criterion, in the direction from congruences to integer
+      coefficients.
+  - title: "Congruences for labeled acyclic digraphs of bounded in-degree: a proof of the conjecture in OEIS A397711"
+    authors:
+      - "Roberto Blanco Gómez"
+    id: "https://doi.org/10.5281/zenodo.23201448"
+    type: "paper"
+    location: "Zenodo, October 7, 2026"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Proves the A397711 congruence for labeled DAGs with in-degree at most 2, and n |
+      lcm(1, …, r)·(a_r(n) − 1) for in-degree at most r. It uses a weighted form of
+      Robinson's recurrence over sinks and, for even n, Burnside's lemma for a cyclic
+      group. It mentions A003024 only as the unrestricted case and does not treat Gauss
+      congruences.
+  - title: "Combinatorial proofs of congruences"
+    authors:
+      - "Ira M. Gessel"
+    id: "https://zbmath.org/?q=an:0553.10003"
+    type: "paper"
+    location: "in Enumeration and Design (D. M. Jackson and S. A. Vanstone, eds.), Academic Press, Toronto, 1984, 157–197"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Proves congruences for labeled structures (graphs, partitions, ordered set
+      partitions, partial orders, cycle indicators) by group actions on the labels.
+      Every congruence in it is a shift congruence in the index, such as q_{n+p^k} ≡
+      q_{n+p^(k−1)} (mod p^k) for the ordered set partitions (p. 167) or (E^p − E)^r h_n
+      ≡ 0 for partial orders (p. 170). It has no Gauss congruence a(np^r) ≡ a(np^(r−1)),
+      no integrality statement for exp(Σ a(n)xⁿ/n), and no acyclic digraphs or edge-
+      weighted set partitions (full text read, pp. 157–197). Its group-action principle
+      (§3) is the standard combinatorial route to such congruences; the package uses an
+      algebraic route instead.
+
+related_formalizations:
+  - title: "VictorLiwentao/fc-palomar-proofs: FCPalomar/OeisA181316"
+    authors:
+      - "Wentao Li"
+    id: "https://github.com/VictorLiwentao/fc-palomar-proofs/tree/3a8fe0d8a06c4f0e3f352f78d86ac3a5d2cc16c7/FCPalomar/OeisA181316"
+    relationship: "adapts"
+    note: >-
+      The Dold-criterion section of the Solution (exists_coeff_eq_intCast_of_gauss and
+      the Euler-product lemmas) is copied from this package by the same author, which
+      adapts it from the A158110 package. The Challenge does not use it.
+
+classification:
+  arxiv:
+    - "math.CO"
+    - "math.NT"
+  msc2020:
+    - "05A15"
+    - "05C30"
+    - "11B50"
+
+status:
+  scope: >-
+    The selected theorems are OeisA003024.gauss_congruence (every integer q),
+    exp_integral (every integer q), a003024_exp_integral (q = 2, Bala's A003024
+    conjecture and the integrality of A188490) and a188457_exp_integral (q = 3, Bala's
+    A188457 conjecture), with the definitions a and logSeries. The statements were
+    written for this package; they are not copied from an existing formalization.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "OeisA003024.gauss_congruence"
+      file: "FCPalomar/OeisA003024/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA003024/comparator.json"
+    - declaration: "OeisA003024.exp_integral"
+      file: "FCPalomar/OeisA003024/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA003024/comparator.json"
+    - declaration: "OeisA003024.a003024_exp_integral"
+      file: "FCPalomar/OeisA003024/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA003024/comparator.json"
+    - declaration: "OeisA003024.a188457_exp_integral"
+      file: "FCPalomar/OeisA003024/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA003024/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) developed the proof, wrote the Lean formalization and
+        prepared this package under the direction of Wentao Li, with independent agent
+        review of the statement against its source. Wentao Li is the human author and
+        maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material, including in developing the proof. The conjectures are
+    due to Peter Bala; the recurrence is Robinson's (Stanley gives the equivalent
+    generating function), and the ordered-set-partition expansion at q = 2 is Jovovic's
+    formula. The integrality criterion is Dold's (Stanley EC2, Exercise 5.2(a)). The
+    informal proof (November 2026) counted orbits of a cyclic action on ordered set
+    partitions; the Lean proof replaces that step by a Frobenius congruence in the
+    monoid algebra ℤ[ℕ^l] and a divisibility of multinomial coefficients. Wentao Li is
+    the human author of this package's proof.
+
+fidelity:
+  divergences: >-
+    The Challenge defines a_q by the recurrence (R) for every integer q instead of as a
+    count of digraphs. (R) with q = 2 is A003024's formula line, and (R) with q = 3
+    follows from A188457's defining g.f.; the docstring explains both. gauss_congruence
+    and exp_integral go beyond the sources by allowing every integer q. Integer
+    coefficients are stated as ∀ n, ∃ z : ℤ, coeff n F = z, and exp of a series L with
+    zero constant term as subst L (exp ℚ). The statements were written for this package.
+    They are proposed for Formal Conjectures as FormalConjectures/OEIS/3024.lean, which
+    does not exist upstream yet.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Checks by AI agents only: a strict build with no warnings, an axiom check of the
+    selected theorems, a check that the Challenge declarations appear verbatim in
+    Solution, and a review of the statement against its source by a separate agent. No
+    independent human review is claimed.
+
+alignment:
+  namespace: "OeisA003024"
+  statements:
+    - source: >-
+        Not stated in the sources. For every integer q, every prime p and all n, r ≥ 1:
+        a_q(np^r) ≡ a_q(np^(r−1)) (mod p^r), where a_q is defined by the recurrence (R).
+        By Stanley EC2, Exercise 5.2(a), this is equivalent to the integrality
+        statement.
+      lean: "OeisA003024.gauss_congruence"
+      module: "FCPalomar.OeisA003024.Solution"
+      status: "proved"
+    - source: >-
+        Not stated in the sources. exp(Sum_{n>=1} a_q(n)*x^n/n) has integer coefficients
+        for every integer q; Bala's two conjectures are the cases q = 2 and q = 3.
+      lean: "OeisA003024.exp_integral"
+      module: "FCPalomar.OeisA003024.Solution"
+      status: "proved"
+    - source: >-
+        exp( Sum_{n >= 1} a(n)*x^n/n ) = 1 + x + 2*x^2 + 10*x^3 + 146*x^4 + 6010*x^5 +
+        ... appears to have integer coefficients (cf. A188490) (A003024, formula
+        section, Bala, Jan 14 2016). A188490 is this series.
+      lean: "OeisA003024.a003024_exp_integral"
+      module: "FCPalomar.OeisA003024.Solution"
+      status: "proved"
+    - source: >-
+        exp( Sum_{n >= 1} a(n)*x^n/n ) = 1 + x + 3*x^2 + 39*x^3 + 2403*x^4 + 616131*x^5
+        + ... appears to have integer coefficients (A188457, formula section, Bala, Jan
+        14 2016).
+      lean: "OeisA003024.a188457_exp_integral"
+      module: "FCPalomar.OeisA003024.Solution"
+      status: "proved"

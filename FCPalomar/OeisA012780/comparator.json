@@ -1,0 +1,17 @@
+{
+  "challenge_module": "FCPalomar.OeisA012780.Challenge",
+  "solution_module": "FCPalomar.OeisA012780.Solution",
+  "theorem_names": [
+    "OeisA012780.bala_conjecture",
+    "OeisA012780.bala_explicit",
+    "OeisA012780.period_two_pow",
+    "OeisA012780.period_odd_prime_pow",
+    "OeisA012780.not_period_two_mod_eight"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

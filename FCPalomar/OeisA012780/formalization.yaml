@@ -1,0 +1,260 @@
+version: "v0.4"
+
+project:
+  name: "OEIS A012780: Bala's periodicity conjecture for arcsin(tan x)"
+  description: >-
+    Let a(n) = (2n+1)! [x^(2n+1)] arcsin(tan x) (OEIS A012780). The package proves that
+    every a(n) is an integer and Peter Bala's 2026 conjecture that a(n) mod k is
+    eventually periodic with period dividing φ(k), for every k ≥ 1. It also proves the
+    prime-power congruences behind it: a(n + 2^(e−1)) ≡ a(n) (mod 2^e) for all n, and
+    a(n + φ(p^e)) ≡ a(n) (mod p^e) for odd primes p and 2n ≥ e, and the conjecture with
+    that explicit pre-period. It also proves that a(n + 2) ≢ a(n) (mod 8) for every n,
+    so the Carmichael function λ(k) cannot replace φ(k). Bala's φ(k)-periodicity
+    conjectures for exponential generating functions are recent research targets: Kallat
+    proved Bala's conjectures for A158690 (arXiv:2609.07238), and Blanco Gómez proved
+    the φ(k)-period for the Euler numbers A000364, where Bala's stronger claim of pure
+    periodicity fails (Zenodo 23150466, Theorem 2.2). Kallat's general theorem gives
+    λ(k)-periods, so by the mod-8 result it does not cover A012780.
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "OEIS A012780"
+    authors:
+      - "Patrick Demichel"
+      - "Peter Bala"
+    id: "https://oeis.org/A012780"
+    type: "web discussion"
+    location: "entry by Patrick Demichel; conjecture in Peter Bala's comment of February 15, 2026"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Bala conjectures that a(n) reduced modulo every k ≥ 1 is eventually periodic with
+      period dividing φ(k). Searches in November 2026 (the OEIS entry, arXiv, Zenodo,
+      OpenWitness, GitHub issues, pull requests and code, and public Lean and OEIS-proof
+      result repositories) found no earlier proof for this entry. The proof in this
+      package is credited to Wentao Li; its tools are known (see the other sources).
+  - title: "A Unified Framework for $p$-adic Congruences and $p$-adic Interpolations of Sequences"
+    authors:
+      - "Yuta Nishibuchi"
+    id: "https://arxiv.org/abs/2610.11648"
+    type: "paper"
+    location: "Prop. 3.4, Prop. 4.2(2) and Cor. 6.3(2) (arXiv v2, October 21, 2026)"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Prop. 3.4 shows that c(n + p^k) ≡ c(n) (mod p^(k+r)) for all n and k exactly when
+      e^(−x)F lies in a certain ring of series, and Prop. 4.2(2) shows that this ring is
+      closed under reciprocals of units. With Cor. 6.3(2) (the case of sech x) and the
+      integrality of A126156 (equivalently, 2^⌈m/2⌉ divides the m-th coefficient of
+      (cosh 2x)^(−1/2)), they give the 2-adic congruence in a few lines. The paper does
+      not mention A012780. The Lean proof proves directly the sufficient form of the
+      criterion that it needs.
+  - title: "Open statements in core entries of the OEIS, II: further proofs and three refutations"
+    authors:
+      - "Roberto Blanco Gómez"
+    id: "https://zenodo.org/records/23150466"
+    type: "paper"
+    location: "Theorem 2.2"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Its Theorem 2.2(i) proves the analogue for the Euler numbers A000364: |E_(2n)| is
+      periodic modulo every k ≥ 2 with period φ(k) for n ≥ max(1, ⌈e_p/2⌉ over the odd
+      primes p), where e_p is the exponent of p in k. Apart from the bound n ≥ 1, this
+      is the pre-period of bala_explicit. Its Theorem 2.2(ii) shows that Bala's stronger
+      claim of pure periodicity for A000364 fails for k = 27. It does not treat A012780.
+  - title: "A Proof of Bala's Congruence Conjectures for A158690"
+    authors:
+      - "Ahaan Kallat"
+    id: "https://arxiv.org/abs/2609.07238"
+    type: "paper"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Its Theorem 2.6 shows that the coefficients of G(e^x − 1) with G ∈ ℤ[[y]] have
+      eventual period λ(k) modulo every k ≥ 2, and it proves Bala's conjectures for
+      A158690 with it. It does not apply to A012780: not_period_two_mod_eight shows that
+      a(n + 2) ≢ a(n) (mod 8) for every n, while λ(8) = 2. The odd-prime step of this
+      package uses the p-local form of its method: over ℤ/p^e, a series that agrees up
+      to each index with a polynomial in e^x − 1 has coefficients with period φ(p^e)
+      from index e.
+  - title: "Periodicidad modular de transformadas factoriales de Stirling: prueba general e integración en SyntheticMind"
+    authors:
+      - "Roberto Blanco Gómez"
+    id: "https://zenodo.org/records/23291157"
+    type: "paper"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Uses the same finite-difference method for Stirling transforms. It does not treat
+      A012780.
+
+related_formalizations:
+  - title: "VictorLiwentao/fc-palomar-proofs: FCPalomar/OeisA317345"
+    authors:
+      - "Wentao Li"
+    id: "https://github.com/VictorLiwentao/fc-palomar-proofs/tree/2329f9d4bebb30be1bb59e40476a89b44d6e034c/FCPalomar/OeisA317345"
+    relationship: "adapts"
+    note: >-
+      The Hurwitz-series library in the Solution (ring structure, derivative, fixed
+      points, exponentials and inverses) is adapted from this package by the same
+      author. The Challenge does not use it.
+  - title: "VictorLiwentao/fc-palomar-proofs: FCPalomar/OeisA371710"
+    authors:
+      - "Wentao Li"
+    id: "https://github.com/VictorLiwentao/fc-palomar-proofs/tree/2329f9d4bebb30be1bb59e40476a89b44d6e034c/FCPalomar/OeisA371710"
+    relationship: "adapts"
+    note: >-
+      The divided powers in the Solution are adapted from this package by the same
+      author. The Challenge does not use them.
+  - title: "VictorLiwentao/fc-palomar-proofs: FCPalomar/A396804"
+    authors:
+      - "Wentao Li"
+    id: "https://github.com/VictorLiwentao/fc-palomar-proofs/tree/2329f9d4bebb30be1bb59e40476a89b44d6e034c/FCPalomar/A396804"
+    relationship: "adapts"
+    note: >-
+      The divided powers in the Solution are adapted from this package by the same
+      author. The Challenge does not use it.
+
+classification:
+  arxiv:
+    - "math.NT"
+    - "math.CO"
+  msc2020:
+    - "05A15"
+    - "11A07"
+    - "11B50"
+
+status:
+  scope: >-
+    The selected theorems are OeisA012780.bala_conjecture (Bala's conjecture),
+    bala_explicit (with an explicit pre-period), period_two_pow (the prime 2),
+    period_odd_prime_pow (odd primes) and not_period_two_mod_eight (λ(8) = 2 is not an
+    eventual period), with the definitions arcsin, tan and a. Each theorem also provides
+    an integer sequence equal to a. The statements were written for this package; they
+    are not copied from an existing formalization.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "OeisA012780.bala_conjecture"
+      file: "FCPalomar/OeisA012780/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA012780/comparator.json"
+    - declaration: "OeisA012780.bala_explicit"
+      file: "FCPalomar/OeisA012780/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA012780/comparator.json"
+    - declaration: "OeisA012780.period_two_pow"
+      file: "FCPalomar/OeisA012780/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA012780/comparator.json"
+    - declaration: "OeisA012780.period_odd_prime_pow"
+      file: "FCPalomar/OeisA012780/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA012780/comparator.json"
+    - declaration: "OeisA012780.not_period_two_mod_eight"
+      file: "FCPalomar/OeisA012780/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA012780/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) developed the proof, wrote the Lean formalization and
+        prepared this package under the direction of Wentao Li, with independent agent
+        review of the proof and of the statement against its source. Wentao Li is the
+        human author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material, including in developing the proof. The conjecture is due
+    to Peter Bala (OEIS A012780). The 2-adic step is a form of Y. Nishibuchi's criterion
+    and the odd-prime step is the p-local form of the method of A. Kallat and R. Blanco
+    Gómez. Wentao Li is the human author of this package's proof.
+
+fidelity:
+  divergences: >-
+    bala_conjecture states 'eventually periodic with the period dividing φ(k)' as: there
+    is N with a(n + φ(k)) ≡ a(n) (mod k) for all n ≥ N. Then φ(k) is an eventual period,
+    and the least eventual period divides every eventual period, so the two readings
+    agree. a(n) is defined through power series over ℚ: arcsin is its Maclaurin series,
+    tan is sin · cos⁻¹, and arcsin(tan x) is the substitution arcsin.subst tan. The
+    Solution checks a(0..4) = 1, 3, 45, 1743, 133305 against the OEIS data. Integrality,
+    the explicit pre-periods and the mod-8 result are added. The statements were written
+    for this package from the OEIS entry and are proposed for Formal Conjectures as
+    FormalConjectures/OEIS/12780.lean, which does not exist upstream yet.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Checks by AI agents only: a strict build with no warnings, an axiom check of the
+    selected theorems, a check that the Challenge declarations appear verbatim in
+    Solution, and a review of the statement against its source by a separate agent. No
+    independent human review is claimed.
+
+alignment:
+  namespace: "OeisA012780"
+  statements:
+    - source: >-
+        Conjecture: the sequence {a(n)} reduced modulo a positive integer k is
+        eventually periodic with the period dividing phi(k) (Peter Bala, Feb 15 2026).
+        The Lean statement also gives integrality: every a(n) is an integer, as the OEIS
+        data show.
+      lean: "OeisA012780.bala_conjecture"
+      module: "FCPalomar.OeisA012780.Solution"
+      status: "proved"
+    - source: >-
+        Not in the source. The conjecture with pre-period: a(n + φ(k)) ≡ a(n) (mod k)
+        whenever 2n is at least the exponent of every odd prime in k.
+      lean: "OeisA012780.bala_explicit"
+      module: "FCPalomar.OeisA012780.Solution"
+      status: "proved"
+    - source: >-
+        Not in the source. a(n + 2^(e−1)) ≡ a(n) (mod 2^e) for every e ≥ 1 and every n.
+      lean: "OeisA012780.period_two_pow"
+      module: "FCPalomar.OeisA012780.Solution"
+      status: "proved"
+    - source: >-
+        Not in the source. a(n + φ(p^e)) ≡ a(n) (mod p^e) for every odd prime p, e ≥ 1
+        and 2n ≥ e.
+      lean: "OeisA012780.period_odd_prime_pow"
+      module: "FCPalomar.OeisA012780.Solution"
+      status: "proved"
+    - source: >-
+        Not in the source. a(n + 2) ≢ a(n) (mod 8) for every n: the shift λ(8) = 2 is
+        not an eventual period, so φ(k) cannot be replaced by λ(k).
+      lean: "OeisA012780.not_period_two_mod_eight"
+      module: "FCPalomar.OeisA012780.Solution"
+      status: "proved"
