@@ -1,0 +1,430 @@
+version: "v0.4"
+
+project:
+  name: "OEIS A002439: Bala's conjectures for sin 2x / (2 cos 3x)"
+  description: >-
+    Let a(n) = (2n+1)! [x^(2n+1)] sin 2x / (2 cos 3x) (OEIS A002439, Glaisher's T
+    numbers: 1, 23, 1681, 257543, …; Glaisher, 1899). Up to a sign and a factor 1/2,
+    a(n) is the value at −2n − 1 of the Dirichlet L-function of the real character χ₁₂
+    modulo 12, so these are congruences for values of Dirichlet L-functions. In 2021
+    Peter Bala conjectured six families of congruences for a(n) and stated the formula
+    a(n) ≡ 23^n (mod 1152). The package proves his power congruences 3)–5): a(mn) ≡
+    a(m)^n modulo 2^(2v₂(m)+7) and modulo 3^(2v₃(m)+2); a(2mn) ≡ a(n)^(2m) and
+    a((2m+1)n) ≡ a(n)^(2m+1) modulo 2^(v₂(m)+7); a(3mn) ≡ a(n)^(3m) and a((3m+1)n) ≡
+    a(n)^(3m+1) modulo 3^(v₃(m)+2), and even modulo 3^(v₃(m)+3); and a((3m+2)n) ≡
+    a(n)^(3m+2) modulo 9. It proves the formula a(n) ≡ 23^n (mod 1152). It refutes
+    conjecture 6) and determines exactly when it holds: for a prime p ≥ 5, h = (p − 1)/2
+    and m, n ≥ 1, a(hnm) ≡ a(hn)^m (mod p^(v_p(m−1)+1)) holds if and only if v_p(m − 1)
+    ≤ (p − 1)n. For example, at p = 5, n = 1 and m = 3126 = 1 + 5^5, a(6252) ≡ (1 +
+    5^5)·a(2) (mod 5^6), so a(6252) − a(2)^3126 has 5-adic valuation exactly 5 instead
+    of 6; this is proved by hand, without computing a(6252). Behind this is the
+    congruence a(n + h·p^(e−1)) ≡ (−1)^h (1 − χ₁₂(p)·p^(2n+1)) a(n) (mod p^e) for every
+    prime p ≥ 5, e ≥ 1 and every n, which the package proves from an elementary
+    alternating-sum formula. It is the classical Kummer congruence for these L-values,
+    from the theory of p-adic measures attached to Dirichlet characters that Blanco
+    Gómez's Remark 5 names, and 1 − χ₁₂(p)p^(2n+1) is its Euler factor. When 2n + 1 ≥ e
+    it reduces to the antiperiod a(n + h·p^(e−1)) ≡ (−1)^h a(n) (mod p^e), a case of
+    Blanco Gómez's Theorem 1 on the values b^r E_r(a/b) of the Euler polynomials (Zenodo
+    23407292), and the "if" direction for 6) is a short corollary of it. At p = 3 the
+    package proves a(n + 3^(e−1)) ≡ −a(n) (mod 3^e) for every n. No earlier treatment of
+    the power congruences 3)–5), of the formula modulo 1152, or of the failure of 6) and
+    its exact range was found. The power congruences carry the main new argument; the
+    exact range of 6) is a short consequence of the classical congruence above. Bala's
+    congruence conjectures for exponential generating functions are recent targets in
+    the study of congruences for Euler-type numbers and for values of Dirichlet
+    L-functions: Kallat proved Bala's conjectures for A158690 (arXiv:2609.07238).
+    Conjectures 1) and 2) for A002439 follow from Kallat's Theorem 2.6 and Bala's
+    hypergeometric e.g.f., which comes from Zagier's strange identity; they are not part
+    of this package.
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "OEIS A002439"
+    authors:
+      - "N. J. A. Sloane"
+      - "Peter Bala"
+    id: "https://oeis.org/A002439"
+    type: "web discussion"
+    location: "entry by N. J. A. Sloane; conjectures 1)–6) in Peter Bala's comment of December 18, 2021; the formula a(n) ≡ 23^n (mod 2^7·3^2) in his comment of December 25, 2021"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Bala's conjectures 3)–5) are power congruences modulo powers of 2 and 3, and 6) is
+      a power congruence modulo powers of a prime p ≥ 5. The formula modulo 1152 is not
+      marked as proved. Searches in November 2026 (the OEIS entry, arXiv, Zenodo, GitHub
+      issues, pull requests and code, and public Lean and OEIS-proof result
+      repositories) found no earlier proof or refutation of 3)–6) or of the formula. The
+      proofs, the refutation of 6) and its corrected form are credited to Wentao Li; the
+      odd-prime congruences used for 6) are of classical Kummer type, and for p ≥ 5 and
+      2n + 1 ≥ e they are a case of Blanco Gómez's Theorem 1. Conjectures 1) and 2) are
+      not part of this package (see Kallat).
+  - title: "Kummer congruences for the values b^r E_r(a/b) of the Euler polynomials at rational points, and the towers a(np^k) ≡ ±a(np^(k-1)) (mod p^k) for the tangent, Euler, zigzag and Springer numbers"
+    authors:
+      - "Roberto Blanco Gómez"
+    id: "https://zenodo.org/records/23407292"
+    type: "paper"
+    location: "Theorem 1 at a/b = 1/6; first posted as Zenodo 23404924 (October 15, 2026)"
+    relationship: "independently-proves"
+    author_endorsement: "not-contacted"
+    note: >-
+      Its Theorem 1: for an odd prime p ∤ b, the numbers s_r = b^r E_r(a/b) satisfy s_r
+      ≡ s_r' (mod p^k) whenever r ≡ r' (mod (p − 1)p^(k−1)) and r, r' ≥ k. With the
+      entry's formula a(n) = −(−4)^n 3^(2n+1) E_(2n+1)(1/6), that is a(n) = (−1)^(n+1)
+      s_(2n+1)/2 for b = 6, and r = 2n + 1, k = e, it gives antiperiod_odd_prime_pow for
+      every prime p ≥ 5, including the bound 2n + 1 ≥ e, and so the case 2n + 1 ≥ e of
+      antiperiod_euler. The case p = 3 is not covered, since 3 divides b = 6. The "if"
+      direction of conjecture6_iff (conjecture6_of_le) is a short corollary. Its Remark
+      5 notes that Theorem 1 is a special case of the theory of p-adic measures attached
+      to Dirichlet characters, and its Section 5 notes that the bound r, r' ≥ k cannot
+      be dropped in general; for A002439 the Euler factor in antiperiod_euler is what
+      happens below the bound, and it gives the failure of 6). It does not mention
+      A002439 and does not treat conjectures 3)–6) or the formula modulo 1152.
+  - title: "A Proof of Bala's Congruence Conjectures for A158690"
+    authors:
+      - "Ahaan Kallat"
+    id: "https://arxiv.org/abs/2609.07238"
+    type: "paper"
+    location: "Theorem 2.6 (arXiv v1, September 7, 2026)"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Its Theorem 2.6 shows, for G ∈ ℤ[[y]] and the coefficients b(n) of G(e^t − 1),
+      that (1) λ(k) is an eventual period of b(n) modulo every k ≥ 2, and (2) b(np^r +
+      i) ≡ b(np^(r−1) + i) (mod p^r) for every i ≥ 0, prime p and n, r ≥ 1. Bala's OEIS
+      formula Σ a(n) t^n/n! = exp(−t) Σ_n Π_(k=1..n) (1 − exp(−24kt)) (from Zagier's
+      strange identity) puts A002439 in this class: with y = e^t − 1, exp(−t) = (1 +
+      y)^(−1) and 1 − exp(−24kt) = 1 − (1 + y)^(−24k) lie in ℤ[[y]]. So (1) gives Bala's
+      conjecture 1), since λ(k) divides φ(k), and (2) gives his conjecture 2). They are
+      not part of this package. The paper does not mention A002439 and does not treat
+      the power congruences 3)–6).
+  - title: "Vassiliev invariants and a strange identity related to the Dedekind eta-function"
+    authors:
+      - "Don Zagier"
+    id: "https://doi.org/10.1016/S0040-9383(00)00005-7"
+    type: "paper"
+    location: "Topology 40 (2001), no. 5, 945–960"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      The strange identity behind Bala's hypergeometric e.g.f. for A002439; used only in
+      the note on conjectures 1) and 2), which are not part of this package.
+  - title: "On a Set of Coefficients analogous to the Eulerian Numbers"
+    authors:
+      - "J. W. L. Glaisher"
+    id: "https://doi.org/10.1112/plms/s1-31.1.216"
+    type: "paper"
+    location: "Proc. London Math. Soc. 31 (1899), 216–235"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      The origin of the sequence (Glaisher's T numbers). It does not treat Bala's
+      conjectures.
+
+related_formalizations:
+  - title: "VictorLiwentao/fc-palomar-proofs: FCPalomar/OeisA000464"
+    authors:
+      - "Wentao Li"
+    id: "https://github.com/VictorLiwentao/fc-palomar-proofs/tree/4b84038634133da6a5aba921e992c817b20a678a/FCPalomar/OeisA000464"
+    relationship: "adapts"
+    note: >-
+      The Hurwitz-series library, the twist x ↦ ix, the class K, the listA/listA_getD
+      evaluator, the Leibniz rule, the polynomial divisibility and the 2-adic
+      square-root steps in the Solution are adapted from this package by the same
+      author. The Challenge does not use them.
+  - title: "VictorLiwentao/fc-palomar-proofs: FCPalomar/OeisA012780"
+    authors:
+      - "Wentao Li"
+    id: "https://github.com/VictorLiwentao/fc-palomar-proofs/tree/4b84038634133da6a5aba921e992c817b20a678a/FCPalomar/OeisA012780"
+    relationship: "adapts"
+    note: >-
+      The Hurwitz-series library came to the OeisA000464 package from this package by
+      the same author. The Challenge does not use it.
+
+classification:
+  arxiv:
+    - "math.NT"
+    - "math.CO"
+  msc2020:
+    - "11A07"
+    - "11B68"
+
+status:
+  scope: >-
+    The selected theorems are OeisA002439.conjecture3_two, conjecture3_three,
+    conjecture4, conjecture5, conjecture5_iii and conjecture5_strong (conjectures 3)–5),
+    and 5)(i), (ii) with one more power of 3), a_mod_1152 (the formula modulo 1152),
+    not_conjecture6, conjecture6_counterexample and conjecture6_iff (the refutation of
+    conjecture 6) and its exact range), conjecture6_of_le (its "if" direction), and
+    antiperiod_euler, antiperiod_odd_prime_pow and antiperiod_three (the odd-prime
+    congruences), with the definitions a and chi12. Each theorem also provides an
+    integer sequence equal to a. The statements were written for this package; they are
+    not copied from an existing formalization.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "OeisA002439.conjecture3_two"
+      file: "FCPalomar/OeisA002439/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA002439/comparator.json"
+    - declaration: "OeisA002439.conjecture3_three"
+      file: "FCPalomar/OeisA002439/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA002439/comparator.json"
+    - declaration: "OeisA002439.conjecture4"
+      file: "FCPalomar/OeisA002439/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA002439/comparator.json"
+    - declaration: "OeisA002439.conjecture5"
+      file: "FCPalomar/OeisA002439/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA002439/comparator.json"
+    - declaration: "OeisA002439.conjecture5_iii"
+      file: "FCPalomar/OeisA002439/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA002439/comparator.json"
+    - declaration: "OeisA002439.a_mod_1152"
+      file: "FCPalomar/OeisA002439/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA002439/comparator.json"
+    - declaration: "OeisA002439.not_conjecture6"
+      file: "FCPalomar/OeisA002439/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA002439/comparator.json"
+    - declaration: "OeisA002439.conjecture6_counterexample"
+      file: "FCPalomar/OeisA002439/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA002439/comparator.json"
+    - declaration: "OeisA002439.antiperiod_odd_prime_pow"
+      file: "FCPalomar/OeisA002439/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA002439/comparator.json"
+    - declaration: "OeisA002439.conjecture6_of_le"
+      file: "FCPalomar/OeisA002439/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA002439/comparator.json"
+    - declaration: "OeisA002439.antiperiod_euler"
+      file: "FCPalomar/OeisA002439/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA002439/comparator.json"
+    - declaration: "OeisA002439.conjecture6_iff"
+      file: "FCPalomar/OeisA002439/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA002439/comparator.json"
+    - declaration: "OeisA002439.antiperiod_three"
+      file: "FCPalomar/OeisA002439/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA002439/comparator.json"
+    - declaration: "OeisA002439.conjecture5_strong"
+      file: "FCPalomar/OeisA002439/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA002439/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) developed the proof, wrote the Lean formalization and
+        prepared this package under the direction of Wentao Li, with independent agent
+        review of the proof and of the statement against its source. Wentao Li is the
+        human author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material, including in developing the proof. The conjectures are
+    due to Peter Bala (OEIS A002439). Over ℂ, x ↦ ix turns the e.g.f. into G = sinh x /
+    (2 cosh 2x − 1) up to signs. For an odd modulus P, e^(6Px) = 1 over ℤ/P, which gives
+    the exact formula 4G_M ≡ Σ_(x<P) (−1)^x ((5 + 6x)^M − (1 + 6x)^M) (mod P). Euler's
+    theorem then gives the antiperiod (known for p ≥ 5 from Blanco Gómez) and the
+    corrected conjecture 6). At P = p^e with p ≥ 5, only the bases divisible by p
+    survive in G_(M+φ(p^e)) − G_M, and they reduce to the formula at P = p^(e−1); this
+    gives the Euler factor 1 − χ₁₂(p)p^M and with it the exact range of 6). The
+    refutation runs the same argument at p = 5, e = 6 and M = 5, so a(6252) is never
+    computed. At p = 3 no base is divisible by 3, so the antiperiod holds for every n.
+    For conjectures 3)–5), let b(n) = a(n)/23^n. The Newton coefficients f_k of a
+    satisfy 2^(3k) | 2f_k (from a representation 2G_M = Σ Q_i (2i + 1)^M) and 3^k | f_k
+    (from the odd-modulus formula), and f_2 = 1152; this gives the formula modulo 1152.
+    The power map z ↦ z^(p^K) in ℤ_p (p = 2, 3), Newton's formula and the divisibility
+    of l!(C(xy, l) − y·C(x, l)) by x²y(y − 1) give a(xy) ≡ a(x)^y modulo 2^(K+6) or
+    3^(K+2) when p^K divides x²y(y − 1), with square-root steps at 2 and cube-root steps
+    at 3. No p-adic logarithm is used. The Solution's module docstring gives the full
+    account. Wentao Li is the human author of this package's proof.
+
+fidelity:
+  divergences: >-
+    Conjectures 3)–6) do not state the range of m and n; the package takes m, n ≥ 1, and
+    m ≥ 0 for 5)(iii), whose modulus does not depend on m (m = 0 gives a(2n) ≡ a(n)^2
+    mod 9). v_p(m) is written m.factorization p, so v_p(0) = 0 and the case m = 1 of 6)
+    is the identity; the 5-adic valuation of an integer is padicValInt 5. Conjecture 6)
+    is read literally, for every prime p ≥ 5 and all m, n ≥ 1; not_conjecture6 negates
+    exactly that. a(n) is defined through power series over ℚ with sin 2x as rescale 2
+    (sin ℚ) and cos 3x as rescale 3 (cos ℚ); the Solution checks a(0..3) = 1, 23, 1681,
+    257543 against the OEIS data. chi12 is defined on all natural numbers by the residue
+    modulo 12; it is used only at primes p ≥ 5, where it is the character χ₁₂.
+    Integrality, the witness of the refutation, the exact range of 6), the odd-prime
+    congruences and the strengthening of 5) are added. The statements were written for
+    this package from the OEIS entry and are proposed for Formal Conjectures as
+    FormalConjectures/OEIS/2439.lean, which does not exist upstream yet. Conjectures 1)
+    and 2) are not part of the package.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Checks by AI agents only: a strict build with no warnings, an axiom check of the
+    selected theorems, a check that the Challenge declarations appear verbatim in
+    Solution, and a review of the statement against its source by a separate agent. No
+    independent human review is claimed.
+
+alignment:
+  namespace: "OeisA002439"
+  statements:
+    - source: >-
+        3)(i) a(m*n) == a(m)^n (mod 2^k) for k = 2*v_2(m) + 7, where v_p(i) denotes the
+        p-adic valuation of i.
+      lean: "OeisA002439.conjecture3_two"
+      module: "FCPalomar.OeisA002439.Solution"
+      status: "proved"
+    - source: >-
+        3)(ii) a(m*n) == a(m)^n (mod 3^k) for k = 2*v_3(m) + 2.
+      lean: "OeisA002439.conjecture3_three"
+      module: "FCPalomar.OeisA002439.Solution"
+      status: "proved"
+    - source: >-
+        4)(i) a(2*m*n) == a(n)^(2*m) (mod 2^k) for k = v_2(m) + 7; (ii) a((2*m+1)*n) ==
+        a(n)^(2*m+1) (mod 2^k) for k = v_2(m) + 7.
+      lean: "OeisA002439.conjecture4"
+      module: "FCPalomar.OeisA002439.Solution"
+      status: "proved"
+    - source: >-
+        5)(i) a(3*m*n) == a(n)^(3*m) (mod 3^k) for k = v_3(m) + 2; (ii) a((3*m+1)*n) ==
+        a(n)^(3*m+1) (mod 3^k) for k = v_3(m) + 2.
+      lean: "OeisA002439.conjecture5"
+      module: "FCPalomar.OeisA002439.Solution"
+      status: "proved"
+    - source: >-
+        5)(iii) a((3*m+2)*n) == a(n)^(3*m+2) (mod 3^2).
+      lean: "OeisA002439.conjecture5_iii"
+      module: "FCPalomar.OeisA002439.Solution"
+      status: "proved"
+    - source: >-
+        Formula: a(n) == 23^n ( mod (2^7)*(3^2) ).
+      lean: "OeisA002439.a_mod_1152"
+      module: "FCPalomar.OeisA002439.Solution"
+      status: "proved"
+    - source: >-
+        6) For prime p >= 5, a((p-1)/2*n*m) == a((p-1)/2*n)^m (mod p^k) for k = v_p(m-1)
+        + 1. The Lean statement is its negation.
+      lean: "OeisA002439.not_conjecture6"
+      module: "FCPalomar.OeisA002439.Solution"
+      status: "proved"
+    - source: >-
+        Not in the source. The witness for the refutation of 6): a(2) = 1681, a(6252) ≡
+        (1 + 5^5)·a(2) (mod 5^6), and v_5(a(6252) − a(2)^3126) = 5.
+      lean: "OeisA002439.conjecture6_counterexample"
+      module: "FCPalomar.OeisA002439.Solution"
+      status: "proved"
+    - source: >-
+        Not in the source. a(n + (p−1)p^(e−1)/2) ≡ (−1)^((p−1)/2) a(n) (mod p^e) for odd
+        primes p, e ≥ 1 and 2n + 1 ≥ e; known for p ≥ 5 from Blanco Gómez (Zenodo
+        23407292, Theorem 1).
+      lean: "OeisA002439.antiperiod_odd_prime_pow"
+      module: "FCPalomar.OeisA002439.Solution"
+      status: "proved"
+    - source: >-
+        Not in the source as stated. Conjecture 6) under the extra condition v_p(m − 1)
+        ≤ (p − 1)n.
+      lean: "OeisA002439.conjecture6_of_le"
+      module: "FCPalomar.OeisA002439.Solution"
+      status: "proved"
+    - source: >-
+        Not in the source. a(n + (p−1)p^(e−1)/2) ≡ (−1)^((p−1)/2) (1 − χ₁₂(p) p^(2n+1))
+        a(n) (mod p^e) for every prime p ≥ 5, e ≥ 1 and n ≥ 0; the classical Kummer
+        congruence with its Euler factor.
+      lean: "OeisA002439.antiperiod_euler"
+      module: "FCPalomar.OeisA002439.Solution"
+      status: "proved"
+    - source: >-
+        Not in the source. The exact range of 6): for a prime p ≥ 5 and m, n ≥ 1,
+        a((p−1)/2·n·m) ≡ a((p−1)/2·n)^m (mod p^(v_p(m−1)+1)) holds if and only if v_p(m
+        − 1) ≤ (p − 1)n.
+      lean: "OeisA002439.conjecture6_iff"
+      module: "FCPalomar.OeisA002439.Solution"
+      status: "proved"
+    - source: >-
+        Not in the source. a(n + 3^(e−1)) ≡ −a(n) (mod 3^e) for every e ≥ 1 and every n
+        ≥ 0.
+      lean: "OeisA002439.antiperiod_three"
+      module: "FCPalomar.OeisA002439.Solution"
+      status: "proved"
+    - source: >-
+        Not in the source. 5)(i) and (ii) modulo 3^(v_3(m) + 3), one power of 3 more
+        than the source.
+      lean: "OeisA002439.conjecture5_strong"
+      module: "FCPalomar.OeisA002439.Solution"
+      status: "proved"

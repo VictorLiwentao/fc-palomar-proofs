@@ -1,6 +1,6 @@
 # Lean proofs of Formal Conjectures statements, packaged for Palomar
 
-This repository holds 70 independent [Palomar](https://palomar-registry.org/) packages.
+This repository holds 71 independent [Palomar](https://palomar-registry.org/) packages.
 Each package proves statements from
 [google-deepmind/formal-conjectures](https://github.com/google-deepmind/formal-conjectures),
 or statements proposed for it, in Lean 4 with Mathlib. The mathematics in every package is due to
@@ -65,6 +65,7 @@ The selected project is the repository root.
 | [`MeynielTree`](FCPalomar/MeynielTree/README.md) | Meyniel's conjecture for trees: trees are cop-win | 1 |
 | [`MosN8`](FCPalomar/MosN8/README.md) | McCarthy–Osburn–Straub Conjecture 1.3 for σ₈, with a shifted companion | 2 |
 | [`OeisA000464`](FCPalomar/OeisA000464/README.md) | OEIS A000464: Bala's conjectures for sin x / cos 2x; conjecture 1) refuted and corrected, with the period λ(k) | 17 |
+| [`OeisA002439`](FCPalomar/OeisA002439/README.md) | OEIS A002439: Bala's conjectures 3)–5) and the formula mod 1152; conjecture 6) refuted, with its exact range | 14 |
 | [`OeisA003024`](FCPalomar/OeisA003024/README.md) | OEIS A003024 and A188457: Bala's exp-integrality conjectures, with Gauss congruences for every q | 4 |
 | [`OeisA012780`](FCPalomar/OeisA012780/README.md) | OEIS A012780: Bala's periodicity conjecture for arcsin(tan x) | 5 |
 | [`OeisA181076`](FCPalomar/OeisA181076/README.md) | OEIS A183128, A183129 and four siblings: Hanna's binomial-power exponential conjectures | 13 |

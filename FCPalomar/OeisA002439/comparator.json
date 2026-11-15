@@ -1,0 +1,26 @@
+{
+  "challenge_module": "FCPalomar.OeisA002439.Challenge",
+  "solution_module": "FCPalomar.OeisA002439.Solution",
+  "theorem_names": [
+    "OeisA002439.conjecture3_two",
+    "OeisA002439.conjecture3_three",
+    "OeisA002439.conjecture4",
+    "OeisA002439.conjecture5",
+    "OeisA002439.conjecture5_iii",
+    "OeisA002439.a_mod_1152",
+    "OeisA002439.not_conjecture6",
+    "OeisA002439.conjecture6_counterexample",
+    "OeisA002439.antiperiod_odd_prime_pow",
+    "OeisA002439.conjecture6_of_le",
+    "OeisA002439.antiperiod_euler",
+    "OeisA002439.conjecture6_iff",
+    "OeisA002439.antiperiod_three",
+    "OeisA002439.conjecture5_strong"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}
