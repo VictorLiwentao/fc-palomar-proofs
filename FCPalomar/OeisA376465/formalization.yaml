@@ -1,0 +1,186 @@
+version: "v0.4"
+
+project:
+  name: "OEIS A376465: Bala's p^(3r) tower holds and the shifted tower fails"
+  description: >-
+    Let T(m, k) = Σ_i C(m,i)² C(m+k−i, k−i) (OEIS A108625) and a(n) = Σ_k C(n,k)²
+    C(n+k,k)² T(n−1, k) (OEIS A376465). Peter Bala conjectured in 2024 that a(n)
+    satisfies both Apéry-number supercongruences: a(np^r) ≡ a(np^{r−1}) and a(np^r − 1)
+    ≡ a(np^{r−1} − 1) (mod p^{3r}) for all primes p ≥ 5 and n, r ≥ 1. The package proves
+    the first for every such p, n and r, and refutes the second: it fails at p = 5, n =
+    2, r = 1. Both results also appear, with a different proof, in a November 2026
+    preprint of L.-H. Su.
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "OEIS A376465"
+    authors:
+      - "Peter Bala"
+    id: "https://oeis.org/A376465"
+    type: "web discussion"
+    location: "entry of September 2024, comments"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Defines a(n) and conjectures the pair of supercongruences (comments of September
+      25, 2024, unchanged through revision #15 of September 4, 2026). The package proves
+      the unshifted one and refutes the shifted one. Both results also appear in L.-H.
+      Su's preprint of November 5, 2026 (Zenodo 23980342; see below), which this
+      package's proof does not use. Searches in November 2026 (the OEIS entry and its
+      revision history, arXiv, Zenodo, OpenWitness, GitHub issues, pull requests and
+      code, and public Lean and OEIS-proof result repositories) found no other proof or
+      refutation and no Lean formalization. The proof in this package is credited to
+      Wentao Li.
+  - title: "Binomial-Kernel Supercongruences and Laurent Constant-Term Identities"
+    authors:
+      - "Lien-Hung Su"
+    id: "https://doi.org/10.5281/zenodo.23980342"
+    type: "paper"
+    location: "Zenodo record 23980342, version v1 (November 5, 2026), Theorem 4.1 and Section 4.2"
+    relationship: "independently-proves"
+    author_endorsement: "not-contacted"
+    note: >-
+      Proves both results of this package. The unshifted A376465 tower is the case ε =
+      −1, P = X² of Theorem 4.1, a p^(3r) tower for Σ_k C(n,k)² P(C(n+k,k)) H(εn,k),
+      through H(−N,k) = H(N−1,k). Section 4.2 refutes the shifted clause with the same
+      witness, a(9) − a(1) ≡ 103 (mod 125). The preprint is not refereed and contains no
+      Lean. Its argument uses one outer index and a kernel congruence for H at a
+      negative first argument. This package's proof uses Euler's transformation and a
+      two-index split instead, and was developed without it.
+  - title: "rbajaj5/a183068-supercongruence, pull request #90 (Add Bala residue-block transfer target)"
+    authors:
+      - "rbajaj5"
+    id: "https://github.com/rbajaj5/a183068-supercongruence/pull/90"
+    type: "web discussion"
+    location: "open pull request of August 2, 2026"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Proposes a conjectural residue-block route to the unshifted towers of
+      A376459–A376466 and states that it is not a proof.
+  - title: "Cubic supercongruences for a Dixon-type sum, fractional factorial ratios and two Apéry-like sequences"
+    authors:
+      - "Ahmedou Yahye Gleiguem Kheyri"
+      - "Mohamed Vadel Hadweni"
+    id: "https://doi.org/10.5281/zenodo.23632164"
+    type: "paper"
+    location: "Zenodo record 23632164, Section 7"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Proves both towers for the sibling A376462; its two-index split is the method used
+      here.
+  - title: "Multivariate Apéry numbers and supercongruences of rational functions"
+    authors:
+      - "Armin Straub"
+    id: "https://arxiv.org/abs/1401.0854"
+    type: "paper"
+    location: "Algebra Number Theory 8 (2014), 1985–2008; Section 5, Lemmas 5.1, 5.2 and 5.6"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      The layer method, the descent and block lemmas, and Jacobsthal's congruence in the
+      form used here, following Gessel and Beukers.
+
+related_formalizations: []
+
+classification:
+  arxiv:
+    - "math.NT"
+    - "math.CO"
+  msc2020:
+    - "05A10"
+    - "11A07"
+    - "11B65"
+
+status:
+  scope: >-
+    The selected theorems are OeisA376465.tower (the unshifted supercongruence) and
+    OeisA376465.not_shifted_tower (the negation of Bala's shifted clause), with the
+    definitions T and a. The statements were written for this package; they are not
+    copied from an existing formalization.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "OeisA376465.tower"
+      file: "FCPalomar/OeisA376465/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA376465/comparator.json"
+    - declaration: "OeisA376465.not_shifted_tower"
+      file: "FCPalomar/OeisA376465/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA376465/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) developed the proof, wrote the Lean formalization and
+        prepared this package under the direction of Wentao Li, with independent agent
+        review of the statement against its source. Wentao Li is the human author and
+        maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material, including in developing the proof. The conjectures are
+    due to Peter Bala (OEIS A376465). The methods are Gessel's, Beukers', Straub's and
+    Kheyri–Hadweni's. L.-H. Su posted both results earlier, by a different route (Zenodo
+    23980342, November 5, 2026). This package's proof is independent of that preprint,
+    and the searches found no earlier Lean formalization. Wentao Li is the human author
+    of this package's proof.
+
+fidelity:
+  divergences: >-
+    OeisA376465.tower states Bala's first congruence for A376465 as written.
+    OeisA376465.not_shifted_tower is the negation of his second congruence: the package
+    refutes that clause. The definitions follow the OEIS name line and Maple code. At n
+    = 0 the factor A108625(−1, 0) is read as T(0, 0) = 1 (natural subtraction). This
+    agrees with the extension T(−n, k) = T(n−1, k) on A108625 and with a(0) = 1 in the
+    OEIS data. tower never uses a(0); the universal statement negated in
+    not_shifted_tower uses it only at n = r = 1. The statements were written for this
+    package from the OEIS entry and are proposed for Formal Conjectures as
+    FormalConjectures/OEIS/376465.lean, which does not exist upstream yet.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Checks by AI agents only: a strict build with no warnings, an axiom check of the
+    selected theorems, a check that the Challenge declarations appear verbatim in
+    Solution, and a review of the statement against its source by a separate agent. No
+    independent human review is claimed.
+
+alignment:
+  namespace: "OeisA376465"
+  statements:
+    - source: >-
+        1) a(n*p^r) == a(n*p^(r-1)) (mod p^(3*r)) for all primes p >= 5 and all positive
+        integers n and r (conjecture, comments).
+      lean: "OeisA376465.tower"
+      module: "FCPalomar.OeisA376465.Solution"
+      status: "proved"
+    - source: >-
+        2) a(n*p^r - 1) == a(n*p^(r-1) - 1) (mod p^(3*r)) for all primes p >= 5 and all
+        positive integers n and r (conjecture, comments). The Lean statement is its
+        negation.
+      lean: "OeisA376465.not_shifted_tower"
+      module: "FCPalomar.OeisA376465.Solution"
+      status: "proved"

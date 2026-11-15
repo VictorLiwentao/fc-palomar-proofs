@@ -1,0 +1,275 @@
+version: "v0.4"
+
+project:
+  name: "OEIS A363985 and siblings: Bala's p^(3r) supercongruences for u_m, every integer m"
+  description: >-
+    For an integer m let u_m(n) = Σ_{k=0}^{n} (−4)^{n−k} C(n,k) C(mn+k, k) C(2k, k),
+    with the binomial C(mn+k, k) taken as a polynomial in its top. The package proves
+    that u_m(np^r) ≡ u_m(np^{r−1}) (mod p^{3r}) for every integer m, every prime p ≥ 5
+    and all n, r ≥ 1. This is the u-half of Peter Bala's 2023 conjecture on OEIS
+    A363985. It covers A363985 (m = 2), A363987 (m = 3), A363989 (m = 4) and A362676 (m
+    = −1, up to the sign (−1)^n), each stated as its own theorem. The companion v-half
+    of the conjecture (A363986, A363988, A363990) is not covered. Osburn and Sahu's
+    tower for the generalized Domb numbers needs a factor C(n,k)^A with A ≥ 2. The proof
+    here first writes u_m(N) = Σ_j (−1)^j C(mN, N−j) C(2j,j) C(2N−2j, N−j), where C(mN,
+    N−j) occurs only once. The missing powers of p come from the super Catalan
+    factorization of C(2j,j) C(2N−2j, N−j) and from half-block sums of j^{−2}, as in
+    Osburn–Sahu–Straub's proofs of their Theorems 1.3 and 1.2.
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "OEIS A363985"
+    authors:
+      - "Peter Bala"
+    id: "https://oeis.org/A363985"
+    type: "web discussion"
+    location: "entry of July 2, 2023, comments"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Defines a(n) = u_2(n) and the families u_m and v_m, and conjectures the p^(3r)
+      supercongruences for u_m and v_m for all m in Z. The package proves the u_m half.
+      Searches in November 2026 (the OEIS entries and their revision histories, arXiv,
+      Zenodo, GitHub issues, pull requests and code, and public Lean and OEIS-proof
+      result repositories) found no earlier proof of the general statement. The case m =
+      0 is classical: u_0(n) = (−1)^n C(2n,n) (Bala's remark on this entry), and its
+      tower follows from Jacobsthal's congruence. For m = −1 there are partial results
+      (see below). The proof in this package is credited to Wentao Li.
+  - title: "OEIS A363987"
+    authors:
+      - "Peter Bala"
+    id: "https://oeis.org/A363987"
+    type: "web discussion"
+    location: "entry of July 2, 2023, comments"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      The case m = 3, with the same conjecture.
+  - title: "OEIS A363989"
+    authors:
+      - "Peter Bala"
+    id: "https://oeis.org/A363989"
+    type: "web discussion"
+    location: "entry of July 2, 2023, comments"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      The case m = 4, with the same conjecture.
+  - title: "OEIS A362676"
+    authors:
+      - "Peter Bala"
+    id: "https://oeis.org/A362676"
+    type: "web discussion"
+    location: "entry of July 3, 2023, comments"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      a(n) = Σ 4^(n−k) C(n,k) C(n−1,k) C(2k,k), which is (−1)^n u_{−1}(n), with the same
+      conjecture.
+  - title: "rbajaj5/a183068-supercongruence, pull requests #119–#122"
+    authors:
+      - "rbajaj5"
+    id: "https://github.com/rbajaj5/a183068-supercongruence/pull/119"
+    type: "web discussion"
+    location: "open pull requests of August 17, 2026"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Prove the A362676 tower (m = −1) for r = 1 and r = 2 and say that higher levels
+      remain open. The repository's main branch (FRANEL-CT, related-
+      results/FranelCompanionConstantTermReduction.md, August 12, 2026) writes u_m and
+      v_m for every integer m as constant terms and says that the family-wide congruence
+      is not proved.
+  - title: "Supercongruences for sporadic sequences"
+    authors:
+      - "Robert Osburn"
+      - "Brundaban Sahu"
+      - "Armin Straub"
+    id: "https://arxiv.org/abs/1312.2195"
+    type: "paper"
+    location: "proofs of Theorems 1.2 and 1.3"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      The half-block descent and the super Catalan factorization used in the proof
+      follow their arguments.
+  - title: "Multivariate Apéry numbers and supercongruences of rational functions"
+    authors:
+      - "Armin Straub"
+    id: "https://arxiv.org/abs/1401.0854"
+    type: "paper"
+    location: "Section 5, Lemma 5.1"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      The layer method and Jacobsthal's congruence for integer tops.
+  - title: "A supercongruence for generalized Domb numbers"
+    authors:
+      - "Robert Osburn"
+      - "Brundaban Sahu"
+    id: "https://arxiv.org/abs/1201.6195"
+    type: "paper"
+    location: "Funct. Approx. Comment. Math. 48 (2013), no. 1, 29–36"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Proves the p^(3r) tower for Σ C(n,k)^A C(2k,k)^B C(2n−2k,n−k)^C with A ≥ 2.
+      A362676 links this paper and compares itself with the Domb numbers.
+  - title: "Supercongruences"
+    authors:
+      - "M. J. Coster"
+    type: "book"
+    location: "PhD thesis, Universiteit Leiden, 1988"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      The source of the product expansion of binomial ratios that the proof uses for its
+      Jacobsthal-type bound.
+
+related_formalizations: []
+
+classification:
+  arxiv:
+    - "math.NT"
+    - "math.CO"
+  msc2020:
+    - "05A10"
+    - "11A07"
+    - "11B65"
+
+status:
+  scope: >-
+    The selected theorems are OeisA363985.u_tower (every integer m), a363985_tower,
+    a363987_tower, a363989_tower and a362676_tower, with the definitions u, a363985,
+    a363987, a363989 and a362676. The v-half of Bala's conjecture is not covered. The
+    statements were written for this package; they are not copied from an existing
+    formalization.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "OeisA363985.u_tower"
+      file: "FCPalomar/OeisA363985/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA363985/comparator.json"
+    - declaration: "OeisA363985.a363985_tower"
+      file: "FCPalomar/OeisA363985/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA363985/comparator.json"
+    - declaration: "OeisA363985.a363987_tower"
+      file: "FCPalomar/OeisA363985/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA363985/comparator.json"
+    - declaration: "OeisA363985.a363989_tower"
+      file: "FCPalomar/OeisA363985/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA363985/comparator.json"
+    - declaration: "OeisA363985.a362676_tower"
+      file: "FCPalomar/OeisA363985/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA363985/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) developed the proof, wrote the Lean formalization and
+        prepared this package under the direction of Wentao Li, with independent agent
+        review of the statement against its source. Wentao Li is the human author and
+        maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material, including in developing the proof. The conjectures are
+    due to Peter Bala (OEIS A363985 and siblings). The methods are Coster's, Straub's
+    and Osburn–Sahu–Straub's; their application to Bala's u_m family is new in this
+    package. Wentao Li is its human author.
+
+fidelity:
+  divergences: >-
+    None. The statement is new: it was written for this package from the source and is
+    proposed for Formal Conjectures as FormalConjectures/OEIS/363985.lean with the same
+    declarations. The Challenge leaves out only the FormalConjecturesUtil import,
+    attributes, test lemmas and unrelated declarations of that file.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Checks by AI agents only: a strict build with no warnings, an axiom check of the
+    selected theorems, a check that the Challenge declarations appear verbatim in
+    Solution, and a review of the statement against its source by a separate agent. No
+    independent human review is claimed.
+
+alignment:
+  namespace: "OeisA363985"
+  statements:
+    - source: >-
+        We conjecture that, for all m in Z, the sequences u_m and v_m satisfy the
+        supercongruences u(n*p^r) == u(n*p^(r-1)) (mod p^(3*r)) for all primes p >= 5
+        and positive integers n and r (A363985, comments). The Lean statement is the u_m
+        half, for every integer m.
+      lean: "OeisA363985.u_tower"
+      module: "FCPalomar.OeisA363985.Solution"
+      status: "proved"
+    - source: >-
+        A363985: the supercongruences for a(n) = Sum_{k = 0..n}
+        (-4)^(n-k)*binomial(n,k)*binomial(2*n+k,k)*binomial(2*k,k) (conjecture,
+        comments).
+      lean: "OeisA363985.a363985_tower"
+      module: "FCPalomar.OeisA363985.Solution"
+      status: "proved"
+    - source: >-
+        A363987: the supercongruences for a(n) = Sum_{k = 0..n}
+        (-4)^(n-k)*binomial(n,k)*binomial(3*n+k,k)*binomial(2*k,k) (conjecture,
+        comments).
+      lean: "OeisA363985.a363987_tower"
+      module: "FCPalomar.OeisA363985.Solution"
+      status: "proved"
+    - source: >-
+        A363989: the supercongruences for a(n) = Sum_{k = 0..n}
+        (-4)^(n-k)*binomial(n,k)*binomial(4*n+k,k)*binomial(2*k,k) (conjecture,
+        comments).
+      lean: "OeisA363985.a363989_tower"
+      module: "FCPalomar.OeisA363985.Solution"
+      status: "proved"
+    - source: >-
+        A362676: the supercongruences for a(n) = Sum_{k = 0..n}
+        4^(n-k)*binomial(n,k)*binomial(n-1,k)*binomial(2*k,k) (conjecture, comments).
+      lean: "OeisA363985.a362676_tower"
+      module: "FCPalomar.OeisA363985.Solution"
+      status: "proved"
+
+known_gaps:
+  - >-
+    Bala's conjecture also covers the second family v_m(n) = Σ (−4)^{n−k} C(n,k)
+    C(mn+2k, 2k) C(2k,k) (A363986, A363988, A363990). That half is not proved here.

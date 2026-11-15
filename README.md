@@ -1,6 +1,6 @@
 # Lean proofs of Formal Conjectures statements, packaged for Palomar
 
-This repository holds 45 independent [Palomar](https://palomar-registry.org/) packages.
+This repository holds 61 independent [Palomar](https://palomar-registry.org/) packages.
 Each package proves statements from
 [google-deepmind/formal-conjectures](https://github.com/google-deepmind/formal-conjectures),
 or statements proposed for it, in Lean 4 with Mathlib. The mathematics in every package is due to
@@ -52,6 +52,7 @@ The selected project is the repository root.
 | [`Erdos1186`](FCPalomar/Erdos1186/README.md) | Erdős Problem 1186: bounds on the density of monochromatic progressions | 2 |
 | [`Erdos151`](FCPalomar/Erdos151/README.md) | Erdős Problem 151: the triangle-free case and the square-root bound | 2 |
 | [`Erdos494`](FCPalomar/Erdos494/README.md) | Erdős Problem 494: Selfridge–Straus, A is determined by its k-sums when \|A\| has a prime factor p > k, and when k = 4, \|A\| > 12 | 2 |
+| [`Erdos500`](FCPalomar/Erdos500/README.md) | Erdős Problem 500: Turán's lower bound ex₃(n, K₄³) >= (5/9 − o(1)) C(n,3) | 1 |
 | [`Erdos506`](FCPalomar/Erdos506/README.md) | Erdős Problem 506: Segre's eight points determining fewer than C(7,2) circles | 1 |
 | [`Erdos626`](FCPalomar/Erdos626/README.md) | Erdős Problem 626: Erdős's upper bound g_k(n) <= 2 log n / log(k−2) + 1 | 1 |
 | [`Erdos712`](FCPalomar/Erdos712/README.md) | Erdős Problem 712, graph case: Turán's density limit | 2 |
@@ -62,10 +63,25 @@ The selected project is the repository root.
 | [`GowersLongSquare`](FCPalomar/GowersLongSquare/README.md) | Gowers–Long: F(n) ≥ n^{3/2} when n is a perfect square | 1 |
 | [`Kolberg`](FCPalomar/Kolberg/README.md) | Kolberg's theorem: the partition function takes each parity infinitely often | 1 |
 | [`MeynielTree`](FCPalomar/MeynielTree/README.md) | Meyniel's conjecture for trees: trees are cop-win | 1 |
+| [`MosN8`](FCPalomar/MosN8/README.md) | McCarthy–Osburn–Straub Conjecture 1.3 for σ₈, with a shifted companion | 2 |
+| [`OeisA181316`](FCPalomar/OeisA181316/README.md) | OEIS A181316 and A180606: Hanna's q-integer power conjecture, with the sharp form | 7 |
+| [`OeisA258377`](FCPalomar/OeisA258377/README.md) | OEIS A258377–A258381: Bala's 2-adic periodicity for the type-B series | 18 |
+| [`OeisA291897`](FCPalomar/OeisA291897/README.md) | OEIS A291897 and A292911: Shevelev's divisibility conjectures for Euler polynomials | 7 |
+| [`OeisA292877`](FCPalomar/OeisA292877/README.md) | Hanna's parity conjectures for eight power-series entries (OEIS A292877 family) | 31 |
+| [`OeisA317345`](FCPalomar/OeisA317345/README.md) | OEIS A317345: Hanna's mod-10 periodicity, with a general p-adic theorem | 5 |
+| [`OeisA318008`](FCPalomar/OeisA318008/README.md) | OEIS A318008: the parity of the compositional square root (Hanna's conjecture) | 6 |
+| [`OeisA326097`](FCPalomar/OeisA326097/README.md) | OEIS A326097: the parity of a(k) (Hanna's conjecture) | 4 |
+| [`OeisA333472`](FCPalomar/OeisA333472/README.md) | OEIS A333472: Bala's p^(2k) supercongruences for a(r,s;n), every r ≥ 1 and s ∈ ℤ | 2 |
+| [`OeisA363985`](FCPalomar/OeisA363985/README.md) | OEIS A363985 and siblings: Bala's p^(3r) supercongruences for u_m, every integer m | 5 |
+| [`OeisA364111`](FCPalomar/OeisA364111/README.md) | OEIS A364111: Bala's p^(3r) supercongruences | 2 |
+| [`OeisA371710`](FCPalomar/OeisA371710/README.md) | OEIS A371710: Hanna's mod-3 pattern | 5 |
+| [`OeisA376465`](FCPalomar/OeisA376465/README.md) | OEIS A376465: Bala's p^(3r) tower holds and the shifted tower fails | 2 |
+| [`OeisDisproofs`](FCPalomar/OeisDisproofs/README.md) | Counterexamples to five OEIS conjectures (A333564, A034171, A298799, A382407, A399793) | 8 |
 | [`OhbaERT`](FCPalomar/OhbaERT/README.md) | Erdős–Rubin–Taylor: complete multipartite graphs with parts of size 2 are k-choosable | 1 |
 | [`OneTwoThree`](FCPalomar/OneTwoThree/README.md) | The 1-2-3 conjecture with weights 1..5 (Kalkowski–Karoński–Pfender) | 2 |
 | [`Reconstruction`](FCPalomar/Reconstruction/README.md) | Graph reconstruction: disconnected graphs (Kelly) and the Lovász and Müller edge bounds | 3 |
 | [`SauerSpencer`](FCPalomar/SauerSpencer/README.md) | The Sauer–Spencer packing theorem | 1 |
+| [`SidorenkoEvenCycle`](FCPalomar/SidorenkoEvenCycle/README.md) | Sidorenko's inequality for even cycles | 1 |
 | [`SunDet`](FCPalomar/SunDet/README.md) | Sun's determinants det[(i−j)^m + δ_ij] for m = 1, 2, 3 | 3 |
 | [`TxGraffiti2`](FCPalomar/TxGraffiti2/README.md) | TxGraffiti Conjecture 2 is false (Fischer's counterexample) | 1 |
 | [`WOWII291`](FCPalomar/WOWII291/README.md) | WOWII Conjecture 291 is false (a 12-vertex counterexample) | 1 |

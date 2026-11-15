@@ -1,0 +1,294 @@
+version: "v0.4"
+
+project:
+  name: "OEIS A181316 and A180606: Hanna's q-integer power conjecture, with the sharp form"
+  description: >-
+    Write [n]_q = 1 + q + ⋯ + q^(n−1). The package proves that exp(Σ_{n≥1}
+    (q−1)[n]_q^(n−1) xⁿ/n) has integer coefficients for every integer q > 1, as Paul D.
+    Hanna conjectured in 2010 (OEIS A181316), and for every integer q ≠ 1. It proves the
+    sharp form: for integers q and c, exp(Σ c[n]_q^(n−1) xⁿ/n) has integer coefficients
+    if and only if every prime dividing q − 1 divides c. The same holds for any exponent
+    sequence e(n) in place of n − 1 with e(pM) ≡ e(M) (mod φ(p^k)) whenever p is prime
+    and p^k divides pM, and e(n) ≥ 1 for n ≥ 2; with e(n) = n this gives Hanna's 2009
+    claim on A155206 and A155210. The cases q = 3 (A181316) and q = 2 (A180606) are
+    stated separately. The converse gives Hanna's notes in A155206 and A155210 that
+    dividing by (m − 1)^n instead of (m − 1)^(n−1) gives fractional coefficients.
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "OEIS A181316"
+    authors:
+      - "Paul D. Hanna"
+    id: "https://oeis.org/A181316"
+    type: "web discussion"
+    location: "entry of October 31, 2010, comments"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Conjectures that exp(Σ (q−1)((qⁿ−1)/(q−1))^(n−1) xⁿ/n) is an integer series for
+      all integers q > 1; A181316 is the case q = 3. The entry gives no proof (revision
+      #2, March 30, 2012). An independent Lean proof for q > 1 was merged in trureturing
+      on November 14, 2026 (see related_formalizations). Searches in November 2026 (the
+      OEIS entries and their revision histories, arXiv, Zenodo, OpenWitness, GitHub
+      issues, pull requests and code, and public Lean and OEIS-proof result
+      repositories) found no other proof, and no proof of the cases q ≤ 0, of the sharp
+      form or of the general exponent theorem. The proof in this package is credited to
+      Wentao Li.
+  - title: "OEIS A180606"
+    authors:
+      - "Paul D. Hanna"
+    id: "https://oeis.org/A180606"
+    type: "web discussion"
+    location: "entry of September 2010, name line"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      The integer sequence exp(Σ (2ⁿ−1)^(n−1) xⁿ/n), the case q = 2.
+  - title: "OEIS A155206 and A155210"
+    authors:
+      - "Paul D. Hanna"
+    id: "https://oeis.org/A155206"
+    type: "web discussion"
+    location: "entries of February 4, 2009, comments"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      State without proof that exp(Σ (mⁿ − 1)ⁿ/(m−1)^(n−1) xⁿ/n) has integer
+      coefficients for every integer m (m ≠ 1). The package proves this as the case e(n)
+      = n of its general theorem.
+  - title: "Prove Hanna's OEIS A156216 diagonal ghost-power integrality conjecture"
+    authors:
+      - "ElonSG"
+    id: "https://github.com/the-omega-institute/trureturing/pull/23174"
+    type: "web discussion"
+    location: "pull request merged on October 28, 2026"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Proves Hanna's A156216 conjecture: if exp(Σ C(n)xⁿ/n) has integer coefficients, so
+      does exp(Σ C(n)ⁿ xⁿ/n). With C(n) = mⁿ − 1 it gives exp(Σ (mⁿ − 1)ⁿ xⁿ/n)
+      (A155205, A155209). The A155206/A155210 claim divides by (m − 1)^(n−1). It follows
+      in a few lines from that case and Dold's criterion in both directions: multiply by
+      a unit power of m − 1 at primes p ∤ m − 1, and count valuations at p | m − 1. The
+      pull request lists other exponents as open; trureturing's later pull request
+      #30261 covers the exponent n − 1 for q > 1 (see related_formalizations).
+  - title: "Fixed point indices of iterated maps"
+    authors:
+      - "Albrecht Dold"
+    id: "https://doi.org/10.1007/BF01394243"
+    type: "paper"
+    location: "Invent. Math. 74 (1983), no. 3, 419–435"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      The integrality criterion for exp(Σ b(n) xⁿ/n) in terms of the congruences b(pM) ≡
+      b(M) (mod p^(v_p(pM))).
+  - title: "Enumerative Combinatorics, Volume 2"
+    authors:
+      - "Richard P. Stanley"
+    type: "book"
+    location: "Cambridge University Press, 1999, Exercise 5.2(a)"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      States the integrality criterion for exp(Σ b(n) xⁿ/n) used in the proof.
+
+related_formalizations:
+  - title: "the-omega-institute/trureturing: D5/S1/Recurrence/Algebraic/HannaA181316Integrality.lean"
+    authors:
+      - "The Omega Institute trureturing contributors"
+    id: "https://github.com/the-omega-institute/trureturing/blob/c041874f4640568d7ab9fc8f5108761372dfd605/D5/S1/Recurrence/Algebraic/HannaA181316Integrality.lean"
+    relationship: "independent"
+    note: >-
+      A Lean proof of Hanna's conjecture for every integer q > 1 (theorem result),
+      merged in pull request #30261 on November 14, 2026. Its series is the same
+      expression as hannaSeries. It proves the Gauss congruences for (q−1)[n]_q^(n−1) by
+      the same case split and applies the repository's Dold integrality criterion. Its
+      preregistration (issue #30230) says that an AI model supplied the proof, and the
+      pull request says that AI agents wrote the Lean. It states nothing for q ≤ 1, for
+      other multipliers c, for the converse or for other exponents. This package was
+      developed independently of it.
+  - title: "VictorLiwentao/fc-palomar-proofs: FCPalomar/A158110"
+    authors:
+      - "Wentao Li"
+    id: "https://github.com/VictorLiwentao/fc-palomar-proofs/tree/f1418c529c22be32c090b063d4be463188ea7a72/FCPalomar/A158110"
+    relationship: "adapts"
+    note: >-
+      The Lean proof of Hanna's A158110 conjecture (Fried, 2025) in the same repository.
+      The Solution's Dold-criterion section (exists_coeff_eq_intCast_of_dvd, the Euler-
+      product and logarithmic-derivative lemmas and the Möbius pairing) is adapted from
+      it, with a general Gauss sequence in place of q^(n^m). The Challenge does not use
+      it.
+
+classification:
+  arxiv:
+    - "math.NT"
+    - "math.CO"
+  msc2020:
+    - "11B50"
+    - "05A15"
+    - "13F25"
+
+status:
+  scope: >-
+    The selected theorems are OeisA181316.conjecture (q > 1), hannaSeries_integral (q ≠
+    1), a181316_integral, a180606_integral, integral_iff (the sharp form),
+    integral_iff_of_exponent (general exponent) and a155206_integral, with the
+    definitions qInt, hannaSeries and logSeries. The statements were written for this
+    package; they are not copied from an existing formalization.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "OeisA181316.conjecture"
+      file: "FCPalomar/OeisA181316/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA181316/comparator.json"
+    - declaration: "OeisA181316.hannaSeries_integral"
+      file: "FCPalomar/OeisA181316/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA181316/comparator.json"
+    - declaration: "OeisA181316.a181316_integral"
+      file: "FCPalomar/OeisA181316/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA181316/comparator.json"
+    - declaration: "OeisA181316.a180606_integral"
+      file: "FCPalomar/OeisA181316/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA181316/comparator.json"
+    - declaration: "OeisA181316.integral_iff"
+      file: "FCPalomar/OeisA181316/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA181316/comparator.json"
+    - declaration: "OeisA181316.integral_iff_of_exponent"
+      file: "FCPalomar/OeisA181316/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA181316/comparator.json"
+    - declaration: "OeisA181316.a155206_integral"
+      file: "FCPalomar/OeisA181316/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA181316/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) developed the proof, wrote the Lean formalization and
+        prepared this package under the direction of Wentao Li, with independent agent
+        review of the statement against its source. Wentao Li is the human author and
+        maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material, including in developing the proof. The conjectures are
+    due to Paul D. Hanna. The integrality criterion is Dold's. An independent Lean proof
+    of Hanna's conjecture for q > 1, by the same route, was merged in trureturing on
+    November 14, 2026 (pull request #30261). The cases q ≤ 0, the sharp form and the
+    general exponent theorem are not in that proof, and the searches found them nowhere
+    else. Wentao Li is the human author of this package's proof.
+
+fidelity:
+  divergences: >-
+    OeisA181316.conjecture states Hanna's A181316 conjecture as written, and
+    a181316_integral and a180606_integral state the name lines of A181316 and A180606.
+    The other theorems go beyond the sources: hannaSeries_integral allows every integer
+    q ≠ 1; integral_iff and integral_iff_of_exponent add other multipliers c, other
+    exponents and the converse; a155206_integral excludes m = 1, where Hanna's
+    expression is 0/0. The statements were written for this package from the OEIS
+    entries. They are proposed for Formal Conjectures as
+    FormalConjectures/OEIS/181316.lean, which does not exist upstream yet.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Checks by AI agents only: a strict build with no warnings, an axiom check of the
+    selected theorems, a check that the Challenge declarations appear verbatim in
+    Solution, and a review of the statement against its source by a separate agent. No
+    independent human review is claimed.
+
+alignment:
+  namespace: "OeisA181316"
+  statements:
+    - source: >-
+        Conjecture: exp( Sum_{n>=1} (q-1)*((q^n-1)/(q-1))^(n-1)*x^n/n ) is an integer
+        series for all integer q>1 (A181316, comments).
+      lean: "OeisA181316.conjecture"
+      module: "FCPalomar.OeisA181316.Solution"
+      status: "proved"
+    - source: >-
+        Extension of the A181316 conjecture to every integer q ≠ 1; not in the source.
+        At q = 1 the quotient (q^n-1)/(q-1) is 0/0.
+      lean: "OeisA181316.hannaSeries_integral"
+      module: "FCPalomar.OeisA181316.Solution"
+      status: "proved"
+    - source: >-
+        A181316: G.f.: A(x) = exp( Sum_{n>=1} 2*((3^n-1)/2)^(n-1)*x^n/n ) (name line),
+        the case q = 3.
+      lean: "OeisA181316.a181316_integral"
+      module: "FCPalomar.OeisA181316.Solution"
+      status: "proved"
+    - source: >-
+        A180606: G.f.: A(x) = exp( Sum_{n>=1} (2^n-1)^(n-1)*x^n/n ) (name line), the
+        case q = 2.
+      lean: "OeisA181316.a180606_integral"
+      module: "FCPalomar.OeisA181316.Solution"
+      status: "proved"
+    - source: >-
+        Not in the sources. For integers q and c, exp( Sum_{n>=1} c*[n]_q^(n-1)*x^n/n )
+        is an integer series if and only if every prime dividing q - 1 divides c.
+        Hanna's conjecture is the case c = q - 1. For q = 1 the condition means c = 0.
+      lean: "OeisA181316.integral_iff"
+      module: "FCPalomar.OeisA181316.Solution"
+      status: "proved"
+    - source: >-
+        Not in the sources. The same criterion for c*[n]_q^e(n), when e(pM) ≡ e(M) (mod
+        φ(p^k)) whenever p is prime and p^k divides pM, and e(n) >= 1 for n >= 2. The
+        exponents n - 1 (A181316, A180606) and n (A155206, A155210) qualify.
+      lean: "OeisA181316.integral_iff_of_exponent"
+      module: "FCPalomar.OeisA181316.Solution"
+      status: "proved"
+    - source: >-
+        More generally, for m integer, exp( Sum_{n>=1} (m^n - 1)^n/(m-1)^(n-1) * x^n/n )
+        is a power series in x with integer coefficients (A155206 and A155210,
+        comments). The Lean statement excludes m = 1, where the expression is 0/0.
+      lean: "OeisA181316.a155206_integral"
+      module: "FCPalomar.OeisA181316.Solution"
+      status: "proved"

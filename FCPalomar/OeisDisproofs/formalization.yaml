@@ -1,0 +1,270 @@
+version: "v0.4"
+
+project:
+  name: "Counterexamples to five OEIS conjectures (A333564, A034171, A298799, A382407, A399793)"
+  description: >-
+    The package states five conjectures from OEIS entries exactly and proves each false
+    by an explicit, kernel-checked witness. (1) Bala's general clause on A333564, for
+    a(r,s;n) = 2^(rn) Σ_{j<sn} (−1)^(sn−1+j) C(n+j,j)^r with the modulus p^(3k) for
+    primes p ≥ 3, fails at (r,s,p,n,k) = (2,1,3,1,1). (2) Bala's congruence c(pn) ≡ c(n)
+    (mod p²) outside his exception set fails for A034171 at p = 7, n = 50, and (3) for
+    A298799 at p = 19, n = 362, where a(6878) has 9841 digits. (4) Huber's conjecture
+    that a(k) = 0 exactly for k in {2, 4, 8, 13} ∪ {3^j} ∪ {5·3^j} fails at k = 10 for
+    A382407; the package also proves the 'if' direction of the amended set. (5) The
+    conjecture a(n) = ℓ(n) for n ≥ 13 on A399793 fails for 13 ≤ n ≤ 17, where explicit
+    bad sets give a(n) > ℓ(n). The counterexamples for A382407 and A399793 are visible
+    in those entries' own data.
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "OEIS A333564"
+    authors:
+      - "Peter Bala"
+    id: "https://oeis.org/A333564"
+    type: "web discussion"
+    location: "entry of April 7, 2020, comments; revisions 2, 3 and 24"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      States the conjecture for a(n) = [x^n](c(x)/c(−x))^n and, more generally, for
+      a(r,s;n) with integer r and positive integer s, 'the same congruences'. The
+      revision history fixes the modulus as p^(3k) and the primes as p ≥ 3. The package
+      refutes the general clause with the witness r = 2, s = 1, p = 3, n = k = 1 (5436 ≢
+      0 mod 27); it does not refute a Gauss-congruence reading mod p^k. Searches in
+      November 2026 found no earlier refutation.
+  - title: "OEIS A034171"
+    authors:
+      - "Peter Bala"
+    id: "https://oeis.org/A034171"
+    type: "web discussion"
+    location: "comment of December 23, 2019"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Conjectures c(pn) ≡ c(n) (mod p²) for primes p ≡ 1 (mod 3) and n ≥ 1 outside an
+      explicit finite exception set, with c(n) = A034171(n − 1). The package refutes it
+      at p = 7, n = 50. Searches in November 2026 found no earlier refutation.
+  - title: "OEIS A298799"
+    authors:
+      - "Peter Bala"
+    id: "https://oeis.org/A298799"
+    type: "web discussion"
+    location: "comment of December 23, 2019"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      The same conjecture for the expansion of (1 − 27x)^(−1/9) with primes p ≡ 1 (mod
+      9). The package refutes it at p = 19, n = 362.
+  - title: "OEIS A382407"
+    authors:
+      - "Felix Huber"
+    id: "https://oeis.org/A382407"
+    type: "web discussion"
+    location: "entry of April 4, 2025, comments"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Conjectures that a(k) = 0 iff k ∈ {2, 4, 8, 13} ∪ A000244 ∪ A005030. The entry's
+      own data show a(10) = 0, which refutes it; the package proves this and the 'if'
+      direction for the set with 10 added.
+  - title: "OEIS A399793"
+    authors:
+      - "Yifan Xie"
+    id: "https://oeis.org/A399793"
+    type: "web discussion"
+    location: "entry of September 12, 2026"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Defines a(n), the largest size of a bad subset of {1, …, n}, and conjectures a(n)
+      = ℓ(n) for n ≥ 13. The entry's own data show a(n) = ℓ(n) + 1 for 13 ≤ n ≤ 17; the
+      package proves this with explicit bad sets.
+  - title: "On sums of the form xy + yz + zx being squares"
+    authors:
+      - "Huang"
+      - "Sun"
+    id: "https://arxiv.org/abs/2105.03416"
+    type: "paper"
+    location: "descent argument"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      The 3-adic descent idea used for the 'if' direction in A382407.
+
+related_formalizations: []
+
+classification:
+  arxiv:
+    - "math.NT"
+    - "math.CO"
+  msc2020:
+    - "11A07"
+    - "11B65"
+    - "05A17"
+
+status:
+  scope: >-
+    The selected theorems are not_conj333564, not_conj034171, existsUnique_isGF298799,
+    not_conj298799, not_conj382407, a382407_eq_zero_of_mem, ell399793_lt_a399793 and
+    not_conj399793 in namespace OeisDisproofs, with the definitions they use. The
+    statements were written for this package; they are not copied from an existing
+    formalization.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "OeisDisproofs.not_conj333564"
+      file: "FCPalomar/OeisDisproofs/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisDisproofs/comparator.json"
+    - declaration: "OeisDisproofs.not_conj034171"
+      file: "FCPalomar/OeisDisproofs/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisDisproofs/comparator.json"
+    - declaration: "OeisDisproofs.existsUnique_isGF298799"
+      file: "FCPalomar/OeisDisproofs/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisDisproofs/comparator.json"
+    - declaration: "OeisDisproofs.not_conj298799"
+      file: "FCPalomar/OeisDisproofs/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisDisproofs/comparator.json"
+    - declaration: "OeisDisproofs.not_conj382407"
+      file: "FCPalomar/OeisDisproofs/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisDisproofs/comparator.json"
+    - declaration: "OeisDisproofs.a382407_eq_zero_of_mem"
+      file: "FCPalomar/OeisDisproofs/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisDisproofs/comparator.json"
+    - declaration: "OeisDisproofs.ell399793_lt_a399793"
+      file: "FCPalomar/OeisDisproofs/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisDisproofs/comparator.json"
+    - declaration: "OeisDisproofs.not_conj399793"
+      file: "FCPalomar/OeisDisproofs/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisDisproofs/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) found the witnesses, wrote the Lean formalization and
+        prepared this package under the direction of Wentao Li, with independent agent
+        review of the statements against their sources. Wentao Li is the human author
+        and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material. The conjectures are due to Peter Bala, Felix Huber and
+    Yifan Xie. The witnesses for A333564, A034171 and A298799 are new as far as the
+    searches found; those for A382407 and A399793 are in the entries' data. Wentao Li is
+    the human author of this package.
+
+fidelity:
+  divergences: >-
+    Each conjecture is stated from its entry and negated. A333564: the modulus p^(3k)
+    and primes p ≥ 3 are read from the revision history, and r ranges over natural
+    numbers r ≥ 1, a special case of Bala's integer r, so its failure refutes his
+    clause. A034171 and A298799: Bala's offset 1 is used, the sequences are rational-
+    valued with integer values, and a congruence mod p² is written as divisibility of
+    the difference by p² in ℤ; A298799 is defined by A(0) = 1 and A^9(1 − 27x) = 1,
+    shown to have a unique solution. A382407: stated for k ≥ 1. A399793: a(n) is the
+    supremum of the sizes of bad subsets. The statements were written for this package
+    and are proposed for Formal Conjectures in the respective OEIS files, which do not
+    exist upstream yet.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Checks by AI agents only: a strict build with no warnings, an axiom check of the
+    selected theorems, a check that the Challenge declarations appear verbatim in
+    Solution, and a review of the statement against its source by a separate agent. No
+    independent human review is claimed.
+
+alignment:
+  namespace: "OeisDisproofs"
+  statements:
+    - source: >-
+        Five OEIS conjectures, each refuted by an explicit witness.
+      lean: "OeisDisproofs.not_conj333564"
+      module: "FCPalomar.OeisDisproofs.Solution"
+      status: "proved"
+    - source: >-
+        Five OEIS conjectures, each refuted by an explicit witness.
+      lean: "OeisDisproofs.not_conj034171"
+      module: "FCPalomar.OeisDisproofs.Solution"
+      status: "proved"
+    - source: >-
+        Five OEIS conjectures, each refuted by an explicit witness.
+      lean: "OeisDisproofs.existsUnique_isGF298799"
+      module: "FCPalomar.OeisDisproofs.Solution"
+      status: "proved"
+    - source: >-
+        Five OEIS conjectures, each refuted by an explicit witness.
+      lean: "OeisDisproofs.not_conj298799"
+      module: "FCPalomar.OeisDisproofs.Solution"
+      status: "proved"
+    - source: >-
+        Five OEIS conjectures, each refuted by an explicit witness.
+      lean: "OeisDisproofs.not_conj382407"
+      module: "FCPalomar.OeisDisproofs.Solution"
+      status: "proved"
+    - source: >-
+        Five OEIS conjectures, each refuted by an explicit witness.
+      lean: "OeisDisproofs.a382407_eq_zero_of_mem"
+      module: "FCPalomar.OeisDisproofs.Solution"
+      status: "proved"
+    - source: >-
+        Five OEIS conjectures, each refuted by an explicit witness.
+      lean: "OeisDisproofs.ell399793_lt_a399793"
+      module: "FCPalomar.OeisDisproofs.Solution"
+      status: "proved"
+    - source: >-
+        Five OEIS conjectures, each refuted by an explicit witness.
+      lean: "OeisDisproofs.not_conj399793"
+      module: "FCPalomar.OeisDisproofs.Solution"
+      status: "proved"

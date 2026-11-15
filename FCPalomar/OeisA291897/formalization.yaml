@@ -1,0 +1,228 @@
+version: "v0.4"
+
+project:
+  name: "OEIS A291897 and A292911: Shevelev's divisibility conjectures for Euler polynomials"
+  description: >-
+    Let E_m(x) be the Euler polynomials, Σ E_m(x)t^m/m! = 2e^(xt)/(e^t + 1), and E_k the
+    Euler numbers, sech t = Σ E_k t^k/k!. OEIS A291897 is the numerator of E_(2n−1)(n),
+    and A292911 is the set of n ≥ 1 with (2n − 1)³ dividing it. The package proves
+    Vladimir Shevelev's 2017 conjectures: (2n − 1)² divides A291897(n) for every n ≥ 1,
+    and every prime p ≡ 1 (mod 4) has the form 2a − 1 with a in A292911. It also proves
+    the sharp forms: (2n − 1)³ divides A291897(n) iff 2n − 1 divides E_(2n−2), and for
+    an odd prime p, (p + 1)/2 lies in A292911 iff p ≡ 1 (mod 4). Both definitions are
+    checked against their e.g.f.s.
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "OEIS A291897"
+    authors:
+      - "Vladimir Shevelev"
+    id: "https://oeis.org/A291897"
+    type: "web discussion"
+    location: "entry of September 22, 2017, comments"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Conjectures that a(n) is divisible by (2n − 1)², verified to 5000 by R. G. Wilson
+      v. Searches in November 2026 (the OEIS entries, arXiv, Zenodo, OpenWitness, GitHub
+      issues, pull requests and code, and public Lean and OEIS-proof result
+      repositories) found no earlier proof. The proof in this package is credited to
+      Wentao Li.
+  - title: "OEIS A292911"
+    authors:
+      - "Vladimir Shevelev"
+    id: "https://oeis.org/A292911"
+    type: "web discussion"
+    location: "entry of September 26, 2017, comments"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Conjectures that every prime of the form 4k + 1 is contained in {2a(n) − 1}.
+  - title: "Digital Library of Mathematical Functions, §24.2"
+    authors:
+      - "NIST"
+    id: "https://dlmf.nist.gov/24.2"
+    type: "book"
+    location: "equations 24.2.9–24.2.10"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      The expansion of E_m(x) in Euler numbers that the proof derives in Lean.
+  - title: "Some notes on the numbers of Bernoulli and Euler"
+    authors:
+      - "George S. Ely"
+    id: "https://doi.org/10.2307/2369547"
+    type: "paper"
+    location: "Amer. J. Math. 5 (1882), 337–341"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Ely's congruence: for an odd prime p, E_(p−1) ≡ 0 or 2 (mod p) according as p ≡ 1
+      or 3 (mod 4). The OEIS records it in A122045; the package proves it in Lean.
+
+related_formalizations: []
+
+classification:
+  arxiv:
+    - "math.NT"
+  msc2020:
+    - "11B68"
+    - "11A07"
+
+status:
+  scope: >-
+    The selected theorems are OeisA291897.eulerPoly_egf, eulerNum_egf (the definitions
+    against their generating functions), a291897_conjecture, a291897_cube_dvd_iff,
+    a292911_conjecture, prime_cube_dvd_num_iff and prime_mem_a292911_iff, with the
+    definitions eulerPoly, eulerNum, a291897 and a292911. The statements were written
+    for this package; they are not copied from an existing formalization.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "OeisA291897.eulerPoly_egf"
+      file: "FCPalomar/OeisA291897/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA291897/comparator.json"
+    - declaration: "OeisA291897.eulerNum_egf"
+      file: "FCPalomar/OeisA291897/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA291897/comparator.json"
+    - declaration: "OeisA291897.a291897_conjecture"
+      file: "FCPalomar/OeisA291897/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA291897/comparator.json"
+    - declaration: "OeisA291897.a291897_cube_dvd_iff"
+      file: "FCPalomar/OeisA291897/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA291897/comparator.json"
+    - declaration: "OeisA291897.a292911_conjecture"
+      file: "FCPalomar/OeisA291897/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA291897/comparator.json"
+    - declaration: "OeisA291897.prime_cube_dvd_num_iff"
+      file: "FCPalomar/OeisA291897/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA291897/comparator.json"
+    - declaration: "OeisA291897.prime_mem_a292911_iff"
+      file: "FCPalomar/OeisA291897/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA291897/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) developed the proof, wrote the Lean formalization and
+        prepared this package under the direction of Wentao Li, with independent agent
+        review of the statement against its source. Wentao Li is the human author and
+        maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material, including in developing the proof. The conjectures are
+    due to Vladimir Shevelev. The ingredients are classical (DLMF 24.2.10, Ely 1882);
+    their combination for these conjectures is new as far as the searches found. Wentao
+    Li is its human author.
+
+fidelity:
+  divergences: >-
+    a291897_conjecture and a292911_conjecture state Shevelev's conjectures as written,
+    with offset 1. The numerator is Rat.num of E_(2n−1)(n). Euler polynomials and
+    numbers are defined by recurrences and checked against their standard e.g.f.s by
+    eulerPoly_egf and eulerNum_egf. The three iff theorems are sharpenings not stated in
+    the sources. The statements were written for this package from the OEIS entries and
+    are proposed for Formal Conjectures as FormalConjectures/OEIS/291897.lean, which
+    does not exist upstream yet.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Checks by AI agents only: a strict build with no warnings, an axiom check of the
+    selected theorems, a check that the Challenge declarations appear verbatim in
+    Solution, and a review of the statement against its source by a separate agent. No
+    independent human review is claimed.
+
+alignment:
+  namespace: "OeisA291897"
+  statements:
+    - source: >-
+        The Euler polynomials E(n,x), with e.g.f. 2e^(xt)/(e^t + 1); the Lean definition
+        is a recurrence, checked against this e.g.f.
+      lean: "OeisA291897.eulerPoly_egf"
+      module: "FCPalomar.OeisA291897.Solution"
+      status: "proved"
+    - source: >-
+        The Euler numbers E(n) (A122045), with e.g.f. sech t; the Lean definition is a
+        recurrence, checked against this e.g.f.
+      lean: "OeisA291897.eulerNum_egf"
+      module: "FCPalomar.OeisA291897.Solution"
+      status: "proved"
+    - source: >-
+        Conjecture: a(n) is divisible by (2*n-1)^2 (A291897, comments), for the
+        numerator a(n) of E(2n−1, n), n ≥ 1.
+      lean: "OeisA291897.a291897_conjecture"
+      module: "FCPalomar.OeisA291897.Solution"
+      status: "proved"
+    - source: >-
+        Not in the source. A sharpening of the entry's note that a(n) is sometimes
+        divisible by (2n−1)³: exactly when 2n − 1 divides E(2n − 2).
+      lean: "OeisA291897.a291897_cube_dvd_iff"
+      module: "FCPalomar.OeisA291897.Solution"
+      status: "proved"
+    - source: >-
+        Conjecture: Every prime of the form 4*k+1 (A002144) is contained in the sequence
+        {2*a(n)-1} (A292911, comments).
+      lean: "OeisA291897.a292911_conjecture"
+      module: "FCPalomar.OeisA291897.Solution"
+      status: "proved"
+    - source: >-
+        Not in the sources. For an odd prime p, p³ divides the numerator of E(p,
+        (p+1)/2) iff p ≡ 1 (mod 4).
+      lean: "OeisA291897.prime_cube_dvd_num_iff"
+      module: "FCPalomar.OeisA291897.Solution"
+      status: "proved"
+    - source: >-
+        Not in the sources. For an odd prime p, (p + 1)/2 is a term of A292911 iff p ≡ 1
+        (mod 4); the 'if' half is Shevelev's conjecture.
+      lean: "OeisA291897.prime_mem_a292911_iff"
+      module: "FCPalomar.OeisA291897.Solution"
+      status: "proved"

@@ -1,0 +1,43 @@
+{
+  "challenge_module": "FCPalomar.OeisA292877.Challenge",
+  "solution_module": "FCPalomar.OeisA292877.Solution",
+  "theorem_names": [
+    "OeisA292877.fussCatalan_existsUnique",
+    "OeisA292877.familyI_existsUnique",
+    "OeisA292877.familyII_existsUnique",
+    "OeisA292877.familyI_integral_mod_two",
+    "OeisA292877.familyII_integral_mod_two",
+    "OeisA292877.a292877_existsUnique",
+    "OeisA292877.a292877_integral",
+    "OeisA292877.a292877_conj1",
+    "OeisA292877.a292877_conj2",
+    "OeisA292877.a292877_conj3",
+    "OeisA292877.a303562_existsUnique",
+    "OeisA292877.a303562_integral",
+    "OeisA292877.a303562_parity",
+    "OeisA292877.a303563_existsUnique",
+    "OeisA292877.a303563_integral",
+    "OeisA292877.a303563_parity",
+    "OeisA292877.a230218_existsUnique",
+    "OeisA292877.a230218_integral",
+    "OeisA292877.a230218_parity",
+    "OeisA292877.a171791_existsUnique",
+    "OeisA292877.a171791_integral",
+    "OeisA292877.a171791_parity",
+    "OeisA292877.a263075_existsUnique",
+    "OeisA292877.a263075_integral",
+    "OeisA292877.a263075_parity",
+    "OeisA292877.a263190_existsUnique",
+    "OeisA292877.a263190_integral",
+    "OeisA292877.a263190_conj3",
+    "OeisA292877.a371673_existsUnique",
+    "OeisA292877.a371673_integral",
+    "OeisA292877.a371673_parity"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

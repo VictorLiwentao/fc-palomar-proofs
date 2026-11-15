@@ -1,0 +1,148 @@
+version: "v0.4"
+
+project:
+  name: "OEIS A364111: Bala's p^(3r) supercongruences"
+  description: >-
+    For integers A ≥ 2 and B, C ≥ 1 let u(N) = Σ_{k=0}^{N} C(N+k−1, k)^A C(2N−2k, N−k)^B
+    C(2k, k)^C. The package proves that u(np^r) ≡ u(np^{r−1}) (mod p^{3r}) for every
+    prime p ≥ 5 and all n, r ≥ 1, as conjectured by Peter Bala (OEIS A364111, 2023), and
+    the case (A, B, C) = (2, 1, 1), which is A364111 itself. The proof uses Coster's
+    method, as Osburn and Sahu did for the generalized Domb numbers.
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "OEIS A364111"
+    authors:
+      - "Peter Bala"
+    id: "https://oeis.org/A364111"
+    type: "web discussion"
+    location: "entry of July 7, 2023, comments"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Defines a(n) and conjectures the p^(3r) supercongruences for it and for the
+      general (A, B, C) family. Searches in November 2026 (the OEIS entry and its
+      revision history, arXiv, Zenodo, GitHub issues, pull requests and code, and public
+      Lean and OEIS-proof result repositories) found no earlier written proof. The proof
+      in this package is credited to Wentao Li.
+  - title: "A supercongruence for generalized Domb numbers"
+    authors:
+      - "Robert Osburn"
+      - "Brundaban Sahu"
+    id: "https://arxiv.org/abs/1201.6195"
+    type: "paper"
+    location: "Funct. Approx. Comment. Math. 48 (2013), 29–36"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Proves the same supercongruences for the generalized Domb numbers, which have C(N,
+      k)^A in place of C(N+k−1, k)^A, by Coster's method. The proof here adapts their
+      argument to Bala's sums.
+  - title: "Supercongruences"
+    authors:
+      - "M. J. Coster"
+    type: "book"
+    location: "PhD thesis, Universiteit Leiden, 1988"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      The source of the product expansion and the harmonic-sum congruences that the
+      proof uses.
+
+related_formalizations: []
+
+classification:
+  arxiv:
+    - "math.NT"
+    - "math.CO"
+  msc2020:
+    - "05A10"
+    - "11A07"
+    - "11B65"
+
+status:
+  scope: >-
+    The selected theorems are OeisA364111.u_supercongruence (the general (A, B, C)
+    family) and OeisA364111.a_supercongruence (A364111), with the definitions u and a.
+    The statements were written for this package; they are not copied from an existing
+    formalization.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "OeisA364111.u_supercongruence"
+      file: "FCPalomar/OeisA364111/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA364111/comparator.json"
+    - declaration: "OeisA364111.a_supercongruence"
+      file: "FCPalomar/OeisA364111/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA364111/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) developed the proof, wrote the Lean formalization and
+        prepared this package under the direction of Wentao Li, with independent agent
+        review of the statement against its source. Wentao Li is the human author and
+        maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material, including in developing the proof. The conjectures are
+    due to Peter Bala (OEIS A364111). The method is Coster's, as used by Osburn and
+    Sahu; its application to Bala's sums is new in this package. Wentao Li is its human
+    author.
+
+fidelity:
+  divergences: >-
+    None. The statement is new: it was written for this package from the source and is
+    proposed for Formal Conjectures as FormalConjectures/OEIS/364111.lean with the same
+    declarations. The Challenge leaves out only the FormalConjecturesUtil import,
+    attributes, test lemmas and unrelated declarations of that file.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Checks by AI agents only: a strict build with no warnings, an axiom check of the
+    selected theorems, a check that the Challenge declarations appear verbatim in
+    Solution, and a review of the statement against its source by a separate agent. No
+    independent human review is claimed.
+
+alignment:
+  namespace: "OeisA364111"
+  statements:
+    - source: >-
+        More generally, let A >= 2, B and C be positive integers. Then the sequence
+        Sum_{k = 0..n} binomial(n+k-1,k)^A * binomial(2*n-2*k,n-k)^B * binomial(2*k,k)^C
+        also satisfies the supercongruences u(n p^r) ≡ u(n p^(r-1)) (mod p^(3r)) for all
+        primes p >= 5 and positive integers n and r (conjecture, comments).
+      lean: "OeisA364111.u_supercongruence"
+      module: "FCPalomar.OeisA364111.Solution"
+      status: "proved"
+    - source: >-
+        a(n) = Sum_{k = 0..n} binomial(n+k-1,k)^2 * binomial(2*n-2*k,n-k) *
+        binomial(2*k,k) satisfies a(n p^r) ≡ a(n p^(r-1)) (mod p^(3r)) for all primes p
+        >= 5 and positive integers n and r (conjecture, comments).
+      lean: "OeisA364111.a_supercongruence"
+      module: "FCPalomar.OeisA364111.Solution"
+      status: "proved"

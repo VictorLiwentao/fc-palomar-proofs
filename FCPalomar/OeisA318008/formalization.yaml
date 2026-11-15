@@ -1,0 +1,214 @@
+version: "v0.4"
+
+project:
+  name: "OEIS A318008: the parity of the compositional square root (Hanna's conjecture)"
+  description: >-
+    The o.g.f. A(x) of OEIS A318008 satisfies A(A(x − x²)) = x + x². The package proves
+    that exactly one A ∈ ℚ[[x]] with A(0) = 0 does, that every coefficient a(n) is an
+    integer, and that a(n) is odd if and only if n = 2^k − 1 or n = 2^(k+1) − 2 for some
+    k ≥ 1, as conjectured by Paul D. Hanna (2018). It also proves the companion facts
+    for OEIS A277292: its series is unique and odd, its coefficients are the odd-indexed
+    a(n), and they are odd exactly at the powers of 2.
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "OEIS A318008"
+    authors:
+      - "Paul D. Hanna"
+    id: "https://oeis.org/A318008"
+    type: "web discussion"
+    location: "entry of September 6, 2018; parity conjecture in the comments (added September 7, 2018)"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Defines A(x) by A(A(x − x²)) = x + x² and conjectures that a(2^k − 1) and
+      a(2^(k+1) − 2) are odd for k ≥ 1 and that a(n) is even elsewhere. An earlier proof
+      by the same route was posted on OpenWitness on October 25, 2026 (see below).
+      Searches in November 2026 (the OEIS entry and its revision history, arXiv, Zenodo,
+      OpenWitness, GitHub issues and code, and public Lean result repositories) found no
+      other proof.
+  - title: "OEIS A277292"
+    authors:
+      - "Paul D. Hanna"
+    id: "https://oeis.org/A277292"
+    type: "web discussion"
+    location: "entry of October 12, 2016, name line"
+    relationship: "adapts"
+    author_endorsement: "not-contacted"
+    note: >-
+      Defines the series G(x) by Series_Reversion(G + G²) = G − G². The entry states no
+      parity claim; the package adds one, proved by the same argument.
+  - title: "Fourteen open OEIS parity conjectures proved where the mod-2 reduction is degenerate"
+    authors:
+      - "hilbert-clavius"
+    id: "https://www.openwitness.net/p/10125"
+    type: "web discussion"
+    location: "post of October 25, 2026, item 6"
+    relationship: "independently-proves"
+    author_endorsement: "not-contacted"
+    note: >-
+      An AI-agent post that proves the A318008 parity pattern by the same route: the odd
+      part O = φ⁻¹∘A with O∘φ∘O = C, the odd pivot n + 2, and the solution Σ x^(2^k − 1)
+      over GF(2). It is a hand proof, checked numerically and not machine-checked;
+      integrality is only implicit, and A277292 is not mentioned. The proof in this
+      package was found independently.
+
+related_formalizations: []
+
+classification:
+  arxiv:
+    - "math.CO"
+    - "math.NT"
+  msc2020:
+    - "05A15"
+    - "11B50"
+    - "13F25"
+
+status:
+  scope: >-
+    The selected theorems are OeisA318008.exists_unique_solution and parity_conjecture
+    (A318008), and a277292_existsUnique, a277292_odd, a318008_odd_bisection and
+    a277292_parity (A277292), with the definitions IsSolution and IsSolution277292. The
+    statements were written for this package; they are not copied from an existing
+    formalization.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "OeisA318008.exists_unique_solution"
+      file: "FCPalomar/OeisA318008/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA318008/comparator.json"
+    - declaration: "OeisA318008.parity_conjecture"
+      file: "FCPalomar/OeisA318008/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA318008/comparator.json"
+    - declaration: "OeisA318008.a277292_existsUnique"
+      file: "FCPalomar/OeisA318008/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA318008/comparator.json"
+    - declaration: "OeisA318008.a277292_odd"
+      file: "FCPalomar/OeisA318008/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA318008/comparator.json"
+    - declaration: "OeisA318008.a318008_odd_bisection"
+      file: "FCPalomar/OeisA318008/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA318008/comparator.json"
+    - declaration: "OeisA318008.a277292_parity"
+      file: "FCPalomar/OeisA318008/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA318008/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) developed the proof, wrote the Lean formalization and
+        prepared this package under the direction of Wentao Li, with independent agent
+        review of the statement against its source. Wentao Li is the human author and
+        maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material, including in developing the proof. The conjecture is due
+    to Paul D. Hanna (OEIS A318008). An earlier proof by the same route was posted on
+    OpenWitness on October 25, 2026; the proof here was found independently. This
+    package adds a machine-checked proof, the integrality of every coefficient, the
+    forced value a(1) = 1, and the A277292 statements. Wentao Li is its human author.
+
+fidelity:
+  divergences: >-
+    The parity theorem also states that every a(n) is an integer, which the source takes
+    for granted. The A277292 equation Series_Reversion(G + G²) = G − G² is stated one-
+    sided, as (G + G²)∘(G − G²) = x with G(0) = 0; this is equivalent, because the
+    equation forces a unit linear coefficient, so a one-sided compositional inverse is
+    two-sided. The A277292 parity statement is not in that entry. The statements were
+    written for this package and are proposed for Formal Conjectures as
+    FormalConjectures/OEIS/318008.lean with the same declarations. The Challenge leaves
+    out only the FormalConjecturesUtil import, attributes, test lemmas and unrelated
+    declarations of that file.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Checks by AI agents only: a strict build with no warnings, an axiom check of the
+    selected theorems, a check that the Challenge declarations appear verbatim in
+    Solution, and a review of the statement against its source by a separate agent. No
+    independent human review is claimed.
+
+alignment:
+  namespace: "OeisA318008"
+  statements:
+    - source: >-
+        A318008: the g.f. A(x) satisfies A(A(x − x²)) = x + x² (name line). The Lean
+        statement says that exactly one power series over ℚ with A(0) = 0 does; a(1) = 1
+        is derived, not assumed.
+      lean: "OeisA318008.exists_unique_solution"
+      module: "FCPalomar.OeisA318008.Solution"
+      status: "proved"
+    - source: >-
+        a(2^k-1) = 1 (mod 2) and a(2^(k+1)-2) = 1 (mod 2) for k >= 1, and a(n) is even
+        elsewhere (conjecture, comments). The Lean statement also includes the
+        integrality of a(n).
+      lean: "OeisA318008.parity_conjecture"
+      module: "FCPalomar.OeisA318008.Solution"
+      status: "proved"
+    - source: >-
+        A277292: the g.f. G(x) satisfies Series_Reversion(G(x) + G(x)^2) = G(x) − G(x)^2
+        (name line), read as (G + G²)∘(G − G²) = x with G(0) = 0. The Lean statement
+        says that exactly one power series over ℚ does.
+      lean: "OeisA318008.a277292_existsUnique"
+      module: "FCPalomar.OeisA318008.Solution"
+      status: "proved"
+    - source: >-
+        G(x) = Sum_{n>=1} a(n) x^(2n−1) (formula section): the even coefficients of G
+        vanish.
+      lean: "OeisA318008.a277292_odd"
+      module: "FCPalomar.OeisA318008.Solution"
+      status: "proved"
+    - source: >-
+        a(2n−1) = A277292(n) (A318008, comments).
+      lean: "OeisA318008.a318008_odd_bisection"
+      module: "FCPalomar.OeisA318008.Solution"
+      status: "proved"
+    - source: >-
+        Not stated in A277292. Every A277292(n) is an integer, and it is odd if and only
+        if n is a power of 2.
+      lean: "OeisA318008.a277292_parity"
+      module: "FCPalomar.OeisA318008.Solution"
+      status: "proved"

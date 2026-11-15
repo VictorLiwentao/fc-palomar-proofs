@@ -1,0 +1,17 @@
+{
+  "challenge_module": "FCPalomar.OeisA371710.Challenge",
+  "solution_module": "FCPalomar.OeisA371710.Solution",
+  "theorem_names": [
+    "OeisA371710.a371710_existsUnique",
+    "OeisA371710.a371710_constantCoeff",
+    "OeisA371710.a371710_integral",
+    "OeisA371710.a371710_mod_three",
+    "OeisA371710.a371710_mod_three_strong"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

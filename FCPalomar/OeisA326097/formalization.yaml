@@ -1,0 +1,163 @@
+version: "v0.4"
+
+project:
+  name: "OEIS A326097: the parity of a(k) (Hanna's conjecture)"
+  description: >-
+    The e.g.f. A(x) of OEIS A326097 satisfies 1 = Σ_{n≥0} ((1+x)^n − A(x))^n/n!. The
+    package proves that this equation has exactly one solution in ℚ[[x]], that every
+    a(k) = k! [x^k] A(x) is an integer, and that a(k) is odd if and only if k ∈ {0, 1,
+    3} or k ≡ 2 (mod 4). This settles Paul D. Hanna's 2019 parity conjecture in a
+    slightly stronger form. The same holds for OEIS A385907, where (1+x)^n is replaced
+    by 1/(1−x)^n.
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "OEIS A326097"
+    authors:
+      - "Paul D. Hanna"
+    id: "https://oeis.org/A326097"
+    type: "web discussion"
+    location: "entry of June 6, 2019, formula section"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Defines A(x) by the equation and conjectures that a(4n+2) is odd and that every
+      other a(k) with k > 3 is even. Searches in November 2026 (the OEIS entry and its
+      revision history, arXiv, Zenodo, GitHub issues and code, and public Lean result
+      repositories) found no earlier written proof. The proof in this package is
+      credited to Wentao Li.
+  - title: "OEIS A385907"
+    authors:
+      - "Paul D. Hanna"
+    id: "https://oeis.org/A385907"
+    type: "web discussion"
+    location: "entry of July 24, 2025, name line"
+    relationship: "adapts"
+    author_endorsement: "not-contacted"
+    note: >-
+      Defines the companion sequence with 1/(1−x)^n in place of (1+x)^n. The entry
+      states no parity claim; the package adds the parity theorem, proved by the same
+      argument.
+
+related_formalizations: []
+
+classification:
+  arxiv:
+    - "math.CO"
+    - "math.NT"
+  msc2020:
+    - "05A15"
+    - "11B50"
+    - "13F25"
+
+status:
+  scope: >-
+    The selected theorems are OeisA326097.a326097_existsUnique, a326097_parity,
+    a385907_existsUnique and a385907_parity, with the definition IsSolution. The
+    statements were written for this package; they are not copied from an existing
+    formalization.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "OeisA326097.a326097_existsUnique"
+      file: "FCPalomar/OeisA326097/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA326097/comparator.json"
+    - declaration: "OeisA326097.a326097_parity"
+      file: "FCPalomar/OeisA326097/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA326097/comparator.json"
+    - declaration: "OeisA326097.a385907_existsUnique"
+      file: "FCPalomar/OeisA326097/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA326097/comparator.json"
+    - declaration: "OeisA326097.a385907_parity"
+      file: "FCPalomar/OeisA326097/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA326097/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) developed the proof, wrote the Lean formalization and
+        prepared this package under the direction of Wentao Li, with independent agent
+        review of the statement against its source. Wentao Li is the human author and
+        maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material, including in developing the proof. The conjecture is due
+    to Paul D. Hanna (OEIS A326097). The proof is new in this package; Wentao Li is its
+    human author.
+
+fidelity:
+  divergences: >-
+    None. The statement is new: it was written for this package from the source and is
+    proposed for Formal Conjectures as FormalConjectures/OEIS/326097.lean with the same
+    declarations. The Challenge leaves out only the FormalConjecturesUtil import,
+    attributes, test lemmas and unrelated declarations of that file.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Checks by AI agents only: a strict build with no warnings, an axiom check of the
+    selected theorems, a check that the Challenge declarations appear verbatim in
+    Solution, and a review of the statement against its source by a separate agent. No
+    independent human review is claimed.
+
+alignment:
+  namespace: "OeisA326097"
+  statements:
+    - source: >-
+        A326097: the e.g.f. A(x) satisfies 1 = Σ_{n≥0} ((1+x)^n − A(x))^n/n! (name
+        line). The Lean statement says that exactly one power series over ℚ does.
+      lean: "OeisA326097.a326097_existsUnique"
+      module: "FCPalomar.OeisA326097.Solution"
+      status: "proved"
+    - source: >-
+        a(4n+2) ≡ 1 (mod 2), otherwise the terms a(k) are even for k > 3 (conjecture,
+        formula section). The Lean statement is the stronger 'if and only if' form,
+        which also covers k = 0, 1, 3, and includes the integrality of a(k).
+      lean: "OeisA326097.a326097_parity"
+      module: "FCPalomar.OeisA326097.Solution"
+      status: "proved"
+    - source: >-
+        A385907: the e.g.f. A(x) satisfies 1 = Σ_{n≥0} (1/(1−x)^n − A(x))^n/n! (name
+        line). The Lean statement says that exactly one power series over ℚ does.
+      lean: "OeisA326097.a385907_existsUnique"
+      module: "FCPalomar.OeisA326097.Solution"
+      status: "proved"
+    - source: >-
+        Not stated in A385907. The same parity pattern as for A326097: a(k) is an
+        integer, and it is odd if and only if k ∈ {0, 1, 3} or k ≡ 2 (mod 4).
+      lean: "OeisA326097.a385907_parity"
+      module: "FCPalomar.OeisA326097.Solution"
+      status: "proved"

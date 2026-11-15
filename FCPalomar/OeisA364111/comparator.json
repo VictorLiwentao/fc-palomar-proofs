@@ -1,0 +1,14 @@
+{
+  "challenge_module": "FCPalomar.OeisA364111.Challenge",
+  "solution_module": "FCPalomar.OeisA364111.Solution",
+  "theorem_names": [
+    "OeisA364111.u_supercongruence",
+    "OeisA364111.a_supercongruence"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

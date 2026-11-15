@@ -1,0 +1,14 @@
+{
+  "challenge_module": "FCPalomar.OeisA333472.Challenge",
+  "solution_module": "FCPalomar.OeisA333472.Solution",
+  "theorem_names": [
+    "OeisA333472.a_tower",
+    "OeisA333472.a333472_tower"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

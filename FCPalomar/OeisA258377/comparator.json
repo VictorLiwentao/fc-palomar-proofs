@@ -1,0 +1,30 @@
+{
+  "challenge_module": "FCPalomar.OeisA258377.Challenge",
+  "solution_module": "FCPalomar.OeisA258377.Solution",
+  "theorem_names": [
+    "OeisA258377.isSolution_iff",
+    "OeisA258377.existsUnique",
+    "OeisA258377.exists_int_coeff",
+    "OeisA258377.odd",
+    "OeisA258377.periodic",
+    "OeisA258377.leastPeriodMod_dvd",
+    "OeisA258377.shift_sub",
+    "OeisA258377.leastPeriodMod_eq_iff",
+    "OeisA258377.a258377",
+    "OeisA258377.a258377_examples",
+    "OeisA258377.a258378",
+    "OeisA258377.a258378_examples",
+    "OeisA258377.a258379",
+    "OeisA258377.a258379_examples",
+    "OeisA258377.a258380",
+    "OeisA258377.a258380_examples",
+    "OeisA258377.a258381",
+    "OeisA258377.a258381_examples"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

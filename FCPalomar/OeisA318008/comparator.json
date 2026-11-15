@@ -1,0 +1,18 @@
+{
+  "challenge_module": "FCPalomar.OeisA318008.Challenge",
+  "solution_module": "FCPalomar.OeisA318008.Solution",
+  "theorem_names": [
+    "OeisA318008.exists_unique_solution",
+    "OeisA318008.parity_conjecture",
+    "OeisA318008.a277292_existsUnique",
+    "OeisA318008.a277292_odd",
+    "OeisA318008.a318008_odd_bisection",
+    "OeisA318008.a277292_parity"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

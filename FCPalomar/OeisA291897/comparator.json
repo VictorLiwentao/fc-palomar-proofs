@@ -1,0 +1,19 @@
+{
+  "challenge_module": "FCPalomar.OeisA291897.Challenge",
+  "solution_module": "FCPalomar.OeisA291897.Solution",
+  "theorem_names": [
+    "OeisA291897.eulerPoly_egf",
+    "OeisA291897.eulerNum_egf",
+    "OeisA291897.a291897_conjecture",
+    "OeisA291897.a291897_cube_dvd_iff",
+    "OeisA291897.a292911_conjecture",
+    "OeisA291897.prime_cube_dvd_num_iff",
+    "OeisA291897.prime_mem_a292911_iff"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

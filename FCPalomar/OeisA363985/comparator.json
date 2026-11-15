@@ -1,0 +1,17 @@
+{
+  "challenge_module": "FCPalomar.OeisA363985.Challenge",
+  "solution_module": "FCPalomar.OeisA363985.Solution",
+  "theorem_names": [
+    "OeisA363985.u_tower",
+    "OeisA363985.a363985_tower",
+    "OeisA363985.a363987_tower",
+    "OeisA363985.a363989_tower",
+    "OeisA363985.a362676_tower"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

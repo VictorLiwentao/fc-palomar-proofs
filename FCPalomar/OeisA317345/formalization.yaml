@@ -1,0 +1,206 @@
+version: "v0.4"
+
+project:
+  name: "OEIS A317345: Hanna's mod-10 periodicity, with a general p-adic theorem"
+  description: >-
+    For natural numbers a, b let A(x) = Σ a(n)xⁿ/n! with A(0) = 1 satisfy [xⁿ] exp(n^a
+    x)/A(x)^(n^b) = 0 for every n ≥ 1. The package proves that A exists and is unique;
+    that for every prime p with 1 ≤ b < pa each a(n) is p-integral and a(n) ≡ a(n mod p)
+    (mod p); and so that a(n) is an integer when 1 ≤ b < 2a. For OEIS A317345 (a = 3, b
+    = 2) this gives Paul D. Hanna's 2018 conjecture a(5n + k) ≡ [1, 1, 5, 5, 5](k) (mod
+    10), and for OEIS A317343 (a = 2, b = 1) the pattern [1, 1, 3, 3, 5]. In both cases
+    Lean checks the residues of a(0), …, a(4) modulo 2 and 5 by kernel computation.
+    Hanna's remark that log A(x) has integer coefficients is not proved here. Context:
+    the known route to Hanna's claim is conditional. Bala's theorem (2017 note on OEIS
+    A047974) gives a(n + k) ≡ a(n) (mod k) for every k when log A(x) has integer
+    coefficients. Hanna observed that integrality numerically for A317345 and A317343,
+    whose logarithms are A317346 and A317344, but it is unproved. The theorem here needs
+    no such input. With 1 ≤ b < a it applies to exp(F) for every o.g.f. F in Hanna's
+    family [x^n] exp(n^a x − n^b F(x)) = 0 (A317344, A317346, A317347, A319941–A319944,
+    and the entries for a ≤ 8 that Hanna added in March 2026, such as A393854 and
+    A393861). For each of them it gives integer e.g.f. coefficients and a(n) ≡ a(n mod
+    p) (mod p) for every prime p.
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "OEIS A317345"
+    authors:
+      - "Paul D. Hanna"
+    id: "https://oeis.org/A317345"
+    type: "web discussion"
+    location: "entry of July 26, 2018; the mod-10 comment was added on July 29, 2018 (revision 8)"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Defines A(x) by [xⁿ] exp(n³x)/A(x)^(n²) = 0 for n ≥ 1 and conjectures a(5n + k) ≡
+      [1, 1, 5, 5, 5](k) (mod 10). Searches in November 2026 (the OEIS entries, arXiv,
+      Zenodo, OpenWitness, GitHub issues, pull requests and code, and public Lean and
+      OEIS-proof result repositories) found no earlier proof. The proof in this package
+      is credited to Wentao Li.
+  - title: "OEIS A317343"
+    authors:
+      - "Paul D. Hanna"
+    id: "https://oeis.org/A317343"
+    type: "web discussion"
+    location: "entry of July 26, 2018, name line"
+    relationship: "adapts"
+    author_endorsement: "not-contacted"
+    note: >-
+      Defines the companion series by [xⁿ] exp(n²x)/A(x)^n = 0 for n ≥ 1. The entry
+      states no congruence; the package adds the mod-10 pattern [1, 1, 3, 3, 5].
+  - title: "Integer sequences that become periodic on reduction modulo k for all k"
+    authors:
+      - "Peter Bala"
+    id: "https://oeis.org/A047974/a047974_1.pdf"
+    type: "web discussion"
+    location: "note linked from OEIS A047974 (December 3, 2017), Theorem 1"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Theorem 1 of the note: if A(x) = F(x)exp(xG(x)) with F, G ∈ ℤ[[x]] and G(0) = 1,
+      then a(n + k) ≡ a(n) (mod k) for all n and k. If log A(x) had integer
+      coefficients, as Hanna remarks in A317345 and A317343 (the logarithms are A317346
+      and A317344), this would give the congruence for every k, and Hanna's mod-10 claim
+      with k = 2 and 5. That integrality is unproved as far as the searches found. This
+      package does not use the note.
+
+related_formalizations: []
+
+classification:
+  arxiv:
+    - "math.NT"
+    - "math.CO"
+  msc2020:
+    - "11B50"
+    - "05A15"
+    - "13F25"
+
+status:
+  scope: >-
+    The selected theorems are OeisA317345.exists_unique_solution, padic_congruence
+    (general a, b and p), integer_coefficients, a317345_mod_ten and a317343_mod_ten,
+    with the definition IsSolution. The statements were written for this package; they
+    are not copied from an existing formalization.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "OeisA317345.exists_unique_solution"
+      file: "FCPalomar/OeisA317345/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA317345/comparator.json"
+    - declaration: "OeisA317345.padic_congruence"
+      file: "FCPalomar/OeisA317345/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA317345/comparator.json"
+    - declaration: "OeisA317345.integer_coefficients"
+      file: "FCPalomar/OeisA317345/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA317345/comparator.json"
+    - declaration: "OeisA317345.a317345_mod_ten"
+      file: "FCPalomar/OeisA317345/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA317345/comparator.json"
+    - declaration: "OeisA317345.a317343_mod_ten"
+      file: "FCPalomar/OeisA317345/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA317345/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) developed the proof, wrote the Lean formalization and
+        prepared this package under the direction of Wentao Li, with independent agent
+        review of the statement against its source. Wentao Li is the human author and
+        maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material, including in developing the proof. The conjecture is due
+    to Paul D. Hanna (OEIS A317345). The general theorem and the A317343 pattern are new
+    in this package as far as the searches found. Wentao Li is its human author.
+
+fidelity:
+  divergences: >-
+    a317345_mod_ten states Hanna's conjecture as written. exists_unique_solution,
+    padic_congruence and integer_coefficients are stated for general a and b, which
+    include both entries; the normalization A(0) = 1 is taken from the data.
+    a317343_mod_ten is not stated in A317343. A^(−n^b) is the power of the inverse
+    series, which exists because A(0) = 1. The statements were written for this package
+    from the OEIS entries and are proposed for Formal Conjectures as
+    FormalConjectures/OEIS/317345.lean, which does not exist upstream yet.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Checks by AI agents only: a strict build with no warnings, an axiom check of the
+    selected theorems, a check that the Challenge declarations appear verbatim in
+    Solution, and a review of the statement against its source by a separate agent. No
+    independent human review is claimed.
+
+alignment:
+  namespace: "OeisA317345"
+  statements:
+    - source: >-
+        A317345: E.g.f. A(x) satisfies: [x^n] exp(n^3*x) / A(x)^(n^2) = 0 for n >= 1
+        (name line); A317343: the same with exp(n^2*x) / A(x)^n. The Lean statement is
+        for general a, b and says that exactly one A with A(0) = 1 does; a(0) = 1 is the
+        normalization of the data, since the condition is invariant under A ↦ cA.
+      lean: "OeisA317345.exists_unique_solution"
+      module: "FCPalomar.OeisA317345.Solution"
+      status: "proved"
+    - source: >-
+        Not in the sources. For a prime p with 1 ≤ b < p·a, every a(n) is p-integral and
+        a(n) ≡ a(n mod p) (mod p).
+      lean: "OeisA317345.padic_congruence"
+      module: "FCPalomar.OeisA317345.Solution"
+      status: "proved"
+    - source: >-
+        Implicit in the OEIS data (integer sequences). The Lean statement proves a(n) ∈
+        ℤ when 1 ≤ b < 2a, which covers A317345 and A317343.
+      lean: "OeisA317345.integer_coefficients"
+      module: "FCPalomar.OeisA317345.Solution"
+      status: "proved"
+    - source: >-
+        Periodic modulo 10: a(5*n+k) = [1,1,5,5,5](k) (mod 10), for n>=0 and k = 0..4
+        (A317345, comments, conjecture).
+      lean: "OeisA317345.a317345_mod_ten"
+      module: "FCPalomar.OeisA317345.Solution"
+      status: "proved"
+    - source: >-
+        Not stated in A317343. The analogous pattern a(5n + k) ≡ [1, 1, 3, 3, 5](k) (mod
+        10) for its terms.
+      lean: "OeisA317345.a317343_mod_ten"
+      module: "FCPalomar.OeisA317345.Solution"
+      status: "proved"

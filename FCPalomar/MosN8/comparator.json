@@ -1,0 +1,14 @@
+{
+  "challenge_module": "FCPalomar.MosN8.Challenge",
+  "solution_module": "FCPalomar.MosN8.Solution",
+  "theorem_names": [
+    "MosN8.tower",
+    "MosN8.shifted_tower"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,178 @@
+version: "v0.4"
+
+project:
+  name: "OEIS A371710: Hanna's mod-3 pattern"
+  description: >-
+    The e.g.f. A(x) = Σ a(n)xⁿ/n! of OEIS A371710 satisfies Σ_{n≥0} (A(x)^n − x)^n/n! =
+    1. The package proves that exactly one A ∈ ℚ[[x]] does, that A(0) = 0 and every a(n)
+    is an integer, and Paul D. Hanna's 2024 conjecture that a(6n + k) ≡ [2, 0, 2, 1, 2,
+    2](k) (mod 3) for n > 0 and k = 0, …, 5. It also proves the stronger pattern a(m) ≡
+    2 for even m ≥ 2 and a(m) ≡ 1 − m for odd m ≥ 3, modulo 3.
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "OEIS A371710"
+    authors:
+      - "Paul D. Hanna"
+    id: "https://oeis.org/A371710"
+    type: "web discussion"
+    location: "entry of April 2024, comments"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Defines A(x) by Σ (A(x)^n − x)^n/n! = 1 and conjectures a(6n + k) ≡ [2, 0, 2, 1,
+      2, 2](k) (mod 3) for n > 0. Searches in November 2026 (the OEIS entry, arXiv,
+      Zenodo, OpenWitness, GitHub issues, pull requests and code, and public Lean and
+      OEIS-proof result repositories) found no earlier proof. The proof in this package
+      is credited to Wentao Li.
+  - title: "the-omega-institute/trureturing issue #24628 (OEIS A386648 mod 6)"
+    authors:
+      - "The Omega Institute trureturing contributors"
+    id: "https://github.com/the-omega-institute/trureturing/issues/24628"
+    type: "web discussion"
+    location: "preregistration for the sibling A386648"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Uses the same divided-power reduction for a sibling Hanna series; it does not
+      treat A371710.
+
+related_formalizations: []
+
+classification:
+  arxiv:
+    - "math.CO"
+    - "math.NT"
+  msc2020:
+    - "05A15"
+    - "11B50"
+    - "13F25"
+
+status:
+  scope: >-
+    The selected theorems are OeisA371710.a371710_existsUnique, a371710_constantCoeff,
+    a371710_integral, a371710_mod_three (Hanna's conjecture) and
+    a371710_mod_three_strong, with the definition IsSolution. The statements were
+    written for this package; they are not copied from an existing formalization.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "OeisA371710.a371710_existsUnique"
+      file: "FCPalomar/OeisA371710/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA371710/comparator.json"
+    - declaration: "OeisA371710.a371710_constantCoeff"
+      file: "FCPalomar/OeisA371710/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA371710/comparator.json"
+    - declaration: "OeisA371710.a371710_integral"
+      file: "FCPalomar/OeisA371710/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA371710/comparator.json"
+    - declaration: "OeisA371710.a371710_mod_three"
+      file: "FCPalomar/OeisA371710/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA371710/comparator.json"
+    - declaration: "OeisA371710.a371710_mod_three_strong"
+      file: "FCPalomar/OeisA371710/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA371710/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) developed the proof, wrote the Lean formalization and
+        prepared this package under the direction of Wentao Li, with independent agent
+        review of the statement against its source. Wentao Li is the human author and
+        maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material, including in developing the proof. The conjecture is due
+    to Paul D. Hanna (OEIS A371710). The divided-power reduction is classical and is
+    used by trureturing issue #24628 on a sibling entry. Wentao Li is the human author
+    of this package's proof.
+
+fidelity:
+  divergences: >-
+    a371710_mod_three states Hanna's conjecture as written. The infinite sum is taken
+    coefficientwise: for every m the coefficient of x^m of the partial sums is
+    eventually that of 1; the n-th term has order at least n once A(0) = 0, which the
+    package derives rather than assumes. Integrality and the stronger pattern are added.
+    The statements were written for this package from the OEIS entry and are proposed
+    for Formal Conjectures as FormalConjectures/OEIS/371710.lean, which does not exist
+    upstream yet.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Checks by AI agents only: a strict build with no warnings, an axiom check of the
+    selected theorems, a check that the Challenge declarations appear verbatim in
+    Solution, and a review of the statement against its source by a separate agent. No
+    independent human review is claimed.
+
+alignment:
+  namespace: "OeisA371710"
+  statements:
+    - source: >-
+        A371710: expansion of e.g.f. A(x) satisfying Sum_{n>=0} (A(x)^n - x)^n / n! = 1
+        (name line). The Lean statement says exactly one power series over ℚ does, with
+        the sum taken coefficientwise.
+      lean: "OeisA371710.a371710_existsUnique"
+      module: "FCPalomar.OeisA371710.Solution"
+      status: "proved"
+    - source: >-
+        Offset 1: A(0) = 0. The Lean statement derives it from the equation.
+      lean: "OeisA371710.a371710_constantCoeff"
+      module: "FCPalomar.OeisA371710.Solution"
+      status: "proved"
+    - source: >-
+        Implicit in the OEIS data (an integer sequence): every a(n) = n! [x^n] A(x) is
+        an integer.
+      lean: "OeisA371710.a371710_integral"
+      module: "FCPalomar.OeisA371710.Solution"
+      status: "proved"
+    - source: >-
+        Conjecture: for n > 0, a(6*n + k) == [2,0,2,1,2,2] (mod 3) at k = [0,1,2,3,4,5],
+        respectively (comments).
+      lean: "OeisA371710.a371710_mod_three"
+      module: "FCPalomar.OeisA371710.Solution"
+      status: "proved"
+    - source: >-
+        Not in the source. The stronger pattern a(m) ≡ 2 (mod 3) for even m ≥ 2 and a(m)
+        ≡ 1 − m (mod 3) for odd m ≥ 3, which implies Hanna's.
+      lean: "OeisA371710.a371710_mod_three_strong"
+      module: "FCPalomar.OeisA371710.Solution"
+      status: "proved"

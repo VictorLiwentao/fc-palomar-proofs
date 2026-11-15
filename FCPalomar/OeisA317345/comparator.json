@@ -1,0 +1,17 @@
+{
+  "challenge_module": "FCPalomar.OeisA317345.Challenge",
+  "solution_module": "FCPalomar.OeisA317345.Solution",
+  "theorem_names": [
+    "OeisA317345.exists_unique_solution",
+    "OeisA317345.padic_congruence",
+    "OeisA317345.integer_coefficients",
+    "OeisA317345.a317345_mod_ten",
+    "OeisA317345.a317343_mod_ten"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

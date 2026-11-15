@@ -1,0 +1,13 @@
+{
+  "challenge_module": "FCPalomar.SidorenkoEvenCycle.Challenge",
+  "solution_module": "FCPalomar.SidorenkoEvenCycle.Solution",
+  "theorem_names": [
+    "SidorenkoConjecture.sidorenko_conjecture.variants.even_cycle"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

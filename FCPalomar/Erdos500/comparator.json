@@ -1,0 +1,13 @@
+{
+  "challenge_module": "FCPalomar.Erdos500.Challenge",
+  "solution_module": "FCPalomar.Erdos500.Solution",
+  "theorem_names": [
+    "Erdos500.erdos_500.variants.lower_bound"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

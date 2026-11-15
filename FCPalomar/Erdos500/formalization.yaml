@@ -1,0 +1,139 @@
+version: "v0.4"
+
+project:
+  name: "Erdős Problem 500: Turán's lower bound ex₃(n, K₄³) >= (5/9 − o(1)) C(n,3)"
+  description: >-
+    For every ε > 0 and all large n, (5/9 − ε) C(n,3) <= ex₃(n, K₄³), the largest number
+    of triples on n vertices with no 4-set covering all four of its triples. This is
+    Turán's 1941 construction, as stated on erdosproblems.com/500.
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "Erdős Problem 500"
+    authors:
+      - "Thomas Bloom"
+    id: "https://www.erdosproblems.com/500"
+    type: "web discussion"
+    location: "Problem 500"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Records Turán's construction: three equal parts, with the triples that meet all
+      three parts or have two vertices in part i and one in part i+1.
+  - title: "Eine Extremalaufgabe aus der Graphentheorie"
+    authors:
+      - "Paul Turán"
+    id: "Mat. Fiz. Lapok 48 (1941) 436-452"
+    type: "paper"
+    location: "Mat. Fiz. Lapok 48 (1941) 436-452"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Turán's paper on extremal problems, where the hypergraph question originates.
+
+related_formalizations:
+  - title: "Formal Conjectures: FormalConjectures/ErdosProblems/500.lean"
+    authors:
+      - "The Formal Conjectures Authors"
+    id: "https://github.com/google-deepmind/formal-conjectures/blob/691719db2653905d5fa0775408370fb058e4c59f/FormalConjectures/ErdosProblems/500.lean"
+    relationship: "builds-on"
+    note: >-
+      The Challenge copies the statement and the definitions it uses verbatim from this
+      file at commit 691719db. The upstream declaration is `sorry` at that commit.
+  - title: "Formal Conjectures: FormalConjecturesForMathlib/Combinatorics/Hypergraph/Finite.lean"
+    authors:
+      - "The Formal Conjectures Authors"
+    id: "https://github.com/google-deepmind/formal-conjectures/blob/691719db2653905d5fa0775408370fb058e4c59f/FormalConjecturesForMathlib/Combinatorics/Hypergraph/Finite.lean"
+    relationship: "builds-on"
+    note: >-
+      The Challenge copies the definitions Finset.ContainsCompleteHypergraph,
+      Hypergraph.extremalNumber and Hypergraph.cliqueExtremalNumber verbatim from this
+      file at commit 691719db.
+  - title: "Justin Sun Prize awards PR #422: JSP000401.turan_lower_bound"
+    authors:
+      - "ketianzhang1-lang"
+    id: "https://github.com/ketianzhang1-lang/awards/tree/aeccfffa"
+    relationship: "independent"
+    note: >-
+      An earlier Lean proof of a stronger all-n form, 5 C(n,3) <= 9 #E, for its own
+      validity predicate, with no bridge to cliqueExtremalNumber. This package was
+      written independently.
+  - title: "Formal Conjectures PR #7045 (500_finite.lean)"
+    authors:
+      - "AItoBit"
+    id: "https://github.com/google-deepmind/formal-conjectures/pull/7045"
+    relationship: "other"
+    note: >-
+      Proves that the same construction has no K₄³; it does not prove the density bound.
+
+classification:
+  arxiv:
+    - "math.CO"
+  msc2020:
+    - "05C35"
+    - "05C65"
+    - "05D05"
+
+status:
+  scope: >-
+    The selected theorem is the Formal Conjectures statement
+    erdos_500.variants.lower_bound, with ContainsCompleteHypergraph, extremalNumber and
+    cliqueExtremalNumber copied verbatim from FormalConjecturesForMathlib.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "Erdos500.erdos_500.variants.lower_bound"
+      file: "FCPalomar/Erdos500/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/Erdos500/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) wrote the Lean proof and this package under the
+        direction of Wentao Li, with independent agent review of the statement against
+        its source. Wentao Li is the human author and maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material. The mathematics is credited to the original authors
+    listed under sources.
+
+fidelity:
+  divergences: >-
+    None. The Challenge copies the Formal Conjectures statement and definitions
+    verbatim; only the FormalConjecturesUtil import, attributes, test lemmas and
+    unrelated declarations are left out.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Checks by AI agents only: a strict build with no warnings, an axiom check of the
+    selected theorems, a check that the Challenge declarations appear verbatim in
+    Solution, and a review of the statement against its source by a separate agent. No
+    independent human review is claimed.
+
+alignment:
+  namespace: "Erdos500"
+  statements:
+    - source: >-
+        For every ε > 0, (5/9 − ε) C(n,3) <= ex₃(n, K₄³) for all sufficiently large n.
+      lean: "Erdos500.erdos_500.variants.lower_bound"
+      module: "FCPalomar.Erdos500.Solution"
+      status: "proved"

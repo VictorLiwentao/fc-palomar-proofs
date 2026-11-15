@@ -1,0 +1,228 @@
+version: "v0.4"
+
+project:
+  name: "OEIS A333472: Bala's p^(2k) supercongruences for a(r,s;n), every r ≥ 1 and s ∈ ℤ"
+  description: >-
+    Let c(x) be the Catalan series and F(x) = c(x/(1+x)). For r ≥ 1 and s ∈ ℤ let
+    a(r,s;n) = [x^(rn)] F(x)^(sn), with F^m for m < 0 the power of the inverse series.
+    The package proves a(r,s;np^k) ≡ a(r,s;np^(k−1)) (mod p^(2k)) for every prime p ≥ 5,
+    every r ≥ 1, every integer s and all n, k ≥ 1, as conjectured by Peter Bala (OEIS
+    A333472, 2020), and the case A333472(n) = [x^n] F(x)^n itself. The line s = −r
+    contains Bala's 2022 conjecture on A246437. For primes p with v_p(r) ≤ v_p(s),
+    including A333472 itself, the result also follows from a theorem of Pan and Sun
+    through an order-two transfer theorem; the package proves all cases directly.
+  authors:
+    - "Wentao Li"
+  responsible_maintainers:
+    - "Wentao Li"
+  license: "Apache-2.0"
+
+sources:
+  - title: "OEIS A333472"
+    authors:
+      - "Peter Bala"
+    id: "https://oeis.org/A333472"
+    type: "web discussion"
+    location: "entry of March 23, 2020, comments"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Defines a(n) = [x^n] c(x/(1+x))^n and conjectures the p^(2k) supercongruences for
+      it and, more generally, for a(r,s;n) = [x^(rn)] c(x/(1+x))^(sn) with r ≥ 1 and s ∈
+      ℤ (comments of March 23, 2020; unchanged in substance through revision #23 of May
+      1, 2023). No source that we found states a proof of either conjecture. For every
+      prime p with v_p(r) ≤ v_p(s), and so for A333472 itself, both follow from Pan and
+      Sun's theorem on central trinomial coefficients through the order-two transfer
+      theorem of Blanco Gómez (equivalently, the integrality of framing of Schwarz,
+      Vologodsky and Walcher), because x F'(x)/F(x) has coefficients (A002426(k) −
+      (−1)^k)/2 = A113682(k − 1). This deduction is ours, from the published statements,
+      checked numerically; no source states it. The cases v_p(r) > v_p(s) are not
+      reached by that argument. This package proves the whole family directly. Searches
+      in November 2026 (the OEIS entries and their histories, arXiv, Zenodo,
+      OpenWitness, GitHub issues, pull requests and code, and public Lean and OEIS-proof
+      result repositories) found no other proof and no Lean formalization. The proof in
+      this package is credited to Wentao Li.
+  - title: "OEIS A246437"
+    authors:
+      - "Peter Bala"
+    id: "https://oeis.org/A246437"
+    type: "web discussion"
+    location: "comment of January 2022"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Bala's p^(2k) conjecture for A246437 (comment of January 7, 2022) is the line s =
+      −r of the general clause: a(1,−1;n) = (−1)^n A246437(n) − 1 for n ≥ 1 (checked for
+      n ≤ 200), and a(r,−r;n) = a(1,−1;rn). Since A246437(n) = (A002426(n) + (−1)^n)/2,
+      it follows from Pan and Sun's theorem, as the OEIS entry A002426 notes for Bala's
+      conjecture there. rbajaj5 gave an unreviewed elementary proof. This package
+      contains the line as a corollary but does not state it separately.
+  - title: "Supercongruences for central trinomial coefficients"
+    authors:
+      - "Hao Pan"
+      - "Zhi-Wei Sun"
+    id: "https://arxiv.org/abs/2012.05121"
+    type: "paper"
+    location: "Frontiers in Combinatorics and Number Theory 2 (2026), 55–62; Theorem 1.1"
+    relationship: "other"
+    author_endorsement: "not-contacted"
+    note: >-
+      Theorem 1.1: (T(pn) − T(n))/(pn)^2 is a p-adic integer for every prime p > 3,
+      where T = A002426. This proves Bala's A246437 conjecture, the line s = −r. Through
+      the transfer theorem below it also gives the A333472 conjecture and the general
+      clause for v_p(r) ≤ v_p(s). This package's proof does not use it.
+  - title: "Exponential transforms and supercongruences: an order-two transfer theorem, modular forms behind Bala's prime bounds, and the first higher levels"
+    authors:
+      - "Roberto Blanco Gómez"
+    id: "https://doi.org/10.5281/zenodo.23430779"
+    type: "paper"
+    location: "Zenodo record 23430779, version 2 (October 17, 2026), Theorem A and Corollary 3.3"
+    relationship: "adapts"
+    author_endorsement: "not-contacted"
+    note: >-
+      Theorem A: if c(m) ≡ c(m/p) (mod p^(2 v_p(m))) for all m, then a(n) = [x^n] exp(Σ
+      c(k) x^k/k)^n satisfies the same congruences, for every odd prime p. Corollary 3.3
+      derives the A246437 conjecture from Pan and Sun. The preprint does not mention
+      A333472, but Theorem A with c(k) = (A002426(k) − (−1)^k)/2, the coefficients of x
+      F'/F, gives the A333472 conjecture, and with the base (s/r)c the general clause
+      for p ∤ r. This package's proof uses the same exponential and Cartier extraction,
+      and the research lane that found it had read this preprint; the package applies
+      the method to the Lagrange-variable form, which also reaches the cases v_p(r) >
+      v_p(s).
+  - title: "A mixed-step coefficient tower and A246437"
+    authors:
+      - "rbajaj5 (GitHub)"
+    id: "https://github.com/rbajaj5/a183068-supercongruence/blob/6b73e7a21ff191684d3f8a6c7bdbd4034b313024/related-results/MixedStepCoefficientQuadraticTower.md"
+    type: "web discussion"
+    location: "repository rbajaj5/a183068-supercongruence, related-results/MixedStepCoefficientQuadraticTower.md, commit 6b73e7a2 (August 12, 2026)"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      An unreviewed elementary proof of Bala's A246437 conjecture, as the case (u,v,c) =
+      (3,2,1) of a p^(2r) tower for [x^(cN)]((1+x^u)/(1−x^v))^N with p ∤ uv, by a two-
+      binomial expansion and the Jacobsthal–Kazandzidis congruence.
+  - title: "Lagrange inversion"
+    authors:
+      - "Ira M. Gessel"
+    id: "https://doi.org/10.1016/j.jcta.2016.06.018"
+    type: "paper"
+    location: "J. Combin. Theory Ser. A 144 (2016), 212–249; Theorem 2.1.1, formula (2.1.2)"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      The form of Lagrange inversion that the proof establishes directly for this
+      series.
+  - title: "Framing the di-logarithm (over Z)"
+    authors:
+      - "Albert Schwarz"
+      - "Vadim Vologodsky"
+      - "Johannes Walcher"
+    id: "https://arxiv.org/abs/1306.4298"
+    type: "paper"
+    location: "Proc. Sympos. Pure Math. 90 (String-Math 2012), Amer. Math. Soc., 2015, 113–128, doi:10.1090/pspum/090/01532; Theorem 1"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Integrality of framing (Theorem 1; the companion paper arXiv:1702.07135 proves it
+      prime by prime, Theorems 8 and 14). The sequences a(1,s;·) for different s are
+      framings of one 2-function, so for a fixed prime the towers for different s are
+      equivalent. The package's exponential expansion is the Frobenius method of this
+      line of work; the package does not use the theorem itself.
+
+related_formalizations: []
+
+classification:
+  arxiv:
+    - "math.NT"
+    - "math.CO"
+  msc2020:
+    - "05A15"
+    - "11A07"
+    - "11B65"
+
+status:
+  scope: >-
+    The selected theorems are OeisA333472.a_tower (every r ≥ 1 and s ∈ ℤ) and
+    a333472_tower (A333472), with the definitions c, F, Fzpow, a and A333472. The
+    statements were written for this package; they are not copied from an existing
+    formalization.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "OeisA333472.a_tower"
+      file: "FCPalomar/OeisA333472/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA333472/comparator.json"
+    - declaration: "OeisA333472.a333472_tower"
+      file: "FCPalomar/OeisA333472/Solution.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      comparator_config: "FCPalomar/OeisA333472/comparator.json"
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-opus-5-5"
+      framework: "Claude Code"
+      tool_setup: >-
+        Claude Code (Anthropic) developed the proof, wrote the Lean formalization and
+        prepared this package under the direction of Wentao Li, with independent agent
+        review of the statement against its source. Wentao Li is the human author and
+        maintainer.
+  spend_usd: "not available"
+  notes: >-
+    AI assistance was material, including in developing the proof. The conjectures are
+    due to Peter Bala (OEIS A333472). The methods are Lagrange inversion and the
+    exponential and Cartier extraction of Dwork-type congruences, as in Blanco Gómez's
+    Theorem A, which the research lane had read. For v_p(r) ≤ v_p(s), and so for A333472
+    itself, the result also follows from Pan and Sun's theorem through that transfer
+    theorem. The cases v_p(r) > v_p(s) and the single direct proof are new as far as the
+    searches found. Wentao Li is the human author of this package's proof.
+
+fidelity:
+  divergences: >-
+    Both theorems state Bala's conjectures as written. The congruence is stated as
+    divisibility of the difference by p^(2k) in ℤ. For s < 0, F^m is the power of the
+    inverse series of F, which exists because F(0) = 1. The statements were written for
+    this package from the OEIS entry and are proposed for Formal Conjectures as
+    FormalConjectures/OEIS/333472.lean, which does not exist upstream yet.
+
+review:
+  status: "self-assessed"
+  reviewers: []
+  notes: >-
+    Checks by AI agents only: a strict build with no warnings, an axiom check of the
+    selected theorems, a check that the Challenge declarations appear verbatim in
+    Solution, and a review of the statement against its source by a separate agent. No
+    independent human review is claimed.
+
+alignment:
+  namespace: "OeisA333472"
+  statements:
+    - source: >-
+        More generally, we conjecture that for any positive integer r and any integer s
+        the sequence a(r,s;n) := [x^(r*n)] ( c(x/(1 + x)) )^(s*n) also satisfies the
+        above congruences, a(n*p^k) == a(n*p^(k-1)) ( mod p^(2*k) ) for prime p >= 5 and
+        positive integers n and k (A333472, comments).
+      lean: "OeisA333472.a_tower"
+      module: "FCPalomar.OeisA333472.Solution"
+      status: "proved"
+    - source: >-
+        a(n) = [x^n] ( c(x/(1 + x)) )^n satisfies the supercongruences a(n*p^k) ==
+        a(n*p^(k-1)) ( mod p^(2*k) ) for prime p >= 5 and positive integers n and k
+        (conjecture, comments).
+      lean: "OeisA333472.a333472_tower"
+      module: "FCPalomar.OeisA333472.Solution"
+      status: "proved"

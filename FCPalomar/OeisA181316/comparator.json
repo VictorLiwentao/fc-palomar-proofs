@@ -1,0 +1,19 @@
+{
+  "challenge_module": "FCPalomar.OeisA181316.Challenge",
+  "solution_module": "FCPalomar.OeisA181316.Solution",
+  "theorem_names": [
+    "OeisA181316.conjecture",
+    "OeisA181316.hannaSeries_integral",
+    "OeisA181316.a181316_integral",
+    "OeisA181316.a180606_integral",
+    "OeisA181316.integral_iff",
+    "OeisA181316.integral_iff_of_exponent",
+    "OeisA181316.a155206_integral"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,16 @@
+{
+  "challenge_module": "FCPalomar.OeisA326097.Challenge",
+  "solution_module": "FCPalomar.OeisA326097.Solution",
+  "theorem_names": [
+    "OeisA326097.a326097_existsUnique",
+    "OeisA326097.a326097_parity",
+    "OeisA326097.a385907_existsUnique",
+    "OeisA326097.a385907_parity"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}

@@ -1,0 +1,20 @@
+{
+  "challenge_module": "FCPalomar.OeisDisproofs.Challenge",
+  "solution_module": "FCPalomar.OeisDisproofs.Solution",
+  "theorem_names": [
+    "OeisDisproofs.not_conj333564",
+    "OeisDisproofs.not_conj034171",
+    "OeisDisproofs.existsUnique_isGF298799",
+    "OeisDisproofs.not_conj298799",
+    "OeisDisproofs.not_conj382407",
+    "OeisDisproofs.a382407_eq_zero_of_mem",
+    "OeisDisproofs.ell399793_lt_a399793",
+    "OeisDisproofs.not_conj399793"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}
