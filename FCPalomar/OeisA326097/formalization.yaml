@@ -43,7 +43,16 @@ sources:
       states no parity claim; the package adds the parity theorem, proved by the same
       argument.
 
-related_formalizations: []
+related_formalizations:
+  - title: "VictorLiwentao/fc-palomar-proofs: FCPalomar/A396804"
+    authors:
+      - "Wentao Li"
+    id: "https://github.com/VictorLiwentao/fc-palomar-proofs/tree/3a8fe0d8a06c4f0e3f352f78d86ac3a5d2cc16c7/FCPalomar/A396804"
+    relationship: "adapts"
+    note: >-
+      The Hurwitz-series library in the Solution (ring structure, derivative, divided
+      powers, composition and coefficient maps) is adapted from this package by the same
+      author. The Challenge does not use it.
 
 classification:
   arxiv:

@@ -68,7 +68,17 @@ sources:
       with k = 2 and 5. That integrality is unproved as far as the searches found. This
       package does not use the note.
 
-related_formalizations: []
+related_formalizations:
+  - title: "VictorLiwentao/fc-palomar-proofs: FCPalomar/OeisA326097"
+    authors:
+      - "Wentao Li"
+    id: "https://github.com/VictorLiwentao/fc-palomar-proofs/tree/3a8fe0d8a06c4f0e3f352f78d86ac3a5d2cc16c7/FCPalomar/OeisA326097"
+    relationship: "adapts"
+    note: >-
+      The Hurwitz-series basics in the Solution (ring structure, derivative, constants,
+      the variable, coefficient maps and causal fixed points) and the map `jet` to
+      Hurwitz series are adapted from this package by the same author. The Challenge
+      does not use them.
 
 classification:
   arxiv:

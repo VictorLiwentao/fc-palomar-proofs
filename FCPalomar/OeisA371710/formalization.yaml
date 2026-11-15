@@ -41,7 +41,17 @@ sources:
       Uses the same divided-power reduction for a sibling Hanna series; it does not
       treat A371710.
 
-related_formalizations: []
+related_formalizations:
+  - title: "VictorLiwentao/fc-palomar-proofs: FCPalomar/OeisA326097"
+    authors:
+      - "Wentao Li"
+    id: "https://github.com/VictorLiwentao/fc-palomar-proofs/tree/3a8fe0d8a06c4f0e3f352f78d86ac3a5d2cc16c7/FCPalomar/OeisA326097"
+    relationship: "adapts"
+    note: >-
+      The Hurwitz-series library in the Solution (ring structure, derivative, divided
+      powers and coefficient maps), the fixed-point operator and the bridge to power
+      series are adapted from this package by the same author. The Challenge does not
+      use them.
 
 classification:
   arxiv:

@@ -130,7 +130,17 @@ sources:
       The source of the product expansion of binomial ratios that the proof uses for its
       Jacobsthal-type bound.
 
-related_formalizations: []
+related_formalizations:
+  - title: "VictorLiwentao/fc-palomar-proofs: FCPalomar/MosN8"
+    authors:
+      - "Wentao Li"
+    id: "https://github.com/VictorLiwentao/fc-palomar-proofs/tree/3a8fe0d8a06c4f0e3f352f78d86ac3a5d2cc16c7/FCPalomar/MosN8"
+    relationship: "adapts"
+    note: >-
+      The Solution copies its shared infrastructure from this package by the same
+      author: divisibility helpers, the nested block lemma, block sums of inverse
+      squares, the harmonic sum, the Jacobsthal-type product bound and the unit products
+      `uprod`. The Challenge does not use it.
 
 classification:
   arxiv:

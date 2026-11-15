@@ -97,7 +97,16 @@ sources:
       B_N is Hanna's type-A series, B^(N+1) = BINOMIAL(B)^N with B(0) = 1. The Solution
       proves this identity directly and uses it for the 2-adic theorems.
 
-related_formalizations: []
+related_formalizations:
+  - title: "VictorLiwentao/fc-palomar-proofs: FCPalomar/OeisA318008"
+    authors:
+      - "Wentao Li"
+    id: "https://github.com/VictorLiwentao/fc-palomar-proofs/tree/3a8fe0d8a06c4f0e3f352f78d86ac3a5d2cc16c7/FCPalomar/OeisA318008"
+    relationship: "adapts"
+    note: >-
+      The substitution tools and causal fixed points in the Solution are copied from
+      this package by the same author, except `subst_one'`. The Challenge does not use
+      them.
 
 classification:
   arxiv:
