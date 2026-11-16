@@ -357,9 +357,11 @@ fidelity:
     constant term is subst L (exp ℚ). Integrality, the prime-power congruences, the
     corrected and eventual forms of 1), their sharpening to the Carmichael function λ(k)
     (ArithmeticFunction.carmichael) and the strengthenings of the refutation are added.
-    The statements were written for this package from the OEIS entry. The package does
-    not determine exactly which k make the pure form of 1) hold: it proves it when every
-    odd prime exponent of k is at most 3 and refutes it for every multiple of 81.
+    The statements were written for this package from the OEIS entry and are proposed
+    for Formal Conjectures as FormalConjectures/OEIS/464.lean, which does not exist
+    upstream yet. The package does not determine exactly which k make the pure form of
+    1) hold: it proves it when every odd prime exponent of k is at most 3 and refutes it
+    for every multiple of 81.
 
 review:
   status: "self-assessed"

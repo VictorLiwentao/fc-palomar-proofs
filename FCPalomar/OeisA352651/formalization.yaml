@@ -134,7 +134,9 @@ fidelity:
     the top argument with the lower index fixed, as Bala's formulas for A275652 and
     A275654 require; the Gamma quotient continued in n gives other values (u₋₃(1) =
     100/3). The statement takes N ≤ −1, equivalent to M ≥ 1 with N = −M. Bala's
-    supercongruences are not stated. The statements were written for this package.
+    supercongruences are not stated. The statements were written for this package. They
+    are proposed for Formal Conjectures as FormalConjectures/OEIS/352651.lean, which
+    does not exist upstream yet.
 
 review:
   status: "self-assessed"

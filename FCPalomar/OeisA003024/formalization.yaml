@@ -235,6 +235,8 @@ fidelity:
     and exp_integral go beyond the sources by allowing every integer q. Integer
     coefficients are stated as ∀ n, ∃ z : ℤ, coeff n F = z, and exp of a series L with
     zero constant term as subst L (exp ℚ). The statements were written for this package.
+    They are proposed for Formal Conjectures as FormalConjectures/OEIS/3024.lean, which
+    does not exist upstream yet.
 
 review:
   status: "self-assessed"

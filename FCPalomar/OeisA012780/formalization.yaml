@@ -212,7 +212,8 @@ fidelity:
     tan is sin · cos⁻¹, and arcsin(tan x) is the substitution arcsin.subst tan. The
     Solution checks a(0..4) = 1, 3, 45, 1743, 133305 against the OEIS data. Integrality,
     the explicit pre-periods and the mod-8 result are added. The statements were written
-    for this package from the OEIS entry.
+    for this package from the OEIS entry and are proposed for Formal Conjectures as
+    FormalConjectures/OEIS/12780.lean, which does not exist upstream yet.
 
 review:
   status: "self-assessed"
