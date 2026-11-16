@@ -260,9 +260,7 @@ fidelity:
     not formalized. The Solution checks R(1, q), R(2, q) and R(3, q) against the entry's
     comment for every q, and a(1..6) against the A340883 data. The statements at p ∣ 1 +
     q, the exact pre-period and the corrected forms are added. The statements were
-    written for this package from the OEIS entries and are proposed for Formal
-    Conjectures as FormalConjectures/OEIS/340882.lean (and
-    FormalConjectures/OEIS/340883.lean for A340883), which do not exist upstream yet.
+    written for this package from the OEIS entries.
 
 review:
   status: "self-assessed"

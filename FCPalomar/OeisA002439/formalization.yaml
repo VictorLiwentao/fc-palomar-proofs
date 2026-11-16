@@ -328,9 +328,7 @@ fidelity:
     modulo 12; it is used only at primes p ≥ 5, where it is the character χ₁₂.
     Integrality, the witness of the refutation, the exact range of 6), the odd-prime
     congruences and the strengthening of 5) are added. The statements were written for
-    this package from the OEIS entry and are proposed for Formal Conjectures as
-    FormalConjectures/OEIS/2439.lean, which does not exist upstream yet. Conjectures 1)
-    and 2) are not part of the package.
+    this package from the OEIS entry. Conjectures 1) and 2) are not part of the package.
 
 review:
   status: "self-assessed"

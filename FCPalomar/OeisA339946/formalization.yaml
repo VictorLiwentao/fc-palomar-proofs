@@ -64,8 +64,8 @@ sources:
     author_endorsement: "not-contacted"
     note: >-
       States the supercongruences A(p^r m) ≡ A(p^(r−1) m) (mod p^(3r)) of the Apéry
-      numbers for p ≥ 5 and says that similar congruences are conjectured for all Apéry-
-      like sequences. It does not treat A339946 or A361717.
+      numbers for p ≥ 5 and says that similar congruences are conjectured for all
+      Apéry-like sequences. It does not treat A339946 or A361717.
   - title: "Prime-power congruences for odd-exponent binomial sums (TheSil/A357513_conjecture)"
     authors:
       - "Ondrej Kutal"
@@ -79,8 +79,8 @@ sources:
       divides the numerator of Σ_{k=1}^{p−1} k^(−2m−1) C(p−1, k)² C(p−1+k, k)² except at
       an explicit set of primes. It reduces the binomial products to harmonic sums
       modulo p^4; the Solution's A357511 lemma does the same, and its A361717 proof does
-      so modulo p^3. Its case m = 0 is the A357511 congruence, which the Solution re-
-      proves as an unselected lemma. It does not treat A339946 or A361717.
+      so modulo p^3. Its case m = 0 is the A357511 congruence, which the Solution
+      re-proves as an unselected lemma. It does not treat A339946 or A361717.
   - title: "An Explicit Eventual p4-Divisibility Theorem for an Apéry-Type Numerator Family"
     authors:
       - "Zhipeng Chen"

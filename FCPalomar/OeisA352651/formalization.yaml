@@ -124,8 +124,8 @@ automation:
   notes: >-
     AI assistance was material, including in developing the proof. The conjecture is due
     to Peter Bala, and the open status of N ≤ −1 is recorded by R. Blanco Gómez. An
-    unpublished informal proof (November 2026) used Legendre's formula and a step-
-    function inequality; the Lean proof is a shorter elementary route through two
+    unpublished informal proof (November 2026) used Legendre's formula and a
+    step-function inequality; the Lean proof is a shorter elementary route through two
     ascending factorials. Wentao Li is the human author of this package's proof.
 
 fidelity:
@@ -134,9 +134,7 @@ fidelity:
     the top argument with the lower index fixed, as Bala's formulas for A275652 and
     A275654 require; the Gamma quotient continued in n gives other values (u₋₃(1) =
     100/3). The statement takes N ≤ −1, equivalent to M ≥ 1 with N = −M. Bala's
-    supercongruences are not stated. The statements were written for this package. They
-    are proposed for Formal Conjectures as FormalConjectures/OEIS/352651.lean, which
-    does not exist upstream yet.
+    supercongruences are not stated. The statements were written for this package.
 
 review:
   status: "self-assessed"

@@ -133,10 +133,10 @@ sources:
       Every congruence in it is a shift congruence in the index, such as q_{n+p^k} ≡
       q_{n+p^(k−1)} (mod p^k) for the ordered set partitions (p. 167) or (E^p − E)^r h_n
       ≡ 0 for partial orders (p. 170). It has no Gauss congruence a(np^r) ≡ a(np^(r−1)),
-      no integrality statement for exp(Σ a(n)xⁿ/n), and no acyclic digraphs or edge-
-      weighted set partitions (full text read, pp. 157–197). Its group-action principle
-      (§3) is the standard combinatorial route to such congruences; the package uses an
-      algebraic route instead.
+      no integrality statement for exp(Σ a(n)xⁿ/n), and no acyclic digraphs or
+      edge-weighted set partitions (full text read, pp. 157–197). Its group-action
+      principle (§3) is the standard combinatorial route to such congruences; the
+      package uses an algebraic route instead.
 
 related_formalizations:
   - title: "VictorLiwentao/fc-palomar-proofs: FCPalomar/OeisA181316"
@@ -235,8 +235,6 @@ fidelity:
     and exp_integral go beyond the sources by allowing every integer q. Integer
     coefficients are stated as ∀ n, ∃ z : ℤ, coeff n F = z, and exp of a series L with
     zero constant term as subst L (exp ℚ). The statements were written for this package.
-    They are proposed for Formal Conjectures as FormalConjectures/OEIS/3024.lean, which
-    does not exist upstream yet.
 
 review:
   status: "self-assessed"

@@ -404,9 +404,7 @@ fidelity:
     formalized. The three notes are proved by computing a(6) exactly;
     not_integral_of_exponent is not used for them. It covers the exponents k and k², but
     its hypothesis that e agrees with a polynomial also at k = 0 excludes the ℕ-valued
-    exponent k²+k−1. The statements were written for this package. They are proposed for
-    Formal Conjectures as FormalConjectures/OEIS/183128.lean, which does not exist
-    upstream yet.
+    exponent k²+k−1. The statements were written for this package.
 
 review:
   status: "self-assessed"
