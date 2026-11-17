@@ -4,7 +4,10 @@ project:
   name: "Erdős Problem 766: the Dirac–Erdős bound"
   description: >-
     Every graph on n vertices with floor(n^2/4)+1 edges contains, for each 3 <= k <= n,
-    a subgraph on k vertices with floor(k^2/4)+1 edges (Dirac; Erdős, independently).
+    a subgraph on k vertices with floor(k^2/4)+1 edges. For k = 3 this is Mantel's
+    theorem. Dirac (1963) and Erdős (1964) proved it independently. It is the case l =
+    floor(k^2/4)+1 of Erdős Problem 766, on the least number of edges f(n;k,l) that
+    forces a k-vertex subgraph with l edges.
   authors:
     - "Wentao Li"
   responsible_maintainers:
@@ -23,6 +26,18 @@ sources:
     note: >-
       The vertex-deletion averaging argument: removing a suitable vertex keeps the edge
       density above the Turán threshold.
+  - title: "Extensions of Turán's theorem on graphs"
+    authors:
+      - "G. A. Dirac"
+    id: "doi:10.1007/BF01895726"
+    type: "paper"
+    location: "Acta Math. Acad. Sci. Hungar. 14 (1963) 417-422"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Er64c, p. 34, says that Dirac proved the result independently, and a more general
+      theorem. Er64c lists this paper as its reference [7]. The paper itself was not
+      consulted.
   - title: "Erdős Problem 766"
     authors:
       - "Thomas Bloom"
@@ -53,7 +68,8 @@ classification:
 status:
   scope: >-
     The selected theorem is erdos_766.variants.dirac_erdos with forcingNumber copied
-    verbatim.
+    verbatim. The statement assumes k >= 3; for k <= 2 no graph on k vertices has
+    floor(k^2/4)+1 edges.
   sorry_count: 0
   sorry_in_definitions: 0
   axioms:
@@ -89,16 +105,16 @@ fidelity:
   divergences: >-
     None. The Challenge copies the Formal Conjectures statement and definitions
     verbatim; only the FormalConjecturesUtil import, attributes, test lemmas and
-    docstrings are omitted.
+    unrelated declarations are left out.
 
 review:
   status: "self-assessed"
   reviewers: []
   notes: >-
-    Agent checks only: strict build with no warnings, axiom check of the selected
-    theorems, verbatim comparison of the copied definitions and statement, and an
-    independent agent review of source fidelity. No human review beyond Wentao Li is
-    claimed.
+    Checks by AI agents only: a strict build with no warnings, an axiom check of the
+    selected theorems, a check that the Challenge declarations appear verbatim in
+    Solution, and a review of the statement against its source by a separate agent. No
+    independent human review is claimed.
 
 alignment:
   namespace: "Erdos766"

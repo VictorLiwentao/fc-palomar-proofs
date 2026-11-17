@@ -3,9 +3,16 @@ version: "v0.4"
 project:
   name: "OEIS A265100: Catalan numbers divisible by 3 and block numbers (Jeffery's Conjectures 5, 1, 2, 3)"
   description: >-
-    3 | C(n) iff the base-3 expansions of n and n+1 both contain a 2 (Conjecture 5;
-    Deutsch–Sagan 2006, Thm 5.2; Israel 2015); every block number is a term
-    9·A005836(i)+5 (Conjecture 1), and Conjectures 2 and 3 follow.
+    3 | C(n) iff the base-3 expansions of n and n + 1 both contain a 2 (Jeffery's
+    Conjecture 5). This is equivalent to Deutsch–Sagan (2006), Theorem 5.2; Robert
+    Israel also proved it in 2015. Every block number (n >= 1 with 3 | C(n) and 3 ∤ C(n
+    − 1)) is a term 9·A005836(i) + 5 (Conjecture 1). Deutsch and Sagan determine where
+    each block starts, right after their Theorem 5.2, and Alter and Kubota (1973) had
+    also done so. If m is a block number, so is 3m − 1 (Conjecture 2), and 3 | C(n)
+    implies 3 | C(3n − 1) (Conjecture 3). Conjectures 2 and 3 are short corollaries of
+    the digit criterion, proved in this package; their novelty is unknown. By Conjecture
+    5, Vantieghem's conjecture in the same OEIS entry, that 3 | C(2^n − 1) for all n >
+    8, is a statement about the base-3 digits of 2^n − 1 and 2^n; it is not proved here.
   authors:
     - "Wentao Li"
   responsible_maintainers:
@@ -19,21 +26,48 @@ sources:
       - "Bruce E. Sagan"
     id: "doi:10.1016/j.jnt.2005.06.005"
     type: "paper"
-    location: "J. Number Theory 117 (2006), Theorem 5.2"
+    location: "J. Number Theory 117 (2006) 191-215, Theorem 5.2 and the block discussion after it (arXiv:math/0407326, Section 5.1)"
     relationship: "formalizes"
     author_endorsement: "not-contacted"
     note: >-
-      The characterization of C_n mod 3 that gives Conjecture 5.
+      Theorem 5.2 says 3 ∤ C_n exactly when n + 1 has no base-3 digit 2 above the units
+      digit, which is equivalent to Conjecture 5. The discussion after it shows that the
+      k-th block of zeros starts at 9·A005836(k) + 5, which is Conjecture 1 and its
+      converse.
   - title: "OEIS A265100"
     authors:
       - "L. Edson Jeffery"
     id: "https://oeis.org/A265100"
     type: "web discussion"
     location: "Conjectures 1, 2, 3, 5"
-    relationship: "background"
+    relationship: "formalizes"
     author_endorsement: "not-contacted"
     note: >-
       States the conjectures.
+  - title: "Prime and prime power divisibility of Catalan numbers"
+    authors:
+      - "R. Alter"
+      - "K. K. Kubota"
+    id: "doi:10.1016/0097-3165(73)90072-1"
+    type: "paper"
+    location: "J. Combin. Theory Ser. A 15 (1973) 243-256"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      Gives the lengths of the blocks of Catalan numbers divisible by an odd prime.
+      Deutsch and Sagan state that Alter and Kubota also found where the blocks start
+      and end. The paper itself was not consulted.
+  - title: "A000108(n) == 1 (mod 6)"
+    authors:
+      - "Robert Israel"
+    id: "http://list.seqfan.eu/oldermail/seqfan/2015-December/015749.html"
+    type: "web discussion"
+    location: "Sequence Fans mailing list, December 2015; linked from OEIS A265100"
+    relationship: "background"
+    author_endorsement: "not-contacted"
+    note: >-
+      OEIS A265100 cites this post for Israel's proof of Conjecture 5. The post itself
+      was not consulted.
 
 related_formalizations: []
 
@@ -109,38 +143,40 @@ fidelity:
   divergences: >-
     None. The statement is new: it was written for this package from the source and is
     proposed for Formal Conjectures as FormalConjectures/OEIS/265100.lean with the same
-    declarations; only the FormalConjecturesUtil import, attributes and docstrings
-    differ.
+    declarations. The Challenge leaves out only the FormalConjecturesUtil import,
+    attributes, test lemmas and unrelated declarations of that file.
 
 review:
   status: "self-assessed"
   reviewers: []
   notes: >-
-    Agent checks only: strict build with no warnings, axiom check of the selected
-    theorems, verbatim comparison of the copied definitions and statement, and an
-    independent agent review of source fidelity. No human review beyond Wentao Li is
-    claimed.
+    Checks by AI agents only: a strict build with no warnings, an axiom check of the
+    selected theorems, a check that the Challenge declarations appear verbatim in
+    Solution, and a review of the statement against its source by a separate agent. No
+    independent human review is claimed.
 
 alignment:
   namespace: "OeisA265100"
   statements:
     - source: >-
-        Jeffery's Conjectures 5, 1, 2 and 3 in A265100.
+        Conjecture 5: C(n) ≡ 0 (mod 3) iff the base-3 representations of n and n + 1
+        both contain at least one 2.
       lean: "OeisA265100.conjecture5"
       module: "FCPalomar.A265100.Solution"
       status: "proved"
     - source: >-
-        Jeffery's Conjectures 5, 1, 2 and 3 in A265100.
+        Conjecture 1: the sequence contains all block numbers, that is, all n with C(n)
+        ≡ 0 and C(n − 1) ≢ 0 (mod 3).
       lean: "OeisA265100.conjecture1"
       module: "FCPalomar.A265100.Solution"
       status: "proved"
     - source: >-
-        Jeffery's Conjectures 5, 1, 2 and 3 in A265100.
+        Conjecture 2: if m is a block number, then 3m − 1 is a block number.
       lean: "OeisA265100.conjecture2"
       module: "FCPalomar.A265100.Solution"
       status: "proved"
     - source: >-
-        Jeffery's Conjectures 5, 1, 2 and 3 in A265100.
+        Conjecture 3: if C(n) ≡ 0 (mod 3), then C(3n − 1) ≡ 0 (mod 3).
       lean: "OeisA265100.conjecture3"
       module: "FCPalomar.A265100.Solution"
       status: "proved"

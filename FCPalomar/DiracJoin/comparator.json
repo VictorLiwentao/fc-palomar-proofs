@@ -11,13 +11,5 @@
     "Classical.choice",
     "Quot.sound"
   ],
-  "enable_nanoda": true,
-  "definition_names": [
-    "SimpleGraph.IsCritical",
-    "SimpleGraph.IsCriticalEdge",
-    "Erdos917.IsKCritical",
-    "Erdos917.f",
-    "Erdos917.conjecturedValue",
-    "Erdos1032.IsKCritical"
-  ]
+  "enable_nanoda": true
 }

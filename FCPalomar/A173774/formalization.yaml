@@ -3,9 +3,11 @@ version: "v0.4"
 project:
   name: "OEIS A173774: Sun's integrality conjecture (Andersen 2010)"
   description: >-
-    a(n) = (1/n) Σ_{k<n} (21k+8) C(2k,k)^3 is an integer divisible by 4 C(2n,n).
-    Conjectured by Zhi-Wei Sun and confirmed by Kasper Andersen (2010), who identified
-    a(n)/(4 C(2n,n)) with A112029(n−1).
+    a(n) = (1/n) Σ_{k<n} (21k+8) C(2k,k)^3 is an integer divisible by 4 C(2n,n). Zhi-Wei
+    Sun conjectured this in February 2010. Kasper Andersen confirmed it in a reply on
+    the NMBRTHRY list by identifying a(n)/(4 C(2n,n)) with A112029(n−1). Sun records
+    Andersen's identity in his paper Super congruences and Euler numbers (Sci. China
+    Math. 2011).
   authors:
     - "Wentao Li"
   responsible_maintainers:
@@ -16,14 +18,35 @@ sources:
   - title: "OEIS A173774"
     authors:
       - "Zhi-Wei Sun"
-      - "Kasper Andersen"
     id: "https://oeis.org/A173774"
     type: "web discussion"
-    location: "Sun's conjecture and Andersen's confirmation"
+    location: "Sun's conjecture and the comment on Andersen's confirmation"
     relationship: "formalizes"
     author_endorsement: "not-contacted"
     note: >-
-      The Lean proof proves Andersen's identity by a creative-telescoping certificate.
+      States the conjecture. A comment records Andersen's confirmation and dates it Feb
+      11 2011; Sun's paper listed below dates it Feb. 11, 2010.
+  - title: "Re: A somewhat surprising conjecture"
+    authors:
+      - "Kasper Andersen"
+    type: "web discussion"
+    location: "NMBRTHRY mailing list, February 2010; linked from OEIS A173774"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      Identifies a(n)/(4 C(2n,n)) with A112029(n−1). The Lean proof proves this identity
+      by a creative-telescoping certificate.
+  - title: "Super congruences and Euler numbers"
+    authors:
+      - "Zhi-Wei Sun"
+    id: "doi:10.1007/s11425-011-4302-x"
+    type: "paper"
+    location: "Sci. China Math. 54 (2011) 2509-2535; Lemma 4.1 and the paragraph after Remark 1.4 in arXiv:1001.4453"
+    relationship: "formalizes"
+    author_endorsement: "not-contacted"
+    note: >-
+      States Andersen's identity as Lemma 4.1 (Kasper Andersen) and describes his proof:
+      a recurrence for a(n)/(4 C(2n,n)) and Zeilberger's algorithm.
 
 related_formalizations: []
 
@@ -74,17 +97,17 @@ fidelity:
   divergences: >-
     None. The statement is new: it was written for this package from the source and is
     proposed for Formal Conjectures as FormalConjectures/OEIS/173774.lean with the same
-    declarations; only the FormalConjecturesUtil import, attributes and docstrings
-    differ.
+    declarations. The Challenge leaves out only the FormalConjecturesUtil import,
+    attributes, test lemmas and unrelated declarations of that file.
 
 review:
   status: "self-assessed"
   reviewers: []
   notes: >-
-    Agent checks only: strict build with no warnings, axiom check of the selected
-    theorems, verbatim comparison of the copied definitions and statement, and an
-    independent agent review of source fidelity. No human review beyond Wentao Li is
-    claimed.
+    Checks by AI agents only: a strict build with no warnings, an axiom check of the
+    selected theorems, a check that the Challenge declarations appear verbatim in
+    Solution, and a review of the statement against its source by a separate agent. No
+    independent human review is claimed.
 
 alignment:
   namespace: "OeisA173774"

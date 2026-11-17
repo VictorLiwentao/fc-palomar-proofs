@@ -3,9 +3,13 @@ version: "v0.4"
 project:
   name: "Erdős Problem 626: Erdős's upper bound g_k(n) <= 2 log n / log(k−2) + 1"
   description: >-
-    For k >= 4, g_k(n) <= 2 log n / log(k−2) + 1 for every n, where g_k(n) is the
-    largest m such that some k-chromatic graph on n vertices has no cycle of length <=
-    m. This is Theorem 1 of Erdős (1962).
+    For k >= 4 and all sufficiently large n, g_k(n) <= 2 log n / log(k−2) + 1, where
+    g_k(n) is the largest m such that some graph on n vertices with chromatic number k
+    has no cycle of length <= m. This is Erdős's upper bound (Mathematika 1962, Theorem
+    1) in the form his printed proof gives. Erdős's g_k(n) is the largest girth, one
+    more than the g_k(n) used here, so the formal bound is one weaker than Theorem 1 as
+    printed. With Erdős's lower bound of order log n, it shows that g_k(n) has order log
+    n. Whether g_k(n)/log n converges is the open Erdős Problem 626.
   authors:
     - "Wentao Li"
   responsible_maintainers:
@@ -16,7 +20,7 @@ sources:
   - title: "On circuits and subgraphs of chromatic graphs"
     authors:
       - "Paul Erdős"
-    id: "doi:10.1112/S0025579300003326"
+    id: "doi:10.1112/S0025579300003260"
     type: "paper"
     location: "Mathematika 9 (1962) 170-175, Theorem 1 (proof p. 172)"
     relationship: "formalizes"
@@ -56,7 +60,9 @@ classification:
 status:
   scope: >-
     The selected theorem is erdos_626.variants.erdos_upper with g copied verbatim. The
-    proof gives the bound for every n, not only eventually.
+    compared statement is the eventual form. The Solution proves the bound for every n
+    and derives the eventual form with Filter.Eventually.of_forall; Comparator checks
+    only the eventual form.
   sorry_count: 0
   sorry_in_definitions: 0
   axioms:
@@ -90,18 +96,23 @@ automation:
 
 fidelity:
   divergences: >-
-    None. The Challenge copies the Formal Conjectures statement and definitions
-    verbatim; only the FormalConjecturesUtil import, attributes, test lemmas and
-    docstrings are omitted.
+    Relative to Formal Conjectures: none. The Challenge copies the statement and g
+    verbatim, without the FormalConjecturesUtil import, the attributes, the module
+    docstring or unrelated declarations. Relative to Erdős (1962): Erdős's g_k(n) is the
+    largest girth, while g here is the largest girth minus 1 and Erdős's +1 is kept. So
+    the statement is one weaker than Theorem 1 as printed and equals what the printed
+    proof gives. It is also stated only for sufficiently large n. The copied theorem
+    docstring cites [Er59b], as erdosproblems.com does. The bound is in [Er62b], and
+    Er59b proves only the existence direction.
 
 review:
   status: "self-assessed"
   reviewers: []
   notes: >-
-    Agent checks only: strict build with no warnings, axiom check of the selected
-    theorems, verbatim comparison of the copied definitions and statement, and an
-    independent agent review of source fidelity. No human review beyond Wentao Li is
-    claimed.
+    Checks by AI agents only: a strict build with no warnings, an axiom check of the
+    selected theorems, a check that the Challenge declarations appear verbatim in
+    Solution, and a review of the statement against its source by a separate agent. No
+    independent human review is claimed.
 
 alignment:
   namespace: "Erdos626"

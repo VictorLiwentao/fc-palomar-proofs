@@ -1,6 +1,7 @@
 /-
 Copyright 2026 The Formal Conjectures Authors.
 Copyright 2026 Wentao Li.
+Copyright 2026 Carles Marín.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -22,8 +23,9 @@ public import Mathlib
 # Bell numbers modulo a prime are periodic
 
 For a prime $p$, the Bell numbers satisfy $B(n + N_p) \equiv B(n) \pmod p$ with
-$N_p = (p^p - 1)/(p - 1)$ (Touchard 1933, Hall 1934). This settles the conjectures of
-G. C. Greubel in OEIS A146107, A146109, A146113, A146119 and A146121 ($p = 17, 19, 23, 29, 31$).
+$N_p = (p^p - 1)/(p - 1)$ (Touchard 1933, Hall 1934). The periods conjectured by
+G. C. Greubel in OEIS A146107, A146109, A146113, A146119 and A146121 ($p = 17, 19, 23, 29, 31$)
+are instances; OEIS already marks them correct.
 Minimality of the period is not claimed.
 
 Proof: let $L$ be the linear functional on $\mathbb{F}_p[X]$ with $L(X^n) = B(n)$. Touchard's
@@ -55,6 +57,11 @@ end OeisA54767
 open Polynomial
 
 namespace BellPeriod
+
+/-! The section `Touchard` is adapted from
+`Formalizations/Combinatorics/Enumerative/Touchard.lean` in karlesmarin/formalizations
+(commit `1d089e08`, Apache-2.0; authors Carles Marín and Claude). Changes: `private` removed,
+lines rewrapped, one docstring shortened. -/
 
 section Touchard
 

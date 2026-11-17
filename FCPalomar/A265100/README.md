@@ -1,8 +1,8 @@
 # OEIS A265100: Catalan numbers divisible by 3 and block numbers (Jeffery's Conjectures 5, 1, 2, 3)
 
-3 | C(n) iff the base-3 expansions of n and n+1 both contain a 2 (Conjecture 5; Deutsch–Sagan 2006, Thm 5.2; Israel 2015); every block number is a term 9·A005836(i)+5 (Conjecture 1), and Conjectures 2 and 3 follow.
+3 | C(n) iff the base-3 expansions of n and n + 1 both contain a 2 (Jeffery's Conjecture 5). This is equivalent to Deutsch–Sagan (2006), Theorem 5.2; Robert Israel also proved it in 2015. Every block number (n >= 1 with 3 | C(n) and 3 ∤ C(n − 1)) is a term 9·A005836(i) + 5 (Conjecture 1). Deutsch and Sagan determine where each block starts, right after their Theorem 5.2, and Alter and Kubota (1973) had also done so. If m is a block number, so is 3m − 1 (Conjecture 2), and 3 | C(n) implies 3 | C(3n − 1) (Conjecture 3). Conjectures 2 and 3 are short corollaries of the digit criterion, proved in this package; their novelty is unknown. By Conjecture 5, Vantieghem's conjecture in the same OEIS entry, that 3 | C(2^n − 1) for all n > 8, is a statement about the base-3 digits of 2^n − 1 and 2^n; it is not proved here.
 
 - Statement: `OeisA265100.conjecture5`, `OeisA265100.conjecture1`, `OeisA265100.conjecture2`, `OeisA265100.conjecture3`, written for this package from the source. The same declarations are proposed for Formal Conjectures as `FormalConjectures/OEIS/265100.lean`, which does not exist upstream yet.
-- Mathematics: conjectures by L. Edson Jeffery (OEIS A265100, 2015); Conjecture 5 is Deutsch–Sagan (2006), Theorem 5.2 (C_n mod 3), proved again by Robert Israel (Sequence Fans, 2015).
-- Lean proof: Wentao Li, with AI assistance (Claude Code, Claude Opus 5.5).
+- Mathematics: conjectures by L. Edson Jeffery (OEIS A265100, 2015). Conjecture 5 is equivalent to Deutsch–Sagan (2006), Theorem 5.2, and was also proved by Robert Israel (Sequence Fans, 2015). Conjecture 1 follows from the block positions in Deutsch–Sagan, Section 5.1, also found by Alter–Kubota (1973). Conjectures 2 and 3 are proved here as corollaries; their novelty is unknown.
+- Lean proof: written by Claude Code (Claude Opus 5.5) under the direction of Wentao Li, the author and maintainer.
 - Local checks: Lean v4.35.0, Mathlib `ccbef15e`; strict build with no warnings; `#print axioms` gives only `propext`, `Classical.choice` and `Quot.sound`.

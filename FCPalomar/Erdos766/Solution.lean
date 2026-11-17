@@ -26,8 +26,8 @@ $3 \le k \le n$, a graph on $k$ vertices with $\lfloor k^2/4 \rfloor + 1$ edges.
 
 The definition `forcingNumber` is copied verbatim from `FormalConjectures/ErdosProblems/766.lean`
 (Copyright 2026 The Formal Conjectures Authors, Apache 2.0) at upstream commit
-`7bdc4a42f24c0316f81c73b26121794b2bed96a3`, in the namespace `Erdos766DE` instead of
-`Erdos766`. The theorem `dirac_erdos` is the statement of `erdos_766.variants.dirac_erdos` there.
+`691719db2653905d5fa0775408370fb058e4c59f`. The theorem `dirac_erdos` is the statement of
+`erdos_766.variants.dirac_erdos` there.
 
 *Reference:* P. Erdős, "Extremal problems in graph theory", *Theory of Graphs and its
 Applications* (Smolenice, 1963), 1964, 29--36, p. 34.

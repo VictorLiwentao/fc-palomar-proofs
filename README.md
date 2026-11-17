@@ -109,8 +109,9 @@ lake build
 ## Licence
 
 Apache License 2.0, see `LICENSE`. Statements and definitions copied from Formal Conjectures are
-also under Apache-2.0 (The Formal Conjectures Authors). Two packages include code from other
+also under Apache-2.0 (The Formal Conjectures Authors). Three packages include code from other
 authors:
 
 - `FCPalomar/GowersLongPow` contains code adapted from Daniel Puri under the MIT licence; the MIT notice is kept in `Solution.lean`.
+- `FCPalomar/BellPeriod` contains Touchard's congruence adapted from Carles Marín (karlesmarin/formalizations, Apache-2.0); the copyright line is kept in `Solution.lean`.
 - `FCPalomar/Erdos494` contains lemmas adapted from Linmiao Xu (linrock/math-proofs, Apache-2.0); the copyright line is kept in `Solution.lean`.

@@ -3,10 +3,14 @@ version: "v0.4"
 project:
   name: "Dirac's joins of odd cycles: Erdős Problems 917 (Dirac, Erdős 3 | k) and 1032 (Dirac 6-critical)"
   description: >-
-    The join of q disjoint odd cycles C_m is 3q-critical. This gives Dirac's lower bound
-    f_6(4n+2) >= 4n^2+8n+3 (Erdős 917), Erdős's observation f_k(n) >= ½(1 − 1/(k/3))n^2
-    + n for 3 | k (Erdős 917), and Dirac's 6-critical graphs with minimum degree > n/2
-    (Erdős 1032).
+    The join of q >= 1 disjoint copies of an odd cycle C_m (m >= 3) is 3q-critical: its
+    chromatic number is 3q, and deleting any vertex or any edge lowers it. This gives
+    three classical lower bounds. Dirac: f_6(4n+2) >= 4n^2+8n+3 for n >= 1 (Erdős
+    Problem 917). Erdős: if k >= 3 and 3 | k, then f_k(n) >= ½(1 − 1/(k/3))n^2 + n for
+    every n = m·k/3 with m odd and m >= 3 (Erdős Problem 917). Dirac: for infinitely
+    many n there is a 6-critical graph on n vertices with minimum degree > n/2 (Erdős
+    Problem 1032). Here f_k(n) is the largest number of edges of a k-critical graph on n
+    vertices, and k-critical means both vertex- and edge-critical.
   authors:
     - "Wentao Li"
   responsible_maintainers:
@@ -42,8 +46,28 @@ related_formalizations:
     id: "https://github.com/google-deepmind/formal-conjectures/blob/691719db2653905d5fa0775408370fb058e4c59f/FormalConjectures/ErdosProblems/917.lean"
     relationship: "builds-on"
     note: >-
-      The Challenge copies the statement and the definitions it uses verbatim from this
-      file at commit 691719db. The upstream declaration is `sorry` at that commit.
+      The Challenge copies IsKCritical, f, conjecturedValue and the statements of
+      erdos_917.variants.dirac and erdos_917.variants.erdos_three_dvd verbatim from this
+      file at commit 691719db. The upstream declarations are `sorry` at that commit.
+  - title: "Formal Conjectures: FormalConjectures/ErdosProblems/1032.lean"
+    authors:
+      - "The Formal Conjectures Authors"
+    id: "https://github.com/google-deepmind/formal-conjectures/blob/691719db2653905d5fa0775408370fb058e4c59f/FormalConjectures/ErdosProblems/1032.lean"
+    relationship: "builds-on"
+    note: >-
+      The Challenge copies erdos_1032.variants.dirac_six and Erdos1032.IsKCritical
+      verbatim from this file at commit 691719db, without their docstrings. The upstream
+      declaration is `sorry` at that commit.
+  - title: "Formal Conjectures: FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring/Vertex.lean"
+    authors:
+      - "The Formal Conjectures Authors"
+    id: "https://github.com/google-deepmind/formal-conjectures/blob/691719db2653905d5fa0775408370fb058e4c59f/FormalConjecturesForMathlib/Combinatorics/SimpleGraph/Coloring/Vertex.lean"
+    relationship: "builds-on"
+    note: >-
+      The Challenge copies IsCriticalEdges, IsCriticalEdge, Subgraph.IsCriticalVerts,
+      Subgraph.IsCriticalVertex, IsCritical and the lemmas
+      lt_chromaticNumber_iff_not_colorable and le_chromaticNumber_iff_not_colorable
+      verbatim from this file at commit 691719db.
   - title: "TheJustinSunPrize/awards PR #358 (baobingzhang, JSP-000761)"
     authors:
       - "baobingzhang"
@@ -119,34 +143,39 @@ automation:
 
 fidelity:
   divergences: >-
-    None. The Challenge copies the Formal Conjectures statement and definitions
-    verbatim; only the FormalConjecturesUtil import, attributes, test lemmas and
-    docstrings are omitted.
+    None. The Challenge copies the Formal Conjectures statements and definitions
+    verbatim. It omits the FormalConjecturesUtil import, attributes, the upstream
+    reference lists, unrelated declarations, and the docstrings of Erdos1032.IsKCritical
+    and erdos_1032.variants.dirac_six. It keeps two copied API lemmas
+    (lt_chromaticNumber_iff_not_colorable, le_chromaticNumber_iff_not_colorable) with
+    their proofs.
 
 review:
   status: "self-assessed"
   reviewers: []
   notes: >-
-    Agent checks only: strict build with no warnings, axiom check of the selected
-    theorems, verbatim comparison of the copied definitions and statement, and an
-    independent agent review of source fidelity. No human review beyond Wentao Li is
-    claimed.
+    Checks by AI agents only: a strict build with no warnings, an axiom check of the
+    selected theorems, a check that the Challenge declarations appear verbatim in
+    Solution, and a review of the statement against its source by a separate agent. No
+    independent human review is claimed.
 
 alignment:
   namespace: "Erdos917"
   statements:
     - source: >-
-        Dirac's and Erdős's lower-bound constructions for critical graphs.
+        For n >= 1, f_6(4n+2) >= 4n^2+8n+3 (two copies of C_{2n+1}, fully joined).
       lean: "Erdos917.erdos_917.variants.dirac"
       module: "FCPalomar.DiracJoin.Solution"
       status: "proved"
     - source: >-
-        Dirac's and Erdős's lower-bound constructions for critical graphs.
+        If k >= 3, 3 | k, m is odd and m >= 3, then f_k(mk/3) >= ½(1 − 1/(k/3))(mk/3)^2
+        + mk/3 (join of k/3 copies of C_m).
       lean: "Erdos917.erdos_917.variants.erdos_three_dvd"
       module: "FCPalomar.DiracJoin.Solution"
       status: "proved"
     - source: >-
-        Dirac's and Erdős's lower-bound constructions for critical graphs.
+        For infinitely many n there is a 6-critical graph on n vertices with minimum
+        degree > n/2 (join of two copies of C_{n/2}, n/2 odd).
       lean: "Erdos1032.erdos_1032.variants.dirac_six"
       module: "FCPalomar.DiracJoin.Solution"
       status: "proved"
