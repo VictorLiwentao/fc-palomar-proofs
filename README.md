@@ -113,5 +113,5 @@ also under Apache-2.0 (The Formal Conjectures Authors). Three packages include c
 authors:
 
 - `FCPalomar/GowersLongPow` contains code adapted from Daniel Puri under the MIT licence; the MIT notice is kept in `Solution.lean`.
-- `FCPalomar/BellPeriod` contains Touchard's congruence adapted from Carles Marín (karlesmarin/formalizations, Apache-2.0); the copyright line is kept in `Solution.lean`.
+- `FCPalomar/BellPeriod` contains Touchard's congruence adapted from karlesmarin/formalizations (Apache-2.0), whose file lists Carles Marín and Claude (AI assistant) as authors; the copyright line is kept in `Solution.lean`.
 - `FCPalomar/Erdos494` contains lemmas adapted from Linmiao Xu (linrock/math-proofs, Apache-2.0); the copyright line is kept in `Solution.lean`.

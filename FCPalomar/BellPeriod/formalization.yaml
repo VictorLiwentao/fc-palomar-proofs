@@ -54,9 +54,12 @@ related_formalizations:
   - title: "karlesmarin/formalizations: Formalizations/Combinatorics/Enumerative/Touchard.lean"
     authors:
       - "Carles Marín"
+      - "Claude (AI assistant)"
     id: "https://github.com/karlesmarin/formalizations/blob/1d089e08101adad7789f713473274d6d98fafc33/Formalizations/Combinatorics/Enumerative/Touchard.lean"
     relationship: "adapts"
     note: >-
+      The file lists its authors as Carles Marín and Claude (AI assistant), and the
+      repository README says it was written with Claude (Anthropic) as an AI assistant.
       The section Touchard of Solution.lean (from L to bell_add_prime, Touchard's
       congruence) is adapted from this Apache-2.0 file: private modifiers removed, lines
       rewrapped and one docstring shortened. The copyright line is kept in
@@ -141,8 +144,9 @@ automation:
       tool_setup: >-
         Claude Code (Anthropic) wrote the period proof and this package under the
         direction of Wentao Li, and adapted Touchard's congruence from
-        karlesmarin/formalizations (Carles Marín), with independent agent review of the
-        statement against its source. Wentao Li is the human author and maintainer.
+        karlesmarin/formalizations (Carles Marín, with Claude as an AI assistant), with
+        independent agent review of the statement against its source. Wentao Li is the
+        human author and maintainer.
   spend_usd: "not available"
   notes: >-
     AI assistance was material. The mathematics is credited to the original authors
